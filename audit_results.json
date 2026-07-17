@@ -1,0 +1,2625 @@
+[
+  {
+    "type": "HARDCODED",
+    "file": "/app/agro-injiniring/page.tsx",
+    "line": 297,
+    "text": "Ish jarayoni"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/app/agro-injiniring/page.tsx"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/app/aloqa/page.tsx",
+    "line": 403,
+    "text": "UZ GROW Location Map"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.phone"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.email"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.location"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.subtitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.infoTitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.socialMedia"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.formTitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.formDescription"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.success"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.successMessage"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.name"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.namePlaceholder"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.phone"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.phonePlaceholder"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.email"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.emailPlaceholder"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.service"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.servicePlaceholder"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.services.consulting"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.services.project"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.services.investment"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.services.partnership"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.services.other"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.message"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.messagePlaceholder"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.sending"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.send"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "Map"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "Adress on Map"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.getDirections"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.addressCopied"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.copyAddress"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.location"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.locationDetails"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.workingHours"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.monday"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.friday"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.saturday"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.sunday"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.closed"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/app/aloqa/page.tsx",
+    "key": "contact.callUs"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 47,
+    "text": "Siz 18 yoshga to'lgan va huquqiy jihatdan to'liq qobiliyatli bo'lishingiz kerak"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 48,
+    "text": "Veb-saytdan faqat qonunga zid ravishda foydalanishingiz mumkin"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 49,
+    "text": "Boshqa foydalanuvchilarning huquqlariga hurmat ko'rsating"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 50,
+    "text": "Shaxsiy ma'lumotlaringizni to'g'ri kiritishingiz kerak"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 51,
+    "text": "Bizning xizmatlarimizdan qonunga zid foydalanmang"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 64,
+    "text": "Issiqxona loyihalash va qurish bo'yicha konsalting"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 65,
+    "text": "Agro-injiniring xizmatlari"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 66,
+    "text": "Texnik yechimlar va maslahatlar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 67,
+    "text": "Loyihalarni boshqarish"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 68,
+    "text": "Materiallar va uskunalar tanlash"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 74,
+    "text": "Eslatma:"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 90,
+    "text": "Konsalting xizmatlari oldindan to'lanadi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 91,
+    "text": "To'lov naqd pul yoki bank orqali amalga oshiriladi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 92,
+    "text": "To'lov qilingan xizmatlar qaytarilmaydi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 93,
+    "text": "Qo'shimcha xizmatlar uchun alohida to'lov talab qilinadi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 94,
+    "text": "Barcha to'lovlar hujjatlashtiriladi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 107,
+    "text": "Force majeure holatlarida (tabiiy ofatlar, urushlar)"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 108,
+    "text": "Mijoz tomonidan noto'g'ri ma'lumot berilganda"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 109,
+    "text": "Uchinchi tomonlar aybiganda"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 110,
+    "text": "Qonun o'zgarishi sababli"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 111,
+    "text": "Texnik nosozliklar tufayli (bizning aybimiz bo'lmasa)"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 116,
+    "text": "5. Intellektual mulk"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 121,
+    "text": "Barcha matnlar, rasmlar, dizaynlar bizga tegishli"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 122,
+    "text": "Ruxsatsiz foydalanish taqiqlanadi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 123,
+    "text": "Materiallardan tijorat maqsadida foydalanish mumkin emas"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 124,
+    "text": "Bizning roziligimiz bilan qayta nashr qilish mumkin"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 129,
+    "text": "6. Shartnomani bekor qilish"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 134,
+    "text": "Ikkala tomon ham rozilik bildirganda"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 135,
+    "text": "Bir tomon shartlarni buzganda"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 136,
+    "text": "Qonunga zid faoliyat qilganda"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 137,
+    "text": "15 kun oldin xabardor qilganda"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 142,
+    "text": "7. Nizolarni hal qilish"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 147,
+    "text": "Suhbat orqali kelishuvga harakat qilish"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 148,
+    "text": "Tegishli vositalar orqali hal qilish"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 149,
+    "text": "Toshkent shahar sudiga murojaat qilish"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 150,
+    "text": "O'zbekiston Respublikasi qonunlari asosida"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 155,
+    "text": "8. Qo'shimcha shartlar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 157,
+    "text": "Bu shartnoma O'zbekiston Respublikasi qonunlariga muvofiq tuzilgan"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 158,
+    "text": "Shartnomaga o'zgartirish kiritish huquqi bizda saqlanadi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 159,
+    "text": "Veb-saytdan foydalanish bilan siz ushbu shartlarni qabul qilasiz"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/foydanalish-shartlari/page.tsx",
+    "line": 160,
+    "text": "Savollaringiz bo'lsa biz bilan bog'laning"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/app/foydanalish-shartlari/page.tsx"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/investorlar/page.tsx",
+    "line": 210,
+    "text": "Kutilgan ROI"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/app/investorlar/page.tsx"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 58,
+    "text": "Ism, familiya, telefon raqami, email manzili"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 59,
+    "text": "Kompaniya ma'lumotlari va manzili"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 60,
+    "text": "Loyiha talablari va texnik xususiyatlari"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 61,
+    "text": "Ishonch telefon raqami va qo'shimcha kontaktlar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 78,
+    "text": "Xizmatlarimizni taqdim etish va yaxshilash"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 79,
+    "text": "Mijozlar bilan aloqa o'rnatish va saqlash"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 80,
+    "text": "Loyihalarni loyihalash va amalga oshirish"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 81,
+    "text": "Shartnoma va huquqiy majburiyatlarni bajarish"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 82,
+    "text": "Xizmatlarimiz sifatini nazorat qilish"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 102,
+    "text": "Huquqiy organlar (qonun talabiga ko'ra)"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 103,
+    "text": "Moliyaviy muassasalar (to'lov va soliq maqsadlarida)"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 104,
+    "text": "Sizning roziligiz bilan boshqa uchinchi shaxslar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 110,
+    "text": "Eslatma:"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 131,
+    "text": "Loyiha hujjatlari - 10 yil"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 132,
+    "text": "Moliyaviy ma'lumotlar - 7 yil"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 133,
+    "text": "Ijtimoiy media ma'lumotlari - 3 yil"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 149,
+    "text": "SSL shifrlash texnologiyasidan foydalanamiz"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 150,
+    "text": "Serverlarni muntazam ravishda yangilaymiz"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 151,
+    "text": "Xodimlar maxfiylik shartnomasini imzolaydilar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 152,
+    "text": "Kirish huquqini cheklaymiz"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 153,
+    "text": "Muntazam xavfsizlik tekshiruvlarini o'tkazamiz"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 165,
+    "text": "O'z ma'lumotlaringizni ko'rish huquqi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 166,
+    "text": "Noto'g'ri ma'lumotlarni to'g'rilash huquqi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 170,
+    "text": "Ma'lumotlarni ko'chirish huquqi (portability)"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 171,
+    "text": "Qayta ishlashga qarshi etiroz bildirish huquqi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 185,
+    "text": "Email:"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 188,
+    "text": "Telefon:"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/maxfiylik-siyosati/page.tsx",
+    "line": 191,
+    "text": "Manzil:"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/app/maxfiylik-siyosati/page.tsx"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/app/texnologiya/page.tsx",
+    "line": 184,
+    "text": "Video joylashtiring"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/app/texnologiya/page.tsx"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/about-detailed.tsx",
+    "line": 16,
+    "text": "UZ-GROW Office"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about-detailed.tsx",
+    "key": "about.tagline"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about-detailed.tsx",
+    "key": "about.headline"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about-detailed.tsx",
+    "key": "about.businessScopeTitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about-detailed.tsx",
+    "key": "about.businessScopeDesc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about-detailed.tsx",
+    "key": "about.professionalTeamTitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about-detailed.tsx",
+    "key": "about.professionalTeamDesc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about-detailed.tsx",
+    "key": "about.descriptionTop"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about-detailed.tsx",
+    "key": "about.descriptionBottom"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/about.tsx",
+    "line": 137,
+    "text": "About UZ GROW"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.experience"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.projects"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.clients"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.countries"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.values"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.values.0"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.values.1"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.values.2"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.tagline"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.headline"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.descriptionText"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.aboutUsButton"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.mission"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.missionDesc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.vision"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.visionDesc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.valuesTitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/about.tsx",
+    "key": "about.valuesAndRules.desc"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/asso-design-media.tsx",
+    "line": 134,
+    "text": "UZ GROW Logo"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/asso-design-media.tsx",
+    "line": 240,
+    "text": "Obunachilar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/asso-design-media.tsx",
+    "line": 257,
+    "text": "Yosh chegarasi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/asso-design-media.tsx",
+    "line": 267,
+    "text": "Jinsi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/asso-design-media.tsx",
+    "line": 270,
+    "text": "Ayollar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/asso-design-media.tsx",
+    "line": 274,
+    "text": "Erkaklar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/asso-design-media.tsx",
+    "line": 286,
+    "text": "Mintaqalar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/asso-design-media.tsx",
+    "line": 337,
+    "text": "Video:"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/asso-design-media.tsx",
+    "line": 341,
+    "text": "Post:"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/asso-design-media.tsx",
+    "line": 345,
+    "text": "Imkoniyatlar:"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/asso-design-media.tsx",
+    "line": 402,
+    "text": "Biz Bilan Bog'lanish"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/asso-design-media.tsx",
+    "line": 412,
+    "text": "uzgrrow@gmail.com"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/asso-design-media.tsx",
+    "line": 449,
+    "text": "Hurmat bilan, UZ GROW jamoasi!"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/asso-design-media.tsx"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/ceo.tsx",
+    "line": 170,
+    "text": "UZ GROW Logo"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ceo.tsx",
+    "line": 174,
+    "text": "Rahbariyat"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ceo.tsx",
+    "line": 211,
+    "text": "CEO"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ceo.tsx",
+    "line": 232,
+    "text": "Tajriba"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ceo.tsx",
+    "line": 236,
+    "text": "Loyihalar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ceo.tsx",
+    "line": 240,
+    "text": "Obunachilar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ceo.tsx",
+    "line": 241,
+    "text": "150K+"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ceo.tsx",
+    "line": 427,
+    "text": "Ko'nikmalar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ceo.tsx",
+    "line": 446,
+    "text": "Ta'lim"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ceo.tsx",
+    "line": 462,
+    "text": "Rahbar bilan bog'lanish"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ceo.tsx"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/contact.tsx",
+    "line": 379,
+    "text": "UZ GROW Location Map"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.phoneLabel"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.companyPhone"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.companyPhone"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.companyPhone2"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.companyPhone2"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.emailLabel"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.companyEmail"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.companyEmail"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.address"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.address"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.locationUrl"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.website"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.website"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.services.turnkey"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.services.engineering"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.services.equipment"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.services.consulting"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.services.investment"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.socialLinks.youtube"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.socialLinks.instagram"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.socialLinks.facebook"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.socialLinks.telegram"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.socialLinks.tiktok"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.subtitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.formTitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.name"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.namePlaceholder"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.phone"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.phonePlaceholder"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.email"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.emailPlaceholder"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.service"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.servicePlaceholder"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.message"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.messagePlaceholder"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.sending"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.send"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.success"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.successMessage"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.successHeader"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.successSubheader"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.newMessage"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.infoTitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.location"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "footer.brandName"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.locationCity"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.coordinatesLabel"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.getDirections"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.address"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.addressCopied"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.copyAddress"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.workingHours"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.workingHoursDesc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.monday"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.friday"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.saturday"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.sunday"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.closed"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.socialMedia"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/contact.tsx",
+    "key": "contact.followUs"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/footer.tsx",
+    "line": 77,
+    "text": "UZ GROW Logo"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/footer.tsx",
+    "line": 102,
+    "text": "+998 99 435 23 13 (WhatsApp)"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/footer.tsx",
+    "line": 109,
+    "text": "uzgrrow@gmail.com"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.links.services.0.label"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "nav.greenhouse"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "nav.projects"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.links.services.2.label"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.links.company.0.label"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.links.company.1.label"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.links.company.2.label"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.links.company.3.label"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.links.help.0.label"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.links.help.1.label"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.links.help.2.label"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.links.help.3.label"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.brandName"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.brandDescription"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.contact"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "contact.address"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.services"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.company"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.help"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.brandName"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/footer.tsx",
+    "key": "footer.allRightsReserved"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/gallery.tsx",
+    "line": 386,
+    "text": "UZ GROW Logo"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/gallery.tsx",
+    "key": "projects.gallery.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/gallery.tsx",
+    "key": "projects.gallery.description"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/gallery.tsx",
+    "key": "common.all"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/gallery.tsx",
+    "key": "projects.gallery.projects"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/gallery.tsx",
+    "key": "projects.gallery.samarqand"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/gallery.tsx",
+    "key": "common.all"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/gallery.tsx",
+    "key": "projects.gallery.projects"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/gallery.tsx",
+    "key": "projects.gallery.samarqand"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/gallery.tsx",
+    "key": "projects.gallery.totalImages"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/gallery.tsx",
+    "key": "projects.gallery.projects"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/gallery.tsx",
+    "key": "projects.gallery.samarqand"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/gallery.tsx",
+    "key": "contact.socialMedia"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/greenhouse-types.tsx",
+    "line": 117,
+    "text": "UZ GROW Logo"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.vertical.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.vertical.description"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.vertical.complexity"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.vertical.durability"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.vertical.cost"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.vertical.maintenance"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.mini.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.mini.description"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.mini.complexity"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.mini.durability"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.mini.cost"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.mini.maintenance"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.oddiy.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.oddiy.description"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.oddiy.complexity"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.oddiy.durability"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.oddiy.cost"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.oddiy.maintenance"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.gektar.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.gektar.description"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.gektar.complexity"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.gektar.durability"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.gektar.cost"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.gektar.maintenance"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "greenhouse.description"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "common.features"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/greenhouse-types.tsx",
+    "key": "common.readMore"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/header.tsx",
+    "line": 158,
+    "text": "UZ GROW Logo"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "nav.home"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "nav.greenhouse"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "nav.projects"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "nav.team"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "nav.contact"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "nav.language"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "nav.language"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "footer.brandName"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.valuesTitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.mission"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.missionDesc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.vision"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.visionDesc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.valuesTitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.valuesAndRules.desc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "contact.companyPhone"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "contact.companyPhone"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "contact.companyEmail"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "contact.companyEmail"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.valuesTitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.mission"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.missionDesc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.vision"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.visionDesc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.valuesTitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "about.valuesAndRules.desc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/header.tsx",
+    "key": "nav.language"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide1.quote"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide1.author"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide1.role"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide1.cta"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide2.quote"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide2.author"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide2.role"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide2.cta"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide3.quote"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide3.author"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide3.role"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide3.cta"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide4.quote"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide4.author"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide4.role"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.slides.slide4.cta"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.tagline"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.cta"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.downloadCatalog"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.stats.experience"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.stats.projects"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.stats.specialists"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/hero.tsx",
+    "key": "hero.stats.regions"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/international.tsx",
+    "line": 75,
+    "text": "UZ GROW Logo"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/international.tsx",
+    "line": 94,
+    "text": "Mamlakatlar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/international.tsx",
+    "line": 101,
+    "text": "Loyihalar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/international.tsx",
+    "line": 107,
+    "text": "10K+"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/international.tsx",
+    "line": 108,
+    "text": "Foydalanuvchilar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/international.tsx",
+    "line": 114,
+    "text": "$25M+"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/international.tsx",
+    "line": 115,
+    "text": "Investitsiyalar"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/international.tsx"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/projects-old.tsx",
+    "line": 122,
+    "text": "UZ GROW Logo"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects-old.tsx",
+    "key": "projects.categories.all"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects-old.tsx",
+    "key": "projects.categories.president"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects-old.tsx",
+    "key": "projects.categories.international"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects-old.tsx",
+    "key": "projects.categories.greenhouse"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects-old.tsx",
+    "key": "projects.viewProject"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/projects.tsx",
+    "line": 169,
+    "text": "Portfolio"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.categories.all"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.categories.presidential"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.categories.international"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.categories.greenhouse"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": " "
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": " "
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.subtitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.categories.all"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "common.category"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.featured"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "common.completed"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "common.inProgress"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.viewProject"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.investment"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.viewProject"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.notFound"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.tryDifferentSearch"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.featured"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.technologies"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.projectDetails"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.client"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.investment"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "projects.status"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "common.completed"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "common.inProgress"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "common.contact"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/projects.tsx",
+    "key": "hero.downloadCatalog"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/regional.tsx",
+    "line": 102,
+    "text": "UZ GROW Logo"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/regional.tsx",
+    "line": 121,
+    "text": "Viloyatlar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/regional.tsx",
+    "line": 128,
+    "text": "Loyihalar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/regional.tsx",
+    "line": 134,
+    "text": "35M+"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/regional.tsx",
+    "line": 135,
+    "text": "Aholi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/regional.tsx",
+    "line": 142,
+    "text": "O'sish"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/regional.tsx",
+    "line": 149,
+    "text": "Korxonalar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/regional.tsx",
+    "line": 155,
+    "text": "$100M+"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/regional.tsx",
+    "line": 156,
+    "text": "Byudjet"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/regional.tsx",
+    "line": 196,
+    "text": "Aholi:"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/regional.tsx",
+    "line": 200,
+    "text": "Loyihalar:"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/regional.tsx",
+    "line": 204,
+    "text": "Byudjet:"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/regional.tsx",
+    "line": 210,
+    "text": "Ixtisoslik:"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/regional.tsx"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/regional.tsx",
+    "key": ", "
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/samarqand-video.tsx",
+    "line": 47,
+    "text": "UZ GROW Logo"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/samarqand-video.tsx",
+    "line": 165,
+    "text": "Galereyani ko'rish"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/samarqand-video.tsx",
+    "line": 174,
+    "text": "Tashrif statistikasi"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/samarqand-video.tsx",
+    "line": 178,
+    "text": "Korxonalar soni"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/samarqand-video.tsx",
+    "line": 182,
+    "text": "Ish o'rinlari"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/samarqand-video.tsx",
+    "line": 188,
+    "text": "Investitsiyalar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/samarqand-video.tsx",
+    "line": 204,
+    "text": "Qo'shimcha resurslar"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/samarqand-video.tsx"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.engineering"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.engineeringDesc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.engineeringFullDesc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.engineeringFeatures.0"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.engineeringFeatures.1"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.engineeringFeatures.2"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.engineeringFeatures.3"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.equipment"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.equipmentDesc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.equipmentFullDesc"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.equipmentFeatures.0"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.equipmentFeatures.1"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.equipmentFeatures.2"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.equipmentFeatures.3"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.subtitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "services.description"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/services.tsx",
+    "key": "common.readMore"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/team.tsx",
+    "key": "team.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/team.tsx",
+    "key": "team.subtitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/team.tsx",
+    "key": "team.description"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/team.tsx",
+    "key": "team.achievementsLabel"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/team.tsx",
+    "key": "team.experience"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/team.tsx",
+    "key": "team.achievements"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/team.tsx",
+    "key": "team.education"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/team.tsx",
+    "key": "team.skills"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/team.tsx",
+    "key": "team.contact"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/team.tsx",
+    "key": "common.call"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/team.tsx",
+    "key": "common.downloadResume"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/team.tsx",
+    "key": "common.sendEmail"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/team.tsx",
+    "key": "common.makeCall"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/technology.tsx",
+    "key": "technology.title"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/technology.tsx",
+    "key": "technology.subtitle"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/technology.tsx",
+    "key": "technology.description"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/alert.tsx",
+    "line": 26,
+    "text": "& VariantProps"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/alert.tsx"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/ui/breadcrumb.tsx",
+    "line": 8,
+    "text": "breadcrumb"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/breadcrumb.tsx",
+    "line": 96,
+    "text": "More"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/breadcrumb.tsx"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/button-group.tsx",
+    "line": 28,
+    "text": "& VariantProps"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/button-group.tsx"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/ui/carousel.tsx",
+    "line": 125,
+    "text": "carousel"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/ui/carousel.tsx",
+    "line": 162,
+    "text": "slide"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/carousel.tsx",
+    "line": 199,
+    "text": "Previous slide"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/carousel.tsx",
+    "line": 229,
+    "text": "Next slide"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/carousel.tsx"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/dialog.tsx",
+    "line": 75,
+    "text": "Close"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/dialog.tsx"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/empty.tsx",
+    "line": 50,
+    "text": "& VariantProps"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/empty.tsx"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/field.tsx",
+    "line": 85,
+    "text": "& VariantProps"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/field.tsx"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/form.tsx",
+    "line": 23,
+    "text": "= FieldPath"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/form.tsx",
+    "line": 34,
+    "text": "= FieldPath"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/form.tsx"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/input-group.tsx",
+    "line": 63,
+    "text": "& VariantProps"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/input-group.tsx"
+  },
+  {
+    "type": "T_USAGE",
+    "file": "/components/ui/input-group.tsx",
+    "key": "button"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/item.tsx",
+    "line": 95,
+    "text": "& VariantProps"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/item.tsx"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/ui/pagination.tsx",
+    "line": 15,
+    "text": "pagination"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/ui/pagination.tsx",
+    "line": 74,
+    "text": "Go to previous page"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/pagination.tsx",
+    "line": 80,
+    "text": "Previous"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/ui/pagination.tsx",
+    "line": 91,
+    "text": "Go to next page"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/pagination.tsx",
+    "line": 96,
+    "text": "Next"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/pagination.tsx",
+    "line": 114,
+    "text": "More pages"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/pagination.tsx"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/sheet.tsx",
+    "line": 77,
+    "text": "Close"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/sheet.tsx"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/sidebar.tsx",
+    "line": 199,
+    "text": "Sidebar"
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/sidebar.tsx",
+    "line": 200,
+    "text": "Displays the mobile sidebar."
+  },
+  {
+    "type": "HARDCODED",
+    "file": "/components/ui/sidebar.tsx",
+    "line": 277,
+    "text": "Toggle Sidebar"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/ui/sidebar.tsx",
+    "line": 289,
+    "text": "Toggle Sidebar"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/ui/sidebar.tsx",
+    "line": 292,
+    "text": "Toggle Sidebar"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/sidebar.tsx"
+  },
+  {
+    "type": "HARDCODED_PROP",
+    "file": "/components/ui/spinner.tsx",
+    "line": 9,
+    "text": "Loading"
+  },
+  {
+    "type": "MISSING_IMPORT",
+    "file": "/components/ui/spinner.tsx"
+  }
+]

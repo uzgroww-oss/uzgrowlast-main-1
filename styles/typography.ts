@@ -1,0 +1,7 @@
+export const heading1 = "text-4xl font-bold tracking-tight"
+export const heading2 = "text-3xl font-bold"
+export const heading3 = "text-2xl font-medium"
+export const bodyLarge = "text-lg font-normal"
+export const bodyText = "text-base font-normal"
+export const caption = "text-sm font-normal text-gray-500"
+export const label = "text-xs font-medium uppercase tracking-wide"

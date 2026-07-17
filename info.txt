@@ -1,0 +1,203 @@
+UZ GROW WEBSITE INFORMATION
+==========================
+
+BASIC INFORMATION
+----------------
+Company Name: UZ GROW
+Full Name: UZ GROW QURUVCHI FIRMASI
+Industry: Agro-injiniring, Issiqxona qurilishi
+Founded: 2017
+Experience: 4+ years
+Location: Toshkent, O'zbekiston
+Website: Modern Next.js application
+
+COMPANY DESCRIPTION
+------------------
+UZ GROW - O'zbekistonda zamonaviy issiqxona qurilishi va agro-injiniring sohasida faoliyat yurituvchi kompaniya. Bizning maqsadimiz - O'zbekistonda yuqori samaradorlikka ega, innovatsion va eksportbop issiqxona infratuzilmasini rivojlantirish.
+
+SERVICES OFFERED
+-----------------
+1. INJINIRING (Injiniring xizmatlari)
+   - Loyihalashdan boshlab to'liq ishga tushirishgacha
+   - Metall konstruksiya
+   - Polikarbonat yoki shisha qoplama
+   - Tomchilatib sug'orish
+   - Avtomatlashtirilgan boshqaruv
+
+2. EQUIPMENT (Jihozlar)
+   - Iqlim nazorati tizimi
+   - Tomchilatib sug'orish
+   - LED grow lights
+   - O'g'itlash va sug'orish tizimi
+
+3. CONSULTING (Konsalting)
+   - Tekshiruv va tahlil
+   - 3D modellashtirish
+   - Texnik hujjatlar
+   - Eksport yo'nalishi
+   - Biznes model yaratish
+
+TEAM MEMBERS
+-------------
+1. Rustamjon Rahmonov
+   - Position: Asoschi va Bosh Direktor
+   - Experience: 4+ yillik
+   - Bio: O'zbekistonlik innovator agrofaol va tadbirkor. 2017-yildan beri Markaziy Osiyo agrosektorida minglab fermerlar va agrobiznes vakillariga ma'lumot, ishonch va natija olib kelmoqda.
+   - Contact: uzgrrow@gmail.com, +998 88 507 00 70
+
+2. Alisher Majidov
+   - Position: Marketing Direktori
+   - Experience: 6+ yillik
+   - Bio: Marketing va brend strategiyalari bo'yicha mutaxassis. Kompaniya imidjini rivojlantirish va mijozlar bazasini kengaytirish uchun mas'ul.
+   - Contact: uzgrrow@gmail.com, +998 88 507 00 70
+
+3. Abdulloh Abdurasulov
+   - Position: Texnik Direktor
+   - Experience: 6+ yillik
+   - Bio: Issiqxona qurilish va texnologiyalar bo'yicha mutaxassis. 6+ yillik tajriba bilan zamonaviy agrotexnologiyalarni joriy etmoqda.
+   - Contact: uzgrrow@gmail.com, +998 88 507 00 70
+
+PROJECTS
+--------
+1. ANDIJON VOYDI (2022-2024)
+   - Location: Andijon vodiysi
+   - Size: 7 ta issiqxona
+   - Description: Andijon vodiysida qurilgan 7 ta zamonaviy issiqxona majmuasi. Prezident tashrifi uchun mo'ljallangan yirik loyiha.
+   - Status: Completed
+
+2. SAMARQAND (2024)
+   - Location: Samarqand viloyati
+   - Size: 2 ta issiqxona
+   - Description: Samarqand viloyatida qurilgan 2 ta yirik issiqxona. Prezident tashrifi va tadbirkorlar uchrashuvi uchun mo'ljallangan.
+   - Status: Completed
+
+3. XALQARO LOYIHALAR (2024)
+   - Countries: Qozog'iston, Tojikiston, Qirg'iziston, Turkmaniston
+   - Description: Buxoro xalqaro turizm markazi, Toshkent raqamli ta'lim platformasi va Olmaota issiqxona loyihalari.
+   - Status: In-progress
+
+4. QASHQADARYO (2024)
+   - Location: Qashqadaryo viloyati
+   - Description: Qashqadaryoda qurilgan polikarbonat issiqxonalari majmui. Zamonaviy texnologiyalar bilan jihozlangan.
+   - Status: Completed
+
+5. TOSHKENT (2023)
+   - Location: Toshkent shahri
+   - Description: Toshkent shahrida qurilgan innovatsion issiqxona markazi. Yaqin Sharqdagi eng zamonaviy agrotexnologiyalar jamlanmasi.
+   - Status: Completed
+
+STATISTICS
+----------
+- Experience: 4+ yil
+- Projects: 2000+ muvaffaqiyatli loyiha
+- Clients: 50+ mijozlar
+- Regions: 12+ viloyatda xizmat
+- Team members: 3 asosiy mutaxassis
+- Countries: 3+ mamlakatda faoliyat
+
+TECHNOLOGIES USED
+-----------------
+1. HEATING SYSTEM (Isitish tizimi)
+   - Zamonaviy isitish tizimlari orqali optimal haroratni ta'minlash va energiya tejash.
+
+2. VENTILATION (Ventilyatsiya va sovutish)
+   - Avtomatlashtirilgan ventilyatsiya va sovutish tizimlari yordamida iqlimni nazorat qilish.
+
+3. SHELVING SYSTEM (Stelaj tizimi)
+   - Vertikal stelajlar orqali joydan samarali foydalanish va hosildorlikni oshirish.
+
+4. LED GROW LIGHTS (LED yoritish)
+   - Energiya tejamkor LED yoritish tizimlari orqali yil davomida hosil olish.
+
+5. IRRIGATION SYSTEM (Sug'orish tizimi)
+   - Tomchilatib sug'orish va gidroponika tizimlari yordamida suvni 90% gacha tejash.
+
+6. AUTOMATION (Avtomatlashtirish)
+   - IoT sensorlar va AI algoritmlari yordamida iqlimni avtomatik boshqarish.
+
+CONTACT INFORMATION
+-------------------
+Main Office: 
+
+Phone Numbers:
+- +998 55 515 22 23
+- +998 99 435 23 13 (WhatsApp)
+
+Email: uzgrrow@gmail.com
+
+Social Media:
+- Instagram: https://www.instagram.com/uz.grow?igsh=MXMwN3lzaW95NTN1YQ==
+- Facebook: https://www.facebook.com/share/1DePjLwX79/
+- YouTube: https://youtube.com/@rustamjonrakhmonov?si=9-OxlFiY0B875tD9
+- Telegram: http://@Uz_Grow
+
+WEBSITE STRUCTURE
+-----------------
+Main Pages:
+1. Home (Bosh sahifa) - / 
+2. Greenhouse Types (Issiqxona turlari) - /issiqxona-turlari
+3. Projects (Loyihalar) - /loyihalar
+4. Team (Jamoa) - /rahbariyat
+5. Contact (Aloqa) - /aloqa
+
+Sections:
+- Hero section with video background
+- About section with mission/vision/values
+- Services showcase
+- Projects gallery
+- Team member profiles
+- Contact form and information
+
+TECHNICAL DETAILS
+-----------------
+- Framework: Next.js (React-based)
+- Language Support: Uzbek, Russian, English
+- Styling: TailwindCSS
+- Icons: Lucide React
+- Images: Cloudinary + Local storage
+- Video: Google Drive integration
+- Components: Modular TypeScript components
+
+MISSION AND VALUES
+------------------
+Mission: Mahalliy va xalqaro standartlarga mos, barqaror va rentabelli issiqxona loyihalarini amalga oshirish orqali mijozlar daromadini oshirish.
+
+Vision: Markaziy Osiyoda yetakchi agro-injiniring kompaniyaga aylanish va zamonaviy issiqxonalarni eksport qilish.
+
+Values: Sifat, Innovatsiya, Ishonch, Uzoq muddatli hamkorlik
+
+BUSINESS HIGHLIGHTS
+------------------
+- 200,000+ obunachi (subscribers/followers)
+- Xalqaro hamkorliklar faol
+- Yil bo'yi samaradorlik
+- Prezident tashriflari
+- Xalqaro standartlarga moslashtirilgan
+
+TARGET MARKETS
+--------------
+- O'zbekiston ichki bozor
+- Markaziy Osiyo mamlakatlari
+- Xalqaro agrobiznes sektori
+- Innovatsion texnologiyalar sohasi
+
+COMPETITIVE ADVANTAGES
+---------------------
+1. 4+ yillik tajriba
+2. Zamonaviy texnologiyalar
+3. Xalqaro standartlar
+4. To'liq aylanma xizmatlar
+5. Tajribali jamoa
+6. Energiya tejamkor yechimlar
+
+FUTURE PLANS
+-----------
+- Markaziy Osiyoda yetakchi bo'lish
+- Zamonaviy issiqxonalarni eksport qilish
+- Texnologik innovatsiyalarni kengaytirish
+- Xalqaro bozorni rivojlantirish
+- Raqamli yechimlarni joriy etish
+
+CREATED: April 10, 2026
+LAST UPDATED: April 10, 2026
+DOCUMENT VERSION: 1.0

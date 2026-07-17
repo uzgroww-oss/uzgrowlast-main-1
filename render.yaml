@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: uzgrow-site
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      # Supabase — ma'lumotlar va fayllar shu yerda saqlanadi.
+      # Qiymatlarni Render dashboardda kiriting.
+      - key: SUPABASE_URL
+        sync: false
+      # Yashirin kalit (service_role) — faqat dashboard orqali
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      # Admin panel paroli (/admin)
+      - key: ADMIN_PASSWORD
+        sync: false
+      # Telegram bildirishnoma (ixtiyoriy)
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false

@@ -1,0 +1,371 @@
+HARDCODED:
+/app/agro-injiniring/page.tsx:297 -> Ish jarayoni
+/app/aloqa/page.tsx:403 -> UZ GROW Location Map
+/app/foydanalish-shartlari/page.tsx:47 -> Siz 18 yoshga to'lgan va huquqiy jihatdan to'liq qobiliyatli bo'lishingiz kerak
+/app/foydanalish-shartlari/page.tsx:48 -> Veb-saytdan faqat qonunga zid ravishda foydalanishingiz mumkin
+/app/foydanalish-shartlari/page.tsx:49 -> Boshqa foydalanuvchilarning huquqlariga hurmat ko'rsating
+/app/foydanalish-shartlari/page.tsx:50 -> Shaxsiy ma'lumotlaringizni to'g'ri kiritishingiz kerak
+/app/foydanalish-shartlari/page.tsx:51 -> Bizning xizmatlarimizdan qonunga zid foydalanmang
+/app/foydanalish-shartlari/page.tsx:64 -> Issiqxona loyihalash va qurish bo'yicha konsalting
+/app/foydanalish-shartlari/page.tsx:65 -> Agro-injiniring xizmatlari
+/app/foydanalish-shartlari/page.tsx:66 -> Texnik yechimlar va maslahatlar
+/app/foydanalish-shartlari/page.tsx:67 -> Loyihalarni boshqarish
+/app/foydanalish-shartlari/page.tsx:68 -> Materiallar va uskunalar tanlash
+/app/foydanalish-shartlari/page.tsx:74 -> Eslatma:
+/app/foydanalish-shartlari/page.tsx:90 -> Konsalting xizmatlari oldindan to'lanadi
+/app/foydanalish-shartlari/page.tsx:91 -> To'lov naqd pul yoki bank orqali amalga oshiriladi
+/app/foydanalish-shartlari/page.tsx:92 -> To'lov qilingan xizmatlar qaytarilmaydi
+/app/foydanalish-shartlari/page.tsx:93 -> Qo'shimcha xizmatlar uchun alohida to'lov talab qilinadi
+/app/foydanalish-shartlari/page.tsx:94 -> Barcha to'lovlar hujjatlashtiriladi
+/app/foydanalish-shartlari/page.tsx:107 -> Force majeure holatlarida (tabiiy ofatlar, urushlar)
+/app/foydanalish-shartlari/page.tsx:108 -> Mijoz tomonidan noto'g'ri ma'lumot berilganda
+/app/foydanalish-shartlari/page.tsx:109 -> Uchinchi tomonlar aybiganda
+/app/foydanalish-shartlari/page.tsx:110 -> Qonun o'zgarishi sababli
+/app/foydanalish-shartlari/page.tsx:111 -> Texnik nosozliklar tufayli (bizning aybimiz bo'lmasa)
+/app/foydanalish-shartlari/page.tsx:116 -> 5. Intellektual mulk
+/app/foydanalish-shartlari/page.tsx:121 -> Barcha matnlar, rasmlar, dizaynlar bizga tegishli
+/app/foydanalish-shartlari/page.tsx:122 -> Ruxsatsiz foydalanish taqiqlanadi
+/app/foydanalish-shartlari/page.tsx:123 -> Materiallardan tijorat maqsadida foydalanish mumkin emas
+/app/foydanalish-shartlari/page.tsx:124 -> Bizning roziligimiz bilan qayta nashr qilish mumkin
+/app/foydanalish-shartlari/page.tsx:129 -> 6. Shartnomani bekor qilish
+/app/foydanalish-shartlari/page.tsx:134 -> Ikkala tomon ham rozilik bildirganda
+/app/foydanalish-shartlari/page.tsx:135 -> Bir tomon shartlarni buzganda
+/app/foydanalish-shartlari/page.tsx:136 -> Qonunga zid faoliyat qilganda
+/app/foydanalish-shartlari/page.tsx:137 -> 15 kun oldin xabardor qilganda
+/app/foydanalish-shartlari/page.tsx:142 -> 7. Nizolarni hal qilish
+/app/foydanalish-shartlari/page.tsx:147 -> Suhbat orqali kelishuvga harakat qilish
+/app/foydanalish-shartlari/page.tsx:148 -> Tegishli vositalar orqali hal qilish
+/app/foydanalish-shartlari/page.tsx:149 -> Toshkent shahar sudiga murojaat qilish
+/app/foydanalish-shartlari/page.tsx:150 -> O'zbekiston Respublikasi qonunlari asosida
+/app/foydanalish-shartlari/page.tsx:155 -> 8. Qo'shimcha shartlar
+/app/foydanalish-shartlari/page.tsx:157 -> Bu shartnoma O'zbekiston Respublikasi qonunlariga muvofiq tuzilgan
+/app/foydanalish-shartlari/page.tsx:158 -> Shartnomaga o'zgartirish kiritish huquqi bizda saqlanadi
+/app/foydanalish-shartlari/page.tsx:159 -> Veb-saytdan foydalanish bilan siz ushbu shartlarni qabul qilasiz
+/app/foydanalish-shartlari/page.tsx:160 -> Savollaringiz bo'lsa biz bilan bog'laning
+/app/investorlar/page.tsx:210 -> Kutilgan ROI
+/app/maxfiylik-siyosati/page.tsx:58 -> Ism, familiya, telefon raqami, email manzili
+/app/maxfiylik-siyosati/page.tsx:59 -> Kompaniya ma'lumotlari va manzili
+/app/maxfiylik-siyosati/page.tsx:60 -> Loyiha talablari va texnik xususiyatlari
+/app/maxfiylik-siyosati/page.tsx:61 -> Ishonch telefon raqami va qo'shimcha kontaktlar
+/app/maxfiylik-siyosati/page.tsx:78 -> Xizmatlarimizni taqdim etish va yaxshilash
+/app/maxfiylik-siyosati/page.tsx:79 -> Mijozlar bilan aloqa o'rnatish va saqlash
+/app/maxfiylik-siyosati/page.tsx:80 -> Loyihalarni loyihalash va amalga oshirish
+/app/maxfiylik-siyosati/page.tsx:81 -> Shartnoma va huquqiy majburiyatlarni bajarish
+/app/maxfiylik-siyosati/page.tsx:82 -> Xizmatlarimiz sifatini nazorat qilish
+/app/maxfiylik-siyosati/page.tsx:102 -> Huquqiy organlar (qonun talabiga ko'ra)
+/app/maxfiylik-siyosati/page.tsx:103 -> Moliyaviy muassasalar (to'lov va soliq maqsadlarida)
+/app/maxfiylik-siyosati/page.tsx:104 -> Sizning roziligiz bilan boshqa uchinchi shaxslar
+/app/maxfiylik-siyosati/page.tsx:110 -> Eslatma:
+/app/maxfiylik-siyosati/page.tsx:131 -> Loyiha hujjatlari - 10 yil
+/app/maxfiylik-siyosati/page.tsx:132 -> Moliyaviy ma'lumotlar - 7 yil
+/app/maxfiylik-siyosati/page.tsx:133 -> Ijtimoiy media ma'lumotlari - 3 yil
+/app/maxfiylik-siyosati/page.tsx:149 -> SSL shifrlash texnologiyasidan foydalanamiz
+/app/maxfiylik-siyosati/page.tsx:150 -> Serverlarni muntazam ravishda yangilaymiz
+/app/maxfiylik-siyosati/page.tsx:151 -> Xodimlar maxfiylik shartnomasini imzolaydilar
+/app/maxfiylik-siyosati/page.tsx:152 -> Kirish huquqini cheklaymiz
+/app/maxfiylik-siyosati/page.tsx:153 -> Muntazam xavfsizlik tekshiruvlarini o'tkazamiz
+/app/maxfiylik-siyosati/page.tsx:165 -> O'z ma'lumotlaringizni ko'rish huquqi
+/app/maxfiylik-siyosati/page.tsx:166 -> Noto'g'ri ma'lumotlarni to'g'rilash huquqi
+/app/maxfiylik-siyosati/page.tsx:170 -> Ma'lumotlarni ko'chirish huquqi (portability)
+/app/maxfiylik-siyosati/page.tsx:171 -> Qayta ishlashga qarshi etiroz bildirish huquqi
+/app/maxfiylik-siyosati/page.tsx:185 -> Email:
+/app/maxfiylik-siyosati/page.tsx:188 -> Telefon:
+/app/maxfiylik-siyosati/page.tsx:191 -> Manzil:
+/app/texnologiya/page.tsx:184 -> Video joylashtiring
+/components/about-detailed.tsx:16 -> UZ-GROW Office
+/components/about.tsx:137 -> About UZ GROW
+/components/asso-design-media.tsx:134 -> UZ GROW Logo
+/components/asso-design-media.tsx:240 -> Obunachilar
+/components/asso-design-media.tsx:257 -> Yosh chegarasi
+/components/asso-design-media.tsx:267 -> Jinsi
+/components/asso-design-media.tsx:270 -> Ayollar
+/components/asso-design-media.tsx:274 -> Erkaklar
+/components/asso-design-media.tsx:286 -> Mintaqalar
+/components/asso-design-media.tsx:337 -> Video:
+/components/asso-design-media.tsx:341 -> Post:
+/components/asso-design-media.tsx:345 -> Imkoniyatlar:
+/components/asso-design-media.tsx:402 -> Biz Bilan Bog'lanish
+/components/asso-design-media.tsx:412 -> uzgrrow@gmail.com
+/components/asso-design-media.tsx:449 -> Hurmat bilan, UZ GROW jamoasi!
+/components/ceo.tsx:170 -> UZ GROW Logo
+/components/ceo.tsx:174 -> Rahbariyat
+/components/ceo.tsx:211 -> CEO
+/components/ceo.tsx:232 -> Tajriba
+/components/ceo.tsx:236 -> Loyihalar
+/components/ceo.tsx:240 -> Obunachilar
+/components/ceo.tsx:241 -> 150K+
+/components/ceo.tsx:427 -> Ko'nikmalar
+/components/ceo.tsx:446 -> Ta'lim
+/components/ceo.tsx:462 -> Rahbar bilan bog'lanish
+/components/contact.tsx:379 -> UZ GROW Location Map
+/components/footer.tsx:77 -> UZ GROW Logo
+/components/footer.tsx:102 -> +998 99 435 23 13 (WhatsApp)
+/components/footer.tsx:109 -> uzgrrow@gmail.com
+/components/gallery.tsx:386 -> UZ GROW Logo
+/components/greenhouse-types.tsx:117 -> UZ GROW Logo
+/components/header.tsx:158 -> UZ GROW Logo
+/components/international.tsx:75 -> UZ GROW Logo
+/components/international.tsx:94 -> Mamlakatlar
+/components/international.tsx:101 -> Loyihalar
+/components/international.tsx:107 -> 10K+
+/components/international.tsx:108 -> Foydalanuvchilar
+/components/international.tsx:114 -> $25M+
+/components/international.tsx:115 -> Investitsiyalar
+/components/projects-old.tsx:122 -> UZ GROW Logo
+/components/projects.tsx:169 -> Portfolio
+/components/regional.tsx:102 -> UZ GROW Logo
+/components/regional.tsx:121 -> Viloyatlar
+/components/regional.tsx:128 -> Loyihalar
+/components/regional.tsx:134 -> 35M+
+/components/regional.tsx:135 -> Aholi
+/components/regional.tsx:142 -> O'sish
+/components/regional.tsx:149 -> Korxonalar
+/components/regional.tsx:155 -> $100M+
+/components/regional.tsx:156 -> Byudjet
+/components/regional.tsx:196 -> Aholi:
+/components/regional.tsx:200 -> Loyihalar:
+/components/regional.tsx:204 -> Byudjet:
+/components/regional.tsx:210 -> Ixtisoslik:
+/components/samarqand-video.tsx:47 -> UZ GROW Logo
+/components/samarqand-video.tsx:165 -> Galereyani ko'rish
+/components/samarqand-video.tsx:174 -> Tashrif statistikasi
+/components/samarqand-video.tsx:178 -> Korxonalar soni
+/components/samarqand-video.tsx:182 -> Ish o'rinlari
+/components/samarqand-video.tsx:188 -> Investitsiyalar
+/components/samarqand-video.tsx:204 -> Qo'shimcha resurslar
+
+MISSING IMPORTS:
+/app/agro-injiniring/page.tsx
+/app/foydanalish-shartlari/page.tsx
+/app/investorlar/page.tsx
+/app/maxfiylik-siyosati/page.tsx
+/app/texnologiya/page.tsx
+/components/asso-design-media.tsx
+/components/ceo.tsx
+/components/international.tsx
+/components/regional.tsx
+/components/samarqand-video.tsx
+
+KEYS USED:
+contact.phone
+contact.email
+contact.location
+contact.title
+contact.subtitle
+contact.infoTitle
+contact.socialMedia
+contact.formTitle
+contact.formDescription
+contact.success
+contact.successMessage
+contact.name
+contact.namePlaceholder
+contact.phonePlaceholder
+contact.emailPlaceholder
+contact.service
+contact.servicePlaceholder
+contact.services.consulting
+contact.services.project
+contact.services.investment
+contact.services.partnership
+contact.services.other
+contact.message
+contact.messagePlaceholder
+contact.sending
+contact.send
+Map
+Adress on Map
+contact.getDirections
+contact.addressCopied
+contact.copyAddress
+contact.locationDetails
+contact.workingHours
+contact.monday
+contact.friday
+contact.saturday
+contact.sunday
+contact.closed
+contact.callUs
+about.tagline
+about.headline
+about.businessScopeTitle
+about.businessScopeDesc
+about.professionalTeamTitle
+about.professionalTeamDesc
+about.descriptionTop
+about.descriptionBottom
+about.experience
+about.projects
+about.clients
+about.countries
+about.values
+about.values.0
+about.values.1
+about.values.2
+about.descriptionText
+about.aboutUsButton
+about.mission
+about.missionDesc
+about.vision
+about.visionDesc
+about.valuesTitle
+about.valuesAndRules.desc
+contact.phoneLabel
+contact.companyPhone
+contact.companyPhone2
+contact.emailLabel
+contact.companyEmail
+contact.address
+contact.locationUrl
+contact.website
+contact.services.turnkey
+contact.services.engineering
+contact.services.equipment
+contact.socialLinks.youtube
+contact.socialLinks.instagram
+contact.socialLinks.facebook
+contact.socialLinks.telegram
+contact.socialLinks.tiktok
+contact.successHeader
+contact.successSubheader
+contact.newMessage
+footer.brandName
+contact.locationCity
+contact.coordinatesLabel
+contact.workingHoursDesc
+contact.followUs
+footer.links.services.0.label
+nav.greenhouse
+nav.projects
+footer.links.services.2.label
+footer.links.company.0.label
+footer.links.company.1.label
+footer.links.company.2.label
+footer.links.company.3.label
+footer.links.help.0.label
+footer.links.help.1.label
+footer.links.help.2.label
+footer.links.help.3.label
+footer.brandDescription
+footer.contact
+footer.services
+footer.company
+footer.help
+footer.allRightsReserved
+projects.gallery.title
+projects.gallery.description
+common.all
+projects.gallery.projects
+projects.gallery.samarqand
+projects.gallery.totalImages
+greenhouse.vertical.title
+greenhouse.vertical.description
+greenhouse.vertical.complexity
+greenhouse.vertical.durability
+greenhouse.vertical.cost
+greenhouse.vertical.maintenance
+greenhouse.mini.title
+greenhouse.mini.description
+greenhouse.mini.complexity
+greenhouse.mini.durability
+greenhouse.mini.cost
+greenhouse.mini.maintenance
+greenhouse.oddiy.title
+greenhouse.oddiy.description
+greenhouse.oddiy.complexity
+greenhouse.oddiy.durability
+greenhouse.oddiy.cost
+greenhouse.oddiy.maintenance
+greenhouse.gektar.title
+greenhouse.gektar.description
+greenhouse.gektar.complexity
+greenhouse.gektar.durability
+greenhouse.gektar.cost
+greenhouse.gektar.maintenance
+greenhouse.title
+greenhouse.description
+common.features
+common.readMore
+nav.home
+nav.team
+nav.contact
+nav.language
+hero.slides.slide1.quote
+hero.slides.slide1.author
+hero.slides.slide1.role
+hero.slides.slide1.cta
+hero.slides.slide2.quote
+hero.slides.slide2.author
+hero.slides.slide2.role
+hero.slides.slide2.cta
+hero.slides.slide3.quote
+hero.slides.slide3.author
+hero.slides.slide3.role
+hero.slides.slide3.cta
+hero.slides.slide4.quote
+hero.slides.slide4.author
+hero.slides.slide4.role
+hero.slides.slide4.cta
+hero.tagline
+hero.title
+hero.cta
+hero.downloadCatalog
+hero.stats.experience
+hero.stats.projects
+hero.stats.specialists
+hero.stats.regions
+projects.categories.all
+projects.categories.president
+projects.categories.international
+projects.categories.greenhouse
+projects.viewProject
+projects.categories.presidential
+projects.title
+ 
+projects.subtitle
+common.category
+projects.featured
+common.completed
+common.inProgress
+projects.investment
+projects.notFound
+projects.tryDifferentSearch
+projects.technologies
+projects.projectDetails
+projects.client
+projects.status
+common.contact
+, 
+services.engineering
+services.engineeringDesc
+services.engineeringFullDesc
+services.engineeringFeatures.0
+services.engineeringFeatures.1
+services.engineeringFeatures.2
+services.engineeringFeatures.3
+services.equipment
+services.equipmentDesc
+services.equipmentFullDesc
+services.equipmentFeatures.0
+services.equipmentFeatures.1
+services.equipmentFeatures.2
+services.equipmentFeatures.3
+services.title
+services.subtitle
+services.description
+team.title
+team.subtitle
+team.description
+team.achievementsLabel
+team.experience
+team.achievements
+team.education
+team.skills
+team.contact
+common.call
+common.downloadResume
+common.sendEmail
+common.makeCall
+technology.title
+technology.subtitle
+technology.description

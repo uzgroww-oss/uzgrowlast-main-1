@@ -1,0 +1,330 @@
+UZ GROW STYLE 3-TILLI ANIMATSIONAL VEB-SAYT QURISH PROMPTI
+======================================================
+
+ASOSIY TALAB:
+-----------
+UZ GROW agro-injiniring kompaniyasiga o'xshash, zamonaviy, professional va 3 tilli (O'zbek, Rus, Ingliz) ishlaydigan veb-sayt yarating. Sayt to'liq animatsiyalar, zamonaviy dizayn va mobil moslashuvchan bo'lishi kerak.
+
+TEKNOLOGIYALAR:
+-------------
+- Frontend: Next.js 14+ (App Router)
+- Language: TypeScript
+- Styling: TailwindCSS
+- Animations: Framer Motion yoki CSS animations
+- Icons: Lucide React
+- Images: Next.js Image optimization
+- Internationalization: react-i18next yoki custom context
+- Components: Modular, reusable
+- Deployment: Vercel/Netlify
+
+DESAIN TALABLARI:
+----------------
+1. Color Scheme:
+   - Primary: Green (#91bf65)
+   - Secondary: Dark backgrounds (#1a1a1a)
+   - Accent: White/light colors
+   - Gradient effects
+
+2. Typography:
+   - Modern, clean fonts
+   - Good readability
+   - Professional appearance
+
+3. Layout:
+   - Responsive design
+   - Mobile-first approach
+   - Smooth transitions
+   - Micro-interactions
+
+4. Animations:
+   - Page transitions
+   - Scroll animations
+   - Hover effects
+   - Loading states
+   - Parallax effects
+
+PAGES SECTIONS:
+--------------
+1. HOME PAGE (Bosh sahifa):
+   - Hero section with video background
+   - Animated statistics counter
+   - Services showcase with hover effects
+   - Testimonials slider
+   - Contact CTA section
+
+2. ABOUT PAGE (Haqimizda):
+   - Company story with timeline
+   - Mission/Vision/Values cards
+   - Team member profiles
+   - Company statistics
+   - Achievement badges
+
+3. SERVICES PAGE (Xizmatlar):
+   - Service categories grid
+   - Detailed service pages
+   - Process workflow
+   - Pricing tables
+   - FAQ section
+
+4. PROJECTS PAGE (Loyihalar):
+   - Project gallery with filters
+   - Case study pages
+   - Before/after comparisons
+   - Project statistics
+   - Client testimonials
+
+5. TEAM PAGE (Jamoa):
+   - Team member cards
+   - Skill progress bars
+   - Social links
+   - Contact forms
+   - Department sections
+
+6. CONTACT PAGE (Aloqa):
+   - Contact form with validation
+   - Map integration
+   - Office information
+   - Social media links
+   - Working hours
+
+ANIMATSIYA TALABLARI:
+--------------------
+1. Hero Animations:
+   - Video background with overlay
+   - Text fade-in effects
+   - Button hover animations
+   - Parallax scrolling
+
+2. Section Animations:
+   - Fade-in on scroll
+   - Slide-in effects
+   - Scale animations
+   - Rotation effects
+
+3. Interactive Elements:
+   - Button hover states
+   - Card flip effects
+   - Image zoom on hover
+   - Smooth transitions
+
+4. Loading States:
+   - Skeleton loaders
+   - Progress bars
+   - Animated spinners
+   - Smooth page transitions
+
+INTERNATIONALIZATION:
+--------------------
+1. Language Structure:
+   - Uzbek (lotin) - primary
+   - Russian - secondary  
+   - English - tertiary
+
+2. Translation Keys:
+   - Navigation menu
+   - Page content
+   - Form labels
+   - Error messages
+   - Button text
+
+3. Language Switcher:
+   - Header dropdown
+   - Flag icons
+   - Smooth transitions
+   - LocalStorage persistence
+
+COMPONENT STRUCTURE:
+-------------------
+1. Layout Components:
+   - Header with navigation
+   - Footer with links
+   - Sidebar (if needed)
+   - Mobile menu
+
+2. UI Components:
+   - Buttons (various sizes)
+   - Cards (service, project, team)
+   - Forms (contact, quote)
+   - Modals and dialogs
+   - Testimonials
+
+3. Business Components:
+   - Hero sections
+   - Service showcases
+   - Project galleries
+   - Team profiles
+   - Statistics
+
+4. Utility Components:
+   - Loading states
+   - Error boundaries
+   - Toast notifications
+   - Language switcher
+   - Theme switcher (optional)
+
+FEATURES:
+---------
+1. User Experience:
+   - Fast loading (< 3 seconds)
+   - Smooth scrolling
+   - Mobile responsive
+   - Accessibility (WCAG 2.1)
+   - SEO optimized
+
+2. Performance:
+   - Image optimization
+   - Code splitting
+   - Lazy loading
+   - Caching strategies
+   - Minimal bundle size
+
+3. SEO:
+   - Meta tags
+   - Structured data
+   - Sitemap generation
+   - Open Graph tags
+   - Multilingual SEO
+
+4. Security:
+   - Form validation
+   - XSS protection
+   - HTTPS only
+   - Secure headers
+   - Rate limiting
+
+CONTENT STRATEGY:
+----------------
+1. Copywriting:
+   - Professional tone
+   - Clear messaging
+   - Benefit-focused
+   - Call-to-actions
+   - Storytelling
+
+2. Visual Content:
+   - High-quality images
+   - Professional videos
+   - Infographics
+   - Charts/graphs
+   - Team photos
+
+3. Blog/News (optional):
+   - Industry insights
+   - Company updates
+   - Case studies
+   - Tips & tutorials
+   - Event coverage
+
+TECHNICAL REQUIREMENTS:
+-----------------------
+1. Code Quality:
+   - TypeScript strict mode
+   - ESLint configuration
+   - Prettier formatting
+   - Component documentation
+   - Unit tests (Jest)
+
+2. Performance:
+   - Lighthouse score > 90
+   - Core Web Vitals
+   - Bundle analysis
+   - Image optimization
+   - Caching headers
+
+3. Deployment:
+   - CI/CD pipeline
+   - Environment variables
+   - Build optimization
+   - Error monitoring
+   - Analytics integration
+
+DELIVERABLES:
+-------------
+1. Source Code:
+   - Complete Next.js project
+   - Component library
+   - Configuration files
+   - Documentation
+   - Deployment scripts
+
+2. Assets:
+   - Images and videos
+   - Icons and logos
+   - Fonts and typography
+   - Color schemes
+   - Brand guidelines
+
+3. Documentation:
+   - Setup instructions
+   - Component guide
+   - API documentation
+   - Deployment guide
+   - Maintenance manual
+
+TIMELINE:
+---------
+1. Week 1: Setup and structure
+2. Week 2: Core components
+3. Week 3: Pages and content
+4. Week 4: Animations and polish
+5. Week 5: Testing and optimization
+6. Week 6: Deployment and launch
+
+BUDGET CONSIDERATIONS:
+----------------------
+- Development time: 6 weeks
+- Team size: 2-3 developers
+- Tools: Mostly free/open-source
+- Hosting: $20-50/month
+- Domain: $15/year
+- Images: Cloudinary ($89/month)
+
+SUCCESS METRICS:
+---------------
+- Page load speed < 3s
+- Mobile score > 90
+- Lighthouse score > 90
+- Conversion rate > 2%
+- Bounce rate < 40%
+- User engagement > 2 minutes
+
+EXAMPLE CODE STRUCTURE:
+----------------------
+src/
+  app/
+    [lang]/
+      page.tsx
+      about/
+      services/
+      projects/
+      team/
+      contact/
+  components/
+    ui/
+    layout/
+    sections/
+    animations/
+  lib/
+    utils/
+    translations/
+    styles/
+  hooks/
+    useLanguage.ts
+    useAnimation.ts
+  styles/
+    globals.css
+    components.css
+
+NOTES:
+------
+- Focus on user experience
+- Keep code maintainable
+- Test thoroughly
+- Document everything
+- Plan for scalability
+- Consider accessibility
+- Optimize for performance
+- Follow best practices
+
+CREATED: April 10, 2026
+VERSION: 1.0

@@ -1,0 +1,591 @@
+app/agro-injiniring/page.tsx:45 => ,
+    title: "Avtomatlashtirish tizimlari",
+    description:
+      "Issiqxonalarni to'liq avtomatlashtirish, iqlim nazorati va sug'orish tizimlari",
+    features: [
+      "Smart Climate Control",
+      "Auto Irrigation",
+      "Remote Monitoring",
+      "Data Analytics",
+    ],
+    color: "bg-blue-500",
+  },
+  {
+    icon:
+app/agro-injiniring/page.tsx:58 => ,
+    title: "Gidroponik yechimlar",
+    description:
+      "Tuproqsiz ekin yetishtirish texnologiyalari va suv tejash tizimlari",
+    features: [
+      "Hydroponic Systems",
+      "Nutrient Management",
+      "Water Recycling",
+      "LED Lighting",
+    ],
+    color: "bg-cyan-500",
+  },
+  {
+    icon:
+app/agro-injiniring/page.tsx:71 => ,
+    title: "Iqlim nazorati",
+    description:
+      "Harorat, namlik va stelaj tizimlarini avtomatik nazorat qilish tizimlari",
+    features: [
+      "Temperature Control",
+      "Humidity Management",
+      "Shelving Systems",
+      "Ventilation",
+    ],
+    color: "bg-orange-500",
+  },
+  {
+    icon:
+app/agro-injiniring/page.tsx:84 => ,
+    title: "Ma'lumotlar analitika",
+    description:
+      "Ekinlar holatini kuzatish va hosildorlikni bashorat qilish tizimlari",
+    features: [
+      "Real-time Monitoring",
+      "Predictive Analytics",
+      "Yield Forecasting",
+      "Quality Control",
+    ],
+    color: "bg-purple-500",
+  },
+];
+
+const technologies = [
+  {
+    name: "IoT Sensorlar",
+    description:
+      "Harorat, namlik, yorug'lik va tuproq namligini o'lchaydigan zamonaviy sensorlar",
+    icon:
+app/agro-injiniring/page.tsx:103 => ,
+  },
+  {
+    name: "Cloud Platform",
+    description:
+      "Barcha ma'lumotlarni bulutda saqlash va uzoqdan boshqarish imkoniyati",
+    icon:
+app/agro-injiniring/page.tsx:109 => ,
+  },
+  {
+    name: "AI Analytics",
+    description:
+      "Sun'iy intellekt yordamida hosildorlikni bashorat qilish va optimal yechimlar",
+    icon:
+app/agro-injiniring/page.tsx:115 => ,
+  },
+  {
+    name: "Mobile Apps",
+    description: "Mobil ilovalar orqali issiqxonani smartfondan boshqarish",
+    icon:
+app/agro-injiniring/page.tsx:120 => ,
+  },
+];
+
+const benefits = [
+  {
+    title: "Hosildorlikni oshirish",
+    description:
+      "Zamonaviy texnologiyalar yordamida hosildorlik 30-50% ga oshadi",
+    icon:
+app/agro-injiniring/page.tsx:129 => ,
+    stat: "+45%",
+  },
+  {
+    title: "Resurslarni tejash",
+    description: "Avtomatlashtirish suv va energiya sarfini 40% ga kamaytiradi",
+    icon:
+app/agro-injiniring/page.tsx:135 => ,
+    stat: "-40%",
+  },
+  {
+    title: "Ishchi kuchini tejash",
+    description: "Avtomatlashtirish inson mehnatini 70% ga kamaytiradi",
+    icon:
+app/agro-injiniring/page.tsx:141 => ,
+    stat: "-70%",
+  },
+  {
+    title: "Sifatni yaxshilash",
+    description: "Nazorat tizimlari mahsulot sifatini 25% ga yaxshilaydi",
+    icon:
+app/agro-injiniring/page.tsx:164 => Agro-injiniring
+app/agro-injiniring/page.tsx:167 => Zamonaviy texnologiyalar va avtomatlashtirish yechimlari bilan
+              qishloq xo'jaligini kelajasiga o'tkazing
+app/agro-injiniring/page.tsx:179 => Bizning agro-injiniring xizmatlarimiz
+app/agro-injiniring/page.tsx:182 => Qishloq xo'jaligida eng zamonaviy texnologiyalarni qo'llaymiz
+app/agro-injiniring/page.tsx:213 => Batafsil ma'lumot
+app/agro-injiniring/page.tsx:228 => Ishlatiladigan texnologiyalar
+app/agro-injiniring/page.tsx:231 => Eng so'nggi va ishonchli texnologiyalardan foydalanamiz
+app/agro-injiniring/page.tsx:261 => Agro-injiniring afzalliklari
+app/agro-injiniring/page.tsx:264 => Texnologiyalarni joriy etishning asosiy afzalliklari
+app/agro-injiniring/page.tsx:297 => Ish jarayoni
+app/agro-injiniring/page.tsx:298 => Biz bilan qanday ishlash mumkin
+app/agro-injiniring/page.tsx:324 => Boshlash
+app/aloqa/page.tsx:403 => UZ GROW Location Map
+app/foydanalish-shartlari/page.tsx:28 => Foydalanish shartlari
+app/foydanalish-shartlari/page.tsx:31 => Oxirgi yangilanish: 5-aprel, 2026-yil
+app/foydanalish-shartlari/page.tsx:40 => 1. Umumiy qoidalar
+app/foydanalish-shartlari/page.tsx:43 => UZ GROW veb-saytidan foydalanish quyidagi shartlarga bo'ysunadi:
+app/foydanalish-shartlari/page.tsx:47 => Siz 18 yoshga to'lgan va huquqiy jihatdan to'liq qobiliyatli bo'lishingiz kerak
+app/foydanalish-shartlari/page.tsx:48 => Veb-saytdan faqat qonunga zid ravishda foydalanishingiz mumkin
+app/foydanalish-shartlari/page.tsx:49 => Boshqa foydalanuvchilarning huquqlariga hurmat ko'rsating
+app/foydanalish-shartlari/page.tsx:50 => Shaxsiy ma'lumotlaringizni to'g'ri kiritishingiz kerak
+app/foydanalish-shartlari/page.tsx:51 => Bizning xizmatlarimizdan qonunga zid foydalanmang
+app/foydanalish-shartlari/page.tsx:57 => 2. Xizmatlar
+app/foydanalish-shartlari/page.tsx:60 => UZ GROW quyidagi xizmatlarni taqdim etadi:
+app/foydanalish-shartlari/page.tsx:64 => Issiqxona loyihalash va qurish bo'yicha konsalting
+app/foydanalish-shartlari/page.tsx:65 => Agro-injiniring xizmatlari
+app/foydanalish-shartlari/page.tsx:66 => Texnik yechimlar va maslahatlar
+app/foydanalish-shartlari/page.tsx:67 => Loyihalarni boshqarish
+app/foydanalish-shartlari/page.tsx:68 => Materiallar va uskunalar tanlash
+app/foydanalish-shartlari/page.tsx:74 => Eslatma:
+app/foydanalish-shartlari/page.tsx:74 => Biz xizmatlarni bajarish kafolatini bermaymiz, 
+                    faqat maslahat va konsalting xizmatlarini ko'rsatamiz.
+app/foydanalish-shartlari/page.tsx:83 => 3. To'lovlar
+app/foydanalish-shartlari/page.tsx:86 => To'lov shartlari va tartibi:
+app/foydanalish-shartlari/page.tsx:90 => Konsalting xizmatlari oldindan to'lanadi
+app/foydanalish-shartlari/page.tsx:91 => To'lov naqd pul yoki bank orqali amalga oshiriladi
+app/foydanalish-shartlari/page.tsx:92 => To'lov qilingan xizmatlar qaytarilmaydi
+app/foydanalish-shartlari/page.tsx:93 => Qo'shimcha xizmatlar uchun alohida to'lov talab qilinadi
+app/foydanalish-shartlari/page.tsx:94 => Barcha to'lovlar hujjatlashtiriladi
+app/foydanalish-shartlari/page.tsx:100 => 4. Mas'uliyatni cheklash
+app/foydanalish-shartlari/page.tsx:103 => UZ GROW quyidagi holatlarda mas'uliyatni cheklaydi:
+app/foydanalish-shartlari/page.tsx:108 => Mijoz tomonidan noto'g'ri ma'lumot berilganda
+app/foydanalish-shartlari/page.tsx:109 => Uchinchi tomonlar aybiganda
+app/foydanalish-shartlari/page.tsx:110 => Qonun o'zgarishi sababli
+app/foydanalish-shartlari/page.tsx:116 => 5. Intellektual mulk
+app/foydanalish-shartlari/page.tsx:117 => Veb-sayt materiallari bizning intellektual mulkimiz:
+app/foydanalish-shartlari/page.tsx:121 => Barcha matnlar, rasmlar, dizaynlar bizga tegishli
+app/foydanalish-shartlari/page.tsx:122 => Ruxsatsiz foydalanish taqiqlanadi
+app/foydanalish-shartlari/page.tsx:123 => Materiallardan tijorat maqsadida foydalanish mumkin emas
+app/foydanalish-shartlari/page.tsx:124 => Bizning roziligimiz bilan qayta nashr qilish mumkin
+app/foydanalish-shartlari/page.tsx:129 => 6. Shartnomani bekor qilish
+app/foydanalish-shartlari/page.tsx:130 => Quyidagi holatlarda shartnoma bekor qilinadi:
+app/foydanalish-shartlari/page.tsx:134 => Ikkala tomon ham rozilik bildirganda
+app/foydanalish-shartlari/page.tsx:135 => Bir tomon shartlarni buzganda
+app/foydanalish-shartlari/page.tsx:136 => Qonunga zid faoliyat qilganda
+app/foydanalish-shartlari/page.tsx:137 => 15 kun oldin xabardor qilganda
+app/foydanalish-shartlari/page.tsx:142 => 7. Nizolarni hal qilish
+app/foydanalish-shartlari/page.tsx:143 => Barcha nizolar quyidagi tartibda hal qilinadi:
+app/foydanalish-shartlari/page.tsx:147 => Suhbat orqali kelishuvga harakat qilish
+app/foydanalish-shartlari/page.tsx:148 => Tegishli vositalar orqali hal qilish
+app/foydanalish-shartlari/page.tsx:149 => Toshkent shahar sudiga murojaat qilish
+app/foydanalish-shartlari/page.tsx:150 => O'zbekiston Respublikasi qonunlari asosida
+app/foydanalish-shartlari/page.tsx:155 => 8. Qo'shimcha shartlar
+app/foydanalish-shartlari/page.tsx:157 => Bu shartnoma O'zbekiston Respublikasi qonunlariga muvofiq tuzilgan
+app/foydanalish-shartlari/page.tsx:158 => Shartnomaga o'zgartirish kiritish huquqi bizda saqlanadi
+app/foydanalish-shartlari/page.tsx:159 => Veb-saytdan foydalanish bilan siz ushbu shartlarni qabul qilasiz
+app/foydanalish-shartlari/page.tsx:160 => Savollaringiz bo'lsa biz bilan bog'laning
+app/foydanalish-shartlari/page.tsx:163 => UZ GROW Agro-Injiniring kompaniyasi
+app/foydanalish-shartlari/page.tsx:166 => Toshkent shahri, Sirg'ali tumani, Nomdanak ko'chasi, Ziyokor 6/9
+app/investorlar/page.tsx:89 => Investorlar uchun
+app/investorlar/page.tsx:92 => Agro-sanoat investitsiya imkoniyati
+app/investorlar/page.tsx:95 => UZ GROW yuqori rentabelli issiqxona loyihalarini amalga oshirish
+                bo'yicha hamkorlik taklif qiladi.
+app/investorlar/page.tsx:101 => PDF prezentatsiya
+app/investorlar/page.tsx:109 => Bog'lanish
+app/investorlar/page.tsx:140 => Investitsiya afzalliklari
+app/investorlar/page.tsx:143 => Issiqxona loyihalariga investitsiya qilishning asosiy sabablari
+app/investorlar/page.tsx:173 => Investitsiya modellari
+app/investorlar/page.tsx:176 => Sizning maqsadlaringizga mos variantni tanlang
+app/investorlar/page.tsx:188 => Mashhur
+app/investorlar/page.tsx:202 => Min. investitsiya
+app/investorlar/page.tsx:210 => Kutilgan ROI
+app/investorlar/page.tsx:214 => Qaytim muddati
+app/investorlar/page.tsx:226 => Batafsil ma'lumot
+app/investorlar/page.tsx:239 => Investitsiya jarayoni
+app/investorlar/page.tsx:270 => Investitsiya imkoniyatlarini muhokama qilaylik
+app/investorlar/page.tsx:273 => Bizning mutaxassislarimiz sizga eng mos investitsiya modelini
+            tanlashda yordam beradi.
+app/investorlar/page.tsx:282 => Bog'lanish
+app/maxfiylik-siyosati/page.tsx:38 => Maxfiylik siyosati
+app/maxfiylik-siyosati/page.tsx:41 => Oxirgi yangilanish: 5-aprel, 2026-yil
+app/maxfiylik-siyosati/page.tsx:50 => 1. Ma'lumotlar to'plami
+app/maxfiylik-siyosati/page.tsx:53 => UZ GROW sifatida biz sizdan quyidagi shaxsiy ma'lumotlarni
+                to'plamiz:
+app/maxfiylik-siyosati/page.tsx:58 => Ism, familiya, telefon raqami, email manzili
+app/maxfiylik-siyosati/page.tsx:59 => Kompaniya ma'lumotlari va manzili
+app/maxfiylik-siyosati/page.tsx:60 => Loyiha talablari va texnik xususiyatlari
+app/maxfiylik-siyosati/page.tsx:61 => Ishonch telefon raqami va qo'shimcha kontaktlar
+app/maxfiylik-siyosati/page.tsx:71 => 2. Ma'lumotlardan foydalanish maqsadi
+app/maxfiylik-siyosati/page.tsx:74 => Biz to'plagan ma'lumotlarni quyidagi maqsadlarda ishlatamiz:
+app/maxfiylik-siyosati/page.tsx:78 => Xizmatlarimizni taqdim etish va yaxshilash
+app/maxfiylik-siyosati/page.tsx:79 => Mijozlar bilan aloqa o'rnatish va saqlash
+app/maxfiylik-siyosati/page.tsx:80 => Loyihalarni loyihalash va amalga oshirish
+app/maxfiylik-siyosati/page.tsx:81 => Shartnoma va huquqiy majburiyatlarni bajarish
+app/maxfiylik-siyosati/page.tsx:82 => Xizmatlarimiz sifatini nazorat qilish
+app/maxfiylik-siyosati/page.tsx:91 => 3. Ma'lumotlarni ochiqlash va ulashish
+app/maxfiylik-siyosati/page.tsx:94 => Biz sizning shaxsiy ma'lumotlaringizni quyidagilar bilan
+                bo'lishishimiz mumkin:
+app/maxfiylik-siyosati/page.tsx:104 => Sizning roziligiz bilan boshqa uchinchi shaxslar
+app/maxfiylik-siyosati/page.tsx:110 => Eslatma:
+app/maxfiylik-siyosati/page.tsx:110 => Biz hech qachon sizning shaxsiy
+                    ma'lumotlaringizni uchinchi shaxslarga sotmaymiz yoki
+                    qonunga zid ravishda ulashmaymiz.
+app/maxfiylik-siyosati/page.tsx:120 => 4. Ma'lumotlarni saqlash muddati
+app/maxfiylik-siyosati/page.tsx:123 => Biz sizning ma'lumotlaringizni quyidagi muddatlar davomida
+                saqlaymiz:
+app/maxfiylik-siyosati/page.tsx:128 => Kontakt ma'lumotlari - shartnoma muddati davomida + 5 yil
+app/maxfiylik-siyosati/page.tsx:131 => Loyiha hujjatlari - 10 yil
+app/maxfiylik-siyosati/page.tsx:132 => Moliyaviy ma'lumotlar - 7 yil
+app/maxfiylik-siyosati/page.tsx:133 => Ijtimoiy media ma'lumotlari - 3 yil
+app/maxfiylik-siyosati/page.tsx:135 => Muddat tugagach, ma'lumotlar xavfsiz ravishda o'chiriladi.
+app/maxfiylik-siyosati/page.tsx:142 => 5. Ma'lumotlarni himoya qilish
+app/maxfiylik-siyosati/page.tsx:145 => Biz quyidagi choralarni ko'ramiz:
+app/maxfiylik-siyosati/page.tsx:149 => SSL shifrlash texnologiyasidan foydalanamiz
+app/maxfiylik-siyosati/page.tsx:150 => Serverlarni muntazam ravishda yangilaymiz
+app/maxfiylik-siyosati/page.tsx:151 => Xodimlar maxfiylik shartnomasini imzolaydilar
+app/maxfiylik-siyosati/page.tsx:152 => Kirish huquqini cheklaymiz
+app/maxfiylik-siyosati/page.tsx:153 => Muntazam xavfsizlik tekshiruvlarini o'tkazamiz
+app/maxfiylik-siyosati/page.tsx:158 => 6. Huquqlaringiz
+app/maxfiylik-siyosati/page.tsx:161 => Siz quyidagi huquqlarga egasiz:
+app/maxfiylik-siyosati/page.tsx:165 => O'z ma'lumotlaringizni ko'rish huquqi
+app/maxfiylik-siyosati/page.tsx:166 => Noto'g'ri ma'lumotlarni to'g'rilash huquqi
+app/maxfiylik-siyosati/page.tsx:171 => Qayta ishlashga qarshi etiroz bildirish huquqi
+app/maxfiylik-siyosati/page.tsx:176 => 7. Aloqa ma'lumotlari
+app/maxfiylik-siyosati/page.tsx:179 => Maxfiylik siyosati bo'yicha savollaringiz bo'lsa, biz bilan
+                quyidagi manzillar orqali bog'laning:
+app/maxfiylik-siyosati/page.tsx:185 => Email:
+app/maxfiylik-siyosati/page.tsx:185 => privacy@uzgrow.uz
+app/maxfiylik-siyosati/page.tsx:188 => Telefon:
+app/maxfiylik-siyosati/page.tsx:191 => Manzil:
+app/maxfiylik-siyosati/page.tsx:191 => Toshkent shahri, Sirg'ali tumani, Nomdanak ko'chasi, Ziyokor 6/9
+app/texnologiya/page.tsx:88 => Texnologiya
+app/texnologiya/page.tsx:91 => Zamonaviy issiqxona texnologiyalari
+app/texnologiya/page.tsx:94 => Eng so'nggi innovatsiyalar va texnologiyalar yordamida yuqori
+              samaradorlikka erishish.
+app/texnologiya/page.tsx:125 => Biz foydalanadigan texnologiyalar
+app/texnologiya/page.tsx:128 => Har bir issiqxona loyihasi uchun eng mos texnologiyalarni
+              tanlaymiz
+app/texnologiya/page.tsx:173 => Texnologiyalarimiz amalda
+app/texnologiya/page.tsx:176 => Video orqali issiqxona texnologiyalarimiz bilan tanishing
+app/texnologiya/page.tsx:184 => Video joylashtiring
+app/texnologiya/page.tsx:185 => Texnologiyalar haqida video
+app/xizmatlar/page.tsx:79 => Xizmatlar
+app/xizmatlar/page.tsx:82 => Professional issiqxona xizmatlari
+app/xizmatlar/page.tsx:85 => Loyihalashdan tortib to'liq ishga tushirishgacha — biz sizga
+              kompleks yechim taklif qilamiz.
+app/xizmatlar/page.tsx:114 => Natija: {service.result}
+app/xizmatlar/page.tsx:121 => Nimalar kiradi:
+app/xizmatlar/page.tsx:144 => Loyihangizni boshlashga tayyormisiz?
+app/xizmatlar/page.tsx:147 => Bepul konsultatsiya oling va o'z issiqxona loyihangiz uchun
+            individual taklif oling.
+app/xizmatlar/page.tsx:156 => Bog'lanish
+components/about-detailed.tsx:16 => UZ-GROW Office
+components/about.tsx:137 => About UZ GROW
+components/asso-design-media.tsx:36 => ,
+    subscribers: "122k+",
+    color: "bg-red-500",
+  },
+  {
+    name: "Instagram",
+    icon:
+components/asso-design-media.tsx:42 => ,
+    subscribers: "74.5k+",
+    color: "bg-pink-500",
+  },
+  {
+    name: "TikTok",
+    icon:
+components/asso-design-media.tsx:48 => ,
+    subscribers: "16k+",
+    color: "bg-black",
+  },
+  {
+    name: "Telegram",
+    icon:
+components/asso-design-media.tsx:138 => UZ GROW Hamkorlik Taklifi
+components/asso-design-media.tsx:147 => Bizning Professionalligimiz
+components/asso-design-media.tsx:158 => Real sektorni bilish
+components/asso-design-media.tsx:161 => Agrosektor bilan 9+ yillik bevosita tajriba. Fermerlar,
+                        eksportyorlar, ishlab chiqaruvchilar bilan
+                        to'g'ridan-to'g'ri ishlash
+components/asso-design-media.tsx:178 => Ishonchga asoslangan brend
+components/asso-design-media.tsx:181 => Halollik, amaliyotga asoslangan tahlil, real hayot
+                        voqealari sharhi. Brendlar va iste'molchilar o'rtasida
+                        ishonch ko'prigi
+components/asso-design-media.tsx:198 => Kuchli auditoriyaga ega bo'lish
+components/asso-design-media.tsx:201 => 200,000+ obunachilar, 1.5-3 million oylik ko'rishlar
+components/asso-design-media.tsx:212 => Statistikalarimiz
+components/asso-design-media.tsx:236 => Umumiy auditoriya qamrovi
+components/asso-design-media.tsx:240 => Obunachilar
+components/asso-design-media.tsx:248 => Umumiy Auditoriya
+components/asso-design-media.tsx:257 => Yosh chegarasi
+components/asso-design-media.tsx:267 => Jinsi
+components/asso-design-media.tsx:270 => Ayollar
+components/asso-design-media.tsx:274 => Erkaklar
+components/asso-design-media.tsx:286 => Mintaqalar
+components/asso-design-media.tsx:287 => O'zbekiston, Rossiya, Qozog'iston, Qirg'iston, Tojikiston
+components/asso-design-media.tsx:297 => Geografik Qamrov
+components/asso-design-media.tsx:320 => Reklama Tariflari
+components/asso-design-media.tsx:337 => Video:
+components/asso-design-media.tsx:341 => Post:
+components/asso-design-media.tsx:345 => Imkoniyatlar:
+components/asso-design-media.tsx:365 => Xorijiy Hamkorlar
+components/asso-design-media.tsx:402 => Biz Bilan Bog'lanish
+components/asso-design-media.tsx:406 => taplink.cc/uzgrow
+components/asso-design-media.tsx:412 => uzgrrow@gmail.com
+components/asso-design-media.tsx:420 => GROW AGRO TEAM OFFICE
+components/asso-design-media.tsx:430 => Hoziroq Qo'ng'iroq Qiling
+components/asso-design-media.tsx:438 => Bepul Konsultatsiya
+components/asso-design-media.tsx:446 => "Bizga hoziroq qo'ng'iroq qiling va bepul konsultatsiya oling!"
+components/asso-design-media.tsx:449 => Hurmat bilan, UZ GROW jamoasi!
+components/asso-design-media.tsx:134 => UZ GROW Logo
+components/ceo.tsx:174 => Rahbariyat
+components/ceo.tsx:175 => Bizning rahbarimiz - innovatsiya, tajriba va ishonch uyg'unligi
+components/ceo.tsx:212 => CEO
+components/ceo.tsx:233 => Tajriba
+components/ceo.tsx:237 => Loyihalar
+components/ceo.tsx:241 => Obunachilar
+components/ceo.tsx:242 => 150K+
+components/ceo.tsx:293 => Biografiya
+components/ceo.tsx:324 => Viziyasi
+components/ceo.tsx:353 => "{data.quote}"
+components/ceo.tsx:356 => — {data.name}
+components/ceo.tsx:370 => Yutuqlar
+components/ceo.tsx:407 => Filosofiya
+components/ceo.tsx:428 => Ko'nikmalar
+components/ceo.tsx:447 => Ta'lim
+components/ceo.tsx:463 => Rahbar bilan bog'lanish
+components/ceo.tsx:464 => Agar siz loyihalarimiz haqida ko'proq ma'lumot olishmoqchi
+            bo'lsangiz yoki hamkorlik qilishni istasangiz, bepul maslahat uchun
+            murojaat qiling
+components/ceo.tsx:474 => Email orqali bog'lanish
+components/ceo.tsx:482 => Qo'ng'iroq qilish
+components/ceo.tsx:170 => UZ GROW Logo
+components/contact.tsx:379 => UZ GROW Location Map
+components/footer.tsx:109 => uzgrrow@gmail.com
+components/footer.tsx:174 => Social media
+components/footer.tsx:77 => UZ GROW Logo
+components/gallery.tsx:550 => Yuklab olish
+components/gallery.tsx:558 => Ulashish
+components/gallery.tsx:386 => UZ GROW Logo
+components/greenhouse-types.tsx:117 => UZ GROW Logo
+components/header.tsx:92 => uzgrrow@gmail.com
+components/header.tsx:158 => UZ GROW Logo
+components/hero.tsx:140 => &ldquo;{slide.quote}&rdquo;
+components/international.tsx:23 => ,
+    budget: "$2.5M",
+    timeline: "2024-2026",
+  },
+  {
+    id: 2,
+    title: "Tojikiston Sug'orish Tizimi",
+    description:
+      "Zamonaviy sug'orish texnologiyalarini joriy etish orqali qishloq xo'jaligini rivojlantirish dasturi",
+    image:
+      "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469052/photo_2026-04-04_10-35-55_dvrnxd.jpg",
+    country: "Tojikiston",
+    status: "Jarayonda",
+    icon:
+components/international.tsx:36 => ,
+    budget: "$1.8M",
+    timeline: "2024-2025",
+  },
+  {
+    id: 3,
+    title: "Qirg'iziston Issiqxona",
+    description:
+      "Raqamli ta'lim platformalarini yaratish va o'qituvchilar malakasini oshirish bo'yicha xalqaro loyiha",
+    image:
+      "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567956/20210211_141225_yvl1wr.jpg",
+    country: "Qirg'iziston",
+    status: "Rejalashtirilgan",
+    icon:
+components/international.tsx:49 => ,
+    budget: "$1.2M",
+    timeline: "2025-2027",
+  },
+  {
+    id: 4,
+    title: "Turkmaniston Stelaj Tizimi",
+    description:
+      "Xalqaro transport yo'llarini rivojlantirish va savdo aloqalarini kengaytirish bo'yicha strategik loyiha",
+    image:
+      "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469181/20201201_105435_hq3q9q.jpg",
+    country: "Turkmaniston",
+    status: "Faol",
+    icon:
+components/international.tsx:79 => Xalqaro Hamkorlik
+components/international.tsx:82 => Markaziy Osiyo mamlakatlari bilan olib borilayotgan qo'shma
+            loyihalar va xalqaro hamkorlik dasturlari
+components/international.tsx:94 => Mamlakatlar
+components/international.tsx:101 => Loyihalar
+components/international.tsx:107 => 10K+
+components/international.tsx:108 => Foydalanuvchilar
+components/international.tsx:114 => $25M+
+components/international.tsx:115 => Investitsiyalar
+components/international.tsx:164 => Batafsil →
+components/international.tsx:75 => UZ GROW Logo
+components/investors.tsx:66 => Investorlar
+components/investors.tsx:69 => Agro-sanoat investitsiya imkoniyati
+components/investors.tsx:72 => UZ GROW yuqori rentabelli issiqxona loyihalarini amalga oshirish
+            bo&apos;yicha hamkorlik taklif qiladi
+components/investors.tsx:81 => Nima uchun issiqxonaga investitsiya qilish kerak?
+components/investors.tsx:110 => Yuqori daromad
+components/investors.tsx:115 => Investitsiya imkoniyatlarini o&apos;rganing
+components/investors.tsx:118 => Batafsil ma&apos;lumot va moliaviy modellar uchun bizning
+                investor prezentatsiyasini yuklab oling yoki mutaxassislarimiz
+                bilan bog&apos;laning.
+components/investors.tsx:141 => PDF yuklab olish
+components/investors.tsx:151 => Bog&apos;lanish
+components/loading-screen.tsx:44 => Your browser does not support the video tag.
+components/loading-screen.tsx:53 => Yuklanmoqda...
+components/projects-old.tsx:126 => Portfolio
+components/projects-old.tsx:129 => Bizning loyihalarimiz
+components/projects-old.tsx:132 => Har bir loyiha individual yondashuv asosida amalga oshiriladi
+components/projects-old.tsx:122 => UZ GROW Logo
+components/projects.tsx:169 => Portfolio
+components/regional.tsx:106 => Viloyatlar Loyihalari
+components/regional.tsx:109 => O'zbekiston viloyatlarida amalga oshirilayotgan rivojlanish
+            dasturlari va mintaqaviy loyihalar
+components/regional.tsx:121 => Viloyatlar
+components/regional.tsx:128 => Loyihalar
+components/regional.tsx:134 => 35M+
+components/regional.tsx:135 => Aholi
+components/regional.tsx:142 => O'sish
+components/regional.tsx:149 => Korxonalar
+components/regional.tsx:155 => $100M+
+components/regional.tsx:156 => Byudjet
+components/regional.tsx:196 => Aholi:
+components/regional.tsx:200 => Loyihalar:
+components/regional.tsx:204 => Byudjet:
+components/regional.tsx:210 => Ixtisoslik:
+components/regional.tsx:223 => Loyihalarni ko'rish
+components/regional.tsx:102 => UZ GROW Logo
+components/samarqand-video.tsx:51 => Prezident Tashrifi - Samarqand
+components/samarqand-video.tsx:54 => O'zbekiston Respublikasi Prezidentining Samarqand viloyatiga
+            tashrifi va ochilgan yangi loyihalar
+components/samarqand-video.tsx:76 => Sizning brauzeringiz video elementini qo'llab-quvvatlamaydi.
+components/samarqand-video.tsx:82 => Asosiy video
+components/samarqand-video.tsx:122 => Yutuqlar
+components/samarqand-video.tsx:142 => Asosiy yo'nalishlar
+components/samarqand-video.tsx:162 => Batafsil ma'lumot
+components/samarqand-video.tsx:165 => Galereyani ko'rish
+components/samarqand-video.tsx:174 => Tashrif statistikasi
+components/samarqand-video.tsx:178 => Korxonalar soni
+components/samarqand-video.tsx:182 => Ish o'rinlari
+components/samarqand-video.tsx:188 => Investitsiyalar
+components/samarqand-video.tsx:189 => $50M
+components/samarqand-video.tsx:194 => Ta'lim muassasalari
+components/samarqand-video.tsx:204 => Qo'shimcha resurslar
+components/samarqand-video.tsx:208 => To'liq video yozuv
+components/samarqand-video.tsx:212 => Tadbir jadvali
+components/samarqand-video.tsx:216 => Ishtirokchilar ro'yxati
+components/samarqand-video.tsx:220 => Xarita va manzillar
+components/samarqand-video.tsx:47 => UZ GROW Logo
+components/team.tsx:308 => Email
+components/ui/alert.tsx:26 => & VariantProps
+components/ui/badge.tsx:33 => &
+  VariantProps
+components/ui/breadcrumb.tsx:96 => More
+components/ui/breadcrumb.tsx:8 => breadcrumb
+components/ui/button-group.tsx:28 => & VariantProps
+components/ui/button.tsx:45 => &
+  VariantProps
+components/ui/calendar.tsx:23 => & {
+  buttonVariant?: React.ComponentProps
+components/ui/carousel.tsx:25 => [0]
+  api: ReturnType
+components/ui/carousel.tsx:199 => Previous slide
+components/ui/carousel.tsx:229 => Next slide
+components/ui/carousel.tsx:125 => carousel
+components/ui/carousel.tsx:162 => slide
+components/ui/chart.tsx:43 => & {
+  config: ChartConfig
+  children: React.ComponentProps
+components/ui/chart.tsx:121 => &
+  React.ComponentProps
+components/ui/chart.tsx:259 => &
+  Pick
+components/ui/dialog.tsx:75 => Close
+components/ui/empty.tsx:50 => & VariantProps
+components/ui/field.tsx:85 => & VariantProps
+components/ui/field.tsx:191 => & {
+  errors?: Array
+components/ui/form.tsx:23 => = FieldPath
+components/ui/form.tsx:23 => ,
+> = {
+  name: TName
+}
+
+const FormFieldContext = React.createContext
+components/ui/form.tsx:34 => = FieldPath
+components/ui/input-group.tsx:63 => & VariantProps
+components/ui/input-group.tsx:105 => , 'size'> &
+  VariantProps
+components/ui/item.tsx:60 => &
+  VariantProps
+components/ui/item.tsx:95 => & VariantProps
+components/ui/pagination.tsx:37 => }
+
+type PaginationLinkProps = {
+  isActive?: boolean
+} & Pick
+components/ui/pagination.tsx:42 => , 'size'> &
+  React.ComponentProps
+components/ui/pagination.tsx:80 => Previous
+components/ui/pagination.tsx:96 => Next
+components/ui/pagination.tsx:114 => More pages
+components/ui/pagination.tsx:15 => pagination
+components/ui/pagination.tsx:74 => Go to previous page
+components/ui/pagination.tsx:91 => Go to next page
+components/ui/sheet.tsx:77 => Close
+components/ui/sidebar.tsx:190 => button]:hidden"
+          style={
+            {
+              '--sidebar-width': SIDEBAR_WIDTH_MOBILE,
+            } as React.CSSProperties
+          }
+          side={side}
+        >
+components/ui/sidebar.tsx:199 => Sidebar
+components/ui/sidebar.tsx:200 => Displays the mobile sidebar.
+components/ui/sidebar.tsx:277 => Toggle Sidebar
+components/ui/sidebar.tsx:506 => & {
+  asChild?: boolean
+  isActive?: boolean
+  tooltip?: string | React.ComponentProps
+components/ui/sidebar.tsx:509 => } & VariantProps
+components/ui/sidebar.tsx:289 => Toggle Sidebar
+components/ui/sidebar.tsx:292 => Toggle Sidebar
+components/ui/spinner.tsx:9 => Loading
+components/ui/toast.tsx:13 => ,
+  React.ComponentPropsWithoutRef
+components/ui/toast.tsx:44 => ,
+  React.ComponentPropsWithoutRef
+components/ui/toast.tsx:45 => &
+    VariantProps
+components/ui/toast.tsx:59 => ,
+  React.ComponentPropsWithoutRef
+components/ui/toast.tsx:74 => ,
+  React.ComponentPropsWithoutRef
+components/ui/toast.tsx:92 => ,
+  React.ComponentPropsWithoutRef
+components/ui/toast.tsx:104 => ,
+  React.ComponentPropsWithoutRef
+components/ui/toast.tsx:115 => type ToastActionElement = React.ReactElement
+components/ui/toggle-group.tsx:23 => &
+  VariantProps
+components/ui/toggle-group.tsx:49 => &
+  VariantProps
+components/ui/toggle.tsx:36 => &
+  VariantProps
+components/ui/use-toast.ts:41 => }
+  | {
+      type: ActionType['DISMISS_TOAST']
+      toastId?: ToasterToast['id']
+    }
+  | {
+      type: ActionType['REMOVE_TOAST']
+      toastId?: ToasterToast['id']
+    }
+
+interface State {
+  toasts: ToasterToast[]
+}
+
+const toastTimeouts = new Map

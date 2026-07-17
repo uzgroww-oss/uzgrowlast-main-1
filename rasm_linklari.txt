@@ -1,0 +1,97 @@
+UZ GROW VEB-SAYT RASM LINKLARI
+=====================================
+
+LOGO VA BRAND RASMLARI
+------------------------
+/images/logo.png - UZ GROW logotipi
+
+TEAM AVATARLARI
+--------------
+/team/ceo.jpg - Rustamjon Rahmonov (CEO) avatari
+/team/marketolog.jpg - Alisher Majidov (Marketing direktori) avatari
+
+REGIONAL PROJEKT RASMLARI
+-------------------------
+/images/24.jpg - Samarqand viloyati
+/images/25.jpg - Buxoro viloyati  
+/images/27.jpg - Farg'ona viloyati
+/images/7.jpg - Xorazm viloyati
+/images/8.jpg - Qashqadaryo viloyati
+/images/3.jpg - Surxondaryo viloyati
+
+XALQARO PROJEKT RASMLARI (Cloudinary)
+------------------------------------
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469176/20201201_105259_q5us00.jpgg - Qozog'iston loyihasi
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469052/photo_2026-04-04_10-35-55_dvrnxd.jpg - Tojikiston loyihasi
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567956/20210211_141225_yvl1wr.jpg - Qirg'iziston loyihasi
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469052/IMG_5188_%D0%9E%D1%80%D0%B8%D0%B3%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80_rmwd8l.jpg - Turkmaniston loyihasi
+
+TEXNOLOGIYA RASMLARI (Cloudinary)
+---------------------------------
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775570543/28_bnpx3z.jpg - Isitish tizimi
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469177/20201023_075858_hcs7fb.jpg - Ventilyatsiya
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469181/20201201_105435_hq3q9q.jpg - Stelaj tizimi
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469052/photo_2026-04-04_10-35-55_dvrnxd.jpg - LED yoritish
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469052/photo_2026-04-04_10-35-55_dvrnxd.jpg - Sug'orish tizimi
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567811/20201201_125915_z2qls3.jpg - Avtomatlashtirish
+
+PROJEKT RASMLARI (Cloudinary)
+---------------------------
+ANDIJON VOYDI LOYIHALARI:
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468970/21_bv62xg.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775301447/22_qrawq5.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469214/34_rthdcs.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469212/32_2_n7x8lw.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469212/38_shg9uf.jpg
+
+SAMARQAND LOYIHALARI:
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469051/photo_2026-04-04_10-35-53_kvt95v.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469172/20201201_105047_elutha.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469051/photo_2026-04-04_10-35-50_ctmowh.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469050/IMG_5189_%D0%9E%D1%80%D0%B8%D0%B3%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80_atdoz0.jpg
+
+XALQARO LOYIHALAR:
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469047/IMG_5184_%D0%9E%D1%80%D0%B8%D0%B3%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80_iuhwco.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469042/IMG_4545_bl2h6a.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469038/IMG_4540_2_fhkndi.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468985/IMG_4397_copy_iqnrvn.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469023/IMG_4430_copy_g7mb6k.jpg
+
+QASHQADARYO LOYIHALARI:
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468983/IMG_4393_copy_g104ol.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468989/IMG_3533_zgzdoe.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468975/IMG_3849_fbjrqw.heic
+
+TOSHKENT LOYIHALARI:
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469052/IMG_5188_%D0%9E%D1%80%D0%B8%D0%B3%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80_rmwd8l.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469185/20201201_111323_zaxid6.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567292/IMG_4029_copy_7_q0rdbm.jpg
+
+XIZMATLAR RASMLARI (Cloudinary)
+-------------------------------
+INJINIRING:
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567592/20201201_105521_ugdege.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567918/20201201_143010_eudwpq.jpg
+
+JIHOZLAR:
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469176/20201201_105259_q5us00.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775467816/20201201_125910_t1nzq8.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468983/IMG_4392_copy_xdhodo.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468978/31_phdvd6.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468978/IMG_3865_ygsucd.jpg
+
+ESKI PROJEKT RASMLARI (Cloudinary)
+----------------------------------
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469212/37_2_ggepkx.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469212/32_2_n7x8lw.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469212/38_shg9uf.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468978/31_phdvd6.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468976/21_2_t9kklr.jpg
+https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468970/21_bv62xg.jpg
+
+JAMI RASMLAR SONI: 45 ta
+=======================
+- Lokal rasmlar: 9 ta
+- Cloudinary rasmlar: 36 ta
+
+IZOH: Cloudinary - bu bulutli rasm xizmati, rasmlar tashqi serverda saqlanmoqda

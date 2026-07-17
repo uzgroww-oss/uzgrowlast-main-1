@@ -1,0 +1,34 @@
+# UZ GROW Agro-Injiniring - Robots.txt
+# https://uzgrow.uz
+
+User-agent: *
+Allow: /
+
+# Prioritize important pages
+Allow: /issiqxona-turlari
+Allow: /loyihalar
+Allow: /aloqa
+Allow: /ceo
+Allow: /gallery
+
+# Block admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /_next/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://uzgrow.uz/sitemap.xml
+
+# Additional instructions for specific crawlers
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
