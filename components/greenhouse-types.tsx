@@ -1,5 +1,7 @@
 "use client";
 
+import { MediaImg } from "@/components/ui/media-img";
+
 import {
   Card,
   CardContent,
@@ -92,7 +94,7 @@ export function GreenhouseTypes() {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="flex justify-center mb-6">
-            <img
+            <MediaImg
               src={m("umumiy.logo")}
               alt={t("common.logoAlt")}
               className="h-16 w-auto"
@@ -156,7 +158,7 @@ export function GreenhouseTypes() {
                   <CarouselContent>
                     {type.images.map((imgSrc, index) => (
                       <CarouselItem key={index}>
-                        <img
+                        <MediaImg
                           src={imgSrc}
                           alt={`${type.title} ${index + 1}`}
                           className="w-full h-48 object-cover object-center group-hover:scale-105 transition-transform duration-300"

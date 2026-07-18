@@ -1,5 +1,7 @@
 "use client";
 
+import { MediaImg } from "@/components/ui/media-img";
+
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useMedia } from "@/contexts/MediaContext";
 import {
@@ -74,7 +76,7 @@ export function AssoDesignMedia() {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="flex justify-center mb-6">
-            <img
+            <MediaImg
               src={m("umumiy.logo")}
               alt={t("common.logoAlt")}
               className="h-16 w-auto"
@@ -314,7 +316,7 @@ export function AssoDesignMedia() {
               >
                 <CardContent className="p-8">
                   <div className="flex items-start gap-6">
-                    <img
+                    <MediaImg
                       src={m("umumiy.logo")}
                       alt={partner.name}
                       className="h-14 w-auto shrink-0 object-contain"

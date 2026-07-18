@@ -1,5 +1,7 @@
 "use client";
 
+import { MediaImg } from "@/components/ui/media-img";
+
 import { useMedia } from "@/contexts/MediaContext";
 
 import { useEffect, useState } from "react";
@@ -53,7 +55,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
             aria-hidden
             className="loader-ring absolute w-36 h-36 sm:w-44 sm:h-44 rounded-full border-2 border-primary/15 border-t-primary"
           />
-          <img
+          <MediaImg
             src={m("umumiy.logo")}
             alt="UZ GROW"
             className="h-16 sm:h-20 w-auto object-contain px-4"

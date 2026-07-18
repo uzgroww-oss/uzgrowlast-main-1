@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useMedia } from "@/contexts/MediaContext";
+import { MediaVideo } from "@/components/ui/media-img";
 
 const getSlides = (t: (key: string) => string) => [
   {
@@ -96,14 +97,14 @@ export function Hero() {
     >
       {/* Video Background */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-  <video
+  <MediaVideo
     src={m("bosh.hero.video")}
     className="absolute top-1/2 left-1/2 w-[100vw] min-w-full h-full min-h-[56.25vw] -translate-x-1/2 -translate-y-1/2 object-cover"
     autoPlay
     loop
     muted
   >
-  </video>
+  </MediaVideo>
 </div>
       {/* Overlay */}
       <div className="absolute inset-0 bg-linear-to-r from-black/40 via-black/30 to-black/40" />

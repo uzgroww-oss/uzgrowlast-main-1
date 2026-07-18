@@ -1,5 +1,7 @@
 "use client";
 
+import { MediaImg } from "@/components/ui/media-img";
+
 import { useEffect, useState, useRef } from "react";
 import { Target, Eye, Heart, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -127,7 +129,7 @@ export function About() {
           {/* Image Slideshow */}
           <div className="relative group order-2 lg:order-1">
             <div className="aspect-video rounded-3xl overflow-hidden relative">
-              <img
+              <MediaImg
                 src={aboutBackgroundImages[currentAboutImage]}
                 alt="About UZ GROW"
                 className="w-full h-full object-cover transition-opacity duration-1000"

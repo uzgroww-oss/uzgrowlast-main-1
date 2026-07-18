@@ -310,16 +310,53 @@ function LeadsTab({ password }: { password: string }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const removeOne = async (id: string, name: string) => {
+    if (!window.confirm(`«${name}» murojaatini o'chirasizmi?`)) return;
+    await fetch(`/api/contact/${id}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${password}` },
+    });
+    await load();
+  };
+
+  const removeAll = async () => {
+    if (
+      !window.confirm(
+        `BARCHA ${leads.length} ta murojaat butunlay o'chiriladi va qaytarib bo'lmaydi.
+
+Davom etamizmi?`,
+      )
+    )
+      return;
+    await fetch("/api/contact", {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${password}` },
+    });
+    await load();
+  };
+
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <p className="text-sm text-muted-foreground">
           Jami: <strong className="text-foreground">{leads.length}</strong> ta
         </p>
-        <Button variant="outline" size="sm" onClick={load} disabled={loading}>
-          <RefreshCw className="w-4 h-4 mr-2" />
-          Yangilash
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" size="sm" onClick={load} disabled={loading}>
+            <RefreshCw className="w-4 h-4 mr-2" />
+            Yangilash
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={removeAll}
+            disabled={loading || leads.length === 0}
+            className="text-red-600 hover:text-red-700 hover:bg-red-50"
+          >
+            <Trash2 className="w-4 h-4 mr-2" />
+            Hammasini o'chirish
+          </Button>
+        </div>
       </div>
 
       {loading ? (
@@ -336,9 +373,20 @@ function LeadsTab({ password }: { password: string }) {
           >
             <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
               <h3 className="font-semibold text-foreground">{lead.name}</h3>
-              <span className="text-xs text-muted-foreground">
-                {formatDate(lead.createdAt)} · {lead.lang.toUpperCase()}
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-muted-foreground">
+                  {formatDate(lead.createdAt)} · {lead.lang.toUpperCase()}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => removeOne(lead.id, lead.name)}
+                  aria-label="O'chirish"
+                  title="Bu murojaatni o'chirish"
+                  className="text-muted-foreground hover:text-red-600"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
             </div>
             <div className="text-sm text-muted-foreground space-y-1 mb-3">
               <p>

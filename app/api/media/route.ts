@@ -9,8 +9,9 @@ export const dynamic = "force-dynamic";
 
 const idPattern = /^[a-zA-Z0-9_.-]+$/;
 
+// null = standart rasmga qaytarish, bo'sh satr = rasmni o'chirish
 const patchSchema = z
-  .record(z.string().regex(idPattern).max(200), optionalMediaUrl())
+  .record(z.string().regex(idPattern).max(200), optionalMediaUrl().nullable())
   .refine((v) => Object.keys(v).length > 0, {
     message: "Bo'sh so'rov",
   });

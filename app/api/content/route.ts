@@ -20,7 +20,11 @@ const keySchema = z
     message: "Kalitda ruxsat etilmagan nom bor",
   });
 
-const entriesSchema = z.record(keySchema, z.string().max(20000));
+// null = standartga qaytarish, satr (shu jumladan bo'sh) = saqlanadigan qiymat
+const entriesSchema = z.record(
+  keySchema,
+  z.string().max(20000).nullable(),
+);
 
 const patchSchema = z
   .object({

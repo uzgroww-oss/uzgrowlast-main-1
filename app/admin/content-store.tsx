@@ -37,6 +37,13 @@ interface ContentStore {
   /** Qidiruv faol bo'lsa natijalar, aks holda null */
   searchResults: ContentField[] | null;
 
+  /** Matnni bo'shatish — saytda ko'rinmaydi (standartga qaytarish emas) */
+  clearText: (field: ContentField, lang: Language) => void;
+  /** Rasmni o'chirish — saytda ko'rinmaydi */
+  clearMedia: (item: MediaItem) => void;
+  /** Tanlangan sahifadagi hamma matn va rasmni bo'shatish */
+  clearPage: (pageKey: string) => void;
+
   currentText: (field: ContentField, lang: Language) => string;
   savedText: (field: ContentField, lang: Language) => string;
   setTextValue: (field: ContentField, lang: Language, value: string) => void;
@@ -134,6 +141,13 @@ export function ContentProvider({
     setTextDrafts((prev) => ({ ...prev, [draftKey(lang, field.path)]: value }));
   };
 
+  // Bo'sh satr — to'liq huquqli qiymat: "bu matn saytda ko'rinmasin".
+  // Standartga qaytarish uchun esa setTextValue(field, lang, field.base[lang]).
+  const clearText = (field: ContentField, lang: Language) => {
+    setSaved(false);
+    setTextDrafts((prev) => ({ ...prev, [draftKey(lang, field.path)]: "" }));
+  };
+
   /* ---------- Rasm ---------- */
 
   const savedMedia = (item: MediaItem) => media[item.id] ?? item.def;
@@ -144,6 +158,33 @@ export function ContentProvider({
   const setMediaValue = (item: MediaItem, value: string) => {
     setSaved(false);
     setMediaDrafts((prev) => ({ ...prev, [item.id]: value }));
+  };
+
+  const clearMedia = (item: MediaItem) => {
+    setSaved(false);
+    setMediaDrafts((prev) => ({ ...prev, [item.id]: "" }));
+  };
+
+  /** Sahifadagi barcha matn (3 tilda) va rasmlarni bo'shatadi */
+  const clearPage = (pageKey: string) => {
+    const page = pages.find((p) => p.key === pageKey);
+    if (!page) return;
+    setSaved(false);
+
+    setTextDrafts((prev) => {
+      const next = { ...prev };
+      for (const b of page.blocks)
+        for (const f of b.fields)
+          for (const l of LANGUAGES) next[draftKey(l, f.path)] = "";
+      return next;
+    });
+
+    setMediaDrafts((prev) => {
+      const next = { ...prev };
+      for (const b of page.mediaBlocks)
+        for (const i of b.items) next[i.id] = "";
+      return next;
+    });
   };
 
   /* ---------- O'zgarishlar ---------- */
@@ -213,12 +254,15 @@ export function ContentProvider({
     setError("");
     try {
       if (textChanges.length > 0) {
-        const patch: Partial<Record<Language, Record<string, string>>> = {};
+        const patch: Partial<Record<Language, Record<string, string | null>>> =
+          {};
         for (const { lang, path, value } of textChanges) {
           const field = fieldIndex.get(path);
           patch[lang] ??= {};
-          // Standart matnga qaytarilgan bo'lsa override o'chiriladi
-          patch[lang]![path] = field && value === field.base[lang] ? "" : value;
+          // Standart matnga teng bo'lsa override butunlay o'chiriladi (null).
+          // Bo'sh satr esa saqlanadi — u "o'chirilgan" degan ma'noni bildiradi.
+          patch[lang]![path] =
+            field && value === field.base[lang] ? null : value;
         }
         const res = await fetch("/api/content", {
           method: "PUT",
@@ -237,9 +281,10 @@ export function ContentProvider({
       }
 
       if (mediaChanges.length > 0) {
-        const patch: Record<string, string> = {};
+        const patch: Record<string, string | null> = {};
         for (const { id, value, def } of mediaChanges) {
-          patch[id] = value === def ? "" : value;
+          // Standart rasmga teng bo'lsa override o'chadi; bo'sh satr saqlanadi
+          patch[id] = value === def ? null : value;
         }
         const res = await fetch("/api/media", {
           method: "PUT",
@@ -318,6 +363,9 @@ export function ContentProvider({
     query,
     setQuery,
     searchResults,
+    clearText,
+    clearMedia,
+    clearPage,
     currentText,
     savedText,
     setTextValue,

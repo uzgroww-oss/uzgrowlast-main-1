@@ -96,9 +96,13 @@ export function Projects() {
 
   // Merge static (images/status/year) with localized text from context
   const translatedItems: any[] = tObj("projects.items") || [];
+  // O'chirilgan (bo'sh) rasmlar galereyaga tushmasin — Next/Image bo'sh
+  // manzilda xato beradi
   const projects = getStaticProjects(mList).map((s, i) => ({
     ...s,
     ...(translatedItems[i] || {}),
+    // Filtr eng oxirida: yuqoridagi yoyishlar uni bekor qilib yubormasin
+    images: s.images.filter(Boolean),
   }));
 
   const categories = [
@@ -215,13 +219,16 @@ export function Projects() {
                   </Badge>
                 </div>
                 <div className="aspect-video relative overflow-hidden">
-                  <Image
-                    src={project.images[0]}
-                    alt={project.title || ""}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+                  {/* Barcha rasm o'chirilgan bo'lsa massiv bo'sh bo'ladi */}
+                  {project.images[0] && (
+                    <Image
+                      src={project.images[0]}
+                      alt={project.title || ""}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
                 </div>
                 <div className="p-6">
@@ -258,7 +265,9 @@ export function Projects() {
               >
                 <div className="flex flex-col lg:flex-row gap-6">
                   <div className="lg:w-80 aspect-video relative rounded-xl overflow-hidden">
-                    <Image src={project.images[0]} alt={project.title || ""} fill className="object-cover" sizes="(max-width: 768px) 100vw, 320px" />
+                    {project.images[0] && (
+                      <Image src={project.images[0]} alt={project.title || ""} fill className="object-cover" sizes="(max-width: 768px) 100vw, 320px" />
+                    )}
                   </div>
                   <div className="flex-1 space-y-4">
                     <div className="flex flex-wrap gap-2 mb-2">
@@ -322,7 +331,9 @@ export function Projects() {
 
             {/* Image gallery */}
             <div className="aspect-video relative">
-              <Image src={selectedProject.images[currentImageIndex]} alt={selectedProject.title || ""} fill className="object-cover" sizes="100vw" />
+              {selectedProject.images[currentImageIndex] && (
+                <Image src={selectedProject.images[currentImageIndex]} alt={selectedProject.title || ""} fill className="object-cover" sizes="100vw" />
+              )}
               {selectedProject.images.length > 1 && (
                 <>
                   {/* Image counter */}

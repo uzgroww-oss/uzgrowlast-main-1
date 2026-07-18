@@ -40,11 +40,13 @@ export async function readContent(): Promise<ContentOverrides> {
 
 /**
  * Kelgan o'zgarishlarni mavjudlari ustiga qo'shadi.
- * Qiymat sifatida bo'sh satr berilsa, override o'chiriladi — ya'ni
- * o'sha kalit koddagi standart matnga qaytadi.
+ *
+ * Qiymat `null` bo'lsa — override o'chiriladi, ya'ni kalit koddagi standart
+ * matnga qaytadi. Bo'sh satr esa TO'LIQ HUQUQLI qiymat: u "admin bu matnni
+ * o'chirdi, saytda ko'rinmasin" degani va shu holida saqlanadi.
  */
 export async function patchContent(
-  patch: Partial<Record<Language, Record<string, string>>>,
+  patch: Partial<Record<Language, Record<string, string | null>>>,
 ): Promise<ContentOverrides> {
   const upserts: { lang: string; key: string; value: string }[] = [];
   const deletes: { lang: string; key: string }[] = [];
@@ -54,7 +56,7 @@ export async function patchContent(
     if (!entries) continue;
     for (const [key, value] of Object.entries(entries)) {
       if (!isSafeKey(key)) continue;
-      if (value === "") deletes.push({ lang, key });
+      if (value === null) deletes.push({ lang, key });
       else upserts.push({ lang, key, value });
     }
   }

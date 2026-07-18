@@ -1,5 +1,7 @@
 "use client";
 
+import { MediaImg } from "@/components/ui/media-img";
+
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useMedia } from "@/contexts/MediaContext";
@@ -14,7 +16,7 @@ export function AboutDetailed() {
         <div className="grid lg:grid-cols-2 gap-10 items-start mb-12">
           {/* Image Section */}
           <div className="relative aspect-[4/3] rounded-sm overflow-hidden border border-gray-200 shadow-sm">
-            <img
+            <MediaImg
               src={m("haqimizda.image")}
               alt="UZ-GROW Office"
               className="w-full h-full object-cover"

@@ -1,5 +1,7 @@
 "use client";
 
+import { MediaImg } from "@/components/ui/media-img";
+
 import React, { useState, useEffect } from "react";
 import {
   Building2,
@@ -108,7 +110,7 @@ export function Services() {
                 style={{ transform: `translateX(-${activeImage * 100}%)` }}
               >
                 {services[activeService].images.map((image, index) => (
-                  <img
+                  <MediaImg
                     key={index}
                     src={image}
                     alt={`${services[activeService].title} - Image ${index + 1}`}

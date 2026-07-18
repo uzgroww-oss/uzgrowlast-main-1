@@ -1,5 +1,7 @@
 "use client";
 
+import { MediaImg } from "@/components/ui/media-img";
+
 import { useLanguage } from "@/contexts/LanguageContext";
 import { mediaIds, useMedia } from "@/contexts/MediaContext";
 import {
@@ -35,7 +37,7 @@ export function International() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <div className="flex justify-center mb-6">
-            <img
+            <MediaImg
               src={m("umumiy.logo")}
               alt={t("common.logoAlt")}
               className="h-16 w-auto"
@@ -89,7 +91,7 @@ export function International() {
               className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg"
             >
               <div className="relative overflow-hidden rounded-t-lg">
-                <img
+                <MediaImg
                   src={projectImages[index]}
                   alt={project.title}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"

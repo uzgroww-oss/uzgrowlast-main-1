@@ -22,15 +22,18 @@ export async function readMedia(): Promise<MediaOverrides> {
   return result;
 }
 
-/** Bo'sh qiymat = o'zgarishni bekor qilib, koddagi standart manzilga qaytarish */
+/**
+ * `null` = o'zgarishni bekor qilib, koddagi standart rasmga qaytarish.
+ * Bo'sh satr = rasmni butunlay o'chirish (saytda ko'rinmaydi).
+ */
 export async function patchMedia(
-  patch: MediaOverrides,
+  patch: Record<string, string | null>,
 ): Promise<MediaOverrides> {
   const upserts: { id: string; url: string; updated_at: string }[] = [];
   const deletes: string[] = [];
 
   for (const [id, url] of Object.entries(patch)) {
-    if (url === "") deletes.push(id);
+    if (url === null) deletes.push(id);
     else upserts.push({ id, url, updated_at: new Date().toISOString() });
   }
 

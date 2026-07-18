@@ -64,3 +64,27 @@ export async function listLeads(): Promise<Lead[]> {
   if (error) throw error;
   return (data as Row[]).map(toLead);
 }
+
+/** Bitta murojaatni o'chiradi. Topilmasa false qaytadi. */
+export async function deleteLead(id: string): Promise<boolean> {
+  const { data, error } = await supabase()
+    .from("leads")
+    .delete()
+    .eq("id", id)
+    .select("id");
+
+  if (error) throw error;
+  return (data?.length ?? 0) > 0;
+}
+
+/** Barcha murojaatlarni o'chiradi. Nechta o'chirilgani qaytadi. */
+export async function deleteAllLeads(): Promise<number> {
+  const { data, error } = await supabase()
+    .from("leads")
+    .delete()
+    .not("id", "is", null)
+    .select("id");
+
+  if (error) throw error;
+  return data?.length ?? 0;
+}

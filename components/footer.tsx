@@ -1,5 +1,7 @@
 "use client";
 
+import { MediaImg } from "@/components/ui/media-img";
+
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -75,7 +77,7 @@ export function Footer() {
           {/* Brand */}
           <div className="sm:col-span-1 lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-4">
-              <img src={m("umumiy.logo")} alt={t("common.logoAlt")} className="h-12 sm:h-16 w-auto object-contain" />
+              <MediaImg src={m("umumiy.logo")} alt={t("common.logoAlt")} className="h-12 sm:h-16 w-auto object-contain" />
               <span className="text-2xl font-bold">{t("footer.brandName")}</span>
             </Link>
             <p className="text-white/70 max-w-sm leading-relaxed">

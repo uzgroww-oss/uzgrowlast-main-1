@@ -1,5 +1,7 @@
 "use client";
 
+import { MediaImg } from "@/components/ui/media-img";
+
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -384,7 +386,7 @@ export function Gallery() {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="flex justify-center mb-6">
-            <img
+            <MediaImg
               src={m("umumiy.logo")}
               alt={t("common.logoAlt")}
               className="h-16 w-auto"
@@ -423,7 +425,7 @@ export function Gallery() {
               onClick={() => openImage(image)}
             >
               <div className="relative aspect-square overflow-hidden">
-                <img
+                <MediaImg
                   src={image.src}
                   alt={image.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -521,7 +523,7 @@ export function Gallery() {
               {/* Image Container */}
               <div className="bg-black rounded-2xl overflow-hidden">
                 <div className="aspect-video md:aspect-auto md:h-[80vh]">
-                  <img
+                  <MediaImg
                     src={selectedImage.src}
                     alt={selectedImage.title}
                     className="w-full h-full object-contain"

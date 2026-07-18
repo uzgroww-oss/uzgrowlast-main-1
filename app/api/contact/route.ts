@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { saveLead, listLeads } from "@/lib/server/leads";
+import { saveLead, listLeads, deleteAllLeads } from "@/lib/server/leads";
 import { notifyTelegram } from "@/lib/server/telegram";
 import { requireAdmin } from "@/lib/server/auth";
 import { dbError } from "@/lib/server/api";
@@ -83,5 +83,18 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ ok: true, count: leads.length, leads });
   } catch (error) {
     return dbError("Murojaatlarni o'qishda xatolik", error);
+  }
+}
+
+// Admin: barcha murojaatlarni o'chirish
+export async function DELETE(req: NextRequest) {
+  const denied = requireAdmin(req);
+  if (denied) return denied;
+
+  try {
+    const count = await deleteAllLeads();
+    return NextResponse.json({ ok: true, deleted: count });
+  } catch (error) {
+    return dbError("Murojaatlarni o'chirishda xatolik", error);
   }
 }

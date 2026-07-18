@@ -13,6 +13,8 @@ import {
   AlertCircle,
   ExternalLink,
   ImageOff,
+  Eraser,
+  Trash2,
 } from "lucide-react";
 import type { Language } from "@/contexts/LanguageContext";
 import type { MediaItem } from "@/lib/media-registry";
@@ -132,6 +134,9 @@ export function ContentTab() {
     savedMedia,
     setMediaValue,
     mediaOverrides,
+    clearText,
+    clearMedia,
+    clearPage,
   } = useContentStore();
 
   if (loading) {
@@ -177,6 +182,7 @@ export function ContentTab() {
                 saved={savedText}
                 overrides={textOverrides}
                 onChange={setTextValue}
+                onClear={clearText}
               />
             ))
           )}
@@ -188,17 +194,39 @@ export function ContentTab() {
         <div className="space-y-8">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h2 className="text-xl font-bold text-foreground">{page.title}</h2>
-            {page.path && (
-              <a
-                href={page.path}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  if (
+                    window.confirm(
+                      `«${page.title}» sahifasidagi BARCHA matn (3 tilda) va rasmlar bo'shatiladi — sayt bu joylarda bo'sh ko'rinadi.
+
+Bu hali saqlanmaydi: fikringizdan qaytsangiz, «Saqlash»ni bosmasdan sahifani yangilang.
+
+Davom etamizmi?`,
+                    )
+                  )
+                    clearPage(page.key);
+                }}
+                className="inline-flex items-center gap-1.5 text-sm text-red-600 hover:text-red-700"
+                title="Sahifadagi hamma narsani bo'shatish"
               >
-                {page.path} sahifasini ochish
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-            )}
+                <Eraser className="w-3.5 h-3.5" />
+                Sahifani bo'shatish
+              </button>
+              {page.path && (
+                <a
+                  href={page.path}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                >
+                  {page.path} ochish
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              )}
+            </div>
           </div>
 
           {overrideCount === 0 && (
@@ -221,6 +249,7 @@ export function ContentTab() {
                     isOverridden={item.id in mediaOverrides}
                     isDirty={currentMedia(item) !== savedMedia(item)}
                     onChange={setMediaValue}
+                    onClear={clearMedia}
                   />
                 ))}
               </div>
@@ -249,6 +278,7 @@ export function ContentTab() {
                   saved={savedText}
                   overrides={textOverrides}
                   onChange={setTextValue}
+                  onClear={clearText}
                 />
               ))}
             </section>
@@ -301,10 +331,12 @@ function MediaRow({
   isOverridden,
   isDirty,
   onChange,
+  onClear,
   password,
 }: {
   item: MediaItem;
   password: string;
+  onClear: (item: MediaItem) => void;
   value: string;
   isOverridden: boolean;
   isDirty: boolean;
@@ -321,7 +353,11 @@ function MediaRow({
       <div className="w-20 h-20 shrink-0 rounded-lg bg-muted overflow-hidden flex items-center justify-center">
         {item.type === "video" ? (
           <video src={value} className="w-full h-full object-cover" muted />
-        ) : broken || !value ? (
+        ) : !value ? (
+          <span className="text-[10px] text-muted-foreground text-center px-1 leading-tight">
+            o'chirilgan
+          </span>
+        ) : broken ? (
           <ImageOff className="w-6 h-6 text-muted-foreground/50" />
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
@@ -344,16 +380,28 @@ function MediaRow({
               </span>
             )}
           </p>
-          {value !== item.def && (
-            <button
-              type="button"
-              onClick={() => onChange(item, item.def)}
-              title="Standart rasmga qaytarish"
-              className="text-muted-foreground hover:text-foreground shrink-0"
-            >
-              <RotateCcw className="w-3 h-3" />
-            </button>
-          )}
+          <div className="flex items-center gap-1.5 shrink-0">
+            {value !== "" && (
+              <button
+                type="button"
+                onClick={() => onClear(item)}
+                title="Rasmni o'chirish (saytda ko'rinmaydi)"
+                className="text-muted-foreground hover:text-red-600"
+              >
+                <Trash2 className="w-3 h-3" />
+              </button>
+            )}
+            {value !== item.def && (
+              <button
+                type="button"
+                onClick={() => onChange(item, item.def)}
+                title="Standart rasmga qaytarish"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <RotateCcw className="w-3 h-3" />
+              </button>
+            )}
+          </div>
         </div>
         <UploadField
           value={value}
@@ -379,12 +427,14 @@ function TextRow({
   saved,
   overrides,
   onChange,
+  onClear,
 }: {
   field: ContentField;
   current: (f: ContentField, l: Language) => string;
   saved: (f: ContentField, l: Language) => string;
   overrides: Record<Language, Record<string, string>>;
   onChange: (f: ContentField, l: Language, v: string) => void;
+  onClear: (f: ContentField, l: Language) => void;
 }) {
   return (
     <div className="bg-background rounded-xl border border-border p-5">
@@ -404,22 +454,39 @@ function TextRow({
                 <label className="text-xs font-medium text-foreground">
                   {LANG_LABELS[lang]}
                   {isDirty && <span className="ml-1.5 text-amber-600">•</span>}
-                  {!isDirty && isOverridden && (
+                  {!isDirty && isOverridden && value === "" && (
+                    <span className="ml-1.5 text-xs text-red-600 font-normal">
+                      o'chirilgan
+                    </span>
+                  )}
+                  {!isDirty && isOverridden && value !== "" && (
                     <span className="ml-1.5 text-xs text-primary font-normal">
                       o'zgartirilgan
                     </span>
                   )}
                 </label>
-                {canReset && (
-                  <button
-                    type="button"
-                    onClick={() => onChange(field, lang, field.base[lang])}
-                    className="text-xs text-muted-foreground hover:text-foreground"
-                    title="Standart matnga qaytarish"
-                  >
-                    <RotateCcw className="w-3 h-3" />
-                  </button>
-                )}
+                <div className="flex items-center gap-1.5">
+                  {value !== "" && (
+                    <button
+                      type="button"
+                      onClick={() => onClear(field, lang)}
+                      className="text-xs text-muted-foreground hover:text-red-600"
+                      title="Matnni o'chirish (saytda ko'rinmaydi)"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </button>
+                  )}
+                  {canReset && (
+                    <button
+                      type="button"
+                      onClick={() => onChange(field, lang, field.base[lang])}
+                      className="text-xs text-muted-foreground hover:text-foreground"
+                      title="Standart matnga qaytarish"
+                    >
+                      <RotateCcw className="w-3 h-3" />
+                    </button>
+                  )}
+                </div>
               </div>
               {field.multiline ? (
                 <Textarea

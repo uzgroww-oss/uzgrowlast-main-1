@@ -1,5 +1,7 @@
 "use client";
 
+import { MediaImg } from "@/components/ui/media-img";
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -144,7 +146,7 @@ export function Header() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 shrink-0">
-              <img
+              <MediaImg
                 src={m("umumiy.logo")}
                 alt={t("common.logoAlt")}
                 className="h-12 sm:h-14 lg:h-16 w-auto object-contain animate-logo"

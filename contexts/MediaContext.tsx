@@ -38,7 +38,11 @@ export function MediaProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<MediaContextType>(() => {
-    const m = (id: string) => overrides[id] || MEDIA_DEFAULTS[id] || "";
+    // Diqqat: bo'sh satr ham to'liq huquqli qiymat — u "admin bu rasmni
+    // o'chirgan" degani. Shuning uchun `||` emas, kalit borligi tekshiriladi:
+    // aks holda o'chirilgan rasm standart holatiga qaytib qolardi.
+    const m = (id: string) =>
+      Object.hasOwn(overrides, id) ? overrides[id] : (MEDIA_DEFAULTS[id] ?? "");
     return { m, mList: (ids) => ids.map(m) };
   }, [overrides]);
 

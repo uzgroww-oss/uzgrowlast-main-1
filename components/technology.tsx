@@ -119,13 +119,16 @@ export function Technology() {
             >
               {/* Image */}
               <div className="aspect-video relative">
-                <Image
-                  src={tech.image}
-                  alt={t(tech.titleKey)}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
+                {/* Rasm admin paneldan o'chirilgan bo'lsa chizilmaydi */}
+                {tech.image && (
+                  <Image
+                    src={tech.image}
+                    alt={t(tech.titleKey)}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                )}
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
 
                 {/* Icon Overlay */}
