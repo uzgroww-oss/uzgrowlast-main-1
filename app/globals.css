@@ -262,3 +262,21 @@
     }
   }
 }
+/* Scroll ishlaydi, lekin ko'rinmaydi — modal ichida chiroyliroq */
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* eski Edge */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Yuklanish chizig'i: chapdan o'ngga sirg'aladi */
+@keyframes loading-slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}

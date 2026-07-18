@@ -13,7 +13,10 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useMedia } from "@/contexts/MediaContext";
-import { MediaVideo } from "@/components/ui/media-img";
+import { MediaImg, MediaVideo } from "@/components/ui/media-img";
+import { useIsMobile } from "@/hooks/use-mobile";
+
+const SLIDE_KEYS = ["slide1", "slide2", "slide3", "slide4"];
 
 const getSlides = (t: (key: string) => string) => [
   {
@@ -74,9 +77,14 @@ function AnimatedNumber({ end, duration = 2000 }: { end: number; duration?: numb
 }
 
 export function Hero() {
-  const { t } = useLanguage();
+  const { t, isHidden } = useLanguage();
   const { m } = useMedia();
-  const slides = getSlides(t);
+  const isMobile = useIsMobile();
+  const poster = m("bosh.hero.poster");
+  // O'chirilgan slaydlar aylanmaga tushmaydi
+  const slides = getSlides(t).filter(
+    (_, i) => !isHidden(`hero.slides.${SLIDE_KEYS[i]}`),
+  );
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -95,16 +103,28 @@ export function Hero() {
       id="bosh-sahifa"
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Video Background */}
+      {/* Fon.
+          Poster rasm doim darhol ko'rinadi — video yuklanguncha bu joy
+          qora bo'lib turmasin. Video esa ~57 MB, shuning uchun telefonda
+          umuman yuklanmaydi: mobil internet va trafikni tejaydi. */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-  <MediaVideo
-    src={m("bosh.hero.video")}
-    className="absolute top-1/2 left-1/2 w-[100vw] min-w-full h-full min-h-[56.25vw] -translate-x-1/2 -translate-y-1/2 object-cover"
-    autoPlay
-    loop
-    muted
-  >
-  </MediaVideo>
+        <MediaImg
+          src={poster}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {!isMobile && (
+          <MediaVideo
+            src={m("bosh.hero.video")}
+            poster={poster}
+            className="absolute top-1/2 left-1/2 w-[100vw] min-w-full h-full min-h-[56.25vw] -translate-x-1/2 -translate-y-1/2 object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="none"
+          />
+        )}
 </div>
       {/* Overlay */}
       <div className="absolute inset-0 bg-linear-to-r from-black/40 via-black/30 to-black/40" />

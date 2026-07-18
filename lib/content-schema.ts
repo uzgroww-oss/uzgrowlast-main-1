@@ -1,6 +1,7 @@
 import { translations, type Language } from "@/contexts/LanguageContext";
 import { MEDIA, type MediaItem } from "@/lib/media-registry";
 import { PAGES, blockMatches, type PageDef } from "@/lib/page-map";
+import { COLLECTIONS, cardPathOf, type Collection } from "@/lib/collections";
 
 export const LANGUAGES: Language[] = ["uz", "ru", "en"];
 
@@ -28,6 +29,20 @@ export interface BlockView {
   fields: ContentField[];
 }
 
+/** Bitta karta: o'z rasmlari va matnlari bilan */
+export interface CardView {
+  /** "team.members.rustamjon" — o'chirish shu yo'l bo'yicha */
+  path: string;
+  label: string;
+  fields: ContentField[];
+  media: MediaItem[];
+}
+
+export interface CardBlock {
+  title: string;
+  cards: CardView[];
+}
+
 export interface PageView {
   key: string;
   title: string;
@@ -35,6 +50,8 @@ export interface PageView {
   blocks: BlockView[];
   /** Shu sahifadagi rasm va videolar, blok nomi bo'yicha guruhlangan */
   mediaBlocks: { title: string; items: MediaItem[] }[];
+  /** Takrorlanuvchi kartalar — rasm va matni birga */
+  cardBlocks: CardBlock[];
   fieldCount: number;
   mediaCount: number;
 }
@@ -103,24 +120,91 @@ function buildMediaBlocks(page: PageDef) {
   return [...groups].map(([title, list]) => ({ title, items: list }));
 }
 
+/** Bitta to'plamning kartalarini yig'adi */
+function buildCards(collection: Collection, paths: string[]): CardView[] {
+  const root = lookup(translations.uz, collection.basePath);
+  if (!root || typeof root !== "object") return [];
+
+  const keys =
+    collection.kind === "array"
+      ? (root as unknown[]).map((_, i) => String(i))
+      : (collection.keys ?? Object.keys(root));
+
+  return keys
+    .map((key, index) => {
+      const cardPath = `${collection.basePath}.${key}`;
+      const item = lookup(translations.uz, cardPath);
+      if (item === undefined) return null;
+
+      const label =
+        (lookup(item, collection.labelField) as string) || `${index + 1}-element`;
+
+      return {
+        path: cardPath,
+        label,
+        fields: paths
+          .filter((p) => p.startsWith(cardPath + "."))
+          .map(toField),
+        media: (collection.mediaFor?.(key, index) ?? [])
+          .map((id) => MEDIA.find((m) => m.id === id))
+          .filter((m): m is MediaItem => Boolean(m)),
+      };
+    })
+    .filter((c): c is CardView => c !== null && (c.fields.length > 0 || c.media.length > 0));
+}
+
 /**
- * Saytni SAHIFA bo'yicha guruhlab qaytaradi: har bir sahifa o'z bloklari,
- * matnlari va rasmlari bilan.
+ * Saytni SAHIFA bo'yicha guruhlab qaytaradi.
+ *
+ * Takrorlanuvchi elementlar (jamoa a'zosi, loyiha, issiqxona turi...) alohida
+ * KARTA sifatida chiqadi: rasmi va barcha matnlari bir joyda. Shu sababli ular
+ * oddiy bloklardan va rasm ro'yxatidan chiqarib tashlanadi — aks holda bir xil
+ * maydon ikki joyda ko'rinardi.
  */
 export function buildPages(): PageView[] {
   const paths = allPaths();
+  // Kartaga tegishli rasm id lari — ular alohida ro'yxatda takrorlanmasin
+  const cardMediaIds = new Set<string>();
+
+  const cardsByPage = new Map<string, CardBlock[]>();
+  for (const collection of COLLECTIONS) {
+    const cards = buildCards(collection, paths);
+    if (cards.length === 0) continue;
+    for (const c of cards) for (const m of c.media) cardMediaIds.add(m.id);
+    const list = cardsByPage.get(collection.page) ?? [];
+    list.push({ title: collection.title, cards });
+    cardsByPage.set(collection.page, list);
+  }
 
   return PAGES.map((page) => {
+    const cardBlocks = cardsByPage.get(page.key) ?? [];
+
     const blocks: BlockView[] = page.blocks
       .map((block) => ({
         title: block.title,
         hint: block.hint,
         shared: block.shared,
-        fields: paths.filter((p) => blockMatches(block, p)).map(toField),
+        fields: paths
+          .filter((p) => blockMatches(block, p) && !cardPathOf(p))
+          .map(toField),
       }))
       .filter((b) => b.fields.length > 0);
 
-    const mediaBlocks = buildMediaBlocks(page);
+    const mediaBlocks = buildMediaBlocks(page)
+      .map((b) => ({
+        title: b.title,
+        items: b.items.filter((i) => !cardMediaIds.has(i.id)),
+      }))
+      .filter((b) => b.items.length > 0);
+
+    const cardFieldCount = cardBlocks.reduce(
+      (n, b) => n + b.cards.reduce((k, c) => k + c.fields.length, 0),
+      0,
+    );
+    const cardMediaCount = cardBlocks.reduce(
+      (n, b) => n + b.cards.reduce((k, c) => k + c.media.length, 0),
+      0,
+    );
 
     return {
       key: page.key,
@@ -128,8 +212,11 @@ export function buildPages(): PageView[] {
       path: page.path,
       blocks,
       mediaBlocks,
-      fieldCount: blocks.reduce((n, b) => n + b.fields.length, 0),
-      mediaCount: mediaBlocks.reduce((n, b) => n + b.items.length, 0),
+      cardBlocks,
+      fieldCount:
+        blocks.reduce((n, b) => n + b.fields.length, 0) + cardFieldCount,
+      mediaCount:
+        mediaBlocks.reduce((n, b) => n + b.items.length, 0) + cardMediaCount,
     };
   });
 }

@@ -22,9 +22,9 @@ const sectionIcons = [
 ];
 
 export default function PrivacyPolicyPage() {
-  const { t, tObj } = useLanguage();
+  const { t, tObj, tList } = useLanguage();
   const privacyData = tObj("privacy") || {};
-  const sections = privacyData.sections || [];
+  const sections = tList("privacy.sections").map((e) => e.value);
 
   return (
     <main className="min-h-screen">

@@ -16,9 +16,9 @@ const sectionIcons = [
 ];
 
 export default function TermsOfServicePage() {
-  const { t, tObj } = useLanguage();
+  const { t, tObj, tList } = useLanguage();
   const termsData = tObj("terms") || {};
-  const sections = termsData.sections || [];
+  const sections = tList("terms.sections").map((e) => e.value);
 
   return (
     <main className="min-h-screen">

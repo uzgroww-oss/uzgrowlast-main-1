@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { requireAdmin } from "@/lib/server/auth";
-import { patchContent, readContent, resetContent } from "@/lib/server/content";
+import {
+  patchContent,
+  readAll,
+  resetContent,
+  setHidden,
+} from "@/lib/server/content";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -39,9 +44,9 @@ const patchSchema = z
 /** Ochiq: sayt o'zgartirilgan matnlarni shu yerdan oladi */
 export async function GET() {
   try {
-    const content = await readContent();
+    const { content, hidden } = await readAll();
     return NextResponse.json(
-      { ok: true, content },
+      { ok: true, content, hidden },
       { headers: { "Cache-Control": "no-store" } },
     );
   } catch (error) {
@@ -49,7 +54,7 @@ export async function GET() {
     // Lekin sabab logga tushsin, aks holda nosozlik ko'rinmay qoladi.
     console.error("Content o'qishda xatolik:", error);
     return NextResponse.json(
-      { ok: true, content: { uz: {}, ru: {}, en: {} } },
+      { ok: true, content: { uz: {}, ru: {}, en: {} }, hidden: [] },
       { headers: { "Cache-Control": "no-store" } },
     );
   }
@@ -106,6 +111,46 @@ export async function DELETE(req: NextRequest) {
     console.error("Content tozalashda xatolik:", error);
     return NextResponse.json(
       { ok: false, error: "Tozalab bo'lmadi" },
+      { status: 500 },
+    );
+  }
+}
+
+const hideSchema = z.object({
+  path: z.string().max(300).regex(keyPattern, "Noto'g'ri yo'l"),
+  hidden: z.boolean(),
+});
+
+/** Admin: butun kartani saytdan o'chirish yoki qaytarish */
+export async function PATCH(req: NextRequest) {
+  const denied = requireAdmin(req);
+  if (denied) return denied;
+
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json(
+      { ok: false, error: "Invalid JSON" },
+      { status: 400 },
+    );
+  }
+
+  const parsed = hideSchema.safeParse(body);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { ok: false, error: "Validation failed" },
+      { status: 422 },
+    );
+  }
+
+  try {
+    const hidden = await setHidden(parsed.data.path, parsed.data.hidden);
+    return NextResponse.json({ ok: true, hidden });
+  } catch (error) {
+    console.error("Kartani o'chirishda xatolik:", error);
+    return NextResponse.json(
+      { ok: false, error: "Saqlab bo'lmadi" },
       { status: 500 },
     );
   }

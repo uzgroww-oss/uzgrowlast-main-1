@@ -2,7 +2,9 @@
 const nextConfig = {
   devIndicators: false,
   images: {
-    unoptimized: true,
+    // Next rasmlarni ekran o'lchamiga qarab kichraytiradi va WebP/AVIF beradi.
+    // Ayniqsa public/images ichidagi 6-7 MB lik fayllar uchun muhim.
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: 'https',

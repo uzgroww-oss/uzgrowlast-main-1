@@ -86,7 +86,7 @@ const getStaticProjects = (
 ];
 
 export function Projects() {
-  const { t, tObj } = useLanguage();
+  const { t, tList } = useLanguage();
   const { mList } = useMedia();
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedProject, setSelectedProject] = useState<any | null>(null);
@@ -95,14 +95,14 @@ export function Projects() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   // Merge static (images/status/year) with localized text from context
-  const translatedItems: any[] = tObj("projects.items") || [];
-  // O'chirilgan (bo'sh) rasmlar galereyaga tushmasin — Next/Image bo'sh
-  // manzilda xato beradi
-  const projects = getStaticProjects(mList).map((s, i) => ({
-    ...s,
-    ...(translatedItems[i] || {}),
+  // O'chirilgan loyihalar ro'yxatga tushmaydi. `index` — asl tartib raqami,
+  // rasmlar shunga qarab bog'langan.
+  const staticProjects = getStaticProjects(mList);
+  const projects = tList("projects.items").map(({ index, value }) => ({
+    ...staticProjects[index],
+    ...value,
     // Filtr eng oxirida: yuqoridagi yoyishlar uni bekor qilib yubormasin
-    images: s.images.filter(Boolean),
+    images: (staticProjects[index]?.images ?? []).filter(Boolean),
   }));
 
   const categories = [

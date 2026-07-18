@@ -24,6 +24,22 @@ export interface MediaItem {
 
 export const MEDIA: MediaItem[] = [
   {
+    id: "bosh.hero.poster",
+    label: "Bosh ekran — video o'rnidagi rasm",
+    page: "bosh",
+    block: "Bosh ekran",
+    type: "image",
+    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469050/IMG_5189_%D0%9E%D1%80%D0%B8%D0%B3%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80_atdoz0.jpg",
+  },
+  {
+    id: "rahbariyat.cover",
+    label: "Jamoa oynasi muqovasi",
+    page: "rahbariyat",
+    block: "Muqova",
+    type: "image",
+    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567592/20201201_105521_ugdege.jpg",
+  },
+  {
     id: "rahbariyat.avatar.rustamjon",
     label: "Rustamjon — surati",
     page: "rahbariyat",

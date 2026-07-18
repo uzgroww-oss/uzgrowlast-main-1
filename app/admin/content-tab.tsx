@@ -15,10 +15,18 @@ import {
   ImageOff,
   Eraser,
   Trash2,
+  Undo2,
+  ChevronDown,
 } from "lucide-react";
 import type { Language } from "@/contexts/LanguageContext";
 import type { MediaItem } from "@/lib/media-registry";
-import { LANGUAGES, LANG_LABELS, type ContentField } from "@/lib/content-schema";
+import {
+  LANGUAGES,
+  LANG_LABELS,
+  type CardView,
+  type ContentField,
+} from "@/lib/content-schema";
+import { fieldLabel } from "@/lib/field-labels";
 import { useContentStore } from "./content-store";
 import { UploadField } from "./upload-field";
 
@@ -71,12 +79,46 @@ export function ContentPagesNav({ onNavigate }: { onNavigate?: () => void }) {
 
 /* ---------- Yuqoridagi qidiruv va saqlash paneli ---------- */
 
+const LANG_SHORT: Record<string, string> = {
+  uz: "UZ",
+  ru: "RU",
+  en: "EN",
+  all: "3 til",
+};
+
 export function ContentToolbar() {
-  const { query, setQuery, save, resetAll, saving, changeCount, overrideCount } =
-    useContentStore();
+  const {
+    query,
+    setQuery,
+    save,
+    resetAll,
+    saving,
+    changeCount,
+    overrideCount,
+    langView,
+    setLangView,
+  } = useContentStore();
 
   return (
     <div className="flex flex-wrap items-center gap-2 flex-1">
+      {/* Til tanlash — bir vaqtda bitta til bilan ishlash qulayroq */}
+      <div className="flex rounded-lg border border-border overflow-hidden shrink-0">
+        {(["uz", "ru", "en", "all"] as const).map((v) => (
+          <button
+            key={v}
+            type="button"
+            onClick={() => setLangView(v)}
+            title={v === "all" ? "Uch tilni yonma-yon ko'rish" : LANG_LABELS[v]}
+            className={`px-2.5 h-9 text-xs font-medium transition-colors ${
+              langView === v
+                ? "bg-primary text-primary-foreground"
+                : "bg-background text-muted-foreground hover:bg-muted"
+            }`}
+          >
+            {LANG_SHORT[v]}
+          </button>
+        ))}
+      </div>
       <div className="relative flex-1 min-w-[180px] max-w-md">
         <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
         <Input
@@ -137,6 +179,9 @@ export function ContentTab() {
     clearText,
     clearMedia,
     clearPage,
+    setCardHidden,
+    isCardHidden,
+    visibleLangs,
   } = useContentStore();
 
   if (loading) {
@@ -183,6 +228,7 @@ export function ContentTab() {
                 overrides={textOverrides}
                 onChange={setTextValue}
                 onClear={clearText}
+                langs={visibleLangs}
               />
             ))
           )}
@@ -236,6 +282,34 @@ Davom etamizmi?`,
             </p>
           )}
 
+          {page.cardBlocks.map((block) => (
+            <section key={block.title} className="space-y-3">
+              <BlockTitle title={block.title} count={block.cards.length} icon="🗂" />
+              <div className="space-y-3">
+                {block.cards.map((card) => (
+                  <CardRow
+                    key={card.path}
+                    card={card}
+                    password={password}
+                    hidden={isCardHidden(card.path)}
+                    onToggleHidden={setCardHidden}
+                    currentText={currentText}
+                    savedText={savedText}
+                    setTextValue={setTextValue}
+                    clearText={clearText}
+                    textOverrides={textOverrides}
+                    currentMedia={currentMedia}
+                    savedMedia={savedMedia}
+                    setMediaValue={setMediaValue}
+                    clearMedia={clearMedia}
+                    mediaOverrides={mediaOverrides}
+                    langs={visibleLangs}
+                  />
+                ))}
+              </div>
+            </section>
+          ))}
+
           {page.mediaBlocks.map((block) => (
             <section key={block.title} className="space-y-3">
               <BlockTitle title={block.title} count={block.items.length} icon="🖼" />
@@ -257,19 +331,13 @@ Davom etamizmi?`,
           ))}
 
           {page.blocks.map((block) => (
-            <section key={block.title} className="space-y-3">
-              <div>
-                <BlockTitle
-                  title={block.title}
-                  count={block.fields.length}
-                  shared={block.shared}
-                />
-                {block.hint && (
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {block.hint}
-                  </p>
-                )}
-              </div>
+            <CollapsibleBlock
+              key={block.title}
+              title={block.title}
+              count={block.fields.length}
+              shared={block.shared}
+              hint={block.hint}
+            >
               {block.fields.map((field) => (
                 <TextRow
                   key={field.path}
@@ -279,17 +347,59 @@ Davom etamizmi?`,
                   overrides={textOverrides}
                   onChange={setTextValue}
                   onClear={clearText}
+                  langs={visibleLangs}
                 />
               ))}
-            </section>
+            </CollapsibleBlock>
           ))}
 
-          {page.blocks.length === 0 && page.mediaBlocks.length === 0 && (
-            <EmptyBox text="Bu sahifada tahrirlanadigan narsa yo'q" />
-          )}
+          {page.blocks.length === 0 &&
+            page.mediaBlocks.length === 0 &&
+            page.cardBlocks.length === 0 && (
+              <EmptyBox text="Bu sahifada tahrirlanadigan narsa yo'q" />
+            )}
         </div>
       )}
     </div>
+  );
+}
+
+/** Uzun bo'limlar yopiq holda ochiladi — ekran to'lib ketmasin */
+function CollapsibleBlock({
+  title,
+  count,
+  shared,
+  hint,
+  children,
+}: {
+  title: string;
+  count: number;
+  shared?: boolean;
+  hint?: string;
+  children: React.ReactNode;
+}) {
+  // Kichik bo'limlar darhol ochiq — ularni bosib o'tirishning ma'nosi yo'q
+  const [open, setOpen] = useState(count <= 8);
+
+  return (
+    <section className="space-y-3">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex items-center gap-2 w-full text-left group"
+      >
+        <ChevronDown
+          className={`w-4 h-4 text-muted-foreground transition-transform ${
+            open ? "rotate-180" : ""
+          }`}
+        />
+        <BlockTitle title={title} count={count} shared={shared} />
+      </button>
+      {hint && (
+        <p className="text-xs text-muted-foreground -mt-1 ml-6">{hint}</p>
+      )}
+      {open && <div className="space-y-3">{children}</div>}
+    </section>
   );
 }
 
@@ -320,6 +430,173 @@ function BlockTitle({
         </span>
       )}
     </h3>
+  );
+}
+
+
+/* ---------- Bitta karta: rasmi va barcha matnlari birga ---------- */
+
+function CardRow({
+  card,
+  password,
+  hidden,
+  onToggleHidden,
+  currentText,
+  savedText,
+  setTextValue,
+  clearText,
+  textOverrides,
+  currentMedia,
+  savedMedia,
+  setMediaValue,
+  clearMedia,
+  mediaOverrides,
+  langs,
+}: {
+  card: CardView;
+  langs: Language[];
+  password: string;
+  hidden: boolean;
+  onToggleHidden: (path: string, hide: boolean) => Promise<void>;
+  currentText: (f: ContentField, l: Language) => string;
+  savedText: (f: ContentField, l: Language) => string;
+  setTextValue: (f: ContentField, l: Language, v: string) => void;
+  clearText: (f: ContentField, l: Language) => void;
+  textOverrides: Record<Language, Record<string, string>>;
+  currentMedia: (i: MediaItem) => string;
+  savedMedia: (i: MediaItem) => string;
+  setMediaValue: (i: MediaItem, v: string) => void;
+  clearMedia: (i: MediaItem) => void;
+  mediaOverrides: Record<string, string>;
+}) {
+  const [open, setOpen] = useState(false);
+  const [busy, setBusy] = useState(false);
+
+  const toggle = async () => {
+    if (
+      !hidden &&
+      !window.confirm(
+        `«${card.label}» butunlay o'chiriladi va saytda umuman ko'rinmaydi.
+
+Keyinroq shu yerdan qaytarish mumkin.
+
+Davom etamizmi?`,
+      )
+    )
+      return;
+    setBusy(true);
+    await onToggleHidden(card.path, !hidden);
+    setBusy(false);
+  };
+
+  return (
+    <div
+      className={`bg-background rounded-xl border ${
+        hidden ? "border-red-200 bg-red-50/40" : "border-border"
+      }`}
+    >
+      {/* Sarlavha */}
+      <div className="flex items-center gap-3 p-4">
+        {card.media[0] && !hidden && (
+          <div className="w-10 h-10 rounded-lg bg-muted overflow-hidden shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            {currentMedia(card.media[0]) && (
+              <img
+                src={currentMedia(card.media[0])}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            )}
+          </div>
+        )}
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="flex-1 text-left min-w-0"
+        >
+          <span
+            className={`font-medium ${
+              hidden ? "text-muted-foreground line-through" : "text-foreground"
+            }`}
+          >
+            {card.label}
+          </span>
+          <span className="ml-2 text-xs text-muted-foreground">
+            {card.fields.length} matn
+            {card.media.length > 0 && `, ${card.media.length} rasm`}
+          </span>
+          {hidden && (
+            <span className="ml-2 text-xs text-red-600">o'chirilgan</span>
+          )}
+        </button>
+
+        <button
+          type="button"
+          onClick={toggle}
+          disabled={busy}
+          className={`shrink-0 text-xs inline-flex items-center gap-1 px-2 py-1 rounded-md border transition-colors disabled:opacity-50 ${
+            hidden
+              ? "border-primary/30 text-primary hover:bg-primary/5"
+              : "border-red-200 text-red-600 hover:bg-red-50"
+          }`}
+        >
+          {busy ? (
+            <Loader2 className="w-3 h-3 animate-spin" />
+          ) : hidden ? (
+            <Undo2 className="w-3 h-3" />
+          ) : (
+            <Trash2 className="w-3 h-3" />
+          )}
+          {hidden ? "Qaytarish" : "Kartani o'chirish"}
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="shrink-0 text-muted-foreground hover:text-foreground"
+          aria-label={open ? "Yopish" : "Ochish"}
+        >
+          <ChevronDown
+            className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`}
+          />
+        </button>
+      </div>
+
+      {/* Ichi */}
+      {open && !hidden && (
+        <div className="border-t border-border p-4 space-y-3">
+          {card.media.length > 0 && (
+            <div className="grid md:grid-cols-2 gap-3">
+              {card.media.map((item) => (
+                <MediaRow
+                  key={item.id}
+                  password={password}
+                  item={item}
+                  value={currentMedia(item)}
+                  isOverridden={item.id in mediaOverrides}
+                  isDirty={currentMedia(item) !== savedMedia(item)}
+                  onChange={setMediaValue}
+                  onClear={clearMedia}
+                />
+              ))}
+            </div>
+          )}
+          {card.fields.map((field) => (
+            <TextRow
+              key={field.path}
+              field={field}
+              current={currentText}
+              saved={savedText}
+              overrides={textOverrides}
+              onChange={setTextValue}
+              onClear={clearText}
+              langs={langs}
+              scope={card.path}
+            />
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -428,6 +705,8 @@ function TextRow({
   overrides,
   onChange,
   onClear,
+  langs,
+  scope,
 }: {
   field: ContentField;
   current: (f: ContentField, l: Language) => string;
@@ -435,14 +714,22 @@ function TextRow({
   overrides: Record<Language, Record<string, string>>;
   onChange: (f: ContentField, l: Language, v: string) => void;
   onClear: (f: ContentField, l: Language) => void;
+  langs: Language[];
+  /** Karta ichida bo'lsa nom qisqaradi */
+  scope?: string;
 }) {
   return (
     <div className="bg-background rounded-xl border border-border p-5">
-      <p className="text-xs font-mono text-muted-foreground mb-3 break-all">
-        {field.path}
+      <p
+        className="text-sm font-medium text-foreground mb-3"
+        title={field.path}
+      >
+        {fieldLabel(field.path, scope)}
       </p>
-      <div className="grid lg:grid-cols-3 gap-4">
-        {LANGUAGES.map((lang) => {
+      <div
+        className={`grid gap-4 ${langs.length > 1 ? "lg:grid-cols-3" : ""}`}
+      >
+        {langs.map((lang) => {
           const value = current(field, lang);
           const isOverridden = field.path in (overrides[lang] ?? {});
           const isDirty = value !== saved(field, lang);
@@ -451,8 +738,8 @@ function TextRow({
           return (
             <div key={lang}>
               <div className="flex items-center justify-between mb-1.5 h-6">
-                <label className="text-xs font-medium text-foreground">
-                  {LANG_LABELS[lang]}
+                <label className="text-xs font-medium text-muted-foreground">
+                  {langs.length > 1 ? LANG_LABELS[lang] : ""}
                   {isDirty && <span className="ml-1.5 text-amber-600">•</span>}
                   {!isDirty && isOverridden && value === "" && (
                     <span className="ml-1.5 text-xs text-red-600 font-normal">

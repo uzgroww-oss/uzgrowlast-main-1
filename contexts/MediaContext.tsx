@@ -9,6 +9,7 @@ import {
   ReactNode,
 } from "react";
 import { MEDIA_DEFAULTS } from "@/lib/media-registry";
+import { optimizeImage } from "@/lib/cloudinary";
 
 interface MediaContextType {
   /** id bo'yicha rasm/video manzilini beradi: override → standart */
@@ -41,8 +42,14 @@ export function MediaProvider({ children }: { children: ReactNode }) {
     // Diqqat: bo'sh satr ham to'liq huquqli qiymat — u "admin bu rasmni
     // o'chirgan" degani. Shuning uchun `||` emas, kalit borligi tekshiriladi:
     // aks holda o'chirilgan rasm standart holatiga qaytib qolardi.
+    // Cloudinary rasmlari avtomatik siqiladi (q_auto, f_auto) — bu yagona
+    // joy bo'lgani uchun barcha rasmlarga birdan qo'llanadi
     const m = (id: string) =>
-      Object.hasOwn(overrides, id) ? overrides[id] : (MEDIA_DEFAULTS[id] ?? "");
+      optimizeImage(
+        Object.hasOwn(overrides, id)
+          ? overrides[id]
+          : (MEDIA_DEFAULTS[id] ?? ""),
+      );
     return { m, mList: (ids) => ids.map(m) };
   }, [overrides]);
 

@@ -13,6 +13,13 @@ export const LANGUAGES: Language[] = ["uz", "ru", "en"];
  */
 export type ContentOverrides = Record<Language, Record<string, string>>;
 
+/**
+ * O'chirilgan kartalar shu nom bilan boshlanadigan kalitlarda saqlanadi.
+ * Alohida jadval kerak bo'lmasligi uchun content_overrides ichida yashaydi;
+ * o'chirish tilga bog'liq emas, shuning uchun har doim "uz" qatoriga yoziladi.
+ */
+const HIDDEN_PREFIX = "__hidden__.";
+
 const empty = (): ContentOverrides => ({ uz: {}, ru: {}, en: {} });
 
 // Prototip zanjiriga tegishli nomlar saqlanmaydi ham, o'qilmaydi ham
@@ -22,20 +29,63 @@ function isSafeKey(key: string): boolean {
   return key.split(".").every((part) => !RESERVED.has(part));
 }
 
-export async function readContent(): Promise<ContentOverrides> {
+/** Matnlar va o'chirilgan kartalar — bitta so'rovda */
+export async function readAll(): Promise<{
+  content: ContentOverrides;
+  hidden: string[];
+}> {
   const { data, error } = await supabase()
     .from("content_overrides")
     .select("lang, key, value");
 
   if (error) throw error;
 
-  const result = empty();
+  const content = empty();
+  const hidden: string[] = [];
+
   for (const row of data as { lang: string; key: string; value: string }[]) {
-    if (!LANGUAGES.includes(row.lang as Language)) continue;
     if (!isSafeKey(row.key)) continue;
-    result[row.lang as Language][row.key] = row.value;
+    if (row.key.startsWith(HIDDEN_PREFIX)) {
+      hidden.push(row.key.slice(HIDDEN_PREFIX.length));
+      continue;
+    }
+    if (!LANGUAGES.includes(row.lang as Language)) continue;
+    content[row.lang as Language][row.key] = row.value;
   }
-  return result;
+  return { content, hidden };
+}
+
+export async function readContent(): Promise<ContentOverrides> {
+  return (await readAll()).content;
+}
+
+/** Kartani saytdan yashirish / qaytarish */
+export async function setHidden(
+  path: string,
+  hide: boolean,
+): Promise<string[]> {
+  if (!isSafeKey(path)) throw new Error("Noto'g'ri yo'l");
+  const key = HIDDEN_PREFIX + path;
+  const db = supabase();
+
+  if (hide) {
+    const { error } = await db
+      .from("content_overrides")
+      .upsert(
+        { lang: "uz", key, value: "1", updated_at: new Date().toISOString() },
+        { onConflict: "lang,key" },
+      );
+    if (error) throw error;
+  } else {
+    const { error } = await db
+      .from("content_overrides")
+      .delete()
+      .eq("lang", "uz")
+      .eq("key", key);
+    if (error) throw error;
+  }
+
+  return (await readAll()).hidden;
 }
 
 /**
@@ -55,7 +105,8 @@ export async function patchContent(
     const entries = patch[lang];
     if (!entries) continue;
     for (const [key, value] of Object.entries(entries)) {
-      if (!isSafeKey(key)) continue;
+      // Xizmatchi kalitlarga oddiy matn tahriri orqali tegib bo'lmaydi
+      if (!isSafeKey(key) || key.startsWith(HIDDEN_PREFIX)) continue;
       if (value === null) deletes.push({ lang, key });
       else upserts.push({ lang, key, value });
     }

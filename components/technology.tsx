@@ -14,6 +14,8 @@ import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useMedia } from "@/contexts/MediaContext";
 
+const TECH_KEYS = ["heating", "ventilation", "shelving", "irrigation", "automation"];
+
 const getTechnologies = (m: (id: string) => string) => [
   {
     icon: Thermometer,
@@ -53,9 +55,11 @@ const getTechnologies = (m: (id: string) => string) => [
 ];
 
 export function Technology() {
-  const { t } = useLanguage();
+  const { t, isHidden } = useLanguage();
   const { m } = useMedia();
-  const technologies = getTechnologies(m);
+  const technologies = getTechnologies(m).filter(
+    (_, i) => !isHidden(`technology.${TECH_KEYS[i]}`),
+  );
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 

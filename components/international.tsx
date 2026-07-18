@@ -27,10 +27,10 @@ const projectIcons = [
 const projectBudgets = ["$2.5M", "$1.8M", "$1.2M", "$3.0M"];
 
 export function International() {
-  const { t, tObj } = useLanguage();
+  const { t, tList } = useLanguage();
   const { m, mList } = useMedia();
   const projectImages = getProjectImages(mList);
-  const internationalProjects = tObj("internationalPage.projects") || [];
+  const internationalProjects = tList("internationalPage.projects");
 
   return (
     <section className="py-10 lg:py-14 bg-gradient-to-b from-blue-50 to-white min-h-screen">
@@ -85,7 +85,7 @@ export function International() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {internationalProjects.map((project: any, index: number) => (
+          {internationalProjects.map(({ index, value: project }) => (
             <Card
               key={index}
               className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg"

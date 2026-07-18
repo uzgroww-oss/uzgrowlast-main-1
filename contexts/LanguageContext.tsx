@@ -19,6 +19,17 @@ interface LanguageContextType {
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
   tObj: (key: string) => any;
+  /** Karta admin paneldan o'chirilganmi? */
+  isHidden: (path: string) => boolean;
+  /**
+   * Takrorlanuvchi to'plamni o'chirilgan kartalarsiz qaytaradi.
+   * `index` — ASL tartib raqami: rasmlar tartib bo'yicha bog'langan
+   * joylarda (loyihalar, xalqaro) u o'zgarmasligi kerak.
+   */
+  tList: (
+    path: string,
+    keys?: string[],
+  ) => { key: string; index: number; value: any }[];
 }
 
 // Admin paneli shu obyektni "standart matn" sifatida ko'rsatadi
@@ -35,6 +46,7 @@ export const translations = {
     },
     common: {
       logoAlt: "UZ GROW Logo",
+      about: "Haqida",
       portfolio: "Portfolio",
       mapAlt: "UZ GROW xarita",
 
@@ -1214,6 +1226,7 @@ export const translations = {
     },
     common: {
       logoAlt: "Логотип UZ GROW",
+      about: "О себе",
       portfolio: "Портфолио",
       mapAlt: "Карта UZ GROW",
 
@@ -2410,6 +2423,7 @@ export const translations = {
     },
     common: {
       logoAlt: "UZ GROW Logo",
+      about: "About",
       portfolio: "Portfolio",
       mapAlt: "UZ GROW Location Map",
 
@@ -3611,6 +3625,7 @@ function applyOverrides(base: any, entries?: Record<string, string>): any {
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [currentLang, setCurrentLang] = useState<Language>("uz");
   const [overrides, setOverrides] = useState<Overrides>({});
+  const [hidden, setHidden] = useState<Set<string>>(() => new Set());
 
   // Admin paneldan o'zgartirilgan matnlar. Yuklanmasa yoki xato bo'lsa,
   // sayt koddagi standart matnlar bilan ishlayveradi.
@@ -3619,7 +3634,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     fetch("/api/content")
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => {
-        if (!cancelled && data?.ok && data.content) setOverrides(data.content);
+        if (cancelled || !data?.ok) return;
+        if (data.content) setOverrides(data.content);
+        if (Array.isArray(data.hidden)) setHidden(new Set(data.hidden));
       })
       .catch(() => {});
     return () => {
@@ -3718,8 +3735,32 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     return key;
   };
 
+  const isHidden = (path: string) => hidden.has(path);
+
+  const tList = (path: string, keys?: string[]) => {
+    const source = tObj(path);
+    if (!source || typeof source !== "object") return [];
+
+    const entries: { key: string; index: number; value: any }[] = [];
+    if (Array.isArray(source)) {
+      source.forEach((value, index) =>
+        entries.push({ key: String(index), index, value }),
+      );
+    } else {
+      const order = keys ?? Object.keys(source);
+      order.forEach((key, index) => {
+        if (source[key] !== undefined)
+          entries.push({ key, index, value: source[key] });
+      });
+    }
+
+    return entries.filter((e) => !hidden.has(`${path}.${e.key}`));
+  };
+
   return (
-    <LanguageContext.Provider value={{ currentLang, setLanguage, t, tObj }}>
+    <LanguageContext.Provider
+      value={{ currentLang, setLanguage, t, tObj, isHidden, tList }}
+    >
       {children}
     </LanguageContext.Provider>
   );

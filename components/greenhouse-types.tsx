@@ -30,12 +30,14 @@ import {
 } from "@/components/ui/carousel";
 
 export function GreenhouseTypes() {
-  const { t, tObj } = useLanguage();
+  const { t, tObj, isHidden } = useLanguage();
   const { m, mList } = useMedia();
 
+  // O\'chirilgan turlar ko\'rsatilmaydi
   const greenhouseTypes = [
     {
       id: 9,
+      key: "vertical",
       title: t("greenhouse.vertical.title"),
       description: t("greenhouse.vertical.description"),
       images: mList(mediaIds("issiqxona.vertical", 7)),
@@ -49,6 +51,7 @@ export function GreenhouseTypes() {
     },
     {
       id: 4,
+      key: "mini",
       title: t("greenhouse.mini.title"),
       description: t("greenhouse.mini.description"),
       images: mList(mediaIds("issiqxona.mini", 3)),
@@ -62,6 +65,7 @@ export function GreenhouseTypes() {
     },
     {
       id: 5,
+      key: "oddiy",
       title: t("greenhouse.oddiy.title"),
       description: t("greenhouse.oddiy.description"),
       images: mList(mediaIds("issiqxona.oddiy", 5)),
@@ -75,6 +79,7 @@ export function GreenhouseTypes() {
     },
     {
       id: 6,
+      key: "gektar",
       title: t("greenhouse.gektar.title"),
       description: t("greenhouse.gektar.description"),
       images: mList(mediaIds("issiqxona.gektar", 3)),
@@ -86,7 +91,8 @@ export function GreenhouseTypes() {
       maintenance: t("greenhouse.gektar.maintenance"),
       color: "bg-indigo-500",
     },
-  ];
+    // O'chirilgan turlar saytda ko'rsatilmaydi
+  ].filter((type) => !isHidden(`greenhouse.${type.key}`));
 
   return (
     <section className="py-10 lg:py-14 bg-linear-to-b from-green-50 to-white">

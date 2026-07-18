@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { MediaProvider } from "@/contexts/MediaContext";
-import { LoadingScreen } from "@/components/loading-screen";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -82,10 +81,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <LanguageProvider>
-          <MediaProvider>
-            <LoadingScreen />
-            {children}
-          </MediaProvider>
+          <MediaProvider>{children}</MediaProvider>
         </LanguageProvider>
         <Analytics />
       </body>

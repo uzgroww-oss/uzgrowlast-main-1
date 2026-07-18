@@ -34,6 +34,10 @@ interface ContentStore {
   setActivePage: (key: string) => void;
   query: string;
   setQuery: (q: string) => void;
+  /** Ekranda ko'rsatiladigan tillar: bittasi yoki hammasi */
+  langView: Language | "all";
+  setLangView: (v: Language | "all") => void;
+  visibleLangs: Language[];
   /** Qidiruv faol bo'lsa natijalar, aks holda null */
   searchResults: ContentField[] | null;
 
@@ -43,6 +47,9 @@ interface ContentStore {
   clearMedia: (item: MediaItem) => void;
   /** Tanlangan sahifadagi hamma matn va rasmni bo'shatish */
   clearPage: (pageKey: string) => void;
+  /** Butun kartani saytdan o'chirish yoki qaytarish (darhol saqlanadi) */
+  setCardHidden: (cardPath: string, hide: boolean) => Promise<void>;
+  isCardHidden: (cardPath: string) => boolean;
 
   currentText: (field: ContentField, lang: Language) => string;
   savedText: (field: ContentField, lang: Language) => string;
@@ -94,10 +101,13 @@ export function ContentProvider({
 
   const [text, setText] = useState<TextOverrides>(emptyText);
   const [media, setMedia] = useState<MediaOverrides>({});
+  const [hidden, setHidden] = useState<string[]>([]);
   const [textDrafts, setTextDrafts] = useState<Record<string, string>>({});
   const [mediaDrafts, setMediaDrafts] = useState<Record<string, string>>({});
   const [activePage, setActivePage] = useState(pages[0]?.key ?? "");
   const [query, setQuery] = useState("");
+  // Uch til birdan ko'rsatilsa ekran to'lib ketadi — odatda bitta til yetarli
+  const [langView, setLangView] = useState<Language | "all">("uz");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -112,6 +122,7 @@ export function ContentProvider({
         fetch("/api/media").then((r) => r.json()),
       ]);
       setText(c?.content ?? emptyText());
+      setHidden(Array.isArray(c?.hidden) ? c.hidden : []);
       setMedia(m?.media ?? {});
       setTextDrafts({});
       setMediaDrafts({});
@@ -186,6 +197,32 @@ export function ContentProvider({
       return next;
     });
   };
+
+  /**
+   * Karta o'chirish darhol saqlanadi — u matn tahriridan farqli o'laroq
+   * bitta aniq amal va uni "qoralama" holatida ushlab turishning ma'nosi yo'q.
+   */
+  const setCardHidden = async (cardPath: string, hide: boolean) => {
+    setError("");
+    try {
+      const res = await fetch("/api/content", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${password}`,
+        },
+        body: JSON.stringify({ path: cardPath, hidden: hide }),
+      });
+      if (!res.ok) throw new Error(`Xatolik: ${res.status}`);
+      const data = await res.json();
+      setHidden(Array.isArray(data.hidden) ? data.hidden : []);
+      setSaved(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Saqlashda xatolik");
+    }
+  };
+
+  const isCardHidden = (cardPath: string) => hidden.includes(cardPath);
 
   /* ---------- O'zgarishlar ---------- */
 
@@ -362,10 +399,15 @@ export function ContentProvider({
     setActivePage,
     query,
     setQuery,
+    langView,
+    setLangView,
+    visibleLangs: langView === "all" ? LANGUAGES : [langView],
     searchResults,
     clearText,
     clearMedia,
     clearPage,
+    setCardHidden,
+    isCardHidden,
     currentText,
     savedText,
     setTextValue,
