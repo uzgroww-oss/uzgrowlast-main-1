@@ -28,7 +28,7 @@ export async function GET() {
     // Sayt standart rasmlar bilan ishlayveradi, lekin sabab yozib qo'yiladi
     console.error("Media o'qishda xatolik:", error);
     return NextResponse.json(
-      { ok: true, media: {} },
+      { ok: true, degraded: true, media: {} },
       { headers: { "Cache-Control": "no-store" } },
     );
   }

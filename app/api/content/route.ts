@@ -53,8 +53,10 @@ export async function GET() {
     // Sayt ishdan chiqmasin — standart matnlar bilan ishlayveradi.
     // Lekin sabab logga tushsin, aks holda nosozlik ko'rinmay qoladi.
     console.error("Content o'qishda xatolik:", error);
+    // `degraded` — admin panel buni ko'rib ogohlantirish chiqaradi.
+    // Sayt esa standart matnlar bilan ishlayveradi.
     return NextResponse.json(
-      { ok: true, content: { uz: {}, ru: {}, en: {} }, hidden: [] },
+      { ok: true, degraded: true, content: { uz: {}, ru: {}, en: {} }, hidden: [] },
       { headers: { "Cache-Control": "no-store" } },
     );
   }

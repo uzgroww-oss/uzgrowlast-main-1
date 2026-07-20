@@ -13,9 +13,7 @@ import {
   AlertCircle,
   ExternalLink,
   ImageOff,
-  Eraser,
   Trash2,
-  Undo2,
   ChevronDown,
 } from "lucide-react";
 import type { Language } from "@/contexts/LanguageContext";
@@ -91,10 +89,8 @@ export function ContentToolbar() {
     query,
     setQuery,
     save,
-    resetAll,
     saving,
     changeCount,
-    overrideCount,
     langView,
     setLangView,
   } = useContentStore();
@@ -141,16 +137,6 @@ export function ContentToolbar() {
         )}
         Saqlash{changeCount > 0 && ` (${changeCount})`}
       </Button>
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={resetAll}
-        disabled={saving || overrideCount === 0}
-        className="h-9"
-        title="Barcha o'zgarishlarni bekor qilib, saytni dastlabki holatiga qaytarish"
-      >
-        <RotateCcw className="w-4 h-4" />
-      </Button>
     </div>
   );
 }
@@ -166,6 +152,7 @@ export function ContentTab() {
     loading,
     error,
     saved,
+    degraded,
     changeCount,
     overrideCount,
     currentText,
@@ -178,8 +165,7 @@ export function ContentTab() {
     mediaOverrides,
     clearText,
     clearMedia,
-    clearPage,
-    setCardHidden,
+    deleteCard,
     isCardHidden,
     visibleLangs,
   } = useContentStore();
@@ -196,6 +182,20 @@ export function ContentTab() {
 
   return (
     <div className="space-y-5">
+      {degraded && (
+        <div className="text-sm bg-amber-50 border border-amber-300 rounded-lg p-4">
+          <p className="font-semibold text-amber-900 flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 shrink-0" />
+            Ma'lumotlar bazasiga ulanib bo'lmadi
+          </p>
+          <p className="text-amber-800 mt-1.5 leading-relaxed">
+            Hozir o'zgartirishlaringiz <strong>saqlanmaydi</strong> va saytda
+            ko'rinmaydi. Serverda <code>SUPABASE_URL</code> va{" "}
+            <code>SUPABASE_SERVICE_ROLE_KEY</code> sozlamalari kiritilganini
+            tekshiring, keyin saytni qayta joylashtiring.
+          </p>
+        </div>
+      )}
       {error && (
         <p className="text-sm text-red-600 flex items-center gap-2 bg-red-50 border border-red-200 rounded-lg p-3">
           <AlertCircle className="w-4 h-4 shrink-0" /> {error}
@@ -241,26 +241,6 @@ export function ContentTab() {
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h2 className="text-xl font-bold text-foreground">{page.title}</h2>
             <div className="flex items-center gap-3">
-              <button
-                type="button"
-                onClick={() => {
-                  if (
-                    window.confirm(
-                      `«${page.title}» sahifasidagi BARCHA matn (3 tilda) va rasmlar bo'shatiladi — sayt bu joylarda bo'sh ko'rinadi.
-
-Bu hali saqlanmaydi: fikringizdan qaytsangiz, «Saqlash»ni bosmasdan sahifani yangilang.
-
-Davom etamizmi?`,
-                    )
-                  )
-                    clearPage(page.key);
-                }}
-                className="inline-flex items-center gap-1.5 text-sm text-red-600 hover:text-red-700"
-                title="Sahifadagi hamma narsani bo'shatish"
-              >
-                <Eraser className="w-3.5 h-3.5" />
-                Sahifani bo'shatish
-              </button>
               {page.path && (
                 <a
                   href={page.path}
@@ -282,17 +262,20 @@ Davom etamizmi?`,
             </p>
           )}
 
-          {page.cardBlocks.map((block) => (
+          {page.cardBlocks.map((block) => {
+            // O'chirilganlar butunlay yo'qoladi — qaytarish imkoni yo'q
+            const cards = block.cards.filter((c) => !isCardHidden(c.path));
+            if (cards.length === 0) return null;
+            return (
             <section key={block.title} className="space-y-3">
-              <BlockTitle title={block.title} count={block.cards.length} icon="🗂" />
+              <BlockTitle title={block.title} count={cards.length} icon="🗂" />
               <div className="space-y-3">
-                {block.cards.map((card) => (
+                {cards.map((card) => (
                   <CardRow
                     key={card.path}
                     card={card}
                     password={password}
-                    hidden={isCardHidden(card.path)}
-                    onToggleHidden={setCardHidden}
+                    onDelete={deleteCard}
                     currentText={currentText}
                     savedText={savedText}
                     setTextValue={setTextValue}
@@ -308,7 +291,8 @@ Davom etamizmi?`,
                 ))}
               </div>
             </section>
-          ))}
+            );
+          })}
 
           {page.mediaBlocks.map((block) => (
             <section key={block.title} className="space-y-3">
@@ -439,8 +423,7 @@ function BlockTitle({
 function CardRow({
   card,
   password,
-  hidden,
-  onToggleHidden,
+  onDelete,
   currentText,
   savedText,
   setTextValue,
@@ -456,8 +439,7 @@ function CardRow({
   card: CardView;
   langs: Language[];
   password: string;
-  hidden: boolean;
-  onToggleHidden: (path: string, hide: boolean) => Promise<void>;
+  onDelete: (path: string) => Promise<void>;
   currentText: (f: ContentField, l: Language) => string;
   savedText: (f: ContentField, l: Language) => string;
   setTextValue: (f: ContentField, l: Language, v: string) => void;
@@ -472,98 +454,70 @@ function CardRow({
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
 
-  const toggle = async () => {
-    if (
-      !hidden &&
-      !window.confirm(
-        `«${card.label}» butunlay o'chiriladi va saytda umuman ko'rinmaydi.
+  const remove = async () => {
+    const ok = window.confirm(
+      `«${card.label}» butunlay o'chiriladi.
 
-Keyinroq shu yerdan qaytarish mumkin.
+` +
+        `DIQQAT: buni qaytarib bo'lmaydi — karta saytdan ham, shu paneldan ham yo'qoladi.
 
-Davom etamizmi?`,
-      )
-    )
-      return;
+` +
+        `O'chirilsinmi?`,
+    );
+    if (!ok) return;
     setBusy(true);
-    await onToggleHidden(card.path, !hidden);
+    await onDelete(card.path);
     setBusy(false);
   };
 
   return (
-    <div
-      className={`bg-background rounded-xl border ${
-        hidden ? "border-red-200 bg-red-50/40" : "border-border"
-      }`}
-    >
+    <div className="bg-background rounded-xl border border-border">
       {/* Sarlavha */}
       <div className="flex items-center gap-3 p-4">
-        {card.media[0] && !hidden && (
+        {card.media[0] && currentMedia(card.media[0]) && (
           <div className="w-10 h-10 rounded-lg bg-muted overflow-hidden shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            {currentMedia(card.media[0]) && (
-              <img
-                src={currentMedia(card.media[0])}
-                alt=""
-                className="w-full h-full object-cover"
-              />
-            )}
+            <img
+              src={currentMedia(card.media[0])}
+              alt=""
+              className="w-full h-full object-cover"
+            />
           </div>
         )}
+
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="flex-1 text-left min-w-0"
+          className="flex-1 text-left min-w-0 flex items-center gap-2"
         >
-          <span
-            className={`font-medium ${
-              hidden ? "text-muted-foreground line-through" : "text-foreground"
-            }`}
-          >
+          <span className="font-medium text-foreground truncate">
             {card.label}
           </span>
-          <span className="ml-2 text-xs text-muted-foreground">
-            {card.fields.length} matn
-            {card.media.length > 0 && `, ${card.media.length} rasm`}
-          </span>
-          {hidden && (
-            <span className="ml-2 text-xs text-red-600">o'chirilgan</span>
-          )}
+          <ChevronDown
+            className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform ${
+              open ? "rotate-180" : ""
+            }`}
+          />
         </button>
 
         <button
           type="button"
-          onClick={toggle}
+          onClick={remove}
           disabled={busy}
-          className={`shrink-0 text-xs inline-flex items-center gap-1 px-2 py-1 rounded-md border transition-colors disabled:opacity-50 ${
-            hidden
-              ? "border-primary/30 text-primary hover:bg-primary/5"
-              : "border-red-200 text-red-600 hover:bg-red-50"
-          }`}
+          title="Kartani butunlay o'chirish"
+          aria-label={`${card.label} — o'chirish`}
+          className="shrink-0 w-8 h-8 rounded-md text-muted-foreground hover:text-red-600 hover:bg-red-50 flex items-center justify-center transition-colors disabled:opacity-50"
         >
           {busy ? (
-            <Loader2 className="w-3 h-3 animate-spin" />
-          ) : hidden ? (
-            <Undo2 className="w-3 h-3" />
+            <Loader2 className="w-4 h-4 animate-spin" />
           ) : (
-            <Trash2 className="w-3 h-3" />
+            <Trash2 className="w-4 h-4" />
           )}
-          {hidden ? "Qaytarish" : "Kartani o'chirish"}
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="shrink-0 text-muted-foreground hover:text-foreground"
-          aria-label={open ? "Yopish" : "Ochish"}
-        >
-          <ChevronDown
-            className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`}
-          />
         </button>
       </div>
 
       {/* Ichi */}
-      {open && !hidden && (
+      {open && (
         <div className="border-t border-border p-4 space-y-3">
           {card.media.length > 0 && (
             <div className="grid md:grid-cols-2 gap-3">

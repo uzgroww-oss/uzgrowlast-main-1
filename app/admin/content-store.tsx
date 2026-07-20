@@ -45,10 +45,12 @@ interface ContentStore {
   clearText: (field: ContentField, lang: Language) => void;
   /** Rasmni o'chirish — saytda ko'rinmaydi */
   clearMedia: (item: MediaItem) => void;
-  /** Tanlangan sahifadagi hamma matn va rasmni bo'shatish */
-  clearPage: (pageKey: string) => void;
-  /** Butun kartani saytdan o'chirish yoki qaytarish (darhol saqlanadi) */
-  setCardHidden: (cardPath: string, hide: boolean) => Promise<void>;
+  /**
+   * Kartani butunlay o'chiradi. Qaytarib bo'lmaydi: karta saytdan ham,
+   * shu paneldan ham yo'qoladi.
+   */
+  deleteCard: (cardPath: string) => Promise<void>;
+  /** O'chirilgan kartalar ro'yxatdan chiqarib tashlanadi */
   isCardHidden: (cardPath: string) => boolean;
 
   currentText: (field: ContentField, lang: Language) => string;
@@ -68,12 +70,13 @@ interface ContentStore {
 
   changeCount: number;
   overrideCount: number;
+  /** Baza ulanmagan — o'zgarishlar saqlanmaydi */
+  degraded: boolean;
   loading: boolean;
   saving: boolean;
   error: string;
   saved: boolean;
   save: () => Promise<void>;
-  resetAll: () => Promise<void>;
 }
 
 const Ctx = createContext<ContentStore | undefined>(undefined);
@@ -112,6 +115,7 @@ export function ContentProvider({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [saved, setSaved] = useState(false);
+  const [degraded, setDegraded] = useState(false);
 
   const load = async () => {
     setLoading(true);
@@ -124,6 +128,8 @@ export function ContentProvider({
       setText(c?.content ?? emptyText());
       setHidden(Array.isArray(c?.hidden) ? c.hidden : []);
       setMedia(m?.media ?? {});
+      // Server bazaga ulanolmasa, o'zgarishlarni saqlash ham ishlamaydi
+      setDegraded(Boolean(c?.degraded || m?.degraded));
       setTextDrafts({});
       setMediaDrafts({});
     } catch {
@@ -176,33 +182,14 @@ export function ContentProvider({
     setMediaDrafts((prev) => ({ ...prev, [item.id]: "" }));
   };
 
-  /** Sahifadagi barcha matn (3 tilda) va rasmlarni bo'shatadi */
-  const clearPage = (pageKey: string) => {
-    const page = pages.find((p) => p.key === pageKey);
-    if (!page) return;
-    setSaved(false);
-
-    setTextDrafts((prev) => {
-      const next = { ...prev };
-      for (const b of page.blocks)
-        for (const f of b.fields)
-          for (const l of LANGUAGES) next[draftKey(l, f.path)] = "";
-      return next;
-    });
-
-    setMediaDrafts((prev) => {
-      const next = { ...prev };
-      for (const b of page.mediaBlocks)
-        for (const i of b.items) next[i.id] = "";
-      return next;
-    });
-  };
+  /* ---------- Kartani o'chirish ---------- */
 
   /**
-   * Karta o'chirish darhol saqlanadi — u matn tahriridan farqli o'laroq
-   * bitta aniq amal va uni "qoralama" holatida ushlab turishning ma'nosi yo'q.
+   * Darhol saqlanadi va qaytarib bo'lmaydi — karta saytdan ham, shu
+   * paneldan ham yo'qoladi. Shuning uchun chaqirishdan oldin
+   * foydalanuvchidan tasdiq olinishi shart.
    */
-  const setCardHidden = async (cardPath: string, hide: boolean) => {
+  const deleteCard = async (cardPath: string) => {
     setError("");
     try {
       const res = await fetch("/api/content", {
@@ -211,14 +198,13 @@ export function ContentProvider({
           "Content-Type": "application/json",
           Authorization: `Bearer ${password}`,
         },
-        body: JSON.stringify({ path: cardPath, hidden: hide }),
+        body: JSON.stringify({ path: cardPath, hidden: true }),
       });
       if (!res.ok) throw new Error(`Xatolik: ${res.status}`);
       const data = await res.json();
       setHidden(Array.isArray(data.hidden) ? data.hidden : []);
-      setSaved(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Saqlashda xatolik");
+      setError(err instanceof Error ? err.message : "O'chirishda xatolik");
     }
   };
 
@@ -347,34 +333,6 @@ export function ContentProvider({
     }
   };
 
-  const resetAll = async () => {
-    if (
-      !window.confirm(
-        "Barcha o'zgartirilgan matn va rasmlar o'chiriladi, sayt dastlabki holatiga qaytadi. Davom etamizmi?",
-      )
-    )
-      return;
-    setSaving(true);
-    setError("");
-    try {
-      await Promise.all([
-        fetch("/api/content", {
-          method: "DELETE",
-          headers: { Authorization: `Bearer ${password}` },
-        }),
-        fetch("/api/media", {
-          method: "DELETE",
-          headers: { Authorization: `Bearer ${password}` },
-        }),
-      ]);
-      await load();
-    } catch {
-      setError("Tozalashda xatolik");
-    } finally {
-      setSaving(false);
-    }
-  };
-
   // Qidiruv barcha sahifalar bo'ylab ishlaydi
   const searchResults = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -405,8 +363,7 @@ export function ContentProvider({
     searchResults,
     clearText,
     clearMedia,
-    clearPage,
-    setCardHidden,
+    deleteCard,
     isCardHidden,
     currentText,
     savedText,
@@ -420,12 +377,12 @@ export function ContentProvider({
     pageIsEdited,
     changeCount,
     overrideCount,
+    degraded,
     loading,
     saving,
     error,
     saved,
     save,
-    resetAll,
   };
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
