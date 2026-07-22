@@ -85,7 +85,7 @@ export default function XizmatlarPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-12 lg:pt-16 pb-10 lg:pb-14 bg-gradient-to-br from-primary/10 via-background to-secondary/20">
+      <section className="pt-12 lg:pt-16 pb-10 lg:pb-14 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl">
             <span className="inline-block px-4 py-2 bg-[#24B14B]/10 text-primary rounded-full text-sm font-medium mb-6">

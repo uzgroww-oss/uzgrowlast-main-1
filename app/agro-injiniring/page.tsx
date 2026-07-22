@@ -71,7 +71,7 @@ export default function AgroEngineeringPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-green-50 to-blue-50">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-10">
             <div className="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -137,7 +137,7 @@ export default function AgroEngineeringPage() {
       </section>
 
       {/* Technologies */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">

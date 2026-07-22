@@ -33,7 +33,7 @@ export function International() {
   const internationalProjects = tList("internationalPage.projects");
 
   return (
-    <section className="py-10 lg:py-14 bg-gradient-to-b from-blue-50 to-white min-h-screen">
+    <section className="py-10 lg:py-14 bg-background min-h-screen">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <div className="flex justify-center mb-6">

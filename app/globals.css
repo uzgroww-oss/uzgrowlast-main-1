@@ -4,16 +4,16 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.98 0.02 45);
-  /* Warm spring cream */
+  --background: oklch(1 0 0);
+  /* Sof oq fon */
   --foreground: oklch(0.25 0.08 35);
   /* Warm brown text */
-  --card: oklch(0.99 0.01 50);
-  /* Light spring white */
+  --card: oklch(1 0 0);
+  /* Sof oq karta */
   --card-foreground: oklch(0.25 0.08 35);
   /* Warm brown text */
-  --popover: oklch(0.99 0.01 50);
-  /* Light spring white */
+  --popover: oklch(1 0 0);
+  /* Sof oq */
   --popover-foreground: oklch(0.25 0.08 35);
   /* Warm brown text */
   --primary: oklch(0.45 0.14 145);
@@ -22,8 +22,8 @@
   /* Soft spring yellow */
   --secondary-foreground: oklch(0.3 0.08 35);
   /* Warm brown */
-  --muted: oklch(0.95 0.01 55);
-  /* Light spring muted */
+  --muted: oklch(0.97 0 0);
+  /* Neytral och kulrang */
   --muted-foreground: oklch(0.45 0.05 40);
   /* Soft muted brown */
   --accent: oklch(0.4 0.12 220);

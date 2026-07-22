@@ -95,7 +95,7 @@ export function GreenhouseTypes() {
   ].filter((type) => !isHidden(`greenhouse.${type.key}`));
 
   return (
-    <section className="py-10 lg:py-14 bg-linear-to-b from-green-50 to-white">
+    <section className="py-10 lg:py-14 bg-background">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-10">

@@ -8,11 +8,15 @@ import {
   ChevronDown,
   Download,
   GraduationCap,
+  Leaf,
   Lightbulb,
   Mail,
   MapPin,
   Phone,
+  Target,
+  Trophy,
   User,
+  Users,
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -33,6 +37,9 @@ function parseStat(text: string): { value: string; label: string } | null {
   };
 }
 
+// Statistika kartalari uchun ketma-ket, mazmunli ikonkalar
+const STAT_ICONS = [Users, Target, Award];
+
 /** Oynadagi bitta yopiladigan bo'lim */
 function Section({
   icon: Icon,
@@ -47,25 +54,23 @@ function Section({
   const [open, setOpen] = useState(false);
 
   return (
-    <div>
+    <div className="bg-background rounded-xl border border-border overflow-hidden">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center gap-3 p-4 text-left hover:bg-muted/40 transition-colors"
       >
-        <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-          <Icon className="w-4 h-4 text-primary" />
+        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+          <Icon className="w-5 h-5 text-primary" />
         </div>
-        <span className="flex-1 font-semibold text-foreground text-sm">
-          {title}
-        </span>
+        <span className="flex-1 font-semibold text-foreground">{title}</span>
         <ChevronDown
-          className={`w-4 h-4 text-muted-foreground transition-transform ${
+          className={`w-5 h-5 text-muted-foreground transition-transform ${
             open ? "rotate-180" : ""
           }`}
         />
       </button>
-      {open && <div className="px-4 pb-4 sm:pl-16">{children}</div>}
+      {open && <div className="px-4 pb-4 sm:pl-[68px]">{children}</div>}
     </div>
   );
 }
@@ -119,11 +124,11 @@ export function TeamMemberModal({
         role="dialog"
         aria-modal="true"
         aria-label={member.name}
-        className="bg-background rounded-2xl w-full max-w-2xl max-h-[92vh] overflow-y-auto no-scrollbar shadow-2xl"
+        className="bg-background rounded-3xl w-full max-w-3xl max-h-[92vh] overflow-y-auto no-scrollbar shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Muqova */}
-        <div className="relative h-32 sm:h-40 bg-muted">
+        <div className="relative h-40 sm:h-52 bg-muted">
           <MediaImg
             src={coverSrc}
             alt=""
@@ -133,90 +138,97 @@ export function TeamMemberModal({
             type="button"
             onClick={onClose}
             aria-label="Yopish"
-            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-foreground flex items-center justify-center shadow-sm transition-colors"
+            className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-foreground flex items-center justify-center shadow-md transition-colors"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Sarlavha: faqat AVATAR muqova ustiga chiqadi, ism esa oq fonda
-            qoladi — aks holda matn rasm ustida o'qilmay qoladi */}
-        <div className="px-6">
-          <div className="flex items-end gap-4">
-            <div className="relative w-24 h-24 sm:w-28 sm:h-28 -mt-12 sm:-mt-14 rounded-full ring-4 ring-background bg-muted overflow-hidden shrink-0">
+        {/* Sarlavha: faqat AVATAR muqova ustiga chiqadi */}
+        <div className="px-6 sm:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-6">
+            <div className="relative w-28 h-28 sm:w-36 sm:h-36 -mt-14 sm:-mt-20 rounded-full ring-[5px] ring-background bg-muted overflow-hidden shrink-0">
               {member.avatar ? (
                 <Image
                   src={member.avatar}
                   alt={member.name}
                   fill
                   className="object-cover object-top"
-                  sizes="112px"
+                  sizes="144px"
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
-                  <User className="w-10 h-10 text-muted-foreground/50" />
+                  <User className="w-12 h-12 text-muted-foreground/50" />
                 </div>
               )}
             </div>
 
-            <div className="min-w-0 pb-1">
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground leading-tight">
+            <div className="min-w-0 pb-1 sm:pb-2">
+              <h3 className="text-2xl sm:text-3xl font-bold text-foreground leading-tight">
                 {member.name}
               </h3>
-              <div className="flex flex-wrap items-center gap-2 mt-1.5">
-                <span className="px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+              <div className="flex flex-wrap items-center gap-2 mt-2">
+                <span className="px-3 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold">
                   {member.position}
                 </span>
-                <span className="text-xs text-muted-foreground">· {brand}</span>
+                <span className="text-sm text-muted-foreground">
+                  · {brand}
+                </span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="p-6 space-y-4">
+        <div className="p-6 sm:p-8 space-y-5">
           {/* Haqida */}
           {member.bio && (
-            <div className="rounded-xl bg-primary/5 border-l-4 border-primary p-4">
-              <p className="text-sm font-semibold text-foreground mb-1.5">
-{t("common.about")}
+            <div className="rounded-2xl bg-primary/5 border-l-4 border-primary p-5">
+              <p className="font-semibold text-foreground mb-2 flex items-center gap-2.5">
+                <span className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <Leaf className="w-5 h-5 text-primary" />
+                </span>
+                {t("common.about")}
               </p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 {member.bio}
               </p>
             </div>
           )}
 
-          {/* Raqamlar */}
+          {/* Raqamlar — har biriga o'z ikonkasi */}
           {stats.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {stats.map((stat, i) => (
-                <div
-                  key={i}
-                  className="rounded-xl border border-border p-3 flex items-center gap-3"
-                >
-                  <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <Award className="w-4 h-4 text-primary" />
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {stats.map((stat, i) => {
+                const Icon = STAT_ICONS[i] ?? Trophy;
+                return (
+                  <div
+                    key={i}
+                    className="rounded-2xl border border-border p-4 flex items-center gap-3.5"
+                  >
+                    <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-lg font-bold text-foreground leading-tight">
+                        {stat.value}
+                      </p>
+                      <p className="text-sm text-muted-foreground truncate">
+                        {stat.label}
+                      </p>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <p className="font-bold text-foreground leading-tight">
-                      {stat.value}
-                    </p>
-                    <p className="text-xs text-muted-foreground truncate">
-                      {stat.label}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
 
           {/* Bo'limlar */}
-          <div className="rounded-xl border border-border divide-y divide-border overflow-hidden">
+          <div className="space-y-3">
             {education.length > 0 && (
               <Section icon={GraduationCap} title={t("team.education")}>
-                <ul className="space-y-1">
+                <ul className="space-y-1.5">
                   {education.map((item, i) => (
-                    <li key={i} className="text-sm text-muted-foreground">
+                    <li key={i} className="text-muted-foreground">
                       {item}
                     </li>
                   ))}
@@ -226,21 +238,19 @@ export function TeamMemberModal({
 
             {member.experience && (
               <Section icon={Briefcase} title={t("team.experience")}>
-                <p className="text-sm text-muted-foreground">
-                  {member.experience}
-                </p>
+                <p className="text-muted-foreground">{member.experience}</p>
               </Section>
             )}
 
             {achievements.length > 0 && (
-              <Section icon={Award} title={t("team.achievements")}>
-                <ul className="space-y-1.5">
+              <Section icon={Trophy} title={t("team.achievements")}>
+                <ul className="space-y-2">
                   {achievements.map((item, i) => (
                     <li
                       key={i}
-                      className="text-sm text-muted-foreground flex items-start gap-2"
+                      className="text-muted-foreground flex items-start gap-2.5"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -254,7 +264,7 @@ export function TeamMemberModal({
                   {skills.map((skill, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-1 bg-primary/10 text-primary rounded-full text-xs"
+                      className="px-3 py-1.5 bg-primary/10 text-primary rounded-full text-sm"
                     >
                       {skill}
                     </span>
@@ -265,28 +275,28 @@ export function TeamMemberModal({
 
             {(member.email || member.phone || member.location) && (
               <Section icon={Phone} title={t("team.contact")}>
-                <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                <div className="flex flex-wrap gap-x-6 gap-y-2.5">
                   {member.email && (
                     <a
                       href={`mailto:${member.email}`}
-                      className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors"
+                      className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                     >
-                      <Mail className="w-3.5 h-3.5 shrink-0" />
+                      <Mail className="w-4 h-4 shrink-0" />
                       {member.email}
                     </a>
                   )}
                   {member.phone && (
                     <a
                       href={`tel:${tel}`}
-                      className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors"
+                      className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                     >
-                      <Phone className="w-3.5 h-3.5 shrink-0" />
+                      <Phone className="w-4 h-4 shrink-0" />
                       {member.phone}
                     </a>
                   )}
                   {member.location && (
-                    <span className="flex items-center gap-1.5 text-muted-foreground">
-                      <MapPin className="w-3.5 h-3.5 shrink-0" />
+                    <span className="flex items-center gap-2 text-muted-foreground">
+                      <MapPin className="w-4 h-4 shrink-0" />
                       {member.location}
                     </span>
                   )}
@@ -297,9 +307,14 @@ export function TeamMemberModal({
         </div>
 
         {/* Pastki harakatlar: eng o'ngdagisi asosiy */}
-        <div className="sticky bottom-0 bg-background border-t border-border p-4 flex flex-col sm:flex-row gap-2">
+        <div className="sticky bottom-0 bg-background border-t border-border p-4 sm:px-8 flex flex-col sm:flex-row gap-3">
           {member.resume && (
-            <Button variant="outline" className="sm:flex-1 gap-2" asChild>
+            <Button
+              variant="outline"
+              size="lg"
+              className="sm:flex-1 gap-2"
+              asChild
+            >
               <a href={member.resume} download>
                 <Download className="w-4 h-4" />
                 {t("common.downloadResume")}
@@ -309,6 +324,7 @@ export function TeamMemberModal({
           {member.email && (
             <Button
               variant="outline"
+              size="lg"
               className="sm:flex-1 gap-2 border-primary/40 text-primary hover:bg-primary/5"
               asChild
             >
@@ -319,7 +335,7 @@ export function TeamMemberModal({
             </Button>
           )}
           {member.phone && (
-            <Button className="sm:flex-1 gap-2" asChild>
+            <Button size="lg" className="sm:flex-1 gap-2" asChild>
               <a href={`tel:${tel}`}>
                 <Phone className="w-4 h-4" />
                 {t("common.makeCall")}
