@@ -97,8 +97,17 @@ export function ContentProvider({
   }, []);
   const mediaIndex = useMemo(() => {
     const map = new Map<string, MediaItem>();
-    for (const p of pages)
+    for (const p of pages) {
       for (const b of p.mediaBlocks) for (const i of b.items) map.set(i.id, i);
+      // KARTA ichidagi rasmlar ham albatta shu yerga tushishi kerak.
+      // Ular (jamoa a'zosining surati, loyiha rasmlari, issiqxona turi
+      // suratlari...) mediaBlocks dan ATAYLAB chiqarib tashlangan — bir
+      // rasm ikki joyda ko'rinmasin deb (lib/content-schema.ts). Agar bu
+      // yerda qo'shilmasa, ularning o'zgarishi hisobga olinmaydi va
+      // «Saqlash» tugmasi bosilmaydigan bo'lib qoladi.
+      for (const cb of p.cardBlocks)
+        for (const c of cb.cards) for (const i of c.media) map.set(i.id, i);
+    }
     return map;
   }, [pages]);
 
@@ -247,10 +256,17 @@ export function ContentProvider({
   const pathsOfPage = useMemo(() => {
     const map = new Map<string, { paths: Set<string>; ids: Set<string> }>();
     for (const p of pages) {
-      map.set(p.key, {
-        paths: new Set(p.blocks.flatMap((b) => b.fields.map((f) => f.path))),
-        ids: new Set(p.mediaBlocks.flatMap((b) => b.items.map((i) => i.id))),
-      });
+      const paths = new Set(p.blocks.flatMap((b) => b.fields.map((f) => f.path)));
+      const ids = new Set(p.mediaBlocks.flatMap((b) => b.items.map((i) => i.id)));
+      // Kartalar ham sahifaga tegishli — aks holda chapdagi menyuda
+      // "saqlanmagan o'zgarish" nuqtasi ko'rinmaydi
+      for (const cb of p.cardBlocks) {
+        for (const c of cb.cards) {
+          for (const f of c.fields) paths.add(f.path);
+          for (const i of c.media) ids.add(i.id);
+        }
+      }
+      map.set(p.key, { paths, ids });
     }
     return map;
   }, [pages]);
