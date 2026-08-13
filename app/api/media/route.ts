@@ -16,10 +16,14 @@ const patchSchema = z
     message: "Bo'sh so'rov",
   });
 
-/** Ochiq: sayt almashtirilgan rasmlarni shu yerdan oladi */
-export async function GET() {
+/**
+ * Ochiq: sayt almashtirilgan rasmlarni shu yerdan oladi.
+ * `?fresh=1` — keshni chetlab o'tadi (admin panel shundan foydalanadi).
+ */
+export async function GET(req: NextRequest) {
+  const skipCache = new URL(req.url).searchParams.get("fresh") === "1";
   try {
-    const media = await readMedia();
+    const media = await readMedia(skipCache);
     return NextResponse.json(
       { ok: true, media },
       { headers: { "Cache-Control": "no-store" } },

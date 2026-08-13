@@ -1,5 +1,5 @@
 import { supabase } from "./supabase";
-import { cached, invalidate } from "./cache";
+import { cached, fresh, invalidate } from "./cache";
 
 const CACHE_KEY = "media";
 
@@ -12,8 +12,10 @@ const CACHE_KEY = "media";
 export type MediaOverrides = Record<string, string>;
 
 /** Keshlanadi — Supabase uzilsa oxirgi nusxa ishlatiladi (cache.ts) */
-export async function readMedia(): Promise<MediaOverrides> {
-  return cached(CACHE_KEY, readMediaFromDb);
+export async function readMedia(skipCache = false): Promise<MediaOverrides> {
+  return skipCache
+    ? fresh(CACHE_KEY, readMediaFromDb)
+    : cached(CACHE_KEY, readMediaFromDb);
 }
 
 async function readMediaFromDb(): Promise<MediaOverrides> {

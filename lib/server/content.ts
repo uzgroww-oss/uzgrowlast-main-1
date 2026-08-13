@@ -1,5 +1,5 @@
 import { supabase } from "./supabase";
-import { cached, invalidate } from "./cache";
+import { cached, fresh, invalidate } from "./cache";
 
 const CACHE_KEY = "content";
 
@@ -39,11 +39,14 @@ function isSafeKey(key: string): boolean {
  * ishlatiladi va sayt admin kiritgan matnlar bilan ishlashda davom etadi
  * (lib/server/cache.ts).
  */
-export async function readAll(): Promise<{
+export async function readAll(skipCache = false): Promise<{
   content: ContentOverrides;
   hidden: string[];
 }> {
-  return cached(CACHE_KEY, readAllFromDb);
+  // Admin panel keshni chetlab o'tadi — u haqiqiy holatni ko'rishi shart
+  return skipCache
+    ? fresh(CACHE_KEY, readAllFromDb)
+    : cached(CACHE_KEY, readAllFromDb);
 }
 
 async function readAllFromDb(): Promise<{

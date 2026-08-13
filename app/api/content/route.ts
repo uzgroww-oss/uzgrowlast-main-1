@@ -41,10 +41,14 @@ const patchSchema = z
     message: "Kamida bitta til bo'lishi kerak",
   });
 
-/** Ochiq: sayt o'zgartirilgan matnlarni shu yerdan oladi */
-export async function GET() {
+/**
+ * Ochiq: sayt o'zgartirilgan matnlarni shu yerdan oladi.
+ * `?fresh=1` — keshni chetlab o'tadi (admin panel shundan foydalanadi).
+ */
+export async function GET(req: NextRequest) {
+  const skipCache = new URL(req.url).searchParams.get("fresh") === "1";
   try {
-    const { content, hidden } = await readAll();
+    const { content, hidden } = await readAll(skipCache);
     return NextResponse.json(
       { ok: true, content, hidden },
       { headers: { "Cache-Control": "no-store" } },

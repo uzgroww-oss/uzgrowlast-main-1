@@ -121,9 +121,12 @@ export function ContentProvider({
     setLoading(true);
     setError("");
     try {
+      // `fresh=1` — keshni chetlab o'tamiz. Admin panel har doim haqiqiy
+      // holatni ko'rishi kerak, aks holda "saqladim, lekin o'zgarmadi"
+      // degan chalkashlik chiqadi (Vercel'da har nusxaning o'z keshi bor).
       const [c, m] = await Promise.all([
-        fetch("/api/content").then((r) => r.json()),
-        fetch("/api/media").then((r) => r.json()),
+        fetch("/api/content?fresh=1", { cache: "no-store" }).then((r) => r.json()),
+        fetch("/api/media?fresh=1", { cache: "no-store" }).then((r) => r.json()),
       ]);
       setText(c?.content ?? emptyText());
       setHidden(Array.isArray(c?.hidden) ? c.hidden : []);

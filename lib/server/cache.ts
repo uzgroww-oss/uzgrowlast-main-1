@@ -25,8 +25,16 @@ interface Entry<T> {
 
 const store = new Map<string, Entry<unknown>>();
 
-/** Standart muddat: 30 soniya. Admin o'zgartirsa kesh darhol tozalanadi. */
-const DEFAULT_TTL_MS = 30_000;
+/**
+ * Standart muddat: 15 soniya.
+ *
+ * Nega qisqa: Vercel'da har bir serverless nusxa O'Z xotirasiga ega.
+ * Admin o'zgartirganda `invalidate()` faqat so'rovni bajargan nusxada
+ * ishlaydi, qolganlari esa TTL tugaguncha eski qiymatni beradi. Shuning
+ * uchun muddat qisqa tutiladi — o'zgarish saytda tez ko'rinsin.
+ * Admin paneli esa keshni umuman chetlab o'tadi (`fresh` parametri).
+ */
+const DEFAULT_TTL_MS = 15_000;
 
 /**
  * `loader` natijasini keshlaydi.
@@ -68,4 +76,21 @@ export async function cached<T>(
 /** Admin ma'lumotni o'zgartirgach chaqiriladi — o'zgarish darhol ko'rinsin */
 export function invalidate(key: string): void {
   store.delete(key);
+}
+
+/**
+ * Keshni chetlab o'tib, to'g'ridan-to'g'ri bazadan o'qiydi va keshni yangilaydi.
+ *
+ * Admin panel uchun: u har doim HAQIQIY holatni ko'rishi kerak, aks holda
+ * "saqladim, lekin o'zgarmadi" degan chalkashlik chiqadi. Xato bo'lsa
+ * yashirilmaydi — admin muammoni bilib turishi kerak.
+ */
+export async function fresh<T>(
+  key: string,
+  loader: () => Promise<T>,
+  ttlMs: number = DEFAULT_TTL_MS,
+): Promise<T> {
+  const value = await loader();
+  store.set(key, { value, freshUntil: Date.now() + ttlMs });
+  return value;
 }
