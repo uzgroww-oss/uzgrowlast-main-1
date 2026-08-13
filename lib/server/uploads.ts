@@ -1,13 +1,16 @@
-import { randomUUID } from "crypto";
-import { MEDIA_BUCKET, publicUrl, supabase } from "./supabase";
-
 /**
- * Admin yuklagan rasm va videolar Supabase Storage'dagi "media" bucket'ida
- * saqlanadi. Bucket ommaviy, shuning uchun fayl manzili to'g'ridan-to'g'ri
- * Supabase CDN'ga ishora qiladi va saytga qo'shimcha yuk tushmaydi.
+ * Admin yuklagan rasm va videolar uchun qoidalar: qaysi turlar mumkin va
+ * hajm chegarasi qancha.
  *
- * Yuklash faqat server orqali (service_role kaliti bilan) — bucket'ga
- * tashqaridan yozish siyosati berilmagan.
+ * Fayllar Supabase Storage'dagi "media" bucket'ida saqlanadi. Bucket
+ * ommaviy, shuning uchun fayl manzili to'g'ridan-to'g'ri Supabase CDN'ga
+ * ishora qiladi va saytga qo'shimcha yuk tushmaydi.
+ *
+ * DIQQAT: fayl SERVER ORQALI YUBORILMAYDI. Vercel serverless funksiyaga
+ * 4.5 MB dan katta so'rovni o'tkazmaydi, shuning uchun brauzer faylni
+ * to'g'ridan-to'g'ri Supabase'ga jo'natadi. Server faqat qisqa muddatli
+ * imzolangan havola beradi va shu yerdagi qoidalarni tekshiradi
+ * (app/api/upload/sign/route.ts).
  */
 
 /**
@@ -31,40 +34,4 @@ export const MAX_VIDEO_BYTES = mb(Number(process.env.MAX_VIDEO_MB) || 100);
 
 export function checkType(mime: string) {
   return ALLOWED[mime] ?? null;
-}
-
-export interface SavedFile {
-  name: string;
-  url: string;
-  kind: "image" | "video";
-  size: number;
-}
-
-export async function saveUpload(file: File, mime: string): Promise<SavedFile> {
-  const allowed = checkType(mime);
-  if (!allowed) throw new Error("UNSUPPORTED_TYPE");
-
-  const limit = allowed.kind === "video" ? MAX_VIDEO_BYTES : MAX_IMAGE_BYTES;
-  if (file.size > limit) throw new Error("TOO_LARGE");
-
-  // Nomni server beradi — foydalanuvchi nomiga umuman ishonilmaydi
-  const name = `${randomUUID()}.${allowed.ext}`;
-
-  const { error } = await supabase()
-    .storage.from(MEDIA_BUCKET)
-    .upload(name, file, {
-      contentType: mime,
-      // Nom har safar yangi, shuning uchun ustiga yozish kutilmaydi
-      upsert: false,
-      cacheControl: "31536000",
-    });
-
-  if (error) throw error;
-
-  return {
-    name,
-    url: publicUrl(name),
-    kind: allowed.kind,
-    size: file.size,
-  };
 }
