@@ -1,4 +1,7 @@
 import { supabase } from "./supabase";
+import { cached, invalidate } from "./cache";
+
+const CACHE_KEY = "media";
 
 /**
  * Admin paneldan almashtirilgan rasm/video manzillari: id → URL.
@@ -8,7 +11,12 @@ import { supabase } from "./supabase";
  */
 export type MediaOverrides = Record<string, string>;
 
+/** Keshlanadi — Supabase uzilsa oxirgi nusxa ishlatiladi (cache.ts) */
 export async function readMedia(): Promise<MediaOverrides> {
+  return cached(CACHE_KEY, readMediaFromDb);
+}
+
+async function readMediaFromDb(): Promise<MediaOverrides> {
   const { data, error } = await supabase()
     .from("media_overrides")
     .select("id, url");
@@ -54,6 +62,8 @@ export async function patchMedia(
     if (error) throw error;
   }
 
+  // Admin rasmni almashtirdi — saytda darhol ko'rinsin
+  invalidate(CACHE_KEY);
   return readMedia();
 }
 
@@ -65,5 +75,6 @@ export async function resetMedia(): Promise<MediaOverrides> {
     .delete()
     .neq("id", "");
   if (error) throw error;
+  invalidate(CACHE_KEY);
   return {};
 }

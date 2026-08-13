@@ -5,6 +5,11 @@ services:
     plan: free
     buildCommand: npm ci && npm run build
     startCommand: npm run start
+    # DIQQAT: bu "/" bo'lib qolsin, "/api/health" QILINMASIN.
+    # Sayt Supabase uzilganda ham to'liq ishlaydi (standart matnlar bilan).
+    # Agar tekshiruv /api/health ga qo'yilsa, bazaning qisqa uzilishi
+    # butun saytni qayta ishga tushirishga sabab bo'ladi — bu yomonroq.
+    # /api/health ni qo'lda ochib ko'rish uchun ishlatiladi.
     healthCheckPath: /
     envVars:
       - key: NODE_VERSION

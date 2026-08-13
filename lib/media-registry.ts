@@ -29,7 +29,7 @@ export const MEDIA: MediaItem[] = [
     page: "bosh",
     block: "Bosh ekran",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469050/IMG_5189_%D0%9E%D1%80%D0%B8%D0%B3%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80_atdoz0.jpg",
+    def: "/images/1.jpg",
   },
   {
     id: "rahbariyat.cover",
@@ -37,7 +37,7 @@ export const MEDIA: MediaItem[] = [
     page: "rahbariyat",
     block: "Muqova",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567592/20201201_105521_ugdege.jpg",
+    def: "/images/site/cl-IMG_4429_copy_dqhz5y.jpg",
   },
   {
     id: "rahbariyat.avatar.rustamjon",
@@ -45,7 +45,7 @@ export const MEDIA: MediaItem[] = [
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/c_fill,g_face,w_600,h_600/v1776668168/ChatGPT_Image_17_апр._2026_г._17_10_12_ufx3pd.png",
+    def: "/team/ceo.jpg",
   },
   {
     id: "rahbariyat.avatar.alisher",
@@ -61,7 +61,7 @@ export const MEDIA: MediaItem[] = [
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/c_fill,g_face,w_600,h_600/v1776668167/ChatGPT_Image_17_апр._2026_г._16_55_09_p4gndn.png",
+    def: "",
   },
   {
     id: "rahbariyat.avatar.bobgulbaxor",
@@ -69,7 +69,7 @@ export const MEDIA: MediaItem[] = [
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/c_fill,g_face,w_600,h_600/v1776668169/ChatGPT_Image_17_апр._2026_г._16_39_33_ufyw96.png",
+    def: "",
   },
   {
     id: "rahbariyat.avatar.nafosat",
@@ -77,7 +77,7 @@ export const MEDIA: MediaItem[] = [
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/c_fill,g_face,w_600,h_600/v1776668177/ChatGPT_Image_17_апр._2026_г._16_25_41_ue4kdd.png",
+    def: "",
   },
   {
     id: "rahbariyat.avatar.dilnoza",
@@ -85,7 +85,7 @@ export const MEDIA: MediaItem[] = [
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/c_fill,g_face,w_600,h_600/v1776668170/ChatGPT_Image_17_апр._2026_г._16_34_42_yqzxzv.png",
+    def: "",
   },
   {
     id: "rahbariyat.avatar.sardor",
@@ -93,7 +93,7 @@ export const MEDIA: MediaItem[] = [
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/c_fill,g_face,w_600,h_600/v1776668171/ChatGPT_Image_17_апр._2026_г._16_45_29_hthlyp.png",
+    def: "",
   },
   {
     id: "umumiy.logo",
@@ -109,7 +109,7 @@ export const MEDIA: MediaItem[] = [
     page: "bosh",
     block: "Bosh ekran",
     type: "video",
-    def: "https://res.cloudinary.com/dnqi0bdjk/video/upload/v1776668436/IMG_5977_tbxama.mp4",
+    def: "",
   },
   {
     id: "bosh.about.background",
@@ -117,7 +117,7 @@ export const MEDIA: MediaItem[] = [
     page: "bosh",
     block: "Biz haqimizda",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469050/IMG_5189_%D0%9E%D1%80%D0%B8%D0%B3%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80_atdoz0.jpg",
+    def: "/images/photo_2026-04-04_10-35-29.jpg",
   },
   {
     id: "bosh.about.slide.0",
@@ -125,7 +125,7 @@ export const MEDIA: MediaItem[] = [
     page: "bosh",
     block: "Biz haqimizda",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567592/20201201_105521_ugdege.jpg",
+    def: "/images/8.jpg",
   },
   {
     id: "bosh.about.slide.1",
@@ -133,7 +133,7 @@ export const MEDIA: MediaItem[] = [
     page: "bosh",
     block: "Biz haqimizda",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567918/20201201_143010_eudwpq.jpg",
+    def: "/images/3.jpg",
   },
   {
     id: "bosh.about.slide.2",
@@ -141,7 +141,7 @@ export const MEDIA: MediaItem[] = [
     page: "bosh",
     block: "Biz haqimizda",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469212/37_2_ggepkx.jpg",
+    def: "/images/24.jpg",
   },
   {
     id: "bosh.about.slide.3",
@@ -149,7 +149,7 @@ export const MEDIA: MediaItem[] = [
     page: "bosh",
     block: "Biz haqimizda",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469212/32_2_n7x8lw.jpg",
+    def: "/images/25.jpg",
   },
   {
     id: "bosh.about.slide.4",
@@ -157,7 +157,7 @@ export const MEDIA: MediaItem[] = [
     page: "bosh",
     block: "Biz haqimizda",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469212/38_shg9uf.jpg",
+    def: "/images/27.jpg",
   },
   {
     id: "bosh.about.slide.5",
@@ -165,7 +165,7 @@ export const MEDIA: MediaItem[] = [
     page: "bosh",
     block: "Biz haqimizda",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468978/31_phdvd6.jpg",
+    def: "/images/photo_2026-04-04_10-35-25.jpg",
   },
   {
     id: "xizmatlar.engineering.0",
@@ -173,7 +173,7 @@ export const MEDIA: MediaItem[] = [
     page: "xizmatlar",
     block: "Injiniring",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567592/20201201_105521_ugdege.jpg",
+    def: "/images/8.jpg",
   },
   {
     id: "xizmatlar.engineering.1",
@@ -181,7 +181,7 @@ export const MEDIA: MediaItem[] = [
     page: "xizmatlar",
     block: "Injiniring",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567918/20201201_143010_eudwpq.jpg",
+    def: "/images/3.jpg",
   },
   {
     id: "xizmatlar.equipment.0",
@@ -189,7 +189,7 @@ export const MEDIA: MediaItem[] = [
     page: "xizmatlar",
     block: "Jihozlar",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469176/20201201_105259_q5us00.jpg",
+    def: "/images/photo_2026-04-04_10-35-50.jpg",
   },
   {
     id: "xizmatlar.equipment.1",
@@ -197,7 +197,7 @@ export const MEDIA: MediaItem[] = [
     page: "xizmatlar",
     block: "Jihozlar",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567816/20201201_125910_t1nzq8.jpg",
+    def: "/images/4.jpg",
   },
   {
     id: "xizmatlar.equipment.2",
@@ -205,7 +205,7 @@ export const MEDIA: MediaItem[] = [
     page: "xizmatlar",
     block: "Jihozlar",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468983/IMG_4392_copy_xdhodo.jpg",
+    def: "/images/7.jpg",
   },
   {
     id: "xizmatlar.equipment.3",
@@ -213,7 +213,7 @@ export const MEDIA: MediaItem[] = [
     page: "xizmatlar",
     block: "Jihozlar",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468978/31_phdvd6.jpg",
+    def: "/images/photo_2026-04-04_10-35-25.jpg",
   },
   {
     id: "xizmatlar.equipment.4",
@@ -221,7 +221,7 @@ export const MEDIA: MediaItem[] = [
     page: "xizmatlar",
     block: "Jihozlar",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468978/IMG_3865_ygsucd.jpg",
+    def: "/images/8.jpg",
   },
   {
     id: "loyihalar.item1.0",
@@ -229,7 +229,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "1-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776423881/IMG_4397_copy_fymoco.jpg",
+    def: "/images/site/cl-IMG_4397_copy_fymoco.jpg",
   },
   {
     id: "loyihalar.item1.1",
@@ -237,7 +237,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "1-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776423899/2_nqvejm.jpg",
+    def: "/images/site/cl-2_nqvejm.jpg",
   },
   {
     id: "loyihalar.item1.2",
@@ -245,7 +245,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "1-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776423853/IMG_4392_copy_xwrtpy.jpg",
+    def: "/images/site/cl-IMG_4392_copy_xwrtpy.jpg",
   },
   {
     id: "loyihalar.item1.3",
@@ -253,7 +253,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "1-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776423866/IMG_4429_copy_dqhz5y.jpg",
+    def: "/images/site/cl-IMG_4429_copy_dqhz5y.jpg",
   },
   {
     id: "loyihalar.item1.4",
@@ -261,7 +261,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "1-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469049/photo_2026-04-04_10-35-29_ajfw6x.jpg",
+    def: "/images/site/cl-IMG_4429_copy_dqhz5y.jpg",
   },
   {
     id: "loyihalar.item2.0",
@@ -269,7 +269,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "2-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468970/21_bv62xg.jpg",
+    def: "/images/site/cl-IMG_4429_copy_dqhz5y.jpg",
   },
   {
     id: "loyihalar.item2.1",
@@ -277,7 +277,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "2-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775301447/22_qrawq5.jpg",
+    def: "/images/site/cl-IMG_1075_rrylu1.jpg",
   },
   {
     id: "loyihalar.item2.2",
@@ -285,7 +285,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "2-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469214/34_rthdcs.jpg",
+    def: "/images/site/cl-IMG_3535_zs9roq.jpg",
   },
   {
     id: "loyihalar.item2.3",
@@ -293,7 +293,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "2-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469212/32_2_n7x8lw.jpg",
+    def: "/images/25.jpg",
   },
   {
     id: "loyihalar.item2.4",
@@ -301,7 +301,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "2-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469212/38_shg9uf.jpg",
+    def: "/images/27.jpg",
   },
   {
     id: "loyihalar.item3.0",
@@ -309,7 +309,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "3-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469051/photo_2026-04-04_10-35-53_kvt95v.jpg",
+    def: "/images/site/cl-IMG_0976_kkvp42.jpg",
   },
   {
     id: "loyihalar.item3.1",
@@ -317,7 +317,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "3-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469172/20201201_105047_elutha.jpg",
+    def: "/images/site/cl-IMG_1052_qr8w62.jpg",
   },
   {
     id: "loyihalar.item3.2",
@@ -325,7 +325,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "3-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469051/photo_2026-04-04_10-35-50_ctmowh.jpg",
+    def: "/images/site/cl-IMG_1075_rrylu1.jpg",
   },
   {
     id: "loyihalar.item3.3",
@@ -333,7 +333,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "3-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469052/photo_2026-04-04_10-35-55_dvrnxd.jpg",
+    def: "/images/1.jpg",
   },
   {
     id: "loyihalar.item4.0",
@@ -341,7 +341,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "4-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469047/IMG_5184_%D0%9E%D1%80%D0%B8%D0%B3%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80_iuhwco.jpg",
+    def: "/images/site/cl-IMG_3535_zs9roq.jpg",
   },
   {
     id: "loyihalar.item4.1",
@@ -349,7 +349,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "4-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469042/IMG_4545_bl2h6a.jpg",
+    def: "/images/site/cl-IMG_0976_kkvp42.jpg",
   },
   {
     id: "loyihalar.item4.2",
@@ -357,7 +357,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "4-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469038/IMG_4540_2_fhkndi.jpg",
+    def: "/images/site/cl-IMG_1052_qr8w62.jpg",
   },
   {
     id: "loyihalar.item4.3",
@@ -365,7 +365,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "4-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468985/IMG_4397_copy_iqnrvn.jpg",
+    def: "/images/site/cl-IMG_0980_adj1rq.jpg",
   },
   {
     id: "loyihalar.item4.4",
@@ -373,7 +373,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "4-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469023/IMG_4430_copy_g7mb6k.jpg",
+    def: "/images/1.jpg",
   },
   {
     id: "loyihalar.item5.0",
@@ -381,7 +381,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "5-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468983/IMG_4393_copy_g104ol.jpg",
+    def: "/images/2.jpg",
   },
   {
     id: "loyihalar.item5.1",
@@ -389,7 +389,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "5-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468989/IMG_3533_zgzdoe.jpg",
+    def: "/images/3.jpg",
   },
   {
     id: "loyihalar.item6.0",
@@ -397,7 +397,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "6-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776422634/IMG_1075_rrylu1.jpg",
+    def: "/images/site/cl-IMG_1075_rrylu1.jpg",
   },
   {
     id: "loyihalar.item6.1",
@@ -405,7 +405,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "6-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776422634/IMG_3535_zs9roq.jpg",
+    def: "/images/site/cl-IMG_3535_zs9roq.jpg",
   },
   {
     id: "loyihalar.item6.2",
@@ -413,7 +413,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "6-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776422637/IMG_0976_kkvp42.jpg",
+    def: "/images/site/cl-IMG_0976_kkvp42.jpg",
   },
   {
     id: "loyihalar.item6.3",
@@ -421,7 +421,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "6-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776422634/IMG_1052_qr8w62.jpg",
+    def: "/images/site/cl-IMG_1052_qr8w62.jpg",
   },
   {
     id: "loyihalar.item6.4",
@@ -429,7 +429,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "6-loyiha",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776422704/IMG_0980_adj1rq.jpg",
+    def: "/images/site/cl-IMG_0980_adj1rq.jpg",
   },
   {
     id: "jixozlar.tech.0",
@@ -437,7 +437,7 @@ export const MEDIA: MediaItem[] = [
     page: "jixozlar",
     block: "Texnologiya kartalari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775570543/28_bnpx3z.jpg",
+    def: "/images/photo_2026-04-04_10-35-55.jpg",
   },
   {
     id: "jixozlar.tech.1",
@@ -445,7 +445,7 @@ export const MEDIA: MediaItem[] = [
     page: "jixozlar",
     block: "Texnologiya kartalari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469177/20201023_075858_hcs7fb.jpg",
+    def: "/images/site/cl-IMG_4397_copy_fymoco.jpg",
   },
   {
     id: "jixozlar.tech.2",
@@ -453,7 +453,7 @@ export const MEDIA: MediaItem[] = [
     page: "jixozlar",
     block: "Texnologiya kartalari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469181/20201201_105435_hq3q9q.jpg",
+    def: "/images/site/cl-2_nqvejm.jpg",
   },
   {
     id: "jixozlar.tech.3",
@@ -461,7 +461,7 @@ export const MEDIA: MediaItem[] = [
     page: "jixozlar",
     block: "Texnologiya kartalari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469052/photo_2026-04-04_10-35-55_dvrnxd.jpg",
+    def: "/images/1.jpg",
   },
   {
     id: "jixozlar.tech.4",
@@ -469,7 +469,7 @@ export const MEDIA: MediaItem[] = [
     page: "jixozlar",
     block: "Texnologiya kartalari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567811/20201201_125915_z2qls3.jpg",
+    def: "/images/site/cl-IMG_4392_copy_xwrtpy.jpg",
   },
   {
     id: "issiqxona.vertical.0",
@@ -477,7 +477,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Vertikal issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777380061/jfvjhgfhj_msdu7b.png",
+    def: "/images/site/cl-IMG_0980_adj1rq.jpg",
   },
   {
     id: "issiqxona.vertical.1",
@@ -485,7 +485,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Vertikal issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777380061/Screenshot_21_oy5mp3.png",
+    def: "/images/1.jpg",
   },
   {
     id: "issiqxona.vertical.2",
@@ -493,7 +493,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Vertikal issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777380062/Screenshot_20_zmrd8x.png",
+    def: "/images/2.jpg",
   },
   {
     id: "issiqxona.vertical.3",
@@ -501,7 +501,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Vertikal issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777380061/jgfgkjjhk_p_pzo1wy.png",
+    def: "/images/3.jpg",
   },
   {
     id: "issiqxona.vertical.4",
@@ -509,7 +509,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Vertikal issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777380063/Screenshot_27_xx97id.png",
+    def: "/images/4.jpg",
   },
   {
     id: "issiqxona.vertical.5",
@@ -517,7 +517,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Vertikal issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777380062/Screenshot_22_tboyut.png",
+    def: "/images/7.jpg",
   },
   {
     id: "issiqxona.vertical.6",
@@ -525,7 +525,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Vertikal issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777380064/Screenshot_88_csxbvo.png",
+    def: "/images/8.jpg",
   },
   {
     id: "issiqxona.mini.0",
@@ -533,7 +533,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Mini issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777378099/photo_3_2026-04-28_17-31-03_zhfpn1.jpg",
+    def: "/images/24.jpg",
   },
   {
     id: "issiqxona.mini.1",
@@ -541,7 +541,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Mini issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777378099/photo_1_2026-04-28_17-31-03_zwupoz.jpg",
+    def: "/images/25.jpg",
   },
   {
     id: "issiqxona.mini.2",
@@ -549,7 +549,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Mini issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777378098/photo_2_2026-04-28_17-31-03_lfnlen.jpg",
+    def: "/images/27.jpg",
   },
   {
     id: "issiqxona.oddiy.0",
@@ -557,7 +557,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Oddiy issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777378128/IMG_4542_l2jvtn.jpg",
+    def: "/images/photo_2026-04-04_10-35-25.jpg",
   },
   {
     id: "issiqxona.oddiy.1",
@@ -565,7 +565,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Oddiy issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777378124/IMG_4545_lxx0wp.jpg",
+    def: "/images/photo_2026-04-04_10-35-29.jpg",
   },
   {
     id: "issiqxona.oddiy.2",
@@ -573,7 +573,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Oddiy issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777378098/IMG_4535_glqbmk.jpg",
+    def: "/images/photo_2026-04-04_10-35-50.jpg",
   },
   {
     id: "issiqxona.oddiy.3",
@@ -581,7 +581,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Oddiy issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777378097/IMG_4537_vdhplq.jpg",
+    def: "/images/photo_2026-04-04_10-35-53.jpg",
   },
   {
     id: "issiqxona.oddiy.4",
@@ -589,7 +589,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Oddiy issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777378097/IMG_4536_pgfu4i.jpg",
+    def: "/images/photo_2026-04-04_10-35-54.jpg",
   },
   {
     id: "issiqxona.gektar.0",
@@ -597,7 +597,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Gektar issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777378094/IMG_1376_hloucr.jpg",
+    def: "/images/photo_2026-04-04_10-35-55.jpg",
   },
   {
     id: "issiqxona.gektar.1",
@@ -605,7 +605,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Gektar issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777378091/IMG_1033_eewztt.jpg",
+    def: "/images/site/cl-IMG_4397_copy_fymoco.jpg",
   },
   {
     id: "issiqxona.gektar.2",
@@ -613,7 +613,7 @@ export const MEDIA: MediaItem[] = [
     page: "issiqxona-turlari",
     block: "Gektar issiqxona",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1777378094/IMG_1378_w2cpmq.jpg",
+    def: "/images/site/cl-2_nqvejm.jpg",
   },
   {
     id: "xalqaro.project.0",
@@ -621,7 +621,7 @@ export const MEDIA: MediaItem[] = [
     page: "xalqaro",
     block: "Loyiha rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567811/20201201_125915_z2qls3.jpg",
+    def: "/images/site/cl-IMG_4392_copy_xwrtpy.jpg",
   },
   {
     id: "xalqaro.project.1",
@@ -629,7 +629,7 @@ export const MEDIA: MediaItem[] = [
     page: "xalqaro",
     block: "Loyiha rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469052/photo_2026-04-04_10-35-55_dvrnxd.jpg",
+    def: "/images/1.jpg",
   },
   {
     id: "xalqaro.project.2",
@@ -637,7 +637,7 @@ export const MEDIA: MediaItem[] = [
     page: "xalqaro",
     block: "Loyiha rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567956/20210211_141225_yvl1wr.jpg",
+    def: "/images/photo_2026-04-04_10-35-53.jpg",
   },
   {
     id: "xalqaro.project.3",
@@ -645,7 +645,7 @@ export const MEDIA: MediaItem[] = [
     page: "xalqaro",
     block: "Loyiha rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469181/20201201_105435_hq3q9q.jpg",
+    def: "/images/site/cl-2_nqvejm.jpg",
   },
   {
     id: "aloqa.background.0",
@@ -653,7 +653,7 @@ export const MEDIA: MediaItem[] = [
     page: "aloqa",
     block: "Fon rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469052/photo_2026-04-04_10-35-55_dvrnxd.jpg",
+    def: "/images/1.jpg",
   },
   {
     id: "aloqa.background.1",
@@ -661,7 +661,7 @@ export const MEDIA: MediaItem[] = [
     page: "aloqa",
     block: "Fon rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567490/20201201_105400_fnjfxf.jpg",
+    def: "/images/2.jpg",
   },
   {
     id: "aloqa.background.2",
@@ -669,7 +669,7 @@ export const MEDIA: MediaItem[] = [
     page: "aloqa",
     block: "Fon rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567918/20201201_143010_eudwpq.jpg",
+    def: "/images/3.jpg",
   },
   {
     id: "aloqa.background.3",
@@ -677,7 +677,7 @@ export const MEDIA: MediaItem[] = [
     page: "aloqa",
     block: "Fon rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567906/20201201_144821_ojps5y.jpg",
+    def: "/images/4.jpg",
   },
   {
     id: "haqimizda.image",
@@ -685,7 +685,7 @@ export const MEDIA: MediaItem[] = [
     page: "haqimizda",
     block: "Rasm",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1776685323/ChatGPT_Image_20_%D0%B0%D0%BF%D1%80._2026_%D0%B3._16_01_12_ckxsni.png",
+    def: "/images/7.jpg",
   },
   {
     id: "gallery.1",
@@ -813,7 +813,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/5.jpg",
+    def: "/images/site/gallery-21.jpg",
   },
   {
     id: "gallery.22",
@@ -821,7 +821,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/6.jpg",
+    def: "/images/site/gallery-22.jpg",
   },
   {
     id: "gallery.23",
@@ -829,7 +829,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/9.jpg",
+    def: "/images/site/gallery-23.jpg",
   },
   {
     id: "gallery.24",
@@ -837,7 +837,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/10.jpg",
+    def: "/images/site/gallery-24.jpg",
   },
   {
     id: "gallery.25",
@@ -845,7 +845,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/11.jpg",
+    def: "/images/site/gallery-25.jpg",
   },
   {
     id: "gallery.26",
@@ -853,7 +853,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/12.jpg",
+    def: "/images/site/gallery-26.jpg",
   },
   {
     id: "gallery.27",
@@ -861,7 +861,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/13.jpg",
+    def: "/images/site/gallery-27.jpg",
   },
   {
     id: "gallery.28",
@@ -869,7 +869,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/14.jpg",
+    def: "/images/site/gallery-28.jpg",
   },
   {
     id: "gallery.29",
@@ -877,7 +877,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/15.jpg",
+    def: "/images/site/gallery-29.jpg",
   },
   {
     id: "gallery.30",
@@ -885,7 +885,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/16.jpg",
+    def: "/images/site/gallery-30.jpg",
   },
   {
     id: "gallery.31",
@@ -893,7 +893,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469176/20201201_105259_q5us00.jpg",
+    def: "/images/photo_2026-04-04_10-35-50.jpg",
   },
   {
     id: "gallery.32",
@@ -901,7 +901,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469052/photo_2026-04-04_10-35-55_dvrnxd.jpg",
+    def: "/images/1.jpg",
   },
   {
     id: "gallery.33",
@@ -909,7 +909,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567956/20210211_141225_yvl1wr.jpg",
+    def: "/images/photo_2026-04-04_10-35-53.jpg",
   },
   {
     id: "gallery.34",
@@ -917,7 +917,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469052/IMG_5193_%D0%9E%D1%80%D0%B8%D0%B3%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80_rmwd8l.jpg",
+    def: "/images/photo_2026-04-04_10-35-54.jpg",
   },
   {
     id: "gallery.35",
@@ -925,7 +925,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775570543/28_bnpx3z.jpg",
+    def: "/images/photo_2026-04-04_10-35-55.jpg",
   },
   {
     id: "gallery.36",
@@ -933,7 +933,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469177/20201023_075858_hcs7fb.jpg",
+    def: "/images/site/cl-IMG_4397_copy_fymoco.jpg",
   },
   {
     id: "gallery.37",
@@ -941,7 +941,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469181/20201201_105435_hq3q9q.jpg",
+    def: "/images/site/cl-2_nqvejm.jpg",
   },
   {
     id: "gallery.38",
@@ -949,7 +949,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775567811/20201201_125915_z2qls3.jpg",
+    def: "/images/site/cl-IMG_4392_copy_xwrtpy.jpg",
   },
   {
     id: "gallery.39",
@@ -957,7 +957,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775468970/21_bv62xg.jpg",
+    def: "/images/site/cl-IMG_4429_copy_dqhz5y.jpg",
   },
   {
     id: "gallery.40",
@@ -965,7 +965,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775301447/22_qrawq5.jpg",
+    def: "/images/site/cl-IMG_1075_rrylu1.jpg",
   },
   {
     id: "gallery.41",
@@ -973,7 +973,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469214/34_rthdcs.jpg",
+    def: "/images/site/cl-IMG_3535_zs9roq.jpg",
   },
   {
     id: "gallery.42",
@@ -981,7 +981,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469212/32_2_n7x8lw.jpg",
+    def: "/images/25.jpg",
   },
   {
     id: "gallery.43",
@@ -989,7 +989,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469212/38_shg9uf.jpg",
+    def: "/images/27.jpg",
   },
   {
     id: "gallery.44",
@@ -997,7 +997,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469051/photo_2026-04-04_10-35-53_kvt95v.jpg",
+    def: "/images/site/cl-IMG_0976_kkvp42.jpg",
   },
   {
     id: "gallery.45",
@@ -1005,7 +1005,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/dnqi0bdjk/image/upload/v1775469172/20201201_105047_elutha.jpg",
+    def: "/images/site/cl-IMG_1052_qr8w62.jpg",
   },
   {
     id: "gallery.46",
@@ -1013,7 +1013,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776422619/IMG_1015_jf5dqm.jpg",
+    def: "/images/site/cl-IMG_1015_jf5dqm.jpg",
   },
   {
     id: "gallery.47",
@@ -1021,7 +1021,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776422624/IMG_0994_angy5l.jpg",
+    def: "/images/site/cl-IMG_0994_angy5l.jpg",
   },
   {
     id: "gallery.48",
@@ -1029,7 +1029,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776422625/IMG_1033_akpcc1.jpg",
+    def: "/images/site/cl-IMG_1033_akpcc1.jpg",
   },
   {
     id: "gallery.49",
@@ -1037,7 +1037,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776422625/IMG_1030_dcuj82.jpg",
+    def: "/images/site/cl-IMG_1030_dcuj82.jpg",
   },
   {
     id: "gallery.50",
@@ -1045,7 +1045,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776422629/IMG_1001_vft7io.jpg",
+    def: "/images/site/cl-IMG_1001_vft7io.jpg",
   },
   {
     id: "gallery.51",
@@ -1053,7 +1053,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "https://res.cloudinary.com/duvvgqc3i/image/upload/q_auto/f_auto/v1776422629/IMG_1059_wwp8bn.jpg",
+    def: "/images/site/cl-IMG_1059_wwp8bn.jpg",
   },
 ];
 

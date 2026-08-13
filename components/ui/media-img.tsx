@@ -11,11 +11,17 @@
 export function MediaImg({
   src,
   alt = "",
+  loading = "lazy",
+  decoding = "async",
   ...rest
 }: React.ImgHTMLAttributes<HTMLImageElement>) {
   if (!src) return null;
+  // Standart holat — "lazy": ekrandan tashqaridagi rasm yuklanmaydi.
+  // Galereyada 90 dan ortiq rasm bor, ularning hammasini birdan tortish
+  // sahifani sekinlashtiradi. Ekranning yuqorisidagi rasm (masalan bosh
+  // ekran foni) uchun chaqirilayotgan joyda loading="eager" beriladi.
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src={src} alt={alt} {...rest} />;
+  return <img src={src} alt={alt} loading={loading} decoding={decoding} {...rest} />;
 }
 
 /** Video uchun xuddi shunday himoya */

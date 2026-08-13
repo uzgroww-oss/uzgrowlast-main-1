@@ -83,7 +83,10 @@ export default function RootLayout({
         <LanguageProvider>
           <MediaProvider>{children}</MediaProvider>
         </LanguageProvider>
-        <Analytics />
+        {/* Analitika skripti faqat Vercel'da mavjud. Render yoki lokal
+            muhitda u /_vercel/insights/script.js ni topolmay, har bir
+            sahifada konsolga 404 xatosi yozadi — shuning uchun shart. */}
+        {process.env.NEXT_PUBLIC_VERCEL_ENV && <Analytics />}
       </body>
     </html>
   );

@@ -111,6 +111,11 @@ export function Hero() {
         <MediaImg
           src={poster}
           alt=""
+          // Ekranning eng yuqorisidagi rasm — u sahifaning "asosiy" rasmi
+          // hisoblanadi, shuning uchun kechiktirilmaydi va birinchi navbatda
+          // yuklanadi. Qolgan rasmlar esa lazy (media-img.tsx).
+          loading="eager"
+          fetchPriority="high"
           className="absolute inset-0 w-full h-full object-cover"
         />
         {!isMobile && (

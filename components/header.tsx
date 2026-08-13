@@ -149,6 +149,8 @@ export function Header() {
               <MediaImg
                 src={m("umumiy.logo")}
                 alt={t("common.logoAlt")}
+                // Logotip har sahifada eng tepada turadi — kechiktirilmaydi
+                loading="eager"
                 className="h-12 sm:h-14 lg:h-16 w-auto object-contain animate-logo"
               />
               <span className="hidden sm:block font-bold text-lg lg:text-xl tracking-tight text-foreground whitespace-nowrap">

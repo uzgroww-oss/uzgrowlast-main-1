@@ -15,6 +15,12 @@ next.user-config.*
 # Eski o'rnatishlarda qolgan bo'lishi mumkin.
 data/
 
+# Rasmlarning ASL nusxalari (5-12 MB lik fayllar).
+# Saytga kichraytirilgan variantlari public/images/site/ ga tushadi,
+# asl fayllar esa repoga kerak emas — ular 600 MB dan ortiq.
+rasmlar/
+*.rar
+
 # Common ignores
 node_modules
 .next/

@@ -1,4 +1,7 @@
 import { supabase } from "./supabase";
+import { cached, invalidate } from "./cache";
+
+const CACHE_KEY = "content";
 
 export type Language = "uz" | "ru" | "en";
 export const LANGUAGES: Language[] = ["uz", "ru", "en"];
@@ -29,8 +32,21 @@ function isSafeKey(key: string): boolean {
   return key.split(".").every((part) => !RESERVED.has(part));
 }
 
-/** Matnlar va o'chirilgan kartalar — bitta so'rovda */
+/**
+ * Matnlar va o'chirilgan kartalar — bitta so'rovda.
+ *
+ * Natija keshlanadi: Supabase uzilib qolsa oxirgi muvaffaqiyatli nusxa
+ * ishlatiladi va sayt admin kiritgan matnlar bilan ishlashda davom etadi
+ * (lib/server/cache.ts).
+ */
 export async function readAll(): Promise<{
+  content: ContentOverrides;
+  hidden: string[];
+}> {
+  return cached(CACHE_KEY, readAllFromDb);
+}
+
+async function readAllFromDb(): Promise<{
   content: ContentOverrides;
   hidden: string[];
 }> {
@@ -85,6 +101,8 @@ export async function setHidden(
     if (error) throw error;
   }
 
+  // Admin o'zgartirdi — kesh eskirdi, saytda darhol ko'rinsin
+  invalidate(CACHE_KEY);
   return (await readAll()).hidden;
 }
 
@@ -136,6 +154,7 @@ export async function patchContent(
     if (error) throw error;
   }
 
+  invalidate(CACHE_KEY);
   return readContent();
 }
 
@@ -146,5 +165,6 @@ export async function resetContent(): Promise<ContentOverrides> {
     .delete()
     .in("lang", LANGUAGES);
   if (error) throw error;
+  invalidate(CACHE_KEY);
   return empty();
 }
