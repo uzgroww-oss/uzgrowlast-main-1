@@ -82,7 +82,7 @@ export const translations = {
         experience: "Yil tajriba",
         projects: "Muvaffaqiyatli loyiha",
         specialists: "Mutaxassislar",
-        regions: "Viloyatda xizmat",
+        countries: "Davlatlar",
       },
       slides: {
         slide1: {
@@ -1262,7 +1262,7 @@ export const translations = {
         experience: "Лет опыта",
         projects: "Успешных проектов",
         specialists: "Специалистов",
-        regions: "Регионов обслуживания",
+        countries: "Страны",
       },
       slides: {
         slide1: {
@@ -2459,7 +2459,7 @@ export const translations = {
         experience: "Years experience",
         projects: "Successful projects",
         specialists: "Specialists",
-        regions: "Service regions",
+        countries: "Countries",
       },
       slides: {
         slide1: {
