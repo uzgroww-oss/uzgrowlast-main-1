@@ -253,7 +253,7 @@ export function Hero() {
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
             {[
               { value: 9, suffix: "+", label: t("hero.stats.experience"), duration: 3000 },
-              { value: 2000, suffix: "+", label: t("hero.stats.projects"), duration: 2000 },
+              { value: 1200, suffix: "+", label: t("hero.stats.projects"), duration: 2000 },
               { value: 50, suffix: "+", label: t("hero.stats.specialists"), duration: 3000 },
               { value: 12, suffix: "+", label: t("hero.stats.regions"), duration: 3000 },
             ].map((stat, index) => (

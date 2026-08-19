@@ -77,7 +77,7 @@ export const translations = {
         "Biz eng zamonaviy issiqxona texnologiyalarini joriy etamiz va qishloq xo'jaligini rivojlantiramiz",
       cta: "Bog'lanish",
       downloadCatalog: "Katalog yuklab olish",
-      tagline: "9+ yil tajriba - 2000+ muvaffaqiyatli loyiha",
+      tagline: "9+ yil tajriba - 1200+ muvaffaqiyatli loyiha",
       stats: {
         experience: "Yil tajriba",
         projects: "Muvaffaqiyatli loyiha",
@@ -120,7 +120,7 @@ export const translations = {
       aboutTitle: "About UZ GROW",
 
       tagline: "Biz haqimizda",
-      headline: "9 yildan ortiq tajribaga ega kompanya 4 ta mamlakatda sizning yoningizda",
+      headline: "9 yildan ortiq tajribaga ega kompanya 5 ta mamlakatda sizning yoningizda",
       descriptionText:
         "UZ GROW - zamonaviy issiqxona qurilishi va agro-injiniring sohasida faoliyat yurituvchi kompaniya. Bizning maqsadimiz - O'zbekistonda yuqori samaradorlikka ega, innovatsion va eksportbop issiqxona infratuzilmasini rivojlantirish.",
       aboutUsButton: "Biz haqimizda batafsil",
@@ -332,7 +332,7 @@ export const translations = {
           experience: "6+ yillik",
           achievements: [
             "200,000+ obunachi",
-            "2000+ muvaffaqiyatli loyiha",
+            "1200+ muvaffaqiyatli loyiha",
             "Xalqaro hamkorliklar",
           ],
           education: [
@@ -1257,7 +1257,7 @@ export const translations = {
         "Мы внедряем самые современные тепличные технологии и развиваем сельское хозяйство",
       cta: "Связаться",
       downloadCatalog: "Скачать каталог",
-      tagline: "9+ лет опыта - 2000+ успешных проектов",
+      tagline: "9+ лет опыта - 1200+ успешных проектов",
       stats: {
         experience: "Лет опыта",
         projects: "Успешных проектов",
@@ -1300,7 +1300,7 @@ export const translations = {
       aboutTitle: "О UZ GROW",
 
       tagline: "О нас",
-      headline: "Компания с опытом более 9 лет рядом с вами в 4 странах",
+      headline: "Компания с опытом более 9 лет рядом с вами в 5 странах",
       descriptionText:
         "UZ GROW — компания, работающая в сфере современного тепличного строительства и агроинжиниринга. Наша цель — развитие высокоэффективной, инновационной и экспортно-ориентированной тепличной инфраструктуры в Узбекистане.",
       aboutUsButton: "Подробнее о нас",
@@ -1511,7 +1511,7 @@ export const translations = {
           experience: "6+ лет",
           achievements: [
             "200 000+ подписчиков",
-            "2000+ успешных проектов",
+            "1200+ успешных проектов",
             "Международные партнёрства",
           ],
           education: [
@@ -2454,7 +2454,7 @@ export const translations = {
         "We implement the most modern greenhouse technologies and develop agriculture",
       cta: "Contact Us",
       downloadCatalog: "Download Catalog",
-      tagline: "9+ years experience - 2000+ successful projects",
+      tagline: "9+ years experience - 1200+ successful projects",
       stats: {
         experience: "Years experience",
         projects: "Successful projects",
@@ -2497,7 +2497,7 @@ export const translations = {
       aboutTitle: "About UZ GROW",
 
       tagline: "About Us",
-      headline: "Company with over 9 years of experience by your side in 4 countries",
+      headline: "Company with over 9 years of experience by your side in 5 countries",
       descriptionText:
         "UZ GROW is a company operating in the field of modern greenhouse construction and agro-engineering. Our goal is to develop highly efficient, innovative and export-oriented greenhouse infrastructure in Uzbekistan.",
       aboutUsButton: "Learn More About Us",
@@ -2700,7 +2700,7 @@ export const translations = {
           experience: "6+ years",
           achievements: [
             "200,000+ subscribers",
-            "2000+ successful projects",
+            "1200+ successful projects",
             "International partnerships",
           ],
           education: [

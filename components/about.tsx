@@ -96,9 +96,9 @@ export function About() {
 
   const stats = [
     { value: 9, suffix: "+", label: t("about.experience") },
-    { value: 2000, suffix: "+", label: t("about.projects") },
+    { value: 1200, suffix: "+", label: t("about.projects") },
     { value: 50, suffix: "+", label: t("about.clients") },
-    { value: 12, suffix: "+", label: t("about.countries") },
+    { value: 5, suffix: "+", label: t("about.countries") },
   ];
 
   // Replace the values declaration with this:
