@@ -24,6 +24,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { Flag } from "@/components/ui/flag";
 import { useLanguage, type Language } from "@/contexts/LanguageContext";
 import { useMedia } from "@/contexts/MediaContext";
 
@@ -117,9 +118,7 @@ export function Header() {
                     )}
                   >
                     <span className="flex items-center gap-2.5">
-                      <span className="text-[10px] font-bold w-7 text-center py-0.5 rounded bg-muted text-muted-foreground">
-                        {lang.short}
-                      </span>
+                      <Flag code={lang.code} />
                       {lang.label}
                     </span>
                     {currentLang === lang.code && (
@@ -304,9 +303,7 @@ export function Header() {
                       )}
                     >
                       <span className="flex items-center gap-2.5">
-                        <span className="text-[10px] font-bold w-7 text-center py-0.5 rounded bg-muted text-muted-foreground">
-                          {lang.short}
-                        </span>
+                        <Flag code={lang.code} />
                         {lang.label}
                       </span>
                       {currentLang === lang.code && (
@@ -474,6 +471,7 @@ export function Header() {
                       {currentLang === lang.code && (
                         <Check className="w-3.5 h-3.5" />
                       )}
+                      <Flag code={lang.code} size={18} />
                       {lang.short}
                     </button>
                   ))}

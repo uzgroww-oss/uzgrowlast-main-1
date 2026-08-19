@@ -77,7 +77,7 @@ export const translations = {
         "Biz eng zamonaviy issiqxona texnologiyalarini joriy etamiz va qishloq xo'jaligini rivojlantiramiz",
       cta: "Bog'lanish",
       downloadCatalog: "Katalog yuklab olish",
-      tagline: "9+ yil tajriba - 1200+ muvaffaqiyatli loyiha",
+      tagline: "9+ yil tajriba - 1500+ muvaffaqiyatli loyiha",
       stats: {
         experience: "Yil tajriba",
         projects: "Muvaffaqiyatli loyiha",
@@ -332,7 +332,7 @@ export const translations = {
           experience: "6+ yillik",
           achievements: [
             "200,000+ obunachi",
-            "1200+ muvaffaqiyatli loyiha",
+            "1500+ muvaffaqiyatli loyiha",
             "Xalqaro hamkorliklar",
           ],
           education: [
@@ -1257,7 +1257,7 @@ export const translations = {
         "Мы внедряем самые современные тепличные технологии и развиваем сельское хозяйство",
       cta: "Связаться",
       downloadCatalog: "Скачать каталог",
-      tagline: "9+ лет опыта - 1200+ успешных проектов",
+      tagline: "9+ лет опыта - 1500+ успешных проектов",
       stats: {
         experience: "Лет опыта",
         projects: "Успешных проектов",
@@ -1511,7 +1511,7 @@ export const translations = {
           experience: "6+ лет",
           achievements: [
             "200 000+ подписчиков",
-            "1200+ успешных проектов",
+            "1500+ успешных проектов",
             "Международные партнёрства",
           ],
           education: [
@@ -2454,7 +2454,7 @@ export const translations = {
         "We implement the most modern greenhouse technologies and develop agriculture",
       cta: "Contact Us",
       downloadCatalog: "Download Catalog",
-      tagline: "9+ years experience - 1200+ successful projects",
+      tagline: "9+ years experience - 1500+ successful projects",
       stats: {
         experience: "Years experience",
         projects: "Successful projects",
@@ -2700,7 +2700,7 @@ export const translations = {
           experience: "6+ years",
           achievements: [
             "200,000+ subscribers",
-            "1200+ successful projects",
+            "1500+ successful projects",
             "International partnerships",
           ],
           education: [

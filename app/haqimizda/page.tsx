@@ -5,7 +5,7 @@ import { AboutDetailed } from "@/components/about-detailed";
 export const metadata = {
   title: "Biz haqimizda | UZ GROW",
   description:
-    "UZ GROW kompaniyasi haqida batafsil ma'lumot. 15+ yillik tajriba, 1200+ muvaffaqiyatli loyiha va professionallik.",
+    "UZ GROW kompaniyasi haqida batafsil ma'lumot. 15+ yillik tajriba, 1500+ muvaffaqiyatli loyiha va professionallik.",
 };
 
 export default function HaqimizdaPage() {
