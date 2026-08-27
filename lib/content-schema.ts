@@ -56,12 +56,13 @@ export interface PageView {
   mediaCount: number;
 }
 
-/**
- * Havolalar tahrirlanmaydi — noto'g'ri yozilsa sayt navigatsiyasi buziladi.
- * Ular kodda va tarjima faylida boshqariladi.
- */
+// .href — havola (noto'g'ri yozilsa navigatsiya buziladi)
+// .code — ichki kalit (masalan xaritadagi davlat kodi): u koddagi jadval
+//         bilan bog'lanadi, o'zgartirilsa element yo'qoladi
+const LOCKED_FIELDS = [".href", ".code"];
+
 function isEditable(path: string): boolean {
-  return !path.endsWith(".href");
+  return !LOCKED_FIELDS.some((suffix) => path.endsWith(suffix));
 }
 
 /** Ichma-ich obyekt/massivni "a.b.0.c" ko'rinishdagi tekis yo'llarga yoyadi */

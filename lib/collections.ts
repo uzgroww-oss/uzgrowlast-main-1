@@ -29,6 +29,14 @@ const withPrefix = (prefix: string) =>
 
 export const COLLECTIONS: Collection[] = [
   {
+    key: "mapCountries",
+    page: "bosh",
+    title: "Xaritadagi davlatlar",
+    basePath: "map.countries",
+    kind: "array",
+    labelField: "name",
+  },
+  {
     key: "team",
     page: "rahbariyat",
     title: "Jamoa a'zolari",

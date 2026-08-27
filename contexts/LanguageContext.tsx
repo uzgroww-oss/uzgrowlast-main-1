@@ -186,6 +186,19 @@ export const translations = {
         "Biznes model yaratish",
       ],
     },
+    map: {
+      badge: "Geografiya",
+      title: "Loyihalar geografiyasi",
+      subtitle: "O'zbekistondan boshlangan tajriba qo'shni davlatlarga yoyildi",
+      hubName: "O'zbekiston",
+      hubNote: "Bosh ofis — Toshkent",
+      countries: [
+        { code: "kz", name: "Qozog'iston", note: "Avtomatlashtirish tizimlari" },
+        { code: "kg", name: "Qirg'iziston", note: "Issiqxona qurilishi" },
+        { code: "tj", name: "Tojikiston", note: "Sug'orish tizimlari" },
+        { code: "tm", name: "Turkmaniston", note: "Stellaj tizimlari" },
+      ],
+    },
     projects: {
       title: "Loyihalar",
       subtitle: "Muvaffaqiyatli issiqxona loyihalari",
@@ -1364,6 +1377,19 @@ export const translations = {
         "Техническая документация",
         "Экспортные направления",
         "Создание бизнес-модели",
+      ],
+    },
+    map: {
+      badge: "География",
+      title: "География проектов",
+      subtitle: "Опыт, начатый в Узбекистане, распространился на соседние страны",
+      hubName: "Узбекистан",
+      hubNote: "Главный офис — Ташкент",
+      countries: [
+        { code: "kz", name: "Казахстан", note: "Системы автоматизации" },
+        { code: "kg", name: "Кыргызстан", note: "Строительство теплиц" },
+        { code: "tj", name: "Таджикистан", note: "Системы орошения" },
+        { code: "tm", name: "Туркменистан", note: "Стеллажные системы" },
       ],
     },
     projects: {
@@ -2561,6 +2587,19 @@ export const translations = {
         "Technical documentation",
         "Export directions",
         "Business model creation",
+      ],
+    },
+    map: {
+      badge: "Geography",
+      title: "Project geography",
+      subtitle: "Experience that began in Uzbekistan has spread to neighbouring countries",
+      hubName: "Uzbekistan",
+      hubNote: "Head office — Tashkent",
+      countries: [
+        { code: "kz", name: "Kazakhstan", note: "Automation systems" },
+        { code: "kg", name: "Kyrgyzstan", note: "Greenhouse construction" },
+        { code: "tj", name: "Tajikistan", note: "Irrigation systems" },
+        { code: "tm", name: "Turkmenistan", note: "Shelving systems" },
       ],
     },
     projects: {

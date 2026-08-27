@@ -280,3 +280,40 @@
     transform: translateX(300%);
   }
 }
+
+/* ---------- Loyihalar xaritasi (components/projects-map.tsx) ---------- */
+
+/* Markazdagi nuqta atrofidagi halqa — sekin "nafas oladi" */
+@keyframes uzgrow-pulse-ring {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.1;
+    transform: scale(1.45);
+  }
+}
+
+.uzgrow-pulse-ring {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: uzgrow-pulse-ring 2.8s ease-in-out infinite;
+}
+
+/* Chiziq bo'ylab yuguruvchi nuqta biroz yumshoq ko'rinsin */
+.uzgrow-pulse-dot {
+  filter: drop-shadow(0 0 4px rgba(36, 177, 75, 0.8));
+}
+
+/* Harakat kamaytirilgan bo'lsa hamma narsa to'xtaydi — bu foydalanuvchi
+   tizim sozlamasida so'ragan holat, hurmat qilinishi kerak. */
+@media (prefers-reduced-motion: reduce) {
+  .uzgrow-pulse-ring {
+    animation: none;
+  }
+  .uzgrow-pulse-dot {
+    display: none;
+  }
+}

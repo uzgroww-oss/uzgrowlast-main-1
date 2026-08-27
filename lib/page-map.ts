@@ -61,6 +61,11 @@ export const PAGES: PageDef[] = [
     path: "/",
     blocks: [
       { title: "Bosh ekran (video va slaydlar)", prefixes: ["hero"] },
+      {
+        title: "Loyihalar xaritasi",
+        prefixes: ["map"],
+        hint: "Davlat nomi va izohi tahrirlanadi; kerak bo'lmagani o'chiriladi",
+      },
       { title: "Xizmatlar bo'limi", prefixes: ["services"], shared: true },
       {
         title: "Biz haqimizda",
