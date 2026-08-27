@@ -191,7 +191,9 @@ export const translations = {
       title: "Loyihalar geografiyasi",
       subtitle: "O'zbekistondan boshlangan tajriba qo'shni davlatlarga yoyildi",
       hubName: "O'zbekiston",
-      hubNote: "Bosh ofis — Toshkent",
+      hubNote: "Bosh ofis — Toshkent",
+      reset: "Butun xaritani ko'rish",
+      zoomHint: "Yaqinlashtirish uchun bosing",
       countries: [
         { code: "kz", name: "Qozog'iston", note: "Avtomatlashtirish tizimlari" },
         { code: "kg", name: "Qirg'iziston", note: "Issiqxona qurilishi" },
@@ -1384,7 +1386,9 @@ export const translations = {
       title: "География проектов",
       subtitle: "Опыт, начатый в Узбекистане, распространился на соседние страны",
       hubName: "Узбекистан",
-      hubNote: "Главный офис — Ташкент",
+      hubNote: "Главный офис — Ташкент",
+      reset: "Показать всю карту",
+      zoomHint: "Нажмите, чтобы приблизить",
       countries: [
         { code: "kz", name: "Казахстан", note: "Системы автоматизации" },
         { code: "kg", name: "Кыргызстан", note: "Строительство теплиц" },
@@ -2594,7 +2598,9 @@ export const translations = {
       title: "Project geography",
       subtitle: "Experience that began in Uzbekistan has spread to neighbouring countries",
       hubName: "Uzbekistan",
-      hubNote: "Head office — Tashkent",
+      hubNote: "Head office — Tashkent",
+      reset: "Show the whole map",
+      zoomHint: "Click to zoom in",
       countries: [
         { code: "kz", name: "Kazakhstan", note: "Automation systems" },
         { code: "kg", name: "Kyrgyzstan", note: "Greenhouse construction" },
