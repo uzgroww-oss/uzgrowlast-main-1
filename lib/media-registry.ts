@@ -189,7 +189,7 @@ export const MEDIA: MediaItem[] = [
     page: "xizmatlar",
     block: "Jihozlar",
     type: "image",
-    def: "/images/photo_2026-04-04_10-35-50.jpg",
+    def: "/images/site/jihoz-shkaf.jpg",
   },
   {
     id: "xizmatlar.equipment.1",
@@ -197,7 +197,7 @@ export const MEDIA: MediaItem[] = [
     page: "xizmatlar",
     block: "Jihozlar",
     type: "image",
-    def: "/images/4.jpg",
+    def: "/images/site/jihoz-motor.jpg",
   },
   {
     id: "xizmatlar.equipment.2",
@@ -205,7 +205,7 @@ export const MEDIA: MediaItem[] = [
     page: "xizmatlar",
     block: "Jihozlar",
     type: "image",
-    def: "/images/7.jpg",
+    def: "/images/site/jihoz-nasos.jpg",
   },
   {
     id: "xizmatlar.equipment.3",
@@ -213,7 +213,7 @@ export const MEDIA: MediaItem[] = [
     page: "xizmatlar",
     block: "Jihozlar",
     type: "image",
-    def: "/images/photo_2026-04-04_10-35-25.jpg",
+    def: "/images/site/jihoz-sovutish.jpg",
   },
   {
     id: "xizmatlar.equipment.4",
@@ -221,7 +221,7 @@ export const MEDIA: MediaItem[] = [
     page: "xizmatlar",
     block: "Jihozlar",
     type: "image",
-    def: "/images/8.jpg",
+    def: "/images/site/jihoz-fan.jpg",
   },
   {
     id: "loyihalar.item1.0",
@@ -309,7 +309,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "3-loyiha",
     type: "image",
-    def: "/images/site/cl-IMG_0976_kkvp42.jpg",
+    def: "/images/site/qulupnay-issiqxona.jpg",
   },
   {
     id: "loyihalar.item3.1",
@@ -317,7 +317,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "3-loyiha",
     type: "image",
-    def: "/images/site/cl-IMG_1052_qr8w62.jpg",
+    def: "/images/site/ekin-qulupnay.jpg",
   },
   {
     id: "loyihalar.item3.2",
@@ -325,7 +325,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "3-loyiha",
     type: "image",
-    def: "/images/site/cl-IMG_1075_rrylu1.jpg",
+    def: "/images/site/prezident-issiqxona.jpg",
   },
   {
     id: "loyihalar.item3.3",
@@ -333,7 +333,7 @@ export const MEDIA: MediaItem[] = [
     page: "loyihalar",
     block: "3-loyiha",
     type: "image",
-    def: "/images/1.jpg",
+    def: "/images/site/issiqxona-ichi.jpg",
   },
   {
     id: "loyihalar.item4.0",
@@ -437,7 +437,7 @@ export const MEDIA: MediaItem[] = [
     page: "jixozlar",
     block: "Texnologiya kartalari",
     type: "image",
-    def: "/images/photo_2026-04-04_10-35-55.jpg",
+    def: "/images/site/jihoz-isitish.jpg",
   },
   {
     id: "jixozlar.tech.1",
@@ -445,7 +445,7 @@ export const MEDIA: MediaItem[] = [
     page: "jixozlar",
     block: "Texnologiya kartalari",
     type: "image",
-    def: "/images/site/cl-IMG_4397_copy_fymoco.jpg",
+    def: "/images/site/jihoz-ventilyatsiya.jpg",
   },
   {
     id: "jixozlar.tech.2",
@@ -453,7 +453,7 @@ export const MEDIA: MediaItem[] = [
     page: "jixozlar",
     block: "Texnologiya kartalari",
     type: "image",
-    def: "/images/site/cl-2_nqvejm.jpg",
+    def: "/images/site/jihoz-stellaj.jpg",
   },
   {
     id: "jixozlar.tech.3",
@@ -461,7 +461,7 @@ export const MEDIA: MediaItem[] = [
     page: "jixozlar",
     block: "Texnologiya kartalari",
     type: "image",
-    def: "/images/1.jpg",
+    def: "/images/site/jihoz-sugorish.jpg",
   },
   {
     id: "jixozlar.tech.4",
@@ -469,7 +469,7 @@ export const MEDIA: MediaItem[] = [
     page: "jixozlar",
     block: "Texnologiya kartalari",
     type: "image",
-    def: "/images/site/cl-IMG_4392_copy_xwrtpy.jpg",
+    def: "/images/site/jihoz-avtomatika.jpg",
   },
   {
     id: "issiqxona.vertical.0",
@@ -685,7 +685,7 @@ export const MEDIA: MediaItem[] = [
     page: "haqimizda",
     block: "Rasm",
     type: "image",
-    def: "/images/7.jpg",
+    def: "/images/site/expo-stend.jpg",
   },
   {
     id: "gallery.1",
@@ -765,7 +765,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/photo_2026-04-04_10-35-25.jpg",
+    def: "/images/site/prezident-issiqxona.jpg",
   },
   {
     id: "gallery.11",
@@ -773,7 +773,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/photo_2026-04-04_10-35-29.jpg",
+    def: "/images/site/prezident-qatorlar.jpg",
   },
   {
     id: "gallery.12",
@@ -781,7 +781,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/photo_2026-04-04_10-35-50.jpg",
+    def: "/images/site/prezident-uchrashuv.jpg",
   },
   {
     id: "gallery.13",
@@ -789,7 +789,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/photo_2026-04-04_10-35-53.jpg",
+    def: "/images/site/prezident-hujjat.jpg",
   },
   {
     id: "gallery.14",
@@ -797,7 +797,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/photo_2026-04-04_10-35-54.jpg",
+    def: "/images/site/qulupnay-issiqxona.jpg",
   },
   {
     id: "gallery.15",
@@ -805,7 +805,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/photo_2026-04-04_10-35-55.jpg",
+    def: "/images/site/prezident-qulupnay.jpg",
   },
   {
     id: "gallery.21",
@@ -813,7 +813,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/site/gallery-21.jpg",
+    def: "/images/site/ekin-tomat.jpg",
   },
   {
     id: "gallery.22",
@@ -821,7 +821,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/site/gallery-22.jpg",
+    def: "/images/site/ekin-bodring.jpg",
   },
   {
     id: "gallery.23",
@@ -829,7 +829,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/site/gallery-23.jpg",
+    def: "/images/site/ekin-sabzavot.jpg",
   },
   {
     id: "gallery.24",
@@ -837,7 +837,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/site/gallery-24.jpg",
+    def: "/images/site/ekin-qulupnay.jpg",
   },
   {
     id: "gallery.25",
@@ -925,7 +925,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/photo_2026-04-04_10-35-55.jpg",
+    def: "/images/site/jihoz-isitish.jpg",
   },
   {
     id: "gallery.36",
@@ -933,7 +933,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/site/cl-IMG_4397_copy_fymoco.jpg",
+    def: "/images/site/jihoz-ventilyatsiya.jpg",
   },
   {
     id: "gallery.37",
@@ -941,7 +941,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/site/cl-2_nqvejm.jpg",
+    def: "/images/site/jihoz-stellaj.jpg",
   },
   {
     id: "gallery.38",
@@ -949,7 +949,7 @@ export const MEDIA: MediaItem[] = [
     page: "gallery",
     block: "Galereya rasmlari",
     type: "image",
-    def: "/images/site/cl-IMG_4392_copy_xwrtpy.jpg",
+    def: "/images/site/jihoz-avtomatika.jpg",
   },
   {
     id: "gallery.39",
