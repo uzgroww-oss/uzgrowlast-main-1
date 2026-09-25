@@ -24,12 +24,36 @@ export interface MediaItem {
 
 export const MEDIA: MediaItem[] = [
   {
-    id: "bosh.hero.poster",
-    label: "Bosh ekran — video o'rnidagi rasm",
+    id: "bosh.hero.poster.0",
+    label: "Bosh ekran foni 1 — Ko’k tunnellar majmuasi",
     page: "bosh",
     block: "Bosh ekran",
     type: "image",
-    def: "/images/1.jpg",
+    def: "/images/site/hero-1.jpg",
+  },
+  {
+    id: "bosh.hero.poster.1",
+    label: "Bosh ekran foni 2 — Issiqxona ichki ko’rinishi",
+    page: "bosh",
+    block: "Bosh ekran",
+    type: "image",
+    def: "/images/site/hero-2.jpg",
+  },
+  {
+    id: "bosh.hero.poster.2",
+    label: "Bosh ekran foni 3 — Sanoat issiqxonasi qatorlari",
+    page: "bosh",
+    block: "Bosh ekran",
+    type: "image",
+    def: "/images/site/hero-3.jpg",
+  },
+  {
+    id: "bosh.hero.poster.3",
+    label: "Bosh ekran foni 4 — Pomidor yetishtirish",
+    page: "bosh",
+    block: "Bosh ekran",
+    type: "image",
+    def: "/images/site/hero-4.jpg",
   },
   {
     id: "rahbariyat.cover",

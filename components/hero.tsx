@@ -12,7 +12,7 @@ import {
   Calculator,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useMedia } from "@/contexts/MediaContext";
+import { mediaIds, useMedia } from "@/contexts/MediaContext";
 import { MediaImg, MediaVideo } from "@/components/ui/media-img";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -78,14 +78,29 @@ function AnimatedNumber({ end, duration = 2000 }: { end: number; duration?: numb
 
 export function Hero() {
   const { t, isHidden } = useLanguage();
-  const { m } = useMedia();
+  const { m, mList } = useMedia();
   const isMobile = useIsMobile();
-  const poster = m("bosh.hero.poster");
   // O'chirilgan slaydlar aylanmaga tushmaydi
   const slides = getSlides(t).filter(
     (_, i) => !isHidden(`hero.slides.${SLIDE_KEYS[i]}`),
   );
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Fon rasmi slaydlar bilan birga almashadi. Admin paneldan rasm
+  // o'chirilsa bo'sh satr keladi — u ro'yxatdan chiqarib tashlanadi,
+  // shuning uchun bitta rasm qolsa ham fon to'g'ri ishlayveradi.
+  const posters = mList(mediaIds("bosh.hero.poster", 4)).filter(Boolean);
+  const bgIndex = posters.length > 0 ? currentSlide % posters.length : 0;
+
+  // Barcha fon rasmlari birdan yuklanmasin — sahifa og'irlashmasligi uchun
+  // ular bosqichma-bosqich qo'shiladi. Lekin KEYINGISI ham oldindan
+  // qo'yiladi: aks holda rasm aynan ko'rsatilishi kerak bo'lgan paytda
+  // yuklana boshlaydi va o'tish paytida fon bo'sh qolib ketadi.
+  const [maxShown, setMaxShown] = useState(0);
+  useEffect(() => {
+    setMaxShown((prev) => Math.max(prev, bgIndex));
+  }, [bgIndex]);
+  const mountCount = Math.min(posters.length, maxShown + 2);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -103,25 +118,33 @@ export function Hero() {
       id="bosh-sahifa"
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Fon.
-          Poster rasm doim darhol ko'rinadi — video yuklanguncha bu joy
-          qora bo'lib turmasin. Video esa ~57 MB, shuning uchun telefonda
-          umuman yuklanmaydi: mobil internet va trafikni tejaydi. */}
+      {/* Fon: slaydlar bilan birga almashadigan rasmlar.
+          Ular ustma-ust turadi va faqat bittasi ko'rinadi — shu sababli
+          o'tish silliq bo'ladi (opacity).
+          Video ixtiyoriy: admin paneldan qo'yilsa rasmlar ustidan
+          ko'rsatiladi. Telefonda esa umuman yuklanmaydi — mobil
+          internet va trafikni tejaydi. */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <MediaImg
-          src={poster}
-          alt=""
-          // Ekranning eng yuqorisidagi rasm — u sahifaning "asosiy" rasmi
-          // hisoblanadi, shuning uchun kechiktirilmaydi va birinchi navbatda
-          // yuklanadi. Qolgan rasmlar esa lazy (media-img.tsx).
-          loading="eager"
-          fetchPriority="high"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        {posters.slice(0, mountCount).map((src, i) => (
+          <MediaImg
+            key={i}
+            src={src}
+            alt=""
+            // Hammasi eager: "lazy" ko'rinmayotgan (opacity 0) rasmni
+            // yuklamay qo'yishi mumkin, u holda o'tish paytida fon bo'sh
+            // qoladi. Birinchi rasm — sahifaning asosiy rasmi, shuning uchun
+            // yuqori ustuvorlikda; qolganlari pastda, LCP ga xalaqit bermasin.
+            loading="eager"
+            fetchPriority={i === 0 ? "high" : "low"}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              i === bgIndex ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
         {!isMobile && (
           <MediaVideo
             src={m("bosh.hero.video")}
-            poster={poster}
+            poster={posters[0]}
             className="absolute top-1/2 left-1/2 w-[100vw] min-w-full h-full min-h-[56.25vw] -translate-x-1/2 -translate-y-1/2 object-cover"
             autoPlay
             loop
