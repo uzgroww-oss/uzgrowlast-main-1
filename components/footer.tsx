@@ -100,7 +100,9 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://yandex.ru/navi?rtext=41.202864,69.235732~41.202625,69.235384&rtt=auto"
+                  href={t("contact.locationUrl")}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-start gap-3 text-white/70 hover:text-primary transition-colors"
                 >
                   <MapPin className="w-4 h-4 mt-1 shrink-0" />

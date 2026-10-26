@@ -446,7 +446,7 @@ export function Contact() {
                       size="sm"
                       onClick={() =>
                         window.open(
-                          "https://yandex.ru/navi?rtext=41.243647,69.290768&rtt=auto",
+                          t("contact.locationUrl"),
                           "_blank",
                         )
                       }
