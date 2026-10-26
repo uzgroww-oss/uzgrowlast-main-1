@@ -715,7 +715,7 @@ export const translations = {
       getDirections: "Yo'nalishni olish",
       copyAddress: "Manzilni nusxalash",
       address:
-        "Toshkent shahri, Sirg'ali tumani, Qo'yliq-6 mavzesi, Nomdanak ko'chasi, Ziyokor 6/9",
+        "Toshkent shahri, Sirg'ali tumani, Qo'yliq-6 mavzesi, Ziyokor 1-tor ko'chasi, 6/9",
       phoneLabel: "Telefon",
       emailLabel: "Email",
       formDescription: "Formani to'ldiring — mutaxassisimiz tez orada siz bilan bog'lanadi",
@@ -729,7 +729,7 @@ export const translations = {
       companyEmail: "uzgrrow@gmail.com",
       website: "https://www.uzgrow.uz/",
       locationUrl:
-        "https://yandex.uz/maps/?rtext=~41.243647%2C69.290768&rtt=auto",
+        "https://yandex.uz/maps/?rtext=~41.243669%2C69.290648&rtt=auto",
       socialLinks: {
         facebook: "https://www.facebook.com/share/1DePjLwX79/",
         instagram:
@@ -1984,7 +1984,7 @@ export const translations = {
       location: "Адрес",
       getDirections: "Построить маршрут",
       copyAddress: "Скопировать адрес",
-      address: "г. Ташкент, Сергелийский район, массив Куйлюк-6, ул. Номданак, Зиёкор 6/9",
+      address: "г. Ташкент, Сергелийский район, массив Куйлюк-6, 1-й проезд Зиёкор, 6/9",
       phoneLabel: "Телефон",
       emailLabel: "Эл. почта",
       formDescription: "Заполните форму — наш специалист скоро свяжется с вами",
@@ -1998,7 +1998,7 @@ export const translations = {
       companyEmail: "uzgrrow@gmail.com",
       website: "https://www.uzgrow.uz/",
       locationUrl:
-        "https://yandex.uz/maps/?rtext=~41.243647%2C69.290768&rtt=auto",
+        "https://yandex.uz/maps/?rtext=~41.243669%2C69.290648&rtt=auto",
       socialLinks: {
         facebook: "https://www.facebook.com/share/1DePjLwX79/",
         instagram:
@@ -3247,7 +3247,7 @@ export const translations = {
       location: "Location",
       getDirections: "Get Directions",
       copyAddress: "Copy Address",
-      address: "Tashkent, Sergeli district, Kuyluk-6 area, Nomdanak street, Ziyokor 6/9",
+      address: "Tashkent, Sergeli district, Kuyluk-6 area, 1st Ziyokor passage, 6/9",
       phoneLabel: "Phone",
       emailLabel: "Email",
       formDescription: "Fill in the form and our specialist will contact you shortly",
@@ -3261,7 +3261,7 @@ export const translations = {
       companyEmail: "uzgrrow@gmail.com",
       website: "https://www.uzgrow.uz/",
       locationUrl:
-        "https://yandex.uz/maps/?rtext=~41.243647%2C69.290768&rtt=auto",
+        "https://yandex.uz/maps/?rtext=~41.243669%2C69.290648&rtt=auto",
       socialLinks: {
         facebook: "https://www.facebook.com/share/1DePjLwX79/",
         instagram:

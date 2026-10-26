@@ -416,7 +416,7 @@ export function Contact() {
                 {/* Interactive Map */}
                 <div className="relative w-full h-64 rounded-lg overflow-hidden border border-border">
                   <MapEmbed
-                    src="https://yandex.ru/map-widget/v1/?ll=69.290768%2C41.243647&z=16&pt=69.290768%2C41.243647%2Cpmrdm1&source=constructor"
+                    src="https://yandex.uz/map-widget/v1/org/uzgrow/29834406058/?ll=69.290648%2C41.243669&z=16"
                     title={t("common.mapAlt")}
                     hint={t("contact.mapHint")}
                   />
@@ -434,7 +434,7 @@ export function Contact() {
                         {t("contact.locationCity") || "Tashkent, Uzbekistan"}
                       </p>
                       <p className="text-xs text-muted-foreground mt-1">
-                        {t("contact.coordinatesLabel") || "Koordinatalar"}: 41.243647, 69.290768
+                        {t("contact.coordinatesLabel") || "Koordinatalar"}: 41.243669, 69.290648
                       </p>
                     </div>
                   </div>

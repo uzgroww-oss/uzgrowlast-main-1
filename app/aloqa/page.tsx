@@ -418,7 +418,7 @@ export default function AloqaPage() {
             {/* Interactive Map */}
             <div className="aspect-[21/9] bg-card rounded-3xl overflow-hidden border-2 border-border relative">
               <MapEmbed
-                src="https://yandex.ru/map-widget/v1/?ll=69.290768%2C41.243647&z=16&pt=69.290768%2C41.243647%2Cpmrdm1&source=constructor"
+                src="https://yandex.uz/map-widget/v1/org/uzgrow/29834406058/?ll=69.290648%2C41.243669&z=16"
                 title={t("common.mapAlt")}
                 hint={t("contact.mapHint")}
               />
