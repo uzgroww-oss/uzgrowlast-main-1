@@ -9,7 +9,7 @@ export const runtime = "nodejs";
  * `{ ok: true }` javobinigina muvaffaqiyat deb hisoblaydi.
  */
 export async function GET(req: NextRequest) {
-  const denied = requireAdmin(req);
+  const denied = await requireAdmin(req);
   if (denied) return denied;
   return NextResponse.json({ ok: true });
 }

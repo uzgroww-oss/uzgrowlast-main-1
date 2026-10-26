@@ -63,6 +63,27 @@ Admin panel (`/admin`) sahifalar bo'yicha guruhlangan: qaysi kalit qaysi
 sahifada ko'rinishi `lib/page-map.ts` da, kartochkalar ro'yxati
 `lib/collections.ts` da, maydon nomlari `lib/field-labels.ts` da.
 
+### Admin panel imkoniyatlari
+
+- **Kartalar** (loyiha, jamoa a'zosi, galereya rasmi, xizmat, bo'lim...):
+  tahrirlash, **"+ Qo'shish"** va o'chirish. Qo'shilgan karta kodda yo'q,
+  u faqat bazadagi matnlardan iborat (`lib/added-items.ts`): massivda
+  indeks koddagi sonidan katta, obyektda kalit `new1`, `new2`... Faqat
+  o'zbekcha to'ldirilsa, boshqa tillarda ham o'zbekchasi ko'rinadi.
+  Qaysi to'plamga qo'shish mumkinligi `lib/collections.ts` dagi `addable`.
+- Koddagi kartani o'chirish uni **yashiradi** — bo'lim pastidagi
+  «O'chirilganlar» ro'yxatidan qaytariladi. Qo'shilgan karta esa butunlay
+  o'chadi.
+- **Yangiliklar** 3 tilda: o'zbekchasi `news` jadvalida, rus/ingliz
+  tarjimasi `content_overrides` da (`newsItems.<id>.title`). Sanani tanlash mumkin.
+- **Murojaatlar**: qidiruv, Excel (CSV) yuklab olish, «ko'rildi» belgisi.
+  Belgi uchun bazada `leads.handled` ustuni kerak — eski bazada
+  `supabase/schema.sql` dagi `alter table public.leads ...` qatorini bir
+  marta ishga tushiring (ustunsiz ham panel ishlayveradi).
+- **Fayllar ombori**: saytda hech qayerda ishlatilmayotgan va 1 kundan
+  eski fayllarni ko'rsatadi, admin tasdiqlasa o'chiradi (`/api/storage`).
+- Noto'g'ri parolga javob 1 soniya kechiktiriladi (`lib/server/auth.ts`).
+
 Server tomonda Supabase javoblari `lib/server/cache.ts` orqali qisqa muddat
 keshlanadi va baza vaqtincha javob bermasa oxirgi ma'lum qiymat qaytariladi.
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -25,57 +25,17 @@ import { TeamMemberModal } from "@/components/team-member-modal";
 
 export function Team() {
   const [selectedMember, setSelectedMember] = useState<any>(null);
-  const [apiMembers, setApiMembers] = useState<any[]>([]);
-  const { t, tObj, tList } = useLanguage();
+  const { t, tList } = useLanguage();
   const { m } = useMedia();
 
-  // Admin panel orqali qo'shilgan a'zolar; bo'sh bo'lsa tarjimadagi jamoa ko'rsatiladi
-  useEffect(() => {
-    fetch("/api/team")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (data?.members?.length) {
-          setApiMembers(
-            data.members.map((m: any) => ({
-              ...m,
-              avatar: m.avatar || null,
-              achievements: [],
-              education: [],
-              location: "Toshkent, O'zbekiston",
-            })),
-          );
-        }
-      })
-      .catch(() => {});
-  }, []);
-
-  const getTeamMembers = () => {
-    // O'chirilgan a'zolar ro'yxatga tushmaydi
-    const members = tList("team.members");
-    if (members.length === 0) return [];
-
-    // Suratlar admin paneldan almashtiriladi (lib/media-registry.ts)
-    const avatarKeys = [
-      "rustamjon",
-      "alisher",
-      "abdulloh",
-      "nafosat",
-      "dilnoza",
-      "sardor",
-    ];
-    const avatars: Record<string, string> = Object.fromEntries(
-      avatarKeys.map((key) => [key, m(`rahbariyat.avatar.${key}`)]),
-    );
-
-    return members.map(({ key, value }) => ({
-      ...value,
-      avatar: avatars[key] || null,
-      id: key,
-    }));
-  };
-
-  const teamMembers =
-    apiMembers.length > 0 ? apiMembers : getTeamMembers();
+  // A'zolar admin paneldagi "Jamoa" sahifasidan boshqariladi: o'chirilganlari
+  // chiqmaydi, yangi qo'shilganlari (new1, new2...) ham shu ro'yxatga tushadi.
+  // Surati har doim "rahbariyat.avatar.<kalit>" da.
+  const teamMembers = tList("team.members").map(({ key, value }) => ({
+    ...value,
+    avatar: m(`rahbariyat.avatar.${key}`) || null,
+    id: key,
+  }));
 
   return (
     <section className="py-10 lg:py-14 bg-background">

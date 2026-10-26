@@ -418,6 +418,7 @@ export function Contact() {
                   <MapEmbed
                     src="https://yandex.ru/map-widget/v1/?ll=69.290768%2C41.243647&z=16&pt=69.290768%2C41.243647%2Cpmrdm1&source=constructor"
                     title={t("common.mapAlt")}
+                    hint={t("contact.mapHint")}
                   />
                 </div>
 

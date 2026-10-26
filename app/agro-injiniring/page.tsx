@@ -31,9 +31,9 @@ import {
 
 
 export default function AgroEngineeringPage() {
-  const { t, tObj } = useLanguage();
+  const { t, tObj, tList } = useLanguage();
 
-  const agroServicesItems = tObj("agro.services.items") || [];
+  const agroServicesItems = tList("agro.services.items").map((e) => e.value);
   const agroServices = agroServicesItems.map((item: any, index: number) => ({
     ...item,
     icon: index === 0 ? <Cpu className="w-8 h-8" /> : 
@@ -46,7 +46,7 @@ export default function AgroEngineeringPage() {
            "bg-purple-500",
   }));
 
-  const technologiesItems = tObj("agro.technologies.items") || [];
+  const technologiesItems = tList("agro.technologies.items").map((e) => e.value);
   const technologies = technologiesItems.map((tech: any, index: number) => ({
     ...tech,
     icon: index === 0 ? <Wind className="w-6 h-6" /> :
@@ -55,7 +55,7 @@ export default function AgroEngineeringPage() {
           <Cpu className="w-6 h-6" />,
   }));
 
-  const benefitsItems = tObj("agro.benefits.items") || [];
+  const benefitsItems = tList("agro.benefits.items").map((e) => e.value);
   const benefits = benefitsItems.map((benefit: any, index: number) => ({
     ...benefit,
     icon: index === 0 ? <TrendingUp className="w-8 h-8 text-green-600" /> :
@@ -209,7 +209,7 @@ export default function AgroEngineeringPage() {
       <section className="py-20 bg-gradient-to-r from-green-600 to-blue-600">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-white mb-4">{t("common.process") || "Jarayon"}</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">{t("common.process")}</h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto">
               {t("agro.process.desc")}
             </p>

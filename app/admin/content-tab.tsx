@@ -15,6 +15,8 @@ import {
   ImageOff,
   Trash2,
   ChevronDown,
+  Plus,
+  Undo2,
 } from "lucide-react";
 import type { Language } from "@/contexts/LanguageContext";
 import type { MediaItem } from "@/lib/media-registry";
@@ -25,6 +27,7 @@ import {
   type ContentField,
 } from "@/lib/content-schema";
 import { fieldLabel } from "@/lib/field-labels";
+import { COLLECTIONS } from "@/lib/collections";
 import { useContentStore } from "./content-store";
 import { UploadField } from "./upload-field";
 
@@ -166,7 +169,11 @@ export function ContentTab() {
     clearText,
     clearMedia,
     deleteCard,
+    restoreCard,
     isCardHidden,
+    addCard,
+    lastAdded,
+    mediaResults,
     visibleLangs,
   } = useContentStore();
 
@@ -203,7 +210,7 @@ export function ContentTab() {
       )}
       {saved && changeCount === 0 && (
         <p className="text-sm text-green-700 flex items-center gap-2 bg-green-50 border border-green-200 rounded-lg p-3">
-          <Check className="w-4 h-4 shrink-0" /> Saqlandi — sayt yangilandi
+          <Check className="w-4 h-4 shrink-0" /> Saqlandi. Saytda 15 soniya ichida ko'rinadi
         </p>
       )}
 
@@ -213,10 +220,26 @@ export function ContentTab() {
           <h2 className="text-lg font-semibold text-foreground">
             Qidiruv natijalari
             <span className="ml-2 text-sm font-normal text-muted-foreground">
-              {searchResults.length} ta
+              {searchResults.length + mediaResults.length} ta
             </span>
           </h2>
-          {searchResults.length === 0 ? (
+          {mediaResults.length > 0 && (
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-3">
+              {mediaResults.map((item) => (
+                <MediaRow
+                  key={item.id}
+                  password={password}
+                  item={item}
+                  value={currentMedia(item)}
+                  isOverridden={item.id in mediaOverrides}
+                  isDirty={currentMedia(item) !== savedMedia(item)}
+                  onChange={setMediaValue}
+                  onClear={clearMedia}
+                />
+              ))}
+            </div>
+          )}
+          {searchResults.length === 0 && mediaResults.length === 0 ? (
             <EmptyBox text="Hech narsa topilmadi" />
           ) : (
             searchResults.map((field) => (
@@ -263,9 +286,11 @@ export function ContentTab() {
           )}
 
           {page.cardBlocks.map((block) => {
-            // O'chirilganlar butunlay yo'qoladi — qaytarish imkoni yo'q
+            const collection = COLLECTIONS.find((c) => c.key === block.collectionKey);
             const cards = block.cards.filter((c) => !isCardHidden(c.path));
-            if (cards.length === 0) return null;
+            const hiddenCards = block.cards.filter((c) => isCardHidden(c.path));
+            const noun = collection?.addable?.noun;
+            if (cards.length === 0 && hiddenCards.length === 0 && !noun) return null;
             return (
             <section key={block.title} className="space-y-3">
               <BlockTitle title={block.title} count={cards.length} icon="🗂" />
@@ -274,6 +299,7 @@ export function ContentTab() {
                   <CardRow
                     key={card.path}
                     card={card}
+                    defaultOpen={card.path === lastAdded}
                     password={password}
                     onDelete={deleteCard}
                     currentText={currentText}
@@ -290,6 +316,18 @@ export function ContentTab() {
                   />
                 ))}
               </div>
+              {noun && (
+                <button
+                  type="button"
+                  onClick={() => addCard(block.collectionKey)}
+                  className="w-full flex items-center justify-center gap-2 rounded-xl border-2 border-dashed border-border py-3 text-sm font-medium text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+                >
+                  <Plus className="w-4 h-4" /> Yangi {noun} qo'shish
+                </button>
+              )}
+              {hiddenCards.length > 0 && (
+                <HiddenCards cards={hiddenCards} onRestore={restoreCard} />
+              )}
             </section>
             );
           })}
@@ -422,6 +460,7 @@ function BlockTitle({
 
 function CardRow({
   card,
+  defaultOpen = false,
   password,
   onDelete,
   currentText,
@@ -437,9 +476,10 @@ function CardRow({
   langs,
 }: {
   card: CardView;
+  defaultOpen?: boolean;
   langs: Language[];
   password: string;
-  onDelete: (path: string) => Promise<void>;
+  onDelete: (card: CardView) => Promise<void>;
   currentText: (f: ContentField, l: Language) => string;
   savedText: (f: ContentField, l: Language) => string;
   setTextValue: (f: ContentField, l: Language, v: string) => void;
@@ -451,22 +491,25 @@ function CardRow({
   clearMedia: (i: MediaItem) => void;
   mediaOverrides: Record<string, string>;
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(defaultOpen);
   const [busy, setBusy] = useState(false);
+
+  // Yangi kartaning nomi — admin yozayotgan sarlavhadan olinadi
+  const labelField = card.fields.find((f) =>
+    /\.(title|name|label|author|country)$/.test(f.path),
+  );
+  const typed = labelField ? currentText(labelField, "uz").trim() : "";
+  const label = card.added ? typed || card.label : card.label;
 
   const remove = async () => {
     const ok = window.confirm(
-      `«${card.label}» butunlay o'chiriladi.
-
-` +
-        `DIQQAT: buni qaytarib bo'lmaydi — karta saytdan ham, shu paneldan ham yo'qoladi.
-
-` +
-        `O'chirilsinmi?`,
+      card.added
+        ? `«${label}» va uning barcha matn hamda rasmlari o'chiriladi.\n\nO'chirilsinmi?`
+        : `«${label}» saytdan olib tashlanadi.\n\nKeyin uni shu bo'limning pastidagi «O'chirilganlar» ro'yxatidan qaytarish mumkin.\n\nO'chirilsinmi?`,
     );
     if (!ok) return;
     setBusy(true);
-    await onDelete(card.path);
+    await onDelete(card);
     setBusy(false);
   };
 
@@ -491,8 +534,13 @@ function CardRow({
           className="flex-1 text-left min-w-0 flex items-center gap-2"
         >
           <span className="font-medium text-foreground truncate">
-            {card.label}
+            {label}
           </span>
+          {card.added && (
+            <span className="text-[11px] px-1.5 py-0.5 rounded bg-primary/10 text-primary shrink-0">
+              yangi
+            </span>
+          )}
           <ChevronDown
             className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform ${
               open ? "rotate-180" : ""
@@ -504,8 +552,8 @@ function CardRow({
           type="button"
           onClick={remove}
           disabled={busy}
-          title="Kartani butunlay o'chirish"
-          aria-label={`${card.label} — o'chirish`}
+          title="Kartani o'chirish"
+          aria-label={`${label} — o'chirish`}
           className="shrink-0 w-8 h-8 rounded-md text-muted-foreground hover:text-red-600 hover:bg-red-50 flex items-center justify-center transition-colors disabled:opacity-50"
         >
           {busy ? (
@@ -549,6 +597,58 @@ function CardRow({
             />
           ))}
         </div>
+      )}
+    </div>
+  );
+}
+
+/* ---------- O'chirilgan kartalar ---------- */
+
+function HiddenCards({
+  cards,
+  onRestore,
+}: {
+  cards: CardView[];
+  onRestore: (path: string) => Promise<void>;
+}) {
+  const [open, setOpen] = useState(false);
+  const [busy, setBusy] = useState<string | null>(null);
+
+  return (
+    <div className="rounded-xl border border-border bg-muted/40">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-muted-foreground"
+      >
+        <ChevronDown className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`} />
+        O'chirilganlar ({cards.length})
+      </button>
+      {open && (
+        <ul className="px-4 pb-3 space-y-2">
+          {cards.map((card) => (
+            <li key={card.path} className="flex items-center justify-between gap-3 text-sm">
+              <span className="truncate text-muted-foreground line-through">{card.label}</span>
+              <button
+                type="button"
+                disabled={busy === card.path}
+                onClick={async () => {
+                  setBusy(card.path);
+                  await onRestore(card.path);
+                  setBusy(null);
+                }}
+                className="shrink-0 inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 h-8 text-xs hover:bg-muted disabled:opacity-50"
+              >
+                {busy === card.path ? (
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                ) : (
+                  <Undo2 className="w-3.5 h-3.5" />
+                )}
+                Qaytarish
+              </button>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );

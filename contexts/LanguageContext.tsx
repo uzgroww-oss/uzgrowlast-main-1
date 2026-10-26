@@ -8,6 +8,13 @@ import React, {
   useMemo,
   ReactNode,
 } from "react";
+import {
+  NEW_KEY,
+  cleanItem,
+  ensureAddedItem,
+  fillBlanks,
+  isBlankItem,
+} from "@/lib/added-items";
 
 export type Language = "uz" | "ru" | "en";
 
@@ -65,6 +72,7 @@ export const translations = {
       previous: "Oldingi",
       next: "Keyingi",
       slide: "Slayd",
+      process: "Ish jarayoni",
       gridView: "Jadval ko'rinishi",
       listView: "Ro'yxat ko'rinishi",
       showMore: "Ko'proq o'qish",
@@ -196,7 +204,7 @@ export const translations = {
       title: "Loyihalar geografiyasi",
       subtitle: "O'zbekistondan boshlangan tajriba qo'shni davlatlarga yoyildi",
       hubName: "O'zbekiston",
-      hubNote: "Bosh ofis — Toshkent",
+      hubNote: "Bosh ofis — Toshkent",
       reset: "Butun xaritani ko'rish",
       zoomHint: "Yaqinlashtirish uchun bosing",
       countries: [
@@ -710,6 +718,12 @@ export const translations = {
         "Toshkent shahri, Sirg'ali tumani, Nomdanak ko'chasi, Ziyokor 6/9",
       phoneLabel: "Telefon",
       emailLabel: "Email",
+      formDescription: "Formani to'ldiring — mutaxassisimiz tez orada siz bilan bog'lanadi",
+      callUs: "Qo'ng'iroq qiling",
+      locationDetails: "Ofisga kelishdan oldin qo'ng'iroq qilib, vaqtni kelishib oling",
+      mapTitle: "Xaritada",
+      mapSubtitle: "Ofisimiz manzili xaritada",
+      mapHint: "Xaritani boshqarish uchun bosing",
       companyPhone: "+998555152223",
       companyPhone2: "+998994352313",
       companyEmail: "uzgrrow@gmail.com",
@@ -730,6 +744,9 @@ export const translations = {
         equipment: "Jihozlar",
         consulting: "Agro-konsalting",
         investment: "Investitsiya",
+        project: "Loyihalash",
+        partnership: "Hamkorlik",
+        other: "Boshqa",
       },
     },
     footer: {
@@ -745,6 +762,7 @@ export const translations = {
       allRightsReserved: "Barcha huquqlar himoyalangan",
       links: {
         services: [
+          { label: "Barcha xizmatlar", href: "/xizmatlar" },
           { label: "Issiqxona turlari", href: "/issiqxona-turlari" },
           { label: "Loyihalar", href: "/loyihalar" },
           { label: "Jihozlar", href: "/jixozlar" },
@@ -765,9 +783,6 @@ export const translations = {
       },
     },
   
-    process: {
-      title: "Ish jarayoni",
-    },
     investment: {
       roi: "Kutilgan ROI",
     },
@@ -1019,33 +1034,6 @@ export const translations = {
       ]
     },
 
-    ceo: {
-      management: "Rahbariyat",
-      role: "CEO",
-      experience: "Tajriba",
-      projects: "Loyihalar",
-      subscribers: "Obunachilar",
-      skills: "Ko'nikmalar",
-      education: "Ta'lim",
-      contactDirector: "Rahbar bilan bog'lanish",
-    },
-    stats: {
-      countries: "Mamlakatlar",
-      projects: "Loyihalar",
-      users: "Foydalanuvchilar",
-      investments: "Investitsiyalar",
-      regions: "Viloyatlar",
-      population: "Aholi",
-      growth: "O'sish",
-      enterprises: "Korxonalar",
-      budget: "Byudjet",
-      specialty: "Ixtisoslik",
-      viewGallery: "Galereyani ko'rish",
-      visitStats: "Tashrif statistikasi",
-      enterpriseCount: "Korxonalar soni",
-      jobs: "Ish o'rinlari",
-      additionalResources: "Qo'shimcha resurslar",
-    },
     agro: {
       hero: {
         badge: "Agro-injiniring",
@@ -1156,6 +1144,114 @@ export const translations = {
         desc: "Bizning mutaxassislarimiz sizga eng mos investitsiya modelini tanlashda yordam beradi.",
       },
     },
+    galleryPage: {
+      items: [
+        { title: "Sanoat issiqxonasi", description: "Toshkent viloyatida qurilgan zamonaviy sanoat issiqxonasi" },
+        { title: "Qishloq xo'jaligi issiqxonasi", description: "Farg'ona vodiysida qurilgan fermer issiqxonasi majmui" },
+        { title: "Quyosh issiqxonasi", description: "Samarqandda qurilgan energiya mustaqil issiqxona" },
+        { title: "Qulupnay issiqxonasi", description: "Andijonda qurilgan zamonaviy qulupnay issiqxonasi" },
+        { title: "Raqamli ta'lim markazi", description: "Toshkentda qurilayotgan raqamli ta'lim markazi" },
+        { title: "Energetika loyihasi", description: "Qashqadaryo viloyatida energiya loyihasi" },
+        { title: "Eksport issiqxonasi", description: "Qashqadaryoda qurilgan eksportga mo'ljallangan issiqxona" },
+        { title: "Gidroponika issiqxonasi", description: "Navoiyda qurilgan gidroponika tizimli issiqxona" },
+        { title: "Xalqaro turizm markazi", description: "Buxoro shahrida qurilayotgan xalqaro turizm markazi" },
+        { title: "Prezident tashrifi", description: "Prezidentning Samarqand viloyatiga rasmiy tashrifi" },
+        { title: "Loyihalar ochilishi", description: "Yangi loyihalarning rasmiy ochilishi marosimi" },
+        { title: "Prezident bilan uchrashuv", description: "Prezident bilan tadbirkorlar uchrashuvi" },
+        { title: "Memorandum imzolandi", description: "Xalqaro memorandum imzolash marosimi" },
+        { title: "Yangi korxona", description: "Ochilgan yangi korxona binosi" },
+        { title: "Hududni ko'rish", description: "Prezidentning loyiha hududini ko'rish marosimi" },
+        { title: "Tomat issiqxonasi", description: "Farg'ona vodiysida qurilgan tomat issiqxonasi" },
+        { title: "Bodring issiqxonasi", description: "Andijonda qurilgan bodring issiqxonasi" },
+        { title: "Sabzavot issiqxonasi", description: "Samarqandda qurilgan sabzavot issiqxonasi" },
+        { title: "Meva issiqxonasi", description: "Buxoro shahrida qurilgan meva issiqxonasi" },
+        { title: "Gullar issiqxonasi", description: "Qashqadaryo viloyatida qurilgan gullar issiqxonasi" },
+        { title: "Ziravorlar issiqxonasi", description: "Navoiyda qurilgan ziravorlar issiqxonasi" },
+        { title: "O'simliklar issiqxonasi", description: "Toshkent viloyatida qurilgan o'simliklar issiqxonasi" },
+        { title: "Dorivor o'simliklar issiqxonasi", description: "Farg'ona vodiysida qurilgan dorivor o'simliklar issiqxonasi" },
+        { title: "Tibbiy o'simliklar issiqxonasi", description: "Andijonda qurilgan tibbiy o'simliklar issiqxonasi" },
+        { title: "Organik issiqxona", description: "Samarqandda qurilgan organik issiqxona" },
+        { title: "Qozog'iston loyihasi", description: "Qozog'istonda qurilgan issiqxona majmui" },
+        { title: "Tojikiston loyihasi", description: "Tojikistonda qurilgan issiqxona" },
+        { title: "Qirg'iziston loyihasi", description: "Qirg'izistonda qurilgan issiqxona" },
+        { title: "Turkmaniston loyihasi", description: "Turkmanistonda qurilgan issiqxona" },
+        { title: "Isitish tizimi", description: "Zamonaviy isitish tizimi" },
+        { title: "Ventilyatsiya", description: "Issiqxona ventilyatsiya tizimi" },
+        { title: "Stelaj tizimi", description: "Zamonaviy stelaj tizimi" },
+        { title: "Avtomatlashtirish", description: "Issiqxona avtomatlashtirish tizimi" },
+        { title: "Andijon loyihasi 1", description: "Andijon viloyatidagi issiqxona" },
+        { title: "Andijon loyihasi 2", description: "Andijon viloyatidagi issiqxona majmui" },
+        { title: "Andijon loyihasi 3", description: "Andijon viloyatidagi issiqxona" },
+        { title: "Andijon loyihasi 4", description: "Andijon viloyatidagi issiqxona" },
+        { title: "Andijon loyihasi 5", description: "Andijon viloyatidagi issiqxona" },
+        { title: "Samarqand loyihasi 1", description: "Samarqand viloyatidagi issiqxona" },
+        { title: "Samarqand loyihasi 2", description: "Samarqand viloyatidagi issiqxona majmui" },
+        { title: "Yangi loyiha", description: "Yangi loyihadan lavhalar" },
+        { title: "Yangi loyiha", description: "Yangi loyihadan lavhalar" },
+        { title: "Yangi loyiha", description: "Yangi loyihadan lavhalar" },
+        { title: "Yangi loyiha", description: "Yangi loyihadan lavhalar" },
+        { title: "Yangi loyiha", description: "Yangi loyihadan lavhalar" },
+        { title: "Yangi loyiha", description: "Yangi loyihadan lavhalar" },
+      ],
+    },
+    servicesPage: {
+      badge: "Xizmatlar",
+      title: "Professional issiqxona xizmatlari",
+      subtitle: "Loyihalashdan tortib to'liq ishga tushirishgacha — biz sizga kompleks yechim taklif qilamiz.",
+      resultLabel: "Natija",
+      includesLabel: "Nimalar kiradi",
+      ctaTitle: "Loyihangizni boshlashga tayyormisiz?",
+      ctaText: "Bepul konsultatsiya oling va o'z issiqxona loyihangiz uchun individual taklif oling.",
+      ctaButton: "Bog'lanish",
+      items: [
+        {
+          title: "Turnkey issiqxona qurish",
+          description: "Biz to'liq sikl asosida issiqxona quramiz - loyihalashdan to'liq ishga tushirishgacha.",
+          features: [
+            "Metall konstruksiya",
+            "Polikarbonat yoki shisha qoplama",
+            "Isitish va sovutish tizimi",
+            "Tomchilatib sug'orish",
+            "Avtomatlashtirilgan boshqaruv",
+          ],
+          result: "Energiya tejamkor, yuqori hosildorlikka ega zamonaviy issiqxona.",
+        },
+        {
+          title: "Agro-injiniring va loyihalash",
+          description: "Har bir loyiha individual yondashuv asosida ishlab chiqiladi.",
+          features: [
+            "Hudud iqlimi asosida hisoblanadi",
+            "Shamol va yuklama tahlili qilinadi",
+            "Ekin turiga moslashtiriladi",
+            "Har bir kvadrat metr rentabelli ishlaydi",
+          ],
+          result: "Professional texnik chizma va klimat hisob-kitobi.",
+        },
+        {
+          title: "Zamonaviy jihozlar",
+          description: "Yuqori samaradorlik uchun eng zamonaviy tizimlarni o'rnatamiz.",
+          features: [
+            "Isitish tizimi",
+            "Ventilyatsiya va sovutish",
+            "CO₂ tizimi",
+            "O'g'itlash va sug'orish tizimi",
+          ],
+          result: "To'liq avtomatlashtirilgan issiqxona boshqaruvi.",
+        },
+        {
+          title: "Agro-konsalting",
+          description: "Biz faqat qurmaymiz — natijaga olib chiqamiz.",
+          features: [
+            "Qulupnay (stellaj tizim)",
+            "Pomidor yetishtirish",
+            "Bodring yetishtirish",
+            "Eksport yo'nalishi",
+            "Rentabellik tahlili va biznes model",
+          ],
+          result: "Yuqori daromadli qishloq xo'jaligi biznesi.",
+        },
+      ],
+    },
     newsPage: {
       badge: "Yangiliklar",
       title: "So'nggi yangiliklar",
@@ -1248,6 +1344,7 @@ export const translations = {
       previous: "Предыдущий",
       next: "Следующий",
       slide: "Слайд",
+      process: "Рабочий процесс",
       gridView: "Плиткой",
       listView: "Списком",
       showMore: "Читать далее",
@@ -1379,7 +1476,7 @@ export const translations = {
       title: "География проектов",
       subtitle: "Опыт, начатый в Узбекистане, распространился на соседние страны",
       hubName: "Узбекистан",
-      hubNote: "Главный офис — Ташкент",
+      hubNote: "Главный офис — Ташкент",
       reset: "Показать всю карту",
       zoomHint: "Нажмите, чтобы приблизить",
       countries: [
@@ -1890,6 +1987,12 @@ export const translations = {
       address: "г. Ташкент, Сиргалинский район, ул. Номданак, Зиёкор 6/9",
       phoneLabel: "Телефон",
       emailLabel: "Эл. почта",
+      formDescription: "Заполните форму — наш специалист скоро свяжется с вами",
+      callUs: "Позвоните нам",
+      locationDetails: "Перед визитом в офис позвоните, чтобы согласовать время",
+      mapTitle: "На карте",
+      mapSubtitle: "Адрес нашего офиса на карте",
+      mapHint: "Нажмите, чтобы управлять картой",
       companyPhone: "+998555152223",
       companyPhone2: "+998994352313",
       companyEmail: "uzgrrow@gmail.com",
@@ -1910,6 +2013,9 @@ export const translations = {
         equipment: "Оборудование",
         consulting: "Агроконсалтинг",
         investment: "Инвестиции",
+        project: "Проектирование",
+        partnership: "Партнёрство",
+        other: "Другое",
       },
     },
     footer: {
@@ -1925,6 +2031,7 @@ export const translations = {
       allRightsReserved: "Все права защищены",
       links: {
         services: [
+          { label: "Все услуги", href: "/xizmatlar" },
           { label: "Типы теплиц", href: "/issiqxona-turlari" },
           { label: "Проекты", href: "/loyihalar" },
           { label: "Оборудование", href: "/jixozlar" },
@@ -1945,9 +2052,6 @@ export const translations = {
       },
     },
   
-    process: {
-      title: "Рабочий процесс",
-    },
     investment: {
       roi: "Ожидаемый ROI",
     },
@@ -2199,33 +2303,6 @@ export const translations = {
       ]
     },
 
-    ceo: {
-      management: "Руководство",
-      role: "CEO",
-      experience: "Опыт",
-      projects: "Проекты",
-      subscribers: "Подписчики",
-      skills: "Навыки",
-      education: "Образование",
-      contactDirector: "Связаться с руководителем",
-    },
-    stats: {
-      countries: "Страны",
-      projects: "Проекты",
-      users: "Пользователи",
-      investments: "Инвестиции",
-      regions: "Регионы",
-      population: "Население",
-      growth: "Рост",
-      enterprises: "Предприятия",
-      budget: "Бюджет",
-      specialty: "Специализация",
-      viewGallery: "Посмотреть галерею",
-      visitStats: "Статистика визитов",
-      enterpriseCount: "Количество предприятий",
-      jobs: "Рабочие места",
-      additionalResources: "Дополнительные ресурсы",
-    },
     agro: {
       hero: {
         badge: "Агро-инжиниринг",
@@ -2356,6 +2433,114 @@ export const translations = {
         desc: "Наши специалисты помогут вам выбрать наиболее подходящую инвестиционную модель.",
       },
     },
+    galleryPage: {
+      items: [
+        { title: "Промышленная теплица", description: "Современная промышленная теплица в Ташкентской области" },
+        { title: "Сельскохозяйственная теплица", description: "Фермерский тепличный комплекс в Ферганской долине" },
+        { title: "Солнечная теплица", description: "Энергонезависимая теплица в Самарканде" },
+        { title: "Теплица для клубники", description: "Современная клубничная теплица в Андижане" },
+        { title: "Центр цифрового обучения", description: "Строящийся центр цифрового обучения в Ташкенте" },
+        { title: "Энергетический проект", description: "Энергетический проект в Кашкадарьинской области" },
+        { title: "Экспортная теплица", description: "Теплица для экспортной продукции в Кашкадарье" },
+        { title: "Гидропонная теплица", description: "Теплица с гидропонной системой в Навои" },
+        { title: "Международный туристический центр", description: "Строящийся международный туристический центр в Бухаре" },
+        { title: "Визит Президента", description: "Официальный визит Президента в Самаркандскую область" },
+        { title: "Открытие проектов", description: "Церемония официального открытия новых проектов" },
+        { title: "Встреча с Президентом", description: "Встреча предпринимателей с Президентом" },
+        { title: "Подписание меморандума", description: "Церемония подписания международного меморандума" },
+        { title: "Новое предприятие", description: "Здание открывшегося нового предприятия" },
+        { title: "Осмотр территории", description: "Президент осматривает территорию проекта" },
+        { title: "Томатная теплица", description: "Теплица для томатов в Ферганской долине" },
+        { title: "Огуречная теплица", description: "Теплица для огурцов в Андижане" },
+        { title: "Овощная теплица", description: "Овощная теплица в Самарканде" },
+        { title: "Фруктовая теплица", description: "Фруктовая теплица в Бухаре" },
+        { title: "Цветочная теплица", description: "Цветочная теплица в Кашкадарьинской области" },
+        { title: "Теплица для пряностей", description: "Теплица для пряных трав в Навои" },
+        { title: "Теплица для растений", description: "Теплица для растений в Ташкентской области" },
+        { title: "Теплица лекарственных растений", description: "Теплица лекарственных растений в Ферганской долине" },
+        { title: "Теплица для медицинских растений", description: "Теплица для медицинских растений в Андижане" },
+        { title: "Органическая теплица", description: "Органическая теплица в Самарканде" },
+        { title: "Проект в Казахстане", description: "Тепличный комплекс в Казахстане" },
+        { title: "Проект в Таджикистане", description: "Теплица в Таджикистане" },
+        { title: "Проект в Кыргызстане", description: "Теплица в Кыргызстане" },
+        { title: "Проект в Туркменистане", description: "Теплица в Туркменистане" },
+        { title: "Система отопления", description: "Современная система отопления" },
+        { title: "Вентиляция", description: "Система вентиляции теплицы" },
+        { title: "Стеллажная система", description: "Современная стеллажная система" },
+        { title: "Автоматизация", description: "Система автоматизации теплицы" },
+        { title: "Андижанский проект 1", description: "Теплица в Андижанской области" },
+        { title: "Андижанский проект 2", description: "Тепличный комплекс в Андижанской области" },
+        { title: "Андижанский проект 3", description: "Теплица в Андижанской области" },
+        { title: "Андижанский проект 4", description: "Теплица в Андижанской области" },
+        { title: "Андижанский проект 5", description: "Теплица в Андижанской области" },
+        { title: "Самаркандский проект 1", description: "Теплица в Самаркандской области" },
+        { title: "Самаркандский проект 2", description: "Тепличный комплекс в Самаркандской области" },
+        { title: "Новый проект", description: "Кадры с нового проекта" },
+        { title: "Новый проект", description: "Кадры с нового проекта" },
+        { title: "Новый проект", description: "Кадры с нового проекта" },
+        { title: "Новый проект", description: "Кадры с нового проекта" },
+        { title: "Новый проект", description: "Кадры с нового проекта" },
+        { title: "Новый проект", description: "Кадры с нового проекта" },
+      ],
+    },
+    servicesPage: {
+      badge: "Услуги",
+      title: "Профессиональные тепличные услуги",
+      subtitle: "От проектирования до полного запуска — мы предлагаем комплексное решение.",
+      resultLabel: "Результат",
+      includesLabel: "Что входит",
+      ctaTitle: "Готовы начать свой проект?",
+      ctaText: "Получите бесплатную консультацию и индивидуальное предложение для вашего тепличного проекта.",
+      ctaButton: "Связаться",
+      items: [
+        {
+          title: "Строительство теплиц под ключ",
+          description: "Мы строим теплицы полного цикла — от проектирования до полного запуска.",
+          features: [
+            "Металлоконструкция",
+            "Покрытие из поликарбоната или стекла",
+            "Система отопления и охлаждения",
+            "Капельное орошение",
+            "Автоматизированное управление",
+          ],
+          result: "Энергоэффективная современная теплица с высокой урожайностью.",
+        },
+        {
+          title: "Агроинжиниринг и проектирование",
+          description: "Каждый проект разрабатывается индивидуально.",
+          features: [
+            "Расчёт по климату региона",
+            "Анализ ветровых и снеговых нагрузок",
+            "Адаптация под вид культуры",
+            "Каждый квадратный метр работает рентабельно",
+          ],
+          result: "Профессиональные технические чертежи и климатический расчёт.",
+        },
+        {
+          title: "Современное оборудование",
+          description: "Устанавливаем самые современные системы для высокой эффективности.",
+          features: [
+            "Система отопления",
+            "Вентиляция и охлаждение",
+            "Система CO₂",
+            "Система подкормки и полива",
+          ],
+          result: "Полностью автоматизированное управление теплицей.",
+        },
+        {
+          title: "Агроконсалтинг",
+          description: "Мы не просто строим — мы доводим до результата.",
+          features: [
+            "Клубника (стеллажная система)",
+            "Выращивание томатов",
+            "Выращивание огурцов",
+            "Экспортное направление",
+            "Анализ рентабельности и бизнес-модель",
+          ],
+          result: "Высокодоходный сельскохозяйственный бизнес.",
+        },
+      ],
+    },
     newsPage: {
       badge: "Новости",
       title: "Последние новости",
@@ -2448,6 +2633,7 @@ export const translations = {
       previous: "Previous",
       next: "Next",
       slide: "Slide",
+      process: "Our process",
       gridView: "Grid view",
       listView: "List view",
       showMore: "Read more",
@@ -2579,7 +2765,7 @@ export const translations = {
       title: "Project geography",
       subtitle: "Experience that began in Uzbekistan has spread to neighbouring countries",
       hubName: "Uzbekistan",
-      hubNote: "Head office — Tashkent",
+      hubNote: "Head office — Tashkent",
       reset: "Show the whole map",
       zoomHint: "Click to zoom in",
       countries: [
@@ -3064,6 +3250,12 @@ export const translations = {
       address: "Tashkent city, Sirgali district, Nomdanak street, Ziyokor 6/9",
       phoneLabel: "Phone",
       emailLabel: "Email",
+      formDescription: "Fill in the form and our specialist will contact you shortly",
+      callUs: "Call us",
+      locationDetails: "Please call before visiting the office to arrange a time",
+      mapTitle: "On the map",
+      mapSubtitle: "Our office location on the map",
+      mapHint: "Click to control the map",
       companyPhone: "+998555152223",
       companyPhone2: "+998994352313",
       companyEmail: "uzgrrow@gmail.com",
@@ -3084,6 +3276,9 @@ export const translations = {
         equipment: "Equipment",
         consulting: "Agro-consulting",
         investment: "Investment",
+        project: "Design",
+        partnership: "Partnership",
+        other: "Other",
       },
     },
     footer: {
@@ -3099,6 +3294,7 @@ export const translations = {
       allRightsReserved: "All rights reserved",
       links: {
         services: [
+          { label: "All services", href: "/xizmatlar" },
           { label: "Greenhouse types", href: "/issiqxona-turlari" },
           { label: "Projects", href: "/loyihalar" },
           { label: "Equipment", href: "/jixozlar" },
@@ -3166,38 +3362,8 @@ export const translations = {
         { name: "World Agriculture", description: "One of the strongest companies in the field of international agro-expos!", partnership: "In partnership since 2022" }
       ]
     },
-    process: {
-      title: "Our process",
-    },
     investment: {
       roi: "Expected ROI",
-    },
-    ceo: {
-      management: "Management",
-      role: "CEO",
-      experience: "Experience",
-      projects: "Projects",
-      subscribers: "Subscribers",
-      skills: "Skills",
-      education: "Education",
-      contactDirector: "Contact the director",
-    },
-    stats: {
-      countries: "Countries",
-      projects: "Projects",
-      users: "Users",
-      investments: "Investments",
-      regions: "Regions",
-      population: "Population",
-      growth: "Growth",
-      enterprises: "Enterprises",
-      budget: "Budget",
-      specialty: "Specialty",
-      viewGallery: "View gallery",
-      visitStats: "Visit statistics",
-      enterpriseCount: "Number of enterprises",
-      jobs: "Jobs",
-      additionalResources: "Additional resources",
     },
     privacy: {
       title: "Privacy Policy",
@@ -3512,6 +3678,114 @@ export const translations = {
         desc: "Our specialists will help you choose the most suitable investment model.",
       },
     },
+    galleryPage: {
+      items: [
+        { title: "Industrial greenhouse", description: "A modern industrial greenhouse built in Tashkent region" },
+        { title: "Agricultural greenhouse", description: "A farm greenhouse complex in the Fergana Valley" },
+        { title: "Solar greenhouse", description: "An energy-independent greenhouse in Samarkand" },
+        { title: "Strawberry greenhouse", description: "A modern strawberry greenhouse in Andijan" },
+        { title: "Digital learning centre", description: "A digital learning centre under construction in Tashkent" },
+        { title: "Energy project", description: "An energy project in Kashkadarya region" },
+        { title: "Export greenhouse", description: "An export-oriented greenhouse in Kashkadarya" },
+        { title: "Hydroponic greenhouse", description: "A greenhouse with a hydroponic system in Navoi" },
+        { title: "International tourism centre", description: "An international tourism centre under construction in Bukhara" },
+        { title: "President's visit", description: "The President's official visit to Samarkand region" },
+        { title: "Project opening", description: "Official opening ceremony of new projects" },
+        { title: "Meeting with the President", description: "Entrepreneurs' meeting with the President" },
+        { title: "Memorandum signed", description: "International memorandum signing ceremony" },
+        { title: "New enterprise", description: "The building of a newly opened enterprise" },
+        { title: "Site visit", description: "The President inspecting the project site" },
+        { title: "Tomato greenhouse", description: "A tomato greenhouse in the Fergana Valley" },
+        { title: "Cucumber greenhouse", description: "A cucumber greenhouse in Andijan" },
+        { title: "Vegetable greenhouse", description: "A vegetable greenhouse in Samarkand" },
+        { title: "Fruit greenhouse", description: "A fruit greenhouse in Bukhara" },
+        { title: "Flower greenhouse", description: "A flower greenhouse in Kashkadarya region" },
+        { title: "Herb greenhouse", description: "A greenhouse for herbs and spices in Navoi" },
+        { title: "Plant greenhouse", description: "A plant greenhouse in Tashkent region" },
+        { title: "Medicinal herb greenhouse", description: "A medicinal herb greenhouse in the Fergana Valley" },
+        { title: "Medical plant greenhouse", description: "A medical plant greenhouse in Andijan" },
+        { title: "Organic greenhouse", description: "An organic greenhouse in Samarkand" },
+        { title: "Kazakhstan project", description: "A greenhouse complex in Kazakhstan" },
+        { title: "Tajikistan project", description: "A greenhouse in Tajikistan" },
+        { title: "Kyrgyzstan project", description: "A greenhouse in Kyrgyzstan" },
+        { title: "Turkmenistan project", description: "A greenhouse in Turkmenistan" },
+        { title: "Heating system", description: "A modern heating system" },
+        { title: "Ventilation", description: "Greenhouse ventilation system" },
+        { title: "Shelving system", description: "A modern shelving system" },
+        { title: "Automation", description: "Greenhouse automation system" },
+        { title: "Andijan project 1", description: "A greenhouse in Andijan region" },
+        { title: "Andijan project 2", description: "A greenhouse complex in Andijan region" },
+        { title: "Andijan project 3", description: "A greenhouse in Andijan region" },
+        { title: "Andijan project 4", description: "A greenhouse in Andijan region" },
+        { title: "Andijan project 5", description: "A greenhouse in Andijan region" },
+        { title: "Samarkand project 1", description: "A greenhouse in Samarkand region" },
+        { title: "Samarkand project 2", description: "A greenhouse complex in Samarkand region" },
+        { title: "New project", description: "Scenes from a new project" },
+        { title: "New project", description: "Scenes from a new project" },
+        { title: "New project", description: "Scenes from a new project" },
+        { title: "New project", description: "Scenes from a new project" },
+        { title: "New project", description: "Scenes from a new project" },
+        { title: "New project", description: "Scenes from a new project" },
+      ],
+    },
+    servicesPage: {
+      badge: "Services",
+      title: "Professional greenhouse services",
+      subtitle: "From design to full launch — we offer a complete solution.",
+      resultLabel: "Result",
+      includesLabel: "What's included",
+      ctaTitle: "Ready to start your project?",
+      ctaText: "Get a free consultation and a tailored offer for your greenhouse project.",
+      ctaButton: "Contact us",
+      items: [
+        {
+          title: "Turnkey greenhouse construction",
+          description: "We build greenhouses end to end — from design to full launch.",
+          features: [
+            "Steel structure",
+            "Polycarbonate or glass cladding",
+            "Heating and cooling system",
+            "Drip irrigation",
+            "Automated control",
+          ],
+          result: "An energy-efficient, high-yield modern greenhouse.",
+        },
+        {
+          title: "Agro-engineering and design",
+          description: "Every project is developed individually.",
+          features: [
+            "Calculated for the local climate",
+            "Wind and load analysis",
+            "Adapted to the crop",
+            "Every square metre is profitable",
+          ],
+          result: "Professional technical drawings and climate calculations.",
+        },
+        {
+          title: "Modern equipment",
+          description: "We install the latest systems for maximum efficiency.",
+          features: [
+            "Heating system",
+            "Ventilation and cooling",
+            "CO₂ system",
+            "Fertigation and irrigation system",
+          ],
+          result: "Fully automated greenhouse control.",
+        },
+        {
+          title: "Agro-consulting",
+          description: "We don't just build — we deliver results.",
+          features: [
+            "Strawberries (shelving system)",
+            "Tomato growing",
+            "Cucumber growing",
+            "Export focus",
+            "Profitability analysis and business model",
+          ],
+          result: "A high-income agricultural business.",
+        },
+      ],
+    },
     newsPage: {
       badge: "News",
       title: "Latest news",
@@ -3610,6 +3884,8 @@ function setByPath(root: any, path: string, value: string): void {
   if (keys.some((k) => RESERVED_KEYS.has(k))) return;
   let node = root;
   for (let i = 0; i < keys.length - 1; i++) {
+    // Admin qo'shgan karta (kodda yo'q) — bo'sh nusxasi yaratiladi
+    if (node?.[keys[i]] === undefined) ensureAddedItem(node, keys[i]);
     node = node?.[keys[i]];
     if (typeof node !== "object" || node === null) return;
   }
@@ -3750,20 +4026,49 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const source = tObj(path);
     if (!source || typeof source !== "object") return [];
 
+    // Admin qo'shgan kartalar faqat bir tilda (odatda o'zbekcha) to'ldirilgan
+    // bo'lishi mumkin. Boshqa tilda ular yo'qolib qolmasin va bo'sh joylari
+    // o'zbekchasi bilan to'ldirilsin. Koddagi kartalarga tegilmaydi: ularda
+    // bo'sh matn "admin buni o'chirgan" degani.
+    const fb =
+      currentLang !== FALLBACK_LANG ? lookup(fallback, path) : undefined;
+    const codeSource = lookup(translations[currentLang], path);
+    const isAdded = (key: string) =>
+      Array.isArray(codeSource)
+        ? Number(key) >= codeSource.length
+        : NEW_KEY.test(key);
+    const withFallback = (key: string, value: any) =>
+      fb && isAdded(key) ? fillBlanks(value, fb[key as any]) : value;
+
     const entries: { key: string; index: number; value: any }[] = [];
     if (Array.isArray(source)) {
-      source.forEach((value, index) =>
-        entries.push({ key: String(index), index, value }),
+      const length = Math.max(
+        source.length,
+        Array.isArray(fb) ? fb.length : 0,
       );
+      for (let index = 0; index < length; index++) {
+        const key = String(index);
+        entries.push({ key, index, value: withFallback(key, source[index]) });
+      }
     } else {
-      const order = keys ?? Object.keys(source);
+      const added = [
+        ...Object.keys(source),
+        ...(fb && typeof fb === "object" ? Object.keys(fb) : []),
+      ].filter((k, i, all) => NEW_KEY.test(k) && all.indexOf(k) === i);
+      const order = [...(keys ?? Object.keys(source)), ...added].filter(
+        (k, i, all) => all.indexOf(k) === i,
+      );
       order.forEach((key, index) => {
-        if (source[key] !== undefined)
-          entries.push({ key, index, value: source[key] });
+        const value = withFallback(key, source[key]);
+        if (value !== undefined) entries.push({ key, index, value });
       });
     }
 
-    return entries.filter((e) => !hidden.has(`${path}.${e.key}`));
+    return entries
+      .filter((e) => !hidden.has(`${path}.${e.key}`))
+      // Hali to'ldirilmagan (bo'sh) qo'shilgan kartalar ko'rinmaydi
+      .filter((e) => e.value !== undefined && !isBlankItem(e.value))
+      .map((e) => ({ ...e, value: cleanItem(e.value) }));
   };
 
   return (

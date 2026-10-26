@@ -17,6 +17,10 @@ create table if not exists public.leads (
 
 create index if not exists leads_created_at_idx on public.leads (created_at desc);
 
+-- Admin panelda "ko'rildi" belgisi (keyinroq qo'shilgan — eski bazada ham
+-- shu qatorni bir marta ishga tushirish kifoya)
+alter table public.leads add column if not exists handled boolean not null default false;
+
 -- ---------- Yangiliklar ----------
 create table if not exists public.news (
   id         uuid primary key default gen_random_uuid(),

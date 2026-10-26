@@ -156,9 +156,16 @@ export const PAGES: PageDef[] = [
 
   {
     key: "xizmatlar",
-    title: "Xizmatlar",
-    path: "/services",
+    title: "Xizmatlar bo'limi (bosh sahifa)",
+    path: "/",
     blocks: [{ title: "Xizmatlar", prefixes: ["services"], shared: true }],
+  },
+
+  {
+    key: "xizmatlar-sahifa",
+    title: "Xizmatlar sahifasi",
+    path: "/xizmatlar",
+    blocks: [{ title: "Sarlavha va chaqiruv", prefixes: ["servicesPage"] }],
   },
 
   {
@@ -430,17 +437,6 @@ export const PAGES: PageDef[] = [
     blocks: [{ title: "Foydalanish shartlari", prefixes: ["terms"] }],
   },
 
-  {
-    key: "boshqa",
-    title: "Boshqa (hozircha ishlatilmayapti)",
-    blocks: [
-      {
-        title: "Saytda ko'rinmaydigan matnlar",
-        prefixes: ["process", "ceo", "stats"],
-        hint: "Bu matnlarni ishlatadigan bo'limlar hozir saytga ulanmagan",
-      },
-    ],
-  },
 ];
 
 /** Kalit yo'li blokka tegishlimi? */

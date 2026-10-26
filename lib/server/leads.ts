@@ -10,6 +10,11 @@ export interface Lead {
   lang: string;
   createdAt: string;
   ip?: string;
+  /**
+   * Admin "ko'rildi" deb belgilaganmi. `undefined` — bazada bu ustun hali
+   * yo'q (supabase/schema.sql dagi qo'shimchani ishga tushirish kerak).
+   */
+  handled?: boolean;
 }
 
 interface Row {
@@ -22,6 +27,7 @@ interface Row {
   lang: string;
   ip: string | null;
   created_at: string;
+  handled?: boolean;
 }
 
 const toLead = (row: Row): Lead => ({
@@ -34,6 +40,7 @@ const toLead = (row: Row): Lead => ({
   lang: row.lang,
   createdAt: row.created_at,
   ip: row.ip ?? undefined,
+  handled: row.handled,
 });
 
 export async function saveLead(lead: Omit<Lead, "id" | "createdAt">): Promise<Lead> {
@@ -70,6 +77,22 @@ export async function deleteLead(id: string): Promise<boolean> {
   const { data, error } = await supabase()
     .from("leads")
     .delete()
+    .eq("id", id)
+    .select("id");
+
+  if (error) throw error;
+  return (data?.length ?? 0) > 0;
+}
+
+/** Ustun mavjud emas: Postgres (42703) yoki Supabase API (PGRST204) kodi */
+export const isMissingColumn = (error: unknown) =>
+  ["42703", "PGRST204"].includes((error as { code?: string })?.code ?? "");
+
+/** "Ko'rildi" belgisini qo'yadi yoki olib tashlaydi */
+export async function setLeadHandled(id: string, handled: boolean): Promise<boolean> {
+  const { data, error } = await supabase()
+    .from("leads")
+    .update({ handled })
     .eq("id", id)
     .select("id");
 

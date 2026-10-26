@@ -61,14 +61,16 @@ const platforms = [
   },
 ];
 
-const geographicCoverage = (tObj: any) => tObj("media.geographicCoverage") || [];
-const partnershipPlans = (tObj: any) => tObj("media.partnershipPlans") || [];
-const foreignPartners = (tObj: any) => tObj("media.foreignPartners") || [];
+// tList: admin o'chirgan kartalar chiqmaydi, qo'shganlari esa chiqadi
+type TList = (path: string) => { value: any }[];
+const geographicCoverage = (tList: TList) => tList("media.geographicCoverage").map((e) => e.value);
+const partnershipPlans = (tList: TList) => tList("media.partnershipPlans").map((e) => e.value);
+const foreignPartners = (tList: TList) => tList("media.foreignPartners").map((e) => e.value);
 
 
 
 export function AssoDesignMedia() {
-  const { t, tObj } = useLanguage();
+  const { t, tList } = useLanguage();
   const { m } = useMedia();
   return (
     <section className="py-10 lg:py-14 bg-background">
@@ -241,7 +243,7 @@ export function AssoDesignMedia() {
             {t("media.geographicTitle")}
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {geographicCoverage(tObj).map((country: any) => (
+            {geographicCoverage(tList).map((country: any) => (
               <Card
                 key={country.country}
                 className="hover:shadow-lg transition-shadow"
@@ -264,7 +266,7 @@ export function AssoDesignMedia() {
             {t("media.tariffsTitle")}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {partnershipPlans(tObj).map((plan: any, index: number) => (
+            {partnershipPlans(tList).map((plan: any, index: number) => (
               <Card
                 key={index}
                 className={`border-2 ${index === 0 ? "border-blue-500" : index === 1 ? "border-purple-500" : "border-yellow-500"} hover:shadow-xl transition-shadow`}
@@ -309,7 +311,7 @@ export function AssoDesignMedia() {
             {t("media.foreignPartnersTitle")}
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {foreignPartners(tObj).map((partner: any, index: number) => (
+            {foreignPartners(tList).map((partner: any, index: number) => (
               <Card
                 key={index}
                 className="bg-gradient-to-r from-blue-50 to-purple-50"

@@ -18,340 +18,40 @@ import {
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useMedia } from "@/contexts/MediaContext";
+import { GALLERY } from "@/lib/gallery-items";
 
 
-const getAllImages = (m: (id: string) => string) => [
-  {
-    id: 1,
-    src: m("gallery.1"),
-    title: "Sanoat issiqxonasi",
-    category: "Loyihalar",
-    description: "Toshkent viloyatida qurilgan zamonaviy sanoat issiqxonasi",
-  },
-  {
-    id: 2,
-    src: m("gallery.2"),
-    title: "Qishloq xo'jaligi issiqxonasi",
-    category: "Loyihalar",
-    description: "Farg'ona vodiysida qurilgan fermer issiqxonasi majmui",
-  },
-  {
-    id: 3,
-    src: m("gallery.3"),
-    title: "Quyosh issiqxonasi",
-    category: "Loyihalar",
-    description: "Samarqandda qurilgan energiya mustaqil issiqxona",
-  },
-  {
-    id: 4,
-    src: m("gallery.4"),
-    title: "Qulupnay issiqxonasi",
-    category: "Loyihalar",
-    description: "Andijonda qurilgan zamonaviy qulupnay issiqxonasi",
-  },
-  {
-    id: 5,
-    src: m("gallery.5"),
-    title: "Raqamli ta'lim markazi",
-    category: "Loyihalar",
-    description: "Toshkentda qurilayotgan raqamli ta'lim markazi",
-  },
-  {
-    id: 6,
-    src: m("gallery.6"),
-    title: "Energetika loyihasi",
-    category: "Loyihalar",
-    description: "Qashqadaryo viloyatida energiya loyihasi",
-  },
-  {
-    id: 7,
-    src: m("gallery.7"),
-    title: "Eksport issiqxonasi",
-    category: "Loyihalar",
-    description: "Qashqadaryoda qurilgan eksportga mo'ljallangan issiqxona",
-  },
-  {
-    id: 8,
-    src: m("gallery.8"),
-    title: "Gidroponika issiqxonasi",
-    category: "Loyihalar",
-    description: "Navoiyda qurilgan gidroponika tizimli issiqxona",
-  },
-  {
-    id: 9,
-    src: m("gallery.9"),
-    title: "Xalqaro turizm markazi",
-    category: "Loyihalar",
-    description: "Buxoro shahrida qurilayotgan xalqaro turizm markazi",
-  },
-  {
-    id: 10,
-    src: m("gallery.10"),
-    title: "Prezident tashrifi",
-    category: "Samarqand",
-    description: "Prezidentning Samarqand viloyatiga rasmiy tashrifi",
-  },
-  {
-    id: 11,
-    src: m("gallery.11"),
-    title: "Loyihalar ochilishi",
-    category: "Samarqand",
-    description: "Yangi loyihalarning rasmiy ochilishi marosimi",
-  },
-  {
-    id: 12,
-    src: m("gallery.12"),
-    title: "Prezident bilan uchrashuv",
-    category: "Samarqand",
-    description: "Prezident bilan tadbirkorlar uchrashuvi",
-  },
-  {
-    id: 13,
-    src: m("gallery.13"),
-    title: "Memorandum imzolandi",
-    category: "Samarqand",
-    description: "Xalqaro memorandum imzolash marosimi",
-  },
-  {
-    id: 14,
-    src: m("gallery.14"),
-    title: "Yangi korxona",
-    category: "Samarqand",
-    description: "Ochiqilgan yangi korxona binosi",
-  },
-  {
-    id: 15,
-    src: m("gallery.15"),
-    title: "Hududni ko'rish",
-    category: "Samarqand",
-    description: "Prezidentning loyiha hududini ko'rish marosimi",
-  },
-  {
-    id: 21,
-    src: m("gallery.21"),
-    title: "Tomat issiqxonasi",
-    category: "Loyihalar",
-    description: "Farg'ona vodiysida qurilgan tomat issiqxonasi",
-  },
-  {
-    id: 22,
-    src: m("gallery.22"),
-    title: "Bodring issiqxonasi",
-    category: "Loyihalar",
-    description: "Andijonda qurilgan bodring issiqxonasi",
-  },
-  {
-    id: 23,
-    src: m("gallery.23"),
-    title: "Sabzavot issiqxonasi",
-    category: "Loyihalar",
-    description: "Samarqandda qurilgan sabzavot issiqxonasi",
-  },
-  {
-    id: 24,
-    src: m("gallery.24"),
-    title: "Meva issiqxonasi",
-    category: "Loyihalar",
-    description: "Buxoro shahrida qurilgan meva issiqxonasi",
-  },
-  {
-    id: 25,
-    src: m("gallery.25"),
-    title: "Gullar issiqxonasi",
-    category: "Loyihalar",
-    description: "Qashqadaryo viloyatida qurilgan gullar issiqxonasi",
-  },
-  {
-    id: 26,
-    src: m("gallery.26"),
-    title: "Ziravorlar issiqxonasi",
-    category: "Loyihalar",
-    description: "Navoiyda qurilgan ziravorlar issiqxonasi",
-  },
-  {
-    id: 27,
-    src: m("gallery.27"),
-    title: "O'simliklar issiqxonasi",
-    category: "Loyihalar",
-    description: "Toshkent viloyatida qurilgan o'simliklar issiqxonasi",
-  },
-  {
-    id: 28,
-    src: m("gallery.28"),
-    title: "Dorivor o'simliklar issiqxonasi",
-    category: "Loyihalar",
-    description: "Farg'ona vodiysida qurilgan dorivor o'simliklar issiqxonasi",
-  },
-  {
-    id: 29,
-    src: m("gallery.29"),
-    title: "Tibbiy o'simliklar issiqxonasi",
-    category: "Loyihalar",
-    description: "Andijonda qurilgan tibbiy o'simliklar issiqxonasi",
-  },
-  {
-    id: 30,
-    src: m("gallery.30"),
-    title: "Organik issiqxona",
-    category: "Loyihalar",
-    description: "Samarqandda qurilgan organik issiqxona",
-  },
-  {
-    id: 31,
-    src: m("gallery.31"),
-    title: "Qozog'iston loyihasi",
-    category: "Loyihalar",
-    description: "Qozog'istonda qurilgan issiqxona majmui",
-  },
-  {
-    id: 32,
-    src: m("gallery.32"),
-    title: "Tojikiston loyihasi",
-    category: "Loyihalar",
-    description: "Tojikistonda qurilgan issiqxona",
-  },
-  {
-    id: 33,
-    src: m("gallery.33"),
-    title: "Qirg'iziston loyihasi",
-    category: "Loyihalar",
-    description: "Qirg'izistonda qurilgan issiqxona",
-  },
-  {
-    id: 34,
-    src: m("gallery.34"),
-    title: "Turkmaniston loyihasi",
-    category: "Loyihalar",
-    description: "Turkmanistonda qurilgan issiqxona",
-  },
-  {
-    id: 35,
-    src: m("gallery.35"),
-    title: "Isitish tizimi",
-    category: "Loyihalar",
-    description: "Zamonaviy isitish tizimi",
-  },
-  {
-    id: 36,
-    src: m("gallery.36"),
-    title: "Ventilyatsiya",
-    category: "Loyihalar",
-    description: "Issiqxona ventilyatsiya tizimi",
-  },
-  {
-    id: 37,
-    src: m("gallery.37"),
-    title: "Stelaj tizimi",
-    category: "Loyihalar",
-    description: "Zamonaviy stelaj tizimi",
-  },
-  {
-    id: 38,
-    src: m("gallery.38"),
-    title: "Avtomatlashtirish",
-    category: "Loyihalar",
-    description: "Issiqxona avtomatlashtirish tizimi",
-  },
-  {
-    id: 39,
-    src: m("gallery.39"),
-    title: "Andijon loyihasi 1",
-    category: "Loyihalar",
-    description: "Andijon viloyatidagi issiqxona",
-  },
-  {
-    id: 40,
-    src: m("gallery.40"),
-    title: "Andijon loyihasi 2",
-    category: "Loyihalar",
-    description: "Andijon viloyatidagi issiqxona majmui",
-  },
-  {
-    id: 41,
-    src: m("gallery.41"),
-    title: "Andijon loyihasi 3",
-    category: "Loyihalar",
-    description: "Andijon viloyatidagi issiqxona",
-  },
-  {
-    id: 42,
-    src: m("gallery.42"),
-    title: "Andijon loyihasi 4",
-    category: "Loyihalar",
-    description: "Andijon viloyatidagi issiqxona",
-  },
-  {
-    id: 43,
-    src: m("gallery.43"),
-    title: "Andijon loyihasi 5",
-    category: "Loyihalar",
-    description: "Andijon viloyatidagi issiqxona",
-  },
-  {
-    id: 44,
-    src: m("gallery.44"),
-    title: "Samarqand loyihasi 1",
-    category: "Loyihalar",
-    description: "Samarqand viloyatidagi issiqxona",
-  },
-  {
-    id: 45,
-    src: m("gallery.45"),
-    title: "Samarqand loyihasi 2",
-    category: "Loyihalar",
-    description: "Samarqand viloyatidagi issiqxona majmui",
-  },
-  {
-    id: 46,
-    src: m("gallery.46"),
-    title: "Yangi loyiha",
-    category: "Loyihalar",
-    description: "Yangi loyihadan lavhalar",
-  },
-  {
-    id: 47,
-    src: m("gallery.47"),
-    title: "Yangi loyiha",
-    category: "Loyihalar",
-    description: "Yangi loyihadan lavhalar",
-  },
-  {
-    id: 48,
-    src: m("gallery.48"),
-    title: "Yangi loyiha",
-    category: "Loyihalar",
-    description: "Yangi loyihadan lavhalar",
-  },
-  {
-    id: 49,
-    src: m("gallery.49"),
-    title: "Yangi loyiha",
-    category: "Loyihalar",
-    description: "Yangi loyihadan lavhalar",
-  },
-  {
-    id: 50,
-    src: m("gallery.50"),
-    title: "Yangi loyiha",
-    category: "Loyihalar",
-    description: "Yangi loyihadan lavhalar",
-  },
-  {
-    id: 51,
-    src: m("gallery.51"),
-    title: "Yangi loyiha",
-    category: "Loyihalar",
-    description: "Yangi loyihadan lavhalar",
-  },
-];
+type TList = (path: string) => { index: number; value: any }[];
+
+/** Rasmlar: matni tarjimadan, rasm va kategoriyasi lib/gallery-items.ts dan */
+const getAllImages = (m: (id: string) => string, tList: TList) =>
+  tList("galleryPage.items")
+    .map(({ index, value }) => {
+      const meta = GALLERY[index];
+      return {
+        id: meta?.id ?? 1000 + index,
+        src: meta ? m(`gallery.${meta.id}`) : m(`gallery.add${index}`),
+        title: (value?.title as string) ?? "",
+        category: meta?.category ?? "Loyihalar",
+        description: (value?.description as string) ?? "",
+      };
+    })
+    // Rasmi o'chirilgan yoki hali yuklanmagan element ko'rsatilmaydi
+    .filter((img) => img.src);
 
 const categories = ["Barchasi", "Loyihalar", "Samarqand"];
 
 export function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState("Barchasi");
-    const { t, tObj } = useLanguage();
+  const { t, tList } = useLanguage();
   const { m } = useMedia();
-  const allImages = getAllImages(m);
+  const allImages = getAllImages(m, tList);
+  const categoryLabel = (c: string) =>
+    c === "Barchasi"
+      ? t("common.all")
+      : c === "Loyihalar"
+        ? t("projects.gallery.projects")
+        : t("projects.gallery.samarqand");
   const [selectedImage, setSelectedImage] = useState<
     ReturnType<typeof getAllImages>[0] | null
   >(null);
@@ -411,7 +111,7 @@ export function Gallery() {
                   : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200",
               )}
             >
-              {category === "Barchasi" ? t("common.all") : category === "Loyihalar" ? t("projects.gallery.projects") : t("projects.gallery.samarqand")}
+              {categoryLabel(category)}
             </button>
           ))}
         </div>
@@ -436,7 +136,7 @@ export function Gallery() {
                       {image.title}
                     </h3>
                     <Badge variant="secondary" className="text-xs">
-                      {image.category === "Barchasi" ? t("common.all") : image.category === "Loyihalar" ? t("projects.gallery.projects") : t("projects.gallery.samarqand")}
+                      {categoryLabel(image.category)}
                     </Badge>
                   </div>
                 </div>
@@ -539,7 +239,7 @@ export function Gallery() {
                       </h3>
                       <div className="flex items-center gap-4">
                         <Badge variant="secondary">
-                          {selectedImage.category}
+                          {categoryLabel(selectedImage.category)}
                         </Badge>
                         <span className="text-white/80 text-sm">
                           {currentIndex + 1} / {filteredImages.length}

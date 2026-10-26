@@ -26,7 +26,13 @@ export type AuthResult = NextResponse | null;
  * Admin so'rovini tekshiradi: `Authorization: Bearer <ADMIN_PASSWORD>`.
  * Ruxsat berilsa `null`, aks holda tayyor xato javobi qaytadi.
  */
-export function requireAdmin(req: NextRequest): AuthResult {
+// Noto'g'ri parolga javob ataylab kechiktiriladi. Urinishlar hisobi server
+// xotirasida — Vercel'da har nusxaning o'zi alohida, shuning uchun u yolg'iz
+// ishonchli emas. Kechikish esa har bir so'rovda ishlaydi: parolni tanlab
+// topish amalda imkonsiz darajada sekinlashadi.
+const WRONG_PASSWORD_DELAY_MS = 1000;
+
+export async function requireAdmin(req: NextRequest): Promise<AuthResult> {
   const password = process.env.ADMIN_PASSWORD;
 
   // Parol sozlanmagan bo'lsa admin API butunlay yopiq
@@ -50,6 +56,7 @@ export function requireAdmin(req: NextRequest): AuthResult {
 
   const auth = req.headers.get("authorization") || "";
   if (!safeEqual(auth, `Bearer ${password}`)) {
+    await new Promise((r) => setTimeout(r, WRONG_PASSWORD_DELAY_MS));
     return NextResponse.json(
       { ok: false, error: "Unauthorized" },
       { status: 401 },

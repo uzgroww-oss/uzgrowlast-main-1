@@ -64,9 +64,8 @@ export function pageMeta({
 /**
  * Qidiruv tizimlariga taqdim etiladigan sahifalar (app/sitemap.ts).
  *
- * /about va /services bu yerda yo'q: ular /haqimizda va /xizmatlar bilan
- * mazmunan takrorlanadi, shuning uchun canonical'i o'sha sahifalarga
- * qaratilgan. /admin esa umuman ommaviy emas.
+ * /about va /services yo'q: ular /haqimizda va /xizmatlar ga doimiy
+ * yo'naltiriladi (next.config.mjs). /admin esa umuman ommaviy emas.
  */
 export const PUBLIC_ROUTES: { path: string; priority: number }[] = [
   { path: "/", priority: 1 },

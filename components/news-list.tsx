@@ -10,6 +10,8 @@ export interface NewsListItem {
   body: string;
   imageUrl?: string | null;
   createdAt: string;
+  /** Rus va ingliz tarjimasi; bo'lmasa o'zbekchasi ko'rsatiladi */
+  i18n?: Partial<Record<"ru" | "en", { title?: string; body?: string }>>;
 }
 
 const LOCALES: Record<Language, string> = {
@@ -18,18 +20,43 @@ const LOCALES: Record<Language, string> = {
   en: "en-US",
 };
 
+// Brauzerlarda o'zbekcha oy nomlari yo'q ("2026 M05 14" chiqadi) —
+// shuning uchun o'zbekcha sana qo'lda yoziladi: "14-may, 2026"
+const UZ_MONTHS = [
+  "yanvar", "fevral", "mart", "aprel", "may", "iyun",
+  "iyul", "avgust", "sentabr", "oktabr", "noyabr", "dekabr",
+];
+
+function formatDate(iso: string, lang: Language): string {
+  const d = new Date(iso);
+  if (lang !== "uz") {
+    return d.toLocaleDateString(LOCALES[lang], {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: "Asia/Tashkent",
+    });
+  }
+  // Toshkent vaqti bo'yicha kun/oy/yil
+  const [y, m, day] = d
+    .toLocaleDateString("en-CA", { timeZone: "Asia/Tashkent" })
+    .split("-")
+    .map(Number);
+  return `${day}-${UZ_MONTHS[m - 1]}, ${y}`;
+}
+
 // Shundan uzun matn kartada qisqartiriladi va "Ko'proq o'qish" chiqadi
 const LONG_BODY = 220;
 
 function NewsCard({ item }: { item: NewsListItem }) {
   const { t, currentLang } = useLanguage();
   const [open, setOpen] = useState(false);
-  const isLong = item.body.length > LONG_BODY;
+  const tr = currentLang === "uz" ? undefined : item.i18n?.[currentLang];
+  const title = tr?.title || item.title;
+  const body = tr?.body || item.body;
+  const isLong = body.length > LONG_BODY;
 
-  const date = new Date(item.createdAt).toLocaleDateString(
-    LOCALES[currentLang] ?? "uz-UZ",
-    { year: "numeric", month: "long", day: "numeric", timeZone: "Asia/Tashkent" },
-  );
+  const date = formatDate(item.createdAt, currentLang);
 
   return (
     <article className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-lg transition-shadow flex flex-col">
@@ -38,7 +65,7 @@ function NewsCard({ item }: { item: NewsListItem }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={item.imageUrl}
-            alt={item.title}
+            alt={title}
             loading="lazy"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
@@ -56,13 +83,13 @@ function NewsCard({ item }: { item: NewsListItem }) {
             {date}
           </time>
         </div>
-        <h2 className="text-lg font-bold text-foreground mb-2">{item.title}</h2>
+        <h2 className="text-lg font-bold text-foreground mb-2">{title}</h2>
         <p
           className={`text-sm text-muted-foreground leading-relaxed whitespace-pre-line ${
             open ? "" : "line-clamp-4"
           }`}
         >
-          {item.body}
+          {body}
         </p>
         {isLong && (
           <button

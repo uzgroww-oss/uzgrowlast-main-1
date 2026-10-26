@@ -101,12 +101,25 @@ export function Projects({ asPageTitle = false }: { asPageTitle?: boolean }) {
   // O'chirilgan loyihalar ro'yxatga tushmaydi. `index` — asl tartib raqami,
   // rasmlar shunga qarab bog'langan.
   const staticProjects = getStaticProjects(mList);
-  const projects = tList("projects.items").map(({ index, value }) => ({
-    ...staticProjects[index],
-    ...value,
-    // Filtr eng oxirida: yuqoridagi yoyishlar uni bekor qilib yubormasin
-    images: (staticProjects[index]?.images ?? []).filter(Boolean),
-  }));
+  const projects = tList("projects.items").map(({ index, value }) => {
+    // Admin paneldan qo'shilgan loyiha kodda yo'q — uning rasmlari ham
+    // shu tartib raqami bo'yicha (loyihalar.itemN.0..4) olinadi
+    const base = staticProjects[index] ?? {
+      id: index + 1,
+      images: mList(mediaIds(`loyihalar.item${index + 1}`, 5)),
+      year: "",
+      status: "completed",
+      featured: false,
+      category: "greenhouse",
+      investment: "",
+    };
+    return {
+      ...base,
+      ...value,
+      // Filtr eng oxirida: yuqoridagi yoyishlar uni bekor qilib yubormasin
+      images: (base.images ?? []).filter(Boolean),
+    };
+  });
 
   const categories = [
     { id: "all", label: t("projects.categories.all"), icon: Grid3X3 },

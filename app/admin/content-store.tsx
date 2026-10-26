@@ -11,12 +11,18 @@ import {
 import type { Language } from "@/contexts/LanguageContext";
 import type { MediaItem } from "@/lib/media-registry";
 import {
+  addedKeysFromPaths,
   allFields,
+  buildAddedCard,
   buildPages,
   LANGUAGES,
+  nextAddedKey,
+  type CardView,
   type ContentField,
   type PageView,
 } from "@/lib/content-schema";
+import { COLLECTIONS } from "@/lib/collections";
+import { apiError } from "@/lib/admin-errors";
 
 type TextOverrides = Record<Language, Record<string, string>>;
 type MediaOverrides = Record<string, string>;
@@ -40,18 +46,26 @@ interface ContentStore {
   visibleLangs: Language[];
   /** Qidiruv faol bo'lsa natijalar, aks holda null */
   searchResults: ContentField[] | null;
+  /** Qidiruvga mos rasmlar */
+  mediaResults: MediaItem[];
 
   /** Matnni bo'shatish — saytda ko'rinmaydi (standartga qaytarish emas) */
   clearText: (field: ContentField, lang: Language) => void;
   /** Rasmni o'chirish — saytda ko'rinmaydi */
   clearMedia: (item: MediaItem) => void;
   /**
-   * Kartani butunlay o'chiradi. Qaytarib bo'lmaydi: karta saytdan ham,
-   * shu paneldan ham yo'qoladi.
+   * Kartani o'chiradi. Koddagi karta yashiriladi (keyin «Qaytarish» mumkin),
+   * admin qo'shgan karta esa matn va rasmlari bilan butunlay o'chadi.
    */
-  deleteCard: (cardPath: string) => Promise<void>;
+  deleteCard: (card: CardView) => Promise<void>;
+  /** Yashirilgan kartani saytga qaytaradi */
+  restoreCard: (cardPath: string) => Promise<void>;
   /** O'chirilgan kartalar ro'yxatdan chiqarib tashlanadi */
   isCardHidden: (cardPath: string) => boolean;
+  /** To'plamga yangi bo'sh karta qo'shadi; uning yo'lini qaytaradi */
+  addCard: (collectionKey: string) => string | null;
+  /** Hozirgina qo'shilgan karta — ochiq holda ko'rsatiladi */
+  lastAdded: string | null;
 
   currentText: (field: ContentField, lang: Language) => string;
   savedText: (field: ContentField, lang: Language) => string;
@@ -88,13 +102,59 @@ export function ContentProvider({
   password: string;
   children: ReactNode;
 }) {
-  // Ro'yxat koddagi tarjima va registrdan quriladi — bir marta hisoblansa yetarli
-  const pages = useMemo(() => buildPages(), []);
+  // Koddagi tuzilma tarjima va registrdan quriladi — bir marta hisoblansa yetarli
+  const basePages = useMemo(() => buildPages(), []);
+  const baseFields = useMemo(() => allFields(), []);
+
+  const [text, setText] = useState<TextOverrides>(emptyText);
+  // Shu sessiyada qo'shilgan, hali saqlanmagan kartalar (to'plam -> kalitlar)
+  const [pendingAdded, setPendingAdded] = useState<Record<string, string[]>>({});
+  const [lastAdded, setLastAdded] = useState<string | null>(null);
+  const [media, setMedia] = useState<MediaOverrides>({});
+  const [hidden, setHidden] = useState<string[]>([]);
+  const [textDrafts, setTextDrafts] = useState<Record<string, string>>({});
+  const [mediaDrafts, setMediaDrafts] = useState<Record<string, string>>({});
+  /* ---------- Admin qo'shgan kartalar ---------- */
+
+  // Saqlangan matnlar va shu sessiyadagi qo'shishlardan topiladi
+  const addedCards = useMemo(() => {
+    const savedPaths = new Set<string>();
+    for (const l of LANGUAGES)
+      for (const p of Object.keys(text[l] ?? {})) savedPaths.add(p);
+    for (const k of Object.keys(textDrafts)) savedPaths.add(k.slice(k.indexOf(":") + 1));
+
+    const out = new Map<string, CardView[]>();
+    for (const c of COLLECTIONS) {
+      if (!c.addable) continue;
+      const keys = [
+        ...addedKeysFromPaths(c, savedPaths),
+        ...(pendingAdded[c.key] ?? []),
+      ].filter((k, i, all) => all.indexOf(k) === i);
+      if (keys.length) out.set(c.key, keys.map((k) => buildAddedCard(c, k)));
+    }
+    return out;
+  }, [text, textDrafts, pendingAdded]);
+
+  const pages = useMemo<PageView[]>(
+    () =>
+      basePages.map((p) => ({
+        ...p,
+        cardBlocks: p.cardBlocks.map((cb) => ({
+          ...cb,
+          cards: [...cb.cards, ...(addedCards.get(cb.collectionKey) ?? [])],
+        })),
+      })),
+    [basePages, addedCards],
+  );
+
   const fieldIndex = useMemo(() => {
     const map = new Map<string, ContentField>();
-    for (const f of allFields()) map.set(f.path, f);
+    for (const f of baseFields) map.set(f.path, f);
+    for (const cards of addedCards.values())
+      for (const c of cards) for (const f of c.fields) map.set(f.path, f);
     return map;
-  }, []);
+  }, [baseFields, addedCards]);
+
   const mediaIndex = useMemo(() => {
     const map = new Map<string, MediaItem>();
     for (const p of pages) {
@@ -111,12 +171,23 @@ export function ContentProvider({
     return map;
   }, [pages]);
 
-  const [text, setText] = useState<TextOverrides>(emptyText);
-  const [media, setMedia] = useState<MediaOverrides>({});
-  const [hidden, setHidden] = useState<string[]>([]);
-  const [textDrafts, setTextDrafts] = useState<Record<string, string>>({});
-  const [mediaDrafts, setMediaDrafts] = useState<Record<string, string>>({});
-  const [activePage, setActivePage] = useState(pages[0]?.key ?? "");
+  const addCard = (collectionKey: string) => {
+    const c = COLLECTIONS.find((x) => x.key === collectionKey);
+    if (!c?.addable) return null;
+    const existing = (addedCards.get(c.key) ?? []).map((card) =>
+      card.path.slice(c.basePath.length + 1),
+    );
+    const key = nextAddedKey(c, existing);
+    setPendingAdded((prev) => ({
+      ...prev,
+      [c.key]: [...(prev[c.key] ?? []), key],
+    }));
+    const path = `${c.basePath}.${key}`;
+    setLastAdded(path);
+    return path;
+  };
+
+  const [activePage, setActivePage] = useState(basePages[0]?.key ?? "");
   const [query, setQuery] = useState("");
   // Uch til birdan ko'rsatilsa ekran to'lib ketadi — odatda bitta til yetarli
   const [langView, setLangView] = useState<Language | "all">("uz");
@@ -201,24 +272,84 @@ export function ContentProvider({
    * paneldan ham yo'qoladi. Shuning uchun chaqirishdan oldin
    * foydalanuvchidan tasdiq olinishi shart.
    */
-  const deleteCard = async (cardPath: string) => {
+  const authHeaders = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${password}`,
+  };
+
+  const setCardHidden = async (cardPath: string, value: boolean) => {
     setError("");
     try {
       const res = await fetch("/api/content", {
         method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${password}`,
-        },
-        body: JSON.stringify({ path: cardPath, hidden: true }),
+        headers: authHeaders,
+        body: JSON.stringify({ path: cardPath, hidden: value }),
       });
-      if (!res.ok) throw new Error(`Xatolik: ${res.status}`);
+      if (!res.ok) throw new Error(await apiError(res));
       const data = await res.json();
       setHidden(Array.isArray(data.hidden) ? data.hidden : []);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Saqlashda xatolik");
+    }
+  };
+
+  /** Admin qo'shgan kartaning hamma matn va rasmlarini bazadan o'chiradi */
+  const removeAddedCard = async (card: CardView) => {
+    setError("");
+    const prefix = card.path + ".";
+    try {
+      const textPatch: Partial<Record<Language, Record<string, null>>> = {};
+      for (const l of LANGUAGES) {
+        const keys = Object.keys(text[l] ?? {}).filter((p) => p.startsWith(prefix));
+        if (keys.length) textPatch[l] = Object.fromEntries(keys.map((k) => [k, null]));
+      }
+      if (Object.keys(textPatch).length) {
+        const res = await fetch("/api/content", {
+          method: "PUT",
+          headers: authHeaders,
+          body: JSON.stringify(textPatch),
+        });
+        if (!res.ok) throw new Error(await apiError(res));
+        setText((await res.json()).content ?? emptyText());
+      }
+      const mediaIds = card.media.map((m) => m.id).filter((id) => id in media);
+      if (mediaIds.length) {
+        const res = await fetch("/api/media", {
+          method: "PUT",
+          headers: authHeaders,
+          body: JSON.stringify(Object.fromEntries(mediaIds.map((id) => [id, null]))),
+        });
+        if (!res.ok) throw new Error(await apiError(res));
+        setMedia((await res.json()).media ?? {});
+      }
+      // Saqlanmagan tahrirlari va "yangi qo'shilgan" belgisi ham tozalanadi
+      setTextDrafts((prev) =>
+        Object.fromEntries(
+          Object.entries(prev).filter(([k]) => !k.slice(k.indexOf(":") + 1).startsWith(prefix)),
+        ),
+      );
+      setMediaDrafts((prev) =>
+        Object.fromEntries(
+          Object.entries(prev).filter(([id]) => !card.media.some((m) => m.id === id)),
+        ),
+      );
+      setPendingAdded((prev) =>
+        Object.fromEntries(
+          Object.entries(prev).map(([key, keys]) => {
+            const base = COLLECTIONS.find((x) => x.key === key)?.basePath;
+            return [key, keys.filter((k) => `${base}.${k}` !== card.path)];
+          }),
+        ),
+      );
     } catch (err) {
       setError(err instanceof Error ? err.message : "O'chirishda xatolik");
     }
   };
+
+  const deleteCard = (card: CardView) =>
+    card.added ? removeAddedCard(card) : setCardHidden(card.path, true);
+
+  const restoreCard = (cardPath: string) => setCardHidden(cardPath, false);
 
   const isCardHidden = (cardPath: string) => hidden.includes(cardPath);
 
@@ -314,10 +445,7 @@ export function ContentProvider({
           },
           body: JSON.stringify(patch),
         });
-        if (!res.ok) {
-          const d = await res.json().catch(() => null);
-          throw new Error(d?.error || `Matn saqlanmadi: ${res.status}`);
-        }
+        if (!res.ok) throw new Error(`Matn saqlanmadi: ${await apiError(res)}`);
         setText((await res.json()).content ?? emptyText());
         setTextDrafts({});
       }
@@ -336,10 +464,7 @@ export function ContentProvider({
           },
           body: JSON.stringify(patch),
         });
-        if (!res.ok) {
-          const d = await res.json().catch(() => null);
-          throw new Error(d?.error || `Rasm saqlanmadi: ${res.status}`);
-        }
+        if (!res.ok) throw new Error(`Rasm saqlanmadi: ${await apiError(res)}`);
         setMedia((await res.json()).media ?? {});
         setMediaDrafts({});
       }
@@ -352,18 +477,49 @@ export function ContentProvider({
     }
   };
 
-  // Qidiruv barcha sahifalar bo'ylab ishlaydi
+  // Qidiruv barcha sahifalar bo'ylab ishlaydi: koddagi matn, admin
+  // o'zgartirgan matn va saqlanmagan tahrir — uchalasi ham hisobga olinadi
   const searchResults = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return null;
+    const has = (v: string | undefined) => !!v && v.toLowerCase().includes(q);
     return [...fieldIndex.values()]
       .filter(
         (f) =>
           f.path.toLowerCase().includes(q) ||
-          LANGUAGES.some((l) => f.base[l].toLowerCase().includes(q)),
+          LANGUAGES.some(
+            (l) =>
+              has(f.base[l]) ||
+              has(text[l]?.[f.path]) ||
+              has(textDrafts[draftKey(l, f.path)]),
+          ),
       )
       .slice(0, 80);
-  }, [query, fieldIndex]);
+  }, [query, fieldIndex, text, textDrafts]);
+
+  const mediaResults = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+    return [...mediaIndex.values()]
+      .filter(
+        (i) =>
+          i.label.toLowerCase().includes(q) ||
+          i.block.toLowerCase().includes(q) ||
+          i.id.toLowerCase().includes(q),
+      )
+      .slice(0, 30);
+  }, [query, mediaIndex]);
+
+  // Saqlanmagan o'zgarish bilan sahifani yopish/yangilashdan oldin so'raladi
+  useEffect(() => {
+    if (changeCount === 0) return;
+    const warn = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", warn);
+    return () => window.removeEventListener("beforeunload", warn);
+  }, [changeCount]);
 
   const overrideCount =
     LANGUAGES.reduce((n, l) => n + Object.keys(text[l] ?? {}).length, 0) +
@@ -380,10 +536,14 @@ export function ContentProvider({
     setLangView,
     visibleLangs: langView === "all" ? LANGUAGES : [langView],
     searchResults,
+    mediaResults,
     clearText,
     clearMedia,
     deleteCard,
+    restoreCard,
     isCardHidden,
+    addCard,
+    lastAdded,
     currentText,
     savedText,
     setTextValue,

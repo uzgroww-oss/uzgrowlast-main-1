@@ -16,9 +16,9 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function InvestorlarPage() {
-  const { t, tObj } = useLanguage();
+  const { t, tList } = useLanguage();
 
-  const benefitsItems = tObj("investor.benefits.items") || [];
+  const benefitsItems = tList("investor.benefits.items").map((e) => e.value);
   const benefits = benefitsItems.map((benefit: any, index: number) => ({
     ...benefit,
     icon: index === 0 ? TrendingUp :
@@ -28,17 +28,16 @@ export default function InvestorlarPage() {
           Leaf,
   }));
 
-  const investmentModelsItems = tObj("investor.models.items") || [];
-  const investmentModels = investmentModelsItems.map((model: any, index: number) => ({
+  const investmentModels = tList("investor.models.items").map(({ value: model, index }) => ({
     ...model,
     // Add minInvestment and roi which might be static or translated
     minInvestment: index === 0 ? "$100,000" : index === 1 ? "$25,000" : "$50,000",
     roi: index === 0 ? "25-35%" : index === 1 ? "18-25%" : "20-30%",
   }));
 
-  const statsItems = tObj("investor.hero.stats") || [];
+  const statsItems = tList("investor.hero.stats").map((e) => e.value);
   
-  const processItems = tObj("investor.process.items") || [];
+  const processItems = tList("investor.process.items").map((e) => e.value);
 
   return (
     <main className="min-h-screen">

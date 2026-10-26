@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
 
 /** Admin: rasm/video manzillarini almashtirish */
 export async function PUT(req: NextRequest) {
-  const denied = requireAdmin(req);
+  const denied = await requireAdmin(req);
   if (denied) return denied;
 
   let body: unknown;
@@ -75,7 +75,7 @@ export async function PUT(req: NextRequest) {
 
 /** Admin: barcha rasmlarni koddagi standart holatga qaytarish */
 export async function DELETE(req: NextRequest) {
-  const denied = requireAdmin(req);
+  const denied = await requireAdmin(req);
   if (denied) return denied;
 
   try {

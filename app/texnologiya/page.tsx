@@ -80,9 +80,9 @@ const benefits = [
 ];
 
 export default function TexnologiyaPage() {
-  const { t, tObj } = useLanguage();
+  const { t, tList } = useLanguage();
 
-  const technologiesItems = tObj("techPage.technologies.items") || [];
+  const technologiesItems = tList("techPage.technologies.items").map((e) => e.value);
   const technologies = technologiesItems.map((tech: any, index: number) => ({
     ...tech,
     icon: index === 0 ? Thermometer :
@@ -92,7 +92,7 @@ export default function TexnologiyaPage() {
           Leaf,
   }));
 
-  const benefitsItems = tObj("techPage.benefits") || [];
+  const benefitsItems = tList("techPage.benefits").map((e) => e.value);
   const benefits = benefitsItems.map((benefit: any, index: number) => ({
     ...benefit,
     icon: index === 0 ? Gauge :

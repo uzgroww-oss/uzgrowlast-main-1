@@ -410,9 +410,9 @@ export default function AloqaPage() {
           <div className="container mx-auto px-4 lg:px-8">
             <div className="text-center mb-10">
               <h2 className="text-3xl font-bold text-foreground mb-4">
-                {t("Map")}
+                {t("contact.mapTitle")}
               </h2>
-              <p className="text-muted-foreground">{t("Adress on Map")}</p>
+              <p className="text-muted-foreground">{t("contact.mapSubtitle")}</p>
             </div>
 
             {/* Interactive Map */}
@@ -420,6 +420,7 @@ export default function AloqaPage() {
               <MapEmbed
                 src="https://yandex.ru/map-widget/v1/?ll=69.290768%2C41.243647&z=16&pt=69.290768%2C41.243647%2Cpmrdm1&source=constructor"
                 title={t("common.mapAlt")}
+                hint={t("contact.mapHint")}
               />
 
               {/* Map Actions */}

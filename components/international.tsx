@@ -92,7 +92,7 @@ export function International() {
             >
               <div className="relative overflow-hidden rounded-t-lg">
                 <MediaImg
-                  src={projectImages[index]}
+                  src={projectImages[index] ?? m(`xalqaro.project.${index}`)}
                   alt={project.title}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -107,7 +107,7 @@ export function International() {
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <div className="text-blue-600">{projectIcons[index]}</div>
+                    <div className="text-blue-600">{projectIcons[index] ?? projectIcons[0]}</div>
                     <span className="text-sm font-medium text-gray-500">
                       {project.country}
                     </span>

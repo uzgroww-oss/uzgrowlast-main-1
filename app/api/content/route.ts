@@ -68,7 +68,7 @@ export async function GET(req: NextRequest) {
 
 /** Admin: matnlarni o'zgartirish (qisman merge, bo'sh qiymat = standartga qaytarish) */
 export async function PUT(req: NextRequest) {
-  const denied = requireAdmin(req);
+  const denied = await requireAdmin(req);
   if (denied) return denied;
 
   let body: unknown;
@@ -107,7 +107,7 @@ export async function PUT(req: NextRequest) {
 
 /** Admin: barcha o'zgarishlarni bekor qilib, koddagi standart matnlarga qaytarish */
 export async function DELETE(req: NextRequest) {
-  const denied = requireAdmin(req);
+  const denied = await requireAdmin(req);
   if (denied) return denied;
 
   try {
@@ -129,7 +129,7 @@ const hideSchema = z.object({
 
 /** Admin: butun kartani saytdan o'chirish yoki qaytarish */
 export async function PATCH(req: NextRequest) {
-  const denied = requireAdmin(req);
+  const denied = await requireAdmin(req);
   if (denied) return denied;
 
   let body: unknown;

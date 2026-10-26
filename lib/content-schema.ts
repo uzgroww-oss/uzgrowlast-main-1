@@ -2,6 +2,7 @@ import { translations, type Language } from "@/contexts/LanguageContext";
 import { MEDIA, type MediaItem } from "@/lib/media-registry";
 import { PAGES, blockMatches, type PageDef } from "@/lib/page-map";
 import { COLLECTIONS, cardPathOf, type Collection } from "@/lib/collections";
+import { NEW_KEY } from "@/lib/added-items";
 
 export const LANGUAGES: Language[] = ["uz", "ru", "en"];
 
@@ -36,11 +37,15 @@ export interface CardView {
   label: string;
   fields: ContentField[];
   media: MediaItem[];
+  /** Admin paneldan qo'shilgan (kodda yo'q) karta */
+  added?: boolean;
 }
 
 export interface CardBlock {
   title: string;
   cards: CardView[];
+  /** Qaysi to'plamdan — yangi karta qo'shish uchun kerak */
+  collectionKey: string;
 }
 
 export interface PageView {
@@ -173,7 +178,7 @@ export function buildPages(): PageView[] {
     if (cards.length === 0) continue;
     for (const c of cards) for (const m of c.media) cardMediaIds.add(m.id);
     const list = cardsByPage.get(collection.page) ?? [];
-    list.push({ title: collection.title, cards });
+    list.push({ title: collection.title, cards, collectionKey: collection.key });
     cardsByPage.set(collection.page, list);
   }
 
@@ -220,6 +225,102 @@ export function buildPages(): PageView[] {
         mediaBlocks.reduce((n, b) => n + b.items.length, 0) + cardMediaCount,
     };
   });
+}
+
+/* ---------- Admin qo'shgan kartalar ---------- */
+
+/** Koddagi elementlar kalitlari (massivda "0".."n-1") */
+export function codeKeys(collection: Collection): string[] {
+  const root = lookup(translations.uz, collection.basePath);
+  if (Array.isArray(root)) return root.map((_, i) => String(i));
+  if (root && typeof root === "object")
+    return collection.keys ?? Object.keys(root);
+  return [];
+}
+
+/** Bu kalit admin qo'shgan kartaga tegishlimi? */
+export function isAddedKey(collection: Collection, key: string): boolean {
+  if (collection.kind === "array") {
+    return /^\d+$/.test(key) && Number(key) >= codeKeys(collection).length;
+  }
+  return NEW_KEY.test(key);
+}
+
+/**
+ * Saqlangan matn kalitlaridan qo'shilgan kartalarni topadi.
+ * Masalan "projects.items.7.title" -> "7" (kodda 7 ta loyiha bo'lsa).
+ */
+export function addedKeysFromPaths(
+  collection: Collection,
+  paths: Iterable<string>,
+): string[] {
+  const prefix = collection.basePath + ".";
+  const found = new Set<string>();
+  for (const p of paths) {
+    if (!p.startsWith(prefix)) continue;
+    const key = p.slice(prefix.length).split(".")[0];
+    if (isAddedKey(collection, key)) found.add(key);
+  }
+  return sortKeys([...found]);
+}
+
+const sortKeys = (keys: string[]) =>
+  keys.sort(
+    (a, b) => Number(a.replace(/\D/g, "")) - Number(b.replace(/\D/g, "")),
+  );
+
+/** Keyingi bo'sh kalit: massivda keyingi indeks, obyektda new1, new2... */
+export function nextAddedKey(collection: Collection, existing: string[]): string {
+  if (collection.kind === "array") {
+    const start = codeKeys(collection).length;
+    const used = existing.map(Number).filter((n) => n >= start);
+    return String(used.length ? Math.max(...used) + 1 : start);
+  }
+  const nums = existing
+    .filter((k) => NEW_KEY.test(k))
+    .map((k) => Number(k.slice(3)));
+  return `new${nums.length ? Math.max(...nums) + 1 : 1}`;
+}
+
+/**
+ * Qo'shilgan karta: maydonlari to'plamdagi birinchi elementdan nusxa,
+ * standart matni esa bo'sh (koddagi qiymat yo'q).
+ */
+export function buildAddedCard(collection: Collection, key: string): CardView {
+  const first = codeKeys(collection)[0];
+  const templatePath = `${collection.basePath}.${first}`;
+  const cardPath = `${collection.basePath}.${key}`;
+  const index = collection.kind === "array" ? Number(key) : 0;
+
+  const fields = allPaths()
+    .filter((p) => p.startsWith(templatePath + "."))
+    .map((p) => {
+      const template = toField(p);
+      return {
+        path: cardPath + p.slice(templatePath.length),
+        base: { uz: "", ru: "", en: "" },
+        multiline: template.multiline,
+      };
+    });
+
+  const media: MediaItem[] = (collection.addable?.media?.(key, index) ?? []).map(
+    (id, i, all) => ({
+      id,
+      label: all.length > 1 ? `Rasm ${i + 1}` : "Rasm",
+      page: collection.page,
+      block: collection.title,
+      type: "image",
+      def: "",
+    }),
+  );
+
+  return {
+    path: cardPath,
+    label: `Yangi ${collection.addable?.noun ?? "element"}`,
+    fields,
+    media,
+    added: true,
+  };
 }
 
 /**

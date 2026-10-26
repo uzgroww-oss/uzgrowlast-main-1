@@ -1,4 +1,6 @@
 import { MEDIA } from "@/lib/media-registry";
+import { NEW_KEY } from "@/lib/added-items";
+import { GALLERY } from "@/lib/gallery-items";
 
 /**
  * Saytdagi TAKRORLANUVCHI KARTALAR ro'yxati.
@@ -21,6 +23,16 @@ export interface Collection {
   labelField: string;
   /** Shu kartaga tegishli rasm id lari */
   mediaFor?: (itemKey: string, index: number) => string[];
+  /**
+   * Admin yangi karta qo'sha oladimi. Qo'shilgan kartaning tuzilishi
+   * to'plamdagi birinchi elementdan olinadi (lib/added-items.ts).
+   */
+  addable?: {
+    /** "+ Yangi loyiha qo'shish" tugmasidagi so'z */
+    noun: string;
+    /** Yangi kartaning rasm joylari (registrda bo'lmasa ham ishlaydi) */
+    media?: (itemKey: string, index: number) => string[];
+  };
 }
 
 const exact = (id: string) => (MEDIA.some((m) => m.id === id) ? [id] : []);
@@ -28,6 +40,25 @@ const withPrefix = (prefix: string) =>
   MEDIA.filter((m) => m.id.startsWith(prefix)).map((m) => m.id);
 
 export const COLLECTIONS: Collection[] = [
+  {
+    key: "servicesPageItems",
+    page: "xizmatlar-sahifa",
+    title: "Xizmatlar",
+    basePath: "servicesPage.items",
+    kind: "array",
+    labelField: "title",
+    addable: { noun: "xizmat" },
+  },
+  {
+    key: "galleryItems",
+    page: "gallery",
+    title: "Galereya rasmlari",
+    basePath: "galleryPage.items",
+    kind: "array",
+    labelField: "title",
+    mediaFor: (_k, i) => (GALLERY[i] ? exact(`gallery.${GALLERY[i].id}`) : []),
+    addable: { noun: "rasm", media: (_k, i) => [`gallery.add${i}`] },
+  },
   {
     key: "mapCountries",
     page: "bosh",
@@ -52,6 +83,10 @@ export const COLLECTIONS: Collection[] = [
     ],
     labelField: "name",
     mediaFor: (key) => exact(`rahbariyat.avatar.${key}`),
+    addable: {
+      noun: "jamoa a'zosi",
+      media: (key) => [`rahbariyat.avatar.${key}`],
+    },
   },
   {
     key: "projects",
@@ -62,6 +97,11 @@ export const COLLECTIONS: Collection[] = [
     labelField: "title",
     // Loyiha rasmlari 1 dan boshlab raqamlangan
     mediaFor: (_k, i) => withPrefix(`loyihalar.item${i + 1}.`),
+    addable: {
+      noun: "loyiha",
+      // Sayt yangi loyiha uchun 5 ta rasm joyini o'qiydi (components/projects.tsx)
+      media: (_k, i) => [0, 1, 2, 3, 4].map((n) => `loyihalar.item${i + 1}.${n}`),
+    },
   },
   {
     key: "greenhouse",
@@ -81,6 +121,7 @@ export const COLLECTIONS: Collection[] = [
     kind: "array",
     labelField: "title",
     mediaFor: (_k, i) => exact(`xalqaro.project.${i}`),
+    addable: { noun: "loyiha", media: (_k, i) => [`xalqaro.project.${i}`] },
   },
   {
     key: "techCards",
@@ -108,6 +149,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "privacy.sections",
     kind: "array",
     labelField: "title",
+    addable: { noun: "bo'lim" },
   },
   {
     key: "termsSections",
@@ -116,6 +158,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "terms.sections",
     kind: "array",
     labelField: "title",
+    addable: { noun: "bo'lim" },
   },
   {
     key: "mediaGeo",
@@ -124,6 +167,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "media.geographicCoverage",
     kind: "array",
     labelField: "country",
+    addable: { noun: "davlat" },
   },
   {
     key: "mediaPlans",
@@ -132,6 +176,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "media.partnershipPlans",
     kind: "array",
     labelField: "name",
+    addable: { noun: "tarif" },
   },
   {
     key: "mediaPartners",
@@ -140,6 +185,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "media.foreignPartners",
     kind: "array",
     labelField: "name",
+    addable: { noun: "hamkor" },
   },
   {
     key: "agroServices",
@@ -148,6 +194,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "agro.services.items",
     kind: "array",
     labelField: "title",
+    addable: { noun: "xizmat" },
   },
   {
     key: "agroTech",
@@ -156,6 +203,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "agro.technologies.items",
     kind: "array",
     labelField: "name",
+    addable: { noun: "texnologiya" },
   },
   {
     key: "agroBenefits",
@@ -164,6 +212,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "agro.benefits.items",
     kind: "array",
     labelField: "title",
+    addable: { noun: "afzallik" },
   },
   {
     key: "investorStats",
@@ -172,6 +221,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "investor.hero.stats",
     kind: "array",
     labelField: "label",
+    addable: { noun: "raqam" },
   },
   {
     key: "investorBenefits",
@@ -180,6 +230,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "investor.benefits.items",
     kind: "array",
     labelField: "title",
+    addable: { noun: "afzallik" },
   },
   {
     key: "investorModels",
@@ -188,6 +239,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "investor.models.items",
     kind: "array",
     labelField: "title",
+    addable: { noun: "model" },
   },
   {
     key: "investorProcess",
@@ -196,6 +248,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "investor.process.items",
     kind: "array",
     labelField: "title",
+    addable: { noun: "bosqich" },
   },
   {
     key: "techBenefits",
@@ -204,6 +257,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "techPage.benefits",
     kind: "array",
     labelField: "label",
+    addable: { noun: "afzallik" },
   },
   {
     key: "techList",
@@ -212,6 +266,7 @@ export const COLLECTIONS: Collection[] = [
     basePath: "techPage.technologies.items",
     kind: "array",
     labelField: "title",
+    addable: { noun: "texnologiya" },
   },
 ];
 
@@ -221,7 +276,13 @@ export function cardPathOf(path: string): string | null {
     if (!path.startsWith(c.basePath + ".")) continue;
     const rest = path.slice(c.basePath.length + 1);
     const itemKey = rest.split(".")[0];
-    if (c.kind === "object" && c.keys && !c.keys.includes(itemKey)) continue;
+    if (
+      c.kind === "object" &&
+      c.keys &&
+      !c.keys.includes(itemKey) &&
+      !NEW_KEY.test(itemKey)
+    )
+      continue;
     return `${c.basePath}.${itemKey}`;
   }
   return null;

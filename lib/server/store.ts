@@ -62,7 +62,10 @@ export function createStore<T extends StoredItem>(
       return (data as Row[]).map((r) => rowToItem<T>(r, columns));
     },
 
-    async add(data: Omit<T, "id" | "createdAt" | "updatedAt">): Promise<T> {
+    // createdAt ixtiyoriy: berilmasa baza joriy vaqtni qo'yadi
+    async add(
+      data: Omit<T, "id" | "createdAt" | "updatedAt"> & { createdAt?: string },
+    ): Promise<T> {
       const { data: row, error } = await supabase()
         .from(table)
         .insert(itemToRow(data as Row, columns))
@@ -74,7 +77,7 @@ export function createStore<T extends StoredItem>(
 
     async update(
       id: string,
-      patch: Partial<Omit<T, "id" | "createdAt" | "updatedAt">>,
+      patch: Partial<Omit<T, "id" | "updatedAt">>,
     ): Promise<T | null> {
       const { data: row, error } = await supabase()
         .from(table)

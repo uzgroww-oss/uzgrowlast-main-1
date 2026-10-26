@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
 
 // Admin: GET /api/contact  (Authorization: Bearer <ADMIN_PASSWORD>)
 export async function GET(req: NextRequest) {
-  const denied = requireAdmin(req);
+  const denied = await requireAdmin(req);
   if (denied) return denied;
 
   try {
@@ -88,7 +88,7 @@ export async function GET(req: NextRequest) {
 
 // Admin: barcha murojaatlarni o'chirish
 export async function DELETE(req: NextRequest) {
-  const denied = requireAdmin(req);
+  const denied = await requireAdmin(req);
   if (denied) return denied;
 
   try {
