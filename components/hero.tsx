@@ -102,6 +102,21 @@ export function Hero() {
   }, [bgIndex]);
   const mountCount = Math.min(posters.length, maxShown + 2);
 
+  // Fon videosi faqat kompyuterda. Telefonda, "harakatni kamaytirish"
+  // yoqilganda yoki brauzer trafikni tejash rejimida bo'lsa — rasmlar
+  // (mobil internet va batareyani tejaydi).
+  const [videoAllowed, setVideoAllowed] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const saveData = Boolean(
+      (navigator as Navigator & { connection?: { saveData?: boolean } }).connection
+        ?.saveData,
+    );
+    setVideoAllowed(!reduce && !saveData);
+  }, []);
+  const showVideo = videoAllowed && !isMobile && Boolean(m("bosh.hero.video"));
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -121,9 +136,9 @@ export function Hero() {
       {/* Fon: slaydlar bilan birga almashadigan rasmlar.
           Ular ustma-ust turadi va faqat bittasi ko'rinadi — shu sababli
           o'tish silliq bo'ladi (opacity).
-          Video ixtiyoriy: admin paneldan qo'yilsa rasmlar ustidan
-          ko'rsatiladi. Telefonda esa umuman yuklanmaydi — mobil
-          internet va trafikni tejaydi. */}
+          Kompyuterda ular ustidan fon videosi o'ynaydi (public/videos/hero.mp4,
+          admin paneldan almashtiriladi yoki o'chiriladi). Telefonda video
+          umuman yuklanmaydi — mobil internet va trafikni tejaydi. */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {posters.slice(0, mountCount).map((src, i) => (
           <MediaImg
@@ -141,16 +156,20 @@ export function Hero() {
             }`}
           />
         ))}
-        {!isMobile && (
+        {showVideo && (
           <MediaVideo
             src={m("bosh.hero.video")}
-            poster={posters[0]}
-            className="absolute top-1/2 left-1/2 w-[100vw] min-w-full h-full min-h-[56.25vw] -translate-x-1/2 -translate-y-1/2 object-cover"
+            // Video o'ynay boshlagunicha rasmlar ko'rinib turadi, keyin u
+            // ustidan silliq paydo bo'ladi — bo'sh/qora kadr ko'rinmaydi
+            onPlaying={() => setVideoReady(true)}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              videoReady ? "opacity-100" : "opacity-0"
+            }`}
             autoPlay
             loop
             muted
             playsInline
-            preload="none"
+            preload="auto"
           />
         )}
 </div>
