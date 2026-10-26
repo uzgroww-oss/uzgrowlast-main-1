@@ -241,6 +241,8 @@ export function Hero() {
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
+                  aria-label={`${t("common.slide")} ${index + 1}`}
+                  aria-current={index === currentSlide ? "true" : undefined}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
                     index === currentSlide
                       ? "w-10 bg-[#24B14B]"
@@ -252,12 +254,14 @@ export function Hero() {
             <div className="flex gap-2">
               <button
                 onClick={prevSlide}
+                aria-label={t("common.previous")}
                 className="w-10 h-10 rounded-full border border-white/30 text-white hover:bg-white/10 flex items-center justify-center transition-colors"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={nextSlide}
+                aria-label={t("common.next")}
                 className="w-10 h-10 rounded-full border border-white/30 text-white hover:bg-white/10 flex items-center justify-center transition-colors"
               >
                 <ChevronRight className="w-5 h-5" />

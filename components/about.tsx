@@ -60,7 +60,10 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   );
 }
 
-export function About() {
+// Alohida sahifada bu bo'lim sarlavhasi h1, bosh sahifada esa h2
+// (u yerda h1 hero'da) — sahifada bittadan ortiq h1 bo'lmasligi kerak.
+export function About({ asPageTitle = false }: { asPageTitle?: boolean }) {
+  const Heading = asPageTitle ? "h1" : "h2";
   const { t } = useLanguage();
   const { m, mList } = useMedia();
   const [currentAboutImage, setCurrentAboutImage] = useState(0);
@@ -145,9 +148,9 @@ export function About() {
             <span className="inline-block text-[#24B14B] font-bold text-sm tracking-widest uppercase mb-4 px-3 py-1 bg-white/10 backdrop-blur-sm rounded-lg">
               {t("about.tagline")}
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-balance drop-shadow-sm">
+            <Heading className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-balance drop-shadow-sm">
               {t("about.headline")}
-            </h2>
+            </Heading>
             <p className="text-lg leading-relaxed mb-8 text-white/90 font-medium">
               {t("about.descriptionText")}
             </p>

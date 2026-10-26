@@ -30,6 +30,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { formatPhone, telHref, whatsappHref } from "@/lib/contact-links";
 
 export function Contact() {
   const { t, currentLang } = useLanguage();
@@ -38,15 +39,15 @@ export function Contact() {
     {
       icon: Phone,
       label: t("contact.phoneLabel"),
-      value: t("contact.companyPhone"),
-      href: `tel:${t("contact.companyPhone").replace(/\s/g, "")}`,
+      value: formatPhone(t("contact.companyPhone")),
+      href: telHref(t("contact.companyPhone")),
       color: "bg-green-500/10 text-green-600",
     },
     {
       icon: Phone,
       label: "WhatsApp",
-      value: t("contact.companyPhone2"),
-      href: `tel:${t("contact.companyPhone2").replace(/\s/g, "")}`,
+      value: formatPhone(t("contact.companyPhone2")),
+      href: whatsappHref(t("contact.companyPhone2")),
       color: "bg-green-500/10 text-green-600",
     },
     {
@@ -222,7 +223,6 @@ export function Contact() {
                     placeholder={t("contact.emailPlaceholder")}
                     value={formData.email}
                     onChange={handleChange}
-                    required
                   />
                 </div>
 

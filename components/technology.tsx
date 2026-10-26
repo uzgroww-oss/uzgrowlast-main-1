@@ -54,7 +54,10 @@ const getTechnologies = (m: (id: string) => string) => [
   },
 ];
 
-export function Technology() {
+// Alohida sahifada bu bo'lim sarlavhasi h1, bosh sahifada esa h2
+// (u yerda h1 hero'da) — sahifada bittadan ortiq h1 bo'lmasligi kerak.
+export function Technology({ asPageTitle = false }: { asPageTitle?: boolean }) {
+  const Heading = asPageTitle ? "h1" : "h2";
   const { t, isHidden } = useLanguage();
   const { m } = useMedia();
   const technologies = getTechnologies(m).filter(
@@ -102,9 +105,9 @@ export function Technology() {
           <span className="inline-block text-primary font-semibold text-sm tracking-wider uppercase mb-4">
             {t("technology.title")}
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-balance">
+          <Heading className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-balance">
             {t("technology.subtitle")}
-          </h2>
+          </Heading>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
             {t("technology.description")}
           </p>

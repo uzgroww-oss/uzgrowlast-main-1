@@ -16,6 +16,7 @@ import {
   Youtube,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { formatPhone, telHref, whatsappHref } from "@/lib/contact-links";
 import { useMedia } from "@/contexts/MediaContext";
 
 interface FooterLink {
@@ -34,35 +35,16 @@ const getColumn = (tObj: (key: string) => any, key: string): FooterLink[] => {
   );
 };
 
-
-
-const socials = [
-  {
-    icon: Youtube,
-    href: "https://youtube.com/@rustamjonrakhmonov?si=9-OxlFiY0B875tD9",
-    label: "Youtube",
-  },
-  {
-    icon: Instagram,
-    href: "https://www.instagram.com/uz.grow?igsh=MXMwN3lzaW95NTN1YQ==",
-    label: "Instagram",
-  },
-  {
-    icon: Facebook,
-    href: "https://www.facebook.com/share/1DePjLwX79/",
-    label: "Facebook",
-  },
-  {
-    icon: Send,
-    href: "https://t.me/Uz_Grow",
-    label: "Telegram",
-  },
-  
-];
-
 export function Footer() {
   const { t, tObj, currentLang } = useLanguage();
   const { m } = useMedia();
+  // Havolalar tarjima faylidan (admin panelda tahrirlanadi) olinadi
+  const socials = [
+    { icon: Youtube, href: t("contact.socialLinks.youtube"), label: "Youtube" },
+    { icon: Instagram, href: t("contact.socialLinks.instagram"), label: "Instagram" },
+    { icon: Facebook, href: t("contact.socialLinks.facebook"), label: "Facebook" },
+    { icon: Send, href: t("contact.socialLinks.telegram"), label: "Telegram" },
+  ].filter((s) => s.href.startsWith("http"));
   const footerLinks = {
     xizmatlar: getColumn(tObj, "services"),
     kompaniya: getColumn(tObj, "company"),
@@ -91,29 +73,29 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="tel:+998555152223"
+                  href={telHref(t("contact.companyPhone"))}
                   className="flex items-start gap-3 text-white/70 hover:text-primary transition-colors"
                 >
                   <Phone className="w-4 h-4 mt-1 shrink-0" />
-                  <span>+998 55 515 22 23</span>
+                  <span>{formatPhone(t("contact.companyPhone"))}</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/+998994352313"
+                  href={whatsappHref(t("contact.companyPhone2"))}
                   className="flex items-start gap-3 text-white/70 hover:text-primary transition-colors"
                 >
                   <Send className="w-4 h-4 mt-1 shrink-0" />
-                  <span>+998 99 435 23 13 (WhatsApp)</span>
+                  <span>{formatPhone(t("contact.companyPhone2"))} (WhatsApp)</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:uzgrrow@gmail.com"
+                  href={`mailto:${t("contact.companyEmail")}`}
                   className="flex items-start gap-3 text-white/70 hover:text-primary transition-colors"
                 >
                   <Mail className="w-4 h-4 mt-1 shrink-0" />
-                  <span>uzgrrow@gmail.com</span>
+                  <span>{t("contact.companyEmail")}</span>
                 </a>
               </li>
               <li>

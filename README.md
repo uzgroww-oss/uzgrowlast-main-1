@@ -1,289 +1,100 @@
-# UZ GROW - Agro-Injiniring Corporate Website
+# UZ GROW — korporativ sayt
 
-A modern, production-ready, multi-language corporate website for UZ GROW, a leading greenhouse construction and agro-engineering company in Uzbekistan.
+Issiqxona qurish va agro-injiniring kompaniyasi UZ GROW sayti: https://www.uzgrow.uz
 
-## Features
+- **Texnologiyalar:** Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4
+- **Ma'lumotlar va fayllar:** Supabase (Postgres + Storage)
+- **Hosting:** Vercel (`main` branch'ga push qilinganda avtomatik deploy)
+- **Tillar:** o'zbek, rus, ingliz — brauzerda almashtiriladi (URL o'zgarmaydi)
 
-### Core Features
-- **Multi-language Support**: Full support for Uzbek, Russian, and English
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Modern UI/UX**: Built with shadcn/ui components and Lucide React icons
-- **Interactive Components**: Auto-rotating image sliders, video backgrounds
-- **SEO Optimized**: Complete meta tags, sitemap, and robots.txt
-- **Performance Optimized**: Next.js 16.2.0 with App Router
+## Ishga tushirish
 
-### Technical Features
-- **Framework**: Next.js 16.2.0 with App Router
-- **Language**: TypeScript with strict mode
-- **Styling**: Tailwind CSS v4
-- **UI Components**: shadcn/ui + Lucide React
-- **State Management**: React Context API
-- **Image/Video**: Cloudinary integration + Next/Image
-- **Analytics**: Vercel Analytics
-- **Deployment**: Vercel-ready
-
-## Project Structure
-
-```
-src/
-app/
-  layout.tsx              # Root layout with providers
-  page.tsx                # Home page
-  about/page.tsx          # About page
-  services/page.tsx       # Services page
-  issiqxona-turlari/page.tsx # Greenhouse types page
-  loyihalar/page.tsx      # Projects page
-  rahbariyat/page.tsx     # Team page
-  aloqa/page.tsx          # Contact page
-  globals.css             # Global styles
-
-components/
-  header.tsx              # Navigation header
-  footer.tsx              # Footer component
-  services.tsx            # Services with image slider
-  about.tsx               # About section
-  team.tsx                # Team member profiles
-  projects.tsx            # Projects gallery
-  contact.tsx             # Contact form
-  hero.tsx                # Hero section with video
-  greenhouse-types.tsx    # Greenhouse types comparison
-  ui/                     # shadcn/ui components
-
-contexts/
-  LanguageContext.tsx     # Multi-language context
-
-lib/
-  utils.ts                # Utility functions
-
-public/
-  images/                 # Static images
-  team/                   # Team member photos
-  robots.txt              # SEO robots file
-  sitemap.xml             # SEO sitemap
-```
-
-## Key Components
-
-### Header Component
-- Sticky navigation with scroll effects
-- Responsive mobile menu
-- Language switcher (UZ | RU | EN)
-- Contact information display
-
-### Services Component
-- 3 main services (Engineering, Equipment, Consulting)
-- Interactive service selection tabs
-- Auto-rotating image slider (3-second intervals)
-- Service features and descriptions
-
-### Hero Component
-- Fullscreen autoplay muted loop video background
-- Dynamic content slider with testimonials
-- Call-to-action buttons
-- Statistics bar
-
-### Team Component
-- 6 team member profiles
-- Professional avatars and bios
-- Skills, achievements, and contact info
-- Social media links
-
-### Projects Component
-- Filterable project gallery
-- Categories: Presidential, International, Greenhouse
-- Image carousel for each project
-- Project details and descriptions
-
-### Contact Component
-- Functional contact form with validation
-- EmailJS integration for form submission
-- Contact information display
-- Interactive map integration
-
-## Multi-language System
-
-The website uses React Context for internationalization:
-
-```typescript
-// Language Context
-const { currentLang, setLanguage, t } = useLanguage();
-
-// Translation usage
-<h1>{t("hero.title")}</h1>
-<p>{t("services.engineeringDesc")}</p>
-```
-
-### Supported Languages
-- **Uzbek (uz)**: Default language
-- **Russian (ru)**: Complete translation
-- **English (en)**: Complete translation
-
-### Translation Coverage
-- Navigation menu items
-- Service descriptions and features
-- Team member information
-- Contact form labels
-- Project categories and descriptions
-- UI elements and buttons
-
-## Performance Optimizations
-
-### Image Optimization
-- Next.js Image component with lazy loading
-- Cloudinary URL optimization
-- Responsive image sizes
-- Blur data URLs for placeholders
-
-### Code Splitting
-- Dynamic imports for large components
-- Route-based code splitting
-- Optimized bundle size
-
-### SEO Features
-- Complete meta tags for all pages
-- OpenGraph support
-- Multi-language hreflang tags
-- Structured data markup
-- XML sitemap
-- Robots.txt optimization
-
-## Getting Started
-
-### Prerequisites
-- Node.js 19+ 
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd UZ GROW-website
-```
-
-2. Install dependencies:
 ```bash
 npm install
+cp .env.example .env.local   # keyin qiymatlarni to'ldiring
+npm run dev                  # http://localhost:3000
 ```
 
-3. Set up environment variables:
-```bash
-cp .env.example .env.local
+| Buyruq | Vazifasi |
+| --- | --- |
+| `npm run dev` | Ishlab chiqish rejimi |
+| `npm run build` | Production build |
+| `npm run start` | Build qilingan saytni ishga tushirish |
+| `npm run lint` | ESLint tekshiruvi |
+
+## Muhit o'zgaruvchilari
+
+To'liq izohlar `.env.example` da. Qisqacha:
+
+| O'zgaruvchi | Majburiy | Vazifasi |
+| --- | --- | --- |
+| `SUPABASE_URL` | ha | Supabase loyiha manzili |
+| `SUPABASE_SERVICE_ROLE_KEY` | ha | Yashirin server kaliti — hech qachon brauzerga, git'ga yoki chatga chiqarmang |
+| `ADMIN_PASSWORD` | ha | `/admin` paroli. Bo'sh bo'lsa admin API yopiq (503) |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | yo'q | Saytdan kelgan murojaatlarni Telegram'ga yuborish |
+| `NEXT_PUBLIC_SITE_URL` | yo'q | Asosiy manzil (default `https://www.uzgrow.uz`) — canonical, sitemap, OG uchun |
+
+`.env.local` git'ga tushmaydi. Vercel'da xuddi shu qiymatlar
+**Project → Settings → Environment Variables** bo'limida turishi kerak.
+
+## Supabase
+
+1. `supabase/schema.sql` ni Supabase **SQL Editor** da bir marta ishga tushiring.
+2. **Storage** da `media` nomli **public** bucket yarating.
+3. `https://<sayt>/api/health` ni oching — "HAMMASI ISHLAYAPTI" chiqishi kerak.
+
+Bepul Supabase loyihasi 7 kun so'rovsiz qolsa pauza qilinadi. Buning oldini
+olish uchun `.github/workflows/keep-alive.yml` kuniga 2 marta va
+`vercel.json` dagi cron kuniga 1 marta `/api/health` ga murojaat qiladi.
+
+## Kontent qanday tuzilgan
+
+Saytdagi matn va rasmlarning **standart qiymatlari kodda** turadi, admin
+panelda o'zgartirilgani esa **Supabase'da faqat farq** sifatida saqlanadi.
+Shu sababli baza bo'sh bo'lsa ham sayt to'liq ishlaydi.
+
+| Nima | Standart qiymat | O'zgartirishlar |
+| --- | --- | --- |
+| Matnlar (3 tilda) | `contexts/LanguageContext.tsx` | `content_overrides` jadvali |
+| Rasmlar / video | `lib/media-registry.ts` | `media_overrides` jadvali |
+| Yangiliklar, jamoa, murojaatlar | — | `news`, `team_members`, `leads` jadvallari |
+
+Admin panel (`/admin`) sahifalar bo'yicha guruhlangan: qaysi kalit qaysi
+sahifada ko'rinishi `lib/page-map.ts` da, kartochkalar ro'yxati
+`lib/collections.ts` da, maydon nomlari `lib/field-labels.ts` da.
+
+Server tomonda Supabase javoblari `lib/server/cache.ts` orqali qisqa muddat
+keshlanadi va baza vaqtincha javob bermasa oxirgi ma'lum qiymat qaytariladi.
+
+### Rasmlar
+
+- Sayt rasmlari `public/images/` va `public/images/site/` da (tashqi
+  hosting yo'q).
+- Admin yuklagan fayllar to'g'ridan-to'g'ri brauzerdan Supabase Storage'ga
+  ketadi (`/api/upload/sign` imzolangan havola beradi), shuning uchun Vercel'ning
+  4.5 MB so'rov chegarasi ta'sir qilmaydi. Katta rasmlar yuklashdan oldin
+  brauzerda siqiladi.
+
+## SEO
+
+- Har sahifa metadatasi `lib/seo.ts` dagi `pageMeta()` orqali beriladi:
+  sarlavha, tavsif, o'z canonical manzili va 1200×630 ulashish rasmi
+  (`public/images/og.jpg`).
+- `"use client"` sahifalarda metadata o'sha papkadagi `layout.tsx` da.
+- `sitemap.xml` va `robots.txt` kod orqali yaratiladi (`app/sitemap.ts`,
+  `app/robots.ts`). Yangi ommaviy sahifa qo'shilsa, uni `lib/seo.ts` dagi
+  `PUBLIC_ROUTES` ga yozing.
+
+## Papkalar
+
 ```
-
-4. Run the development server:
-```bash
-npm run dev
+app/                 sahifalar va API (app/api/*)
+  admin/             admin panel
+components/          sahifa bo'limlari (hero, projects, footer, ...)
+  ui/                shadcn/ui asosiy komponentlari
+contexts/            til (LanguageContext) va media (MediaContext)
+lib/                 umumiy yordamchilar
+  server/            faqat serverda ishlaydigan kod (Supabase, kesh, auth)
+public/images/       sayt rasmlari
+supabase/            ma'lumotlar bazasi sxemasi
 ```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Environment Variables
-
-```bash
-# .env.local
-NEXT_PUBLIC_CLOUDINARY_URL=https://res.cloudinary.com/dnqi0bdjk
-NEXT_PUBLIC_SITE_URL=https://uzgrow.uz
-NEXT_PUBLIC_GA_ID=GA_MEASUREMENT_ID
-EMAILJS_PUBLIC_KEY=your_emailjs_public_key
-EMAILJS_SERVICE_ID=your_emailjs_service_id
-EMAILJS_TEMPLATE_ID=your_emailjs_template_id
-```
-
-## Build and Deployment
-
-### Development
-```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run start        # Start production server
-npm run lint         # Run ESLint
-npm run type-check   # TypeScript validation
-```
-
-### Vercel Deployment
-
-1. Install Vercel CLI:
-```bash
-npm i -g vercel
-```
-
-2. Deploy to production:
-```bash
-vercel --prod
-```
-
-3. Set up custom domain:
-```bash
-vercel domains add uzgrow.uz
-```
-
-## Tech Stack Details
-
-### Frontend Framework
-- **Next.js 16.2.0**: React framework with App Router
-- **TypeScript**: Type-safe development
-- **React 19**: Latest React version
-
-### Styling
-- **Tailwind CSS v4**: Utility-first CSS framework
-- **shadcn/ui**: Modern UI component library
-- **Lucide React**: Icon library
-
-### State Management
-- **React Context API**: Global state management
-- **localStorage**: Language preference persistence
-
-### Analytics & Monitoring
-- **Vercel Analytics**: Performance monitoring
-- **Google Analytics**: User behavior tracking
-
-### External Services
-- **Cloudinary**: Image and video hosting
-- **EmailJS**: Contact form submissions
-- **Yandex Maps**: Location display
-
-## Browser Support
-
-- Chrome 90+
-- Firefox 89+
-- Safari 14+
-- Edge 90+
-
-## Performance Metrics
-
-- **Lighthouse Score**: 90+
-- **First Contentful Paint**: <1.5s
-- **Largest Contentful Paint**: <2.5s
-- **Cumulative Layout Shift**: <0.1
-
-## Security Features
-
-- Content Security Policy (CSP)
-- XSS protection
-- HTTPS enforcement
-- Input validation
-- Secure headers
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## License
-
-This project is proprietary and belongs to UZ GROW company.
-
-## Contact
-
-- **Website**: [https://uzgrow.uz](https://uzgrow.uz)
-- **Email**: uzgrrow@gmail.com
-- **Phone**: +998 55 515 22 23
-- **Address**: Toshkent, O'zbekiston
-
----
-
-Built with passion by UZ GROW team © 2026

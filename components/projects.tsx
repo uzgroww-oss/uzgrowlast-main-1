@@ -85,7 +85,10 @@ const getStaticProjects = (
   },
 ];
 
-export function Projects() {
+// /loyihalar sahifasida bu bo'lim asosiy sarlavha (h1), bosh sahifada esa
+// h1 hero'da turadi — sahifada bittadan ortiq h1 bo'lmasligi kerak.
+export function Projects({ asPageTitle = false }: { asPageTitle?: boolean }) {
+  const Heading = asPageTitle ? "h1" : "h2";
   const { t, tList } = useLanguage();
   const { mList } = useMedia();
   const [activeCategory, setActiveCategory] = useState("all");
@@ -145,10 +148,10 @@ export function Projects() {
             <Building2 className="w-4 h-4" />
             {t("common.portfolio")}
           </Badge>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
+          <Heading className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
             {t("projects.title").split(" ")[0]}{" "}
             <span className="text-primary">{t("projects.title").split(" ").slice(1).join(" ")}</span>
-          </h1>
+          </Heading>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             {t("projects.subtitle")}
           </p>
@@ -182,10 +185,10 @@ export function Projects() {
               ))}
             </div>
             <div className="flex gap-2">
-              <Button variant={viewMode === "grid" ? "default" : "outline"} size="sm" onClick={() => setViewMode("grid")}>
+              <Button variant={viewMode === "grid" ? "default" : "outline"} size="sm" onClick={() => setViewMode("grid")} aria-label={t("common.gridView")} aria-pressed={viewMode === "grid"}>
                 <Grid3X3 className="w-4 h-4" />
               </Button>
-              <Button variant={viewMode === "list" ? "default" : "outline"} size="sm" onClick={() => setViewMode("list")}>
+              <Button variant={viewMode === "list" ? "default" : "outline"} size="sm" onClick={() => setViewMode("list")} aria-label={t("common.listView")} aria-pressed={viewMode === "list"}>
                 <List className="w-4 h-4" />
               </Button>
             </div>

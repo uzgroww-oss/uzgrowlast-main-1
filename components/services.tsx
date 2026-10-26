@@ -15,7 +15,10 @@ import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { mediaIds, useMedia } from "@/contexts/MediaContext";
 
-export function Services() {
+// Alohida sahifada bu bo'lim sarlavhasi h1, bosh sahifada esa h2
+// (u yerda h1 hero'da) — sahifada bittadan ortiq h1 bo'lmasligi kerak.
+export function Services({ asPageTitle = false }: { asPageTitle?: boolean }) {
+  const Heading = asPageTitle ? "h1" : "h2";
   const [activeService, setActiveService] = useState(0);
   const [activeImage, setActiveImage] = useState(0);
   const { t } = useLanguage();
@@ -74,9 +77,9 @@ export function Services() {
           <span className="inline-block text-primary font-semibold text-sm tracking-wider uppercase mb-3">
             {t("services.title")}
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-balance">
+          <Heading className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-balance">
             {t("services.subtitle")}
-          </h2>
+          </Heading>
           <p className="text-muted-foreground text-lg mt-3 max-w-3xl mx-auto">
             {t("services.description")}
           </p>

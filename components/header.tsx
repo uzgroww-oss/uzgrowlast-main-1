@@ -26,6 +26,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Flag } from "@/components/ui/flag";
 import { useLanguage, type Language } from "@/contexts/LanguageContext";
+import { formatPhone, telHref } from "@/lib/contact-links";
 import { useMedia } from "@/contexts/MediaContext";
 
 export function Header() {
@@ -76,21 +77,21 @@ export function Header() {
           <div className="flex items-center justify-between h-10">
             <div className="flex items-center gap-6">
               <a
-                href="tel:+998555152223"
+                href={telHref(t("contact.companyPhone"))}
                 className="flex items-center gap-2 text-sm opacity-90 hover:opacity-100 transition-opacity"
               >
                 <Phone className="w-4 h-4" />
                 <span className="text-xs font-medium tracking-wide">
-                  +998 55 515 22 23
+                  {formatPhone(t("contact.companyPhone"))}
                 </span>
               </a>
               <a
-                href="mailto:uzgrrow@gmail.com"
+                href={`mailto:${t("contact.companyEmail")}`}
                 className="flex items-center gap-2 text-sm opacity-90 hover:opacity-100 transition-opacity"
               >
                 <Mail className="w-4 h-4" />
                 <span className="text-xs font-medium tracking-wide">
-                  uzgrrow@gmail.com
+                  {t("contact.companyEmail")}
                 </span>
               </a>
             </div>
@@ -339,11 +340,11 @@ export function Header() {
               {/* Mobile Contact Info */}
               <div className="flex flex-col gap-2 pb-4 mb-4 border-b border-border">
                 <a
-                  href={`tel:${t("contact.companyPhone").replace(/\s/g, "")}`}
+                  href={telHref(t("contact.companyPhone"))}
                   className="flex items-center gap-2 text-sm text-muted-foreground"
                 >
                   <Phone className="w-4 h-4 text-primary" />
-                  {t("contact.companyPhone")}
+                  {formatPhone(t("contact.companyPhone"))}
                 </a>
                 <a
                   href={`mailto:${t("contact.companyEmail")}`}

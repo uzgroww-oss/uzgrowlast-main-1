@@ -392,7 +392,7 @@ export function Gallery() {
               className="h-16 w-auto"
             />
           </div>
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">{t("projects.gallery.title")}</h2>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{t("projects.gallery.title")}</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {t("projects.gallery.description")}
           </p>

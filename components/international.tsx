@@ -43,9 +43,9 @@ export function International() {
               className="h-16 w-auto"
             />
           </div>
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
             {t("internationalPage.title")}
-          </h2>
+          </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {t("internationalPage.description")}
           </p>

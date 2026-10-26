@@ -24,32 +24,33 @@ import { Badge } from "@/components/ui/badge";
 import { MapEmbed } from "@/components/ui/map-embed";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { formatPhone, telHref, whatsappHref } from "@/lib/contact-links";
 import { mediaIds, useMedia } from "@/contexts/MediaContext";
 
 const getContactInfo = (t: (key: string) => string) => [
   {
     icon: Phone,
     title: t("contact.phone"),
-    value: "+998555152223",
-    href: "tel:+998555152223",
+    value: formatPhone(t("contact.companyPhone")),
+    href: telHref(t("contact.companyPhone")),
   },
   {
     icon: Send,
     title: "WhatsApp",
-    value: "+998994352313",
-    href: "https://wa.me/+998555152223",
+    value: formatPhone(t("contact.companyPhone2")),
+    href: whatsappHref(t("contact.companyPhone2")),
   },
   {
     icon: Mail,
     title: t("contact.email"),
-    value: "uzgrrow@gmail.com",
-    href: "mailto:uzgrrow@gmail.com",
+    value: t("contact.companyEmail"),
+    href: `mailto:${t("contact.companyEmail")}`,
   },
   {
     icon: MapPin,
     title: t("contact.location"),
     value: "GROW AGRO TEAM OFFICE",
-    href: "https://yandex.ru/navi?rtext=41.202864,69.235732~41.202625,69.235384&rtt=auto",
+    href: t("contact.locationUrl"),
   },
 ];
 
@@ -199,31 +200,20 @@ export default function AloqaPage() {
                     {t("contact.socialMedia")}
                   </h3>
                   <div className="flex gap-3">
+                    {/* Havolalar tarjima faylidan (admin panelda tahrirlanadi) */}
                     {[
-                      {
-                        name: "Telegram",
-                        href: "http://@Uz_Grow",
-                        icon: MessageCircle,
-                      },
-                      {
-                        name: "Instagram",
-                        href: "https://www.instagram.com/uz.grow?igsh=MXMwN3lzaW95NTN1YQ==",
-                        icon: Instagram,
-                      },
-                      {
-                        name: "YouTube",
-                        href: "https://youtube.com/@rustamjonrakhmonov?si=9-OxlFiY0B875tD9",
-                        icon: Youtube,
-                      },
-                      {
-                        name: "Facebook",
-                        href: "https://www.facebook.com/people/uzgrow/61555877069972/?rdid=DcrSKZ6JcT9V7Tj3&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1DePjLwX79%2F",
-                        icon: Facebook,
-                      },
-                    ].map((social) => (
+                      { name: "Telegram", key: "telegram", icon: MessageCircle },
+                      { name: "Instagram", key: "instagram", icon: Instagram },
+                      { name: "YouTube", key: "youtube", icon: Youtube },
+                      { name: "Facebook", key: "facebook", icon: Facebook },
+                    ]
+                      .map((s) => ({ ...s, href: t(`contact.socialLinks.${s.key}`) }))
+                      .filter((s) => s.href.startsWith("http"))
+                      .map((social) => (
                       <a
                         key={social.name}
                         href={social.href}
+                        aria-label={social.name}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-[#24B14B] hover:text-primary-foreground transition-all"
@@ -502,9 +492,9 @@ export default function AloqaPage() {
                   </h3>
                 </div>
                 <p className="text-muted-foreground text-sm">
-                  +998555152223
+                  {formatPhone(t("contact.companyPhone"))}
                   <br />
-                  +998994352313 (WhatsApp)
+                  {formatPhone(t("contact.companyPhone2"))} (WhatsApp)
                 </p>
               </div>
             </div>

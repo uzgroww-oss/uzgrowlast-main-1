@@ -87,9 +87,9 @@ export function Team() {
             <Users className="h-4 w-4 mr-2" />
             {t("team.title")}
           </Badge>
-          <h2 className="text-4xl font-bold text-foreground mb-4">
+          <h1 className="text-4xl font-bold text-foreground mb-4">
             {t("team.subtitle")}
-          </h2>
+          </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             {t("team.description")}
           </p>

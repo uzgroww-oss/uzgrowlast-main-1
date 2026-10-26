@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/contexts/LanguageContext";
+import { formatPhone } from "@/lib/contact-links";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import {
@@ -93,13 +94,15 @@ export default function PrivacyPolicyPage() {
               </p>
               <div className="mt-4 space-y-2 text-blue-800">
                 <p>
-                  <strong>Email:</strong> privacy@uzgrow.uz
+                  <strong>{t("contact.email")}:</strong>{" "}
+                  {t("contact.companyEmail")}
                 </p>
                 <p>
-                  <strong>Telefon:</strong> +998 93 435-23-13
+                  <strong>{t("contact.phone")}:</strong>{" "}
+                  {formatPhone(t("contact.companyPhone"))}
                 </p>
                 <p>
-                  <strong>Manzil:</strong> {t("contact.address")}
+                  <strong>{t("common.address")}:</strong> {t("contact.address")}
                 </p>
               </div>
             </div>

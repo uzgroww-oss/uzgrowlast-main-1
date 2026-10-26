@@ -30,9 +30,9 @@ export function AboutDetailed() {
               <h4 className="text-gray-400 text-3xl font-light tracking-tight uppercase opacity-50">
                 {t("about.tagline")}
               </h4>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#009944] leading-tight">
+              <h1 className="text-3xl md:text-4xl font-bold text-[#009944] leading-tight">
                 {t("about.headline")}
-              </h2>
+              </h1>
               <div className="w-full h-[2px] bg-[#009944] mt-2 mb-6" />
             </div>
 

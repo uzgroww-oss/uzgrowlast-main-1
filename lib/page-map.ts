@@ -391,6 +391,19 @@ export const PAGES: PageDef[] = [
   },
 
   {
+    key: "yangiliklar",
+    title: "Yangiliklar",
+    path: "/yangiliklar",
+    blocks: [
+      {
+        title: "Sahifa sarlavhalari",
+        prefixes: ["newsPage"],
+        hint: "Yangiliklarning o'zi \"Yangiliklar\" bo'limida qo'shiladi",
+      },
+    ],
+  },
+
+  {
     key: "aloqa",
     title: "Aloqa",
     path: "/aloqa",

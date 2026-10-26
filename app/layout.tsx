@@ -3,15 +3,14 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { MediaProvider } from "@/contexts/MediaContext";
+import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   // OG/Twitter rasmlarining to'liq manzili shu asosda quriladi
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://uzgrow.uz",
-  ),
+  metadataBase: new URL(SITE_URL),
   title:
     "UZ GROW - Agro-Injiniring | Issiqxona qurish va qishloq xo'jaligi yechimlari",
   description:
@@ -37,20 +36,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "uz_UZ",
-    url: "https://uzgrow.uz",
+    url: "/",
     title:
       "UZ GROW - Agro-Injiniring | Issiqxona qurish va qishloq xo'jaligi yechimlari",
     description:
       "UZ GROW - O'zbekistonning yetakchi agro-injiniring kompaniyasi. Zamonaviy issiqxonalar, agrotexnologiyalar va qishloq xo'jaligi uchun kompleks yechimlar.",
     siteName: "UZ GROW",
-    images: [
-      {
-        url: "/images/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "UZ GROW Agro-Injiniring",
-      },
-    ],
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
@@ -58,15 +50,12 @@ export const metadata: Metadata = {
       "UZ GROW - Agro-Injiniring | Issiqxona qurish va qishloq xo'jaligi yechimlari",
     description:
       "UZ GROW - O'zbekistonning yetakchi agro-injiniring kompaniyasi. Zamonaviy issiqxonalar, agrotexnologiyalar va qishloq xo'jaligi uchun kompleks yechimlar.",
-    images: ["/images/logo.png"],
+    images: [OG_IMAGE.url],
     creator: "@UZ GROW",
     site: "@UZ GROW",
   },
-  // Til URL orqali emas, brauzerda almashtiriladi — shuning uchun har bir til
-  // uchun alohida manzil yo'q va hreflang e'lon qilinmaydi.
-  alternates: {
-    canonical: "https://uzgrow.uz",
-  },
+  // canonical bu yerda BERILMAYDI: u barcha sahifalarga meros bo'lib
+  // o'tadi. Har sahifa o'zinikini lib/seo.ts dagi pageMeta() orqali oladi.
 };
 
 export default function RootLayout({

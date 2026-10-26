@@ -64,6 +64,11 @@ export const translations = {
       inProgress: "Jarayonda",
       previous: "Oldingi",
       next: "Keyingi",
+      slide: "Slayd",
+      gridView: "Jadval ko'rinishi",
+      listView: "Ro'yxat ko'rinishi",
+      showMore: "Ko'proq o'qish",
+      showLess: "Yig'ish",
       call: "Qo'ng'iroq",
       downloadResume: "Rezyumeni yuklab olish",
       sendEmail: "Email yuborish",
@@ -739,7 +744,7 @@ export const translations = {
         facebook: "https://www.facebook.com/share/1DePjLwX79/",
         instagram:
           "https://www.instagram.com/uz.grow?igsh=MXMwN3lzaW95NTN1YQ==",
-        telegram: "http://@Uz_Grow",
+        telegram: "https://t.me/Uz_Grow",
         youtube: "https://youtube.com/@rustamjonrakhmonov?si=9-OxlFiY0B875tD9",
         tiktok: "https://www.tiktok.com/@uz.grow",
       },
@@ -1175,6 +1180,13 @@ export const translations = {
         desc: "Bizning mutaxassislarimiz sizga eng mos investitsiya modelini tanlashda yordam beradi.",
       },
     },
+    newsPage: {
+      badge: "Yangiliklar",
+      title: "So'nggi yangiliklar",
+      subtitle: "UZ GROW kompaniyasining loyihalari, yutuqlari va e'lonlari",
+      emptyTitle: "Hozircha yangiliklar yo'q",
+      emptyText: "Tez orada yangi ma'lumotlar qo'shiladi",
+    },
     techPage: {
       hero: {
         badge: "Texnologiya",
@@ -1259,6 +1271,11 @@ export const translations = {
       inProgress: "В процессе",
       previous: "Предыдущий",
       next: "Следующий",
+      slide: "Слайд",
+      gridView: "Плиткой",
+      listView: "Списком",
+      showMore: "Читать далее",
+      showLess: "Свернуть",
       call: "Звонок",
       downloadResume: "Скачать резюме",
       sendEmail: "Отправить Email",
@@ -1931,7 +1948,7 @@ export const translations = {
         facebook: "https://www.facebook.com/share/1DePjLwX79/",
         instagram:
           "https://www.instagram.com/uz.grow?igsh=MXMwN3lzaW95NTN1YQ==",
-        telegram: "http://@Uz_Grow",
+        telegram: "https://t.me/Uz_Grow",
         youtube: "https://youtube.com/@rustamjonrakhmonov?si=9-OxlFiY0B875tD9",
         tiktok: "https://www.tiktok.com/@uz.grow",
       },
@@ -2387,6 +2404,13 @@ export const translations = {
         desc: "Наши специалисты помогут вам выбрать наиболее подходящую инвестиционную модель.",
       },
     },
+    newsPage: {
+      badge: "Новости",
+      title: "Последние новости",
+      subtitle: "Проекты, достижения и объявления компании UZ GROW",
+      emptyTitle: "Пока новостей нет",
+      emptyText: "Скоро здесь появятся новые материалы",
+    },
     techPage: {
       hero: {
         badge: "Технология",
@@ -2471,6 +2495,11 @@ export const translations = {
       inProgress: "In Progress",
       previous: "Previous",
       next: "Next",
+      slide: "Slide",
+      gridView: "Grid view",
+      listView: "List view",
+      showMore: "Read more",
+      showLess: "Show less",
       call: "Call",
       downloadResume: "Download Resume",
       sendEmail: "Send Email",
@@ -3117,7 +3146,7 @@ export const translations = {
         facebook: "https://www.facebook.com/share/1DePjLwX79/",
         instagram:
           "https://www.instagram.com/uz.grow?igsh=MXMwN3lzaW95NTN1YQ==",
-        telegram: "http://@Uz_Grow",
+        telegram: "https://t.me/Uz_Grow",
         youtube: "https://youtube.com/@rustamjonrakhmonov?si=9-OxlFiY0B875tD9",
         tiktok: "https://www.tiktok.com/@uz.grow",
       },
@@ -3554,6 +3583,13 @@ export const translations = {
         title: "Let's discuss investment opportunities",
         desc: "Our specialists will help you choose the most suitable investment model.",
       },
+    },
+    newsPage: {
+      badge: "News",
+      title: "Latest news",
+      subtitle: "UZ GROW projects, achievements and announcements",
+      emptyTitle: "No news yet",
+      emptyText: "New updates will be added soon",
     },
     techPage: {
       hero: {

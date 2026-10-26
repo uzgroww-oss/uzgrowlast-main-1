@@ -106,9 +106,9 @@ export function GreenhouseTypes() {
               className="h-16 w-auto"
             />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {t("greenhouse.title")}
-          </h2>
+          </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {t("greenhouse.description")}
           </p>

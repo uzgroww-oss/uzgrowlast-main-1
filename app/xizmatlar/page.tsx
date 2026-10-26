@@ -1,3 +1,4 @@
+import { pageMeta } from "@/lib/seo";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import {
@@ -11,17 +12,14 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export const metadata = {
+export const metadata = pageMeta({
+  path: "/xizmatlar",
   title: "Xizmatlar | UZ GROW - Agro-Injiniring",
   description:
     "UZ GROW xizmatlari: issiqxona injiniringi, jihozlar yetkazib berish, tomchilatib sug'orish tizimlari va agro-konsalting. To'liq aylanma asosida loyihalash va qurilish.",
-  openGraph: {
-    title: "Xizmatlar | UZ GROW - Agro-Injiniring",
-    description:
-      "Issiqxona injiniringi, jihozlar, sug'orish tizimlari va agro-konsalting xizmatlari.",
-    images: ["/images/logo.png"],
-  },
-};
+  keywords:
+    "UZ GROW xizmatlari, issiqxona qurish, agro-injiniring, konsalting",
+});
 
 const services = [
   {
