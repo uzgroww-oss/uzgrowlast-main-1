@@ -88,14 +88,6 @@ export const MEDIA: MediaItem[] = [
     def: "",
   },
   {
-    id: "rahbariyat.avatar.bobgulbaxor",
-    label: "Bobgulbaxor — surati",
-    page: "rahbariyat",
-    block: "Jamoa suratlari",
-    type: "image",
-    def: "",
-  },
-  {
     id: "rahbariyat.avatar.nafosat",
     label: "Nafosat — surati",
     page: "rahbariyat",

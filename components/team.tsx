@@ -59,7 +59,6 @@ export function Team() {
       "rustamjon",
       "alisher",
       "abdulloh",
-      "bobgulbaxor",
       "nafosat",
       "dilnoza",
       "sardor",

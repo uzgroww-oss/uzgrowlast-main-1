@@ -46,7 +46,6 @@ export const COLLECTIONS: Collection[] = [
       "rustamjon",
       "alisher",
       "abdulloh",
-      "bobgulbaxor",
       "nafosat",
       "dilnoza",
       "sardor",
