@@ -140,7 +140,7 @@ export function About({ asPageTitle = false }: { asPageTitle?: boolean }) {
             </div>
 
             {/* Decorative elements */}
-            <div className="absolute -z-10 -bottom-6 -right-6 w-full h-full rounded-3xl bg-[#24B14B]/10" />
+            <div className="absolute -z-10 -bottom-3 -right-3 sm:-bottom-6 sm:-right-6 w-full h-full rounded-3xl bg-[#24B14B]/10" />
           </div>
 
           {/* Content */}

@@ -14,9 +14,37 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import { mediaIds, useMedia } from "@/contexts/MediaContext";
 import { MediaImg, MediaVideo } from "@/components/ui/media-img";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const SLIDE_KEYS = ["slide1", "slide2", "slide3", "slide4"];
+
+type VideoVariant = "portrait" | "landscape" | "large";
+
+// Koddagi standart videolar (lib/media-registry.ts dagi qiymatlar bilan bir xil)
+const DEFAULT_LANDSCAPE = "/videos/hero.mp4";
+const DEFAULT_PORTRAIT = "/videos/hero-vertical.mp4";
+const LARGE_LANDSCAPE = "/videos/hero-1080.mp4";
+
+/**
+ * Qurilmaga mos video manzili.
+ *
+ * Admin faqat yotiq videoni almashtirgan bo'lsa (tik video standartligicha
+ * qolgan bo'lsa), telefonda ham yangi yotiq video ko'rsatiladi — eski tik
+ * video bilan aralashib ketmasin. 1080p varianti faqat standart video uchun bor.
+ */
+function pickVideo(
+  variant: VideoVariant | null,
+  landscape: string,
+  portrait: string,
+): string {
+  if (!variant) return "";
+  const customLandscape = landscape !== DEFAULT_LANDSCAPE;
+  if (variant === "portrait") {
+    if (customLandscape && portrait === DEFAULT_PORTRAIT) return landscape;
+    return portrait || landscape;
+  }
+  if (variant === "large" && landscape === DEFAULT_LANDSCAPE) return LARGE_LANDSCAPE;
+  return landscape;
+}
 
 const getSlides = (t: (key: string) => string) => [
   {
@@ -79,7 +107,6 @@ function AnimatedNumber({ end, duration = 2000 }: { end: number; duration?: numb
 export function Hero() {
   const { t, isHidden } = useLanguage();
   const { m, mList } = useMedia();
-  const isMobile = useIsMobile();
   // O'chirilgan slaydlar aylanmaga tushmaydi
   const slides = getSlides(t).filter(
     (_, i) => !isHidden(`hero.slides.${SLIDE_KEYS[i]}`),
@@ -97,25 +124,54 @@ export function Hero() {
   // qo'yiladi: aks holda rasm aynan ko'rsatilishi kerak bo'lgan paytda
   // yuklana boshlaydi va o'tish paytida fon bo'sh qolib ketadi.
   const [maxShown, setMaxShown] = useState(0);
-  useEffect(() => {
-    setMaxShown((prev) => Math.max(prev, bgIndex));
-  }, [bgIndex]);
-  const mountCount = Math.min(posters.length, maxShown + 2);
 
-  // Fon videosi faqat kompyuterda. Telefonda, "harakatni kamaytirish"
-  // yoqilganda yoki brauzer trafikni tejash rejimida bo'lsa — rasmlar
-  // (mobil internet va batareyani tejaydi).
-  const [videoAllowed, setVideoAllowed] = useState(false);
-  const [videoReady, setVideoReady] = useState(false);
+  /* ---------- Fon videosi ---------- */
+
+  // Qurilmaga qarab variant: tik ekran (telefon, tik planshet) — 9:16,
+  // oddiy ekran — 720p, katta/retina ekran — 1080p. null — hali
+  // aniqlanmagan yoki video o'chirilgan ("harakatni kamaytirish" yoki
+  // trafikni tejash rejimi yoqilgan).
+  const [variant, setVariant] = useState<VideoVariant | null>(null);
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const saveData = Boolean(
       (navigator as Navigator & { connection?: { saveData?: boolean } }).connection
         ?.saveData,
     );
-    setVideoAllowed(!reduce && !saveData);
+    if (reduce || saveData) return;
+
+    const portraitQuery = window.matchMedia("(orientation: portrait)");
+    const pick = () => {
+      const physicalWidth = window.innerWidth * (window.devicePixelRatio || 1);
+      setVariant(
+        portraitQuery.matches
+          ? "portrait"
+          : physicalWidth > 1920
+            ? "large"
+            : "landscape",
+      );
+    };
+    pick();
+    // Telefon burilganda mos variantga o'tadi
+    portraitQuery.addEventListener("change", pick);
+    return () => portraitQuery.removeEventListener("change", pick);
   }, []);
-  const showVideo = videoAllowed && !isMobile && Boolean(m("bosh.hero.video"));
+
+  const videoSrc = pickVideo(
+    variant,
+    m("bosh.hero.video"),
+    m("bosh.hero.videoMobile"),
+  );
+  // Qaysi manzil o'ynay boshlagani — variant almashsa, yangisi tayyor
+  // bo'lguncha rasmlar ko'rinib turadi
+  const [playingSrc, setPlayingSrc] = useState("");
+  const videoReady = videoSrc !== "" && playingSrc === videoSrc;
+
+  // Video o'ynayotgan bo'lsa qolgan rasmlarni yuklash shart emas
+  useEffect(() => {
+    if (!videoReady) setMaxShown((prev) => Math.max(prev, bgIndex));
+  }, [bgIndex, videoReady]);
+  const mountCount = Math.min(posters.length, maxShown + 2);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -136,9 +192,9 @@ export function Hero() {
       {/* Fon: slaydlar bilan birga almashadigan rasmlar.
           Ular ustma-ust turadi va faqat bittasi ko'rinadi — shu sababli
           o'tish silliq bo'ladi (opacity).
-          Kompyuterda ular ustidan fon videosi o'ynaydi (public/videos/hero.mp4,
-          admin paneldan almashtiriladi yoki o'chiriladi). Telefonda video
-          umuman yuklanmaydi — mobil internet va trafikni tejaydi. */}
+          Ular ustidan fon videosi o'ynaydi — har qurilmaga o'z varianti
+          (pickVideo). Videolar public/videos/ da, admin paneldan
+          almashtiriladi yoki o'chiriladi. */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {posters.slice(0, mountCount).map((src, i) => (
           <MediaImg
@@ -156,12 +212,15 @@ export function Hero() {
             }`}
           />
         ))}
-        {showVideo && (
+        {videoSrc && (
           <MediaVideo
-            src={m("bosh.hero.video")}
+            key={videoSrc}
+            src={videoSrc}
             // Video o'ynay boshlagunicha rasmlar ko'rinib turadi, keyin u
-            // ustidan silliq paydo bo'ladi — bo'sh/qora kadr ko'rinmaydi
-            onPlaying={() => setVideoReady(true)}
+            // ustidan silliq paydo bo'ladi — bo'sh/qora kadr ko'rinmaydi.
+            // iPhone'da quvvat tejash rejimida avtomatik o'ynash taqiqlangan:
+            // u holda video shunchaki chiqmaydi, rasmlar qoladi.
+            onPlaying={() => setPlayingSrc(videoSrc)}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               videoReady ? "opacity-100" : "opacity-0"
             }`}
@@ -170,14 +229,18 @@ export function Hero() {
             muted
             playsInline
             preload="auto"
+            disablePictureInPicture
+            disableRemotePlayback
+            aria-hidden="true"
           />
         )}
 </div>
       {/* Overlay */}
       <div className="absolute inset-0 bg-linear-to-r from-black/40 via-black/30 to-black/40" />
 
-      {/* Content */}
-      <div className="relative container mx-auto px-4 lg:px-8 pt-24 pb-12">
+      {/* Content. Pastki joy — raqamlar paneli (absolute) tugmalarni yopib
+          qo'ymasligi uchun: telefonda panel 2 qator (~180px), kattada 1 qator */}
+      <div className="relative container mx-auto px-4 lg:px-8 pt-24 pb-52 md:pb-36">
         <div className="max-w-4xl">
           {/* Tagline */}
           <div className="inline-flex items-center gap-2 bg-black/20 backdrop-blur-md rounded-full px-4 py-2 mb-8 border border-white/10">

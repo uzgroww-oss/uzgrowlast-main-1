@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { MediaImg } from "@/components/ui/media-img";
+
 
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useMedia } from "@/contexts/MediaContext";
@@ -33,6 +35,10 @@ import {
   Zap,
   Heart,
 } from "lucide-react";
+
+// Media hamkorlik bo'yicha alohida raqam (sahifada ilgaridan shu turgan)
+const MEDIA_PHONE = "+998 93 435-23-13";
+const MEDIA_PHONE_HREF = "tel:+998934352313";
 
 const platforms = [
   {
@@ -316,14 +322,14 @@ export function AssoDesignMedia() {
                 key={index}
                 className="bg-gradient-to-r from-blue-50 to-purple-50"
               >
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-6">
+                <CardContent className="p-5 sm:p-8">
+                  <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                     <MediaImg
                       src={m("umumiy.logo")}
                       alt={partner.name}
                       className="h-14 w-auto shrink-0 object-contain"
                     />
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="font-bold text-xl mb-2">{partner.name}</h3>
                       <p className="text-gray-600 mb-3">
                         {partner.description}
@@ -343,7 +349,7 @@ export function AssoDesignMedia() {
         </div>
 
         {/* Contact Information */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-5 sm:p-8 text-white text-center">
           <h2 className="text-3xl font-bold mb-6">{t("media.contactUs")}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <div className="flex flex-col items-center">
@@ -352,36 +358,54 @@ export function AssoDesignMedia() {
                 taplink.cc/uzgrow
               </a>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center min-w-0">
               <Mail className="h-8 w-8 mb-2" />
-              <span>{t("contact.email")}</span>
+              <a
+                href={`mailto:${t("contact.companyEmail")}`}
+                className="hover:underline break-all"
+              >
+                {t("contact.companyEmail")}
+              </a>
             </div>
             <div className="flex flex-col items-center">
               <Phone className="h-8 w-8 mb-2" />
-              <span>+998 93 435-23-13</span>
+              <a href={MEDIA_PHONE_HREF} className="hover:underline">
+                {MEDIA_PHONE}
+              </a>
             </div>
             <div className="flex flex-col items-center">
               <MapPin className="h-8 w-8 mb-2" />
-              <span>
+              <a
+                href={t("contact.locationUrl")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
                 GROW AGRO TEAM OFFICE
-              </span>
+              </a>
             </div>
           </div>
-          <div className="flex gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Button
               size="lg"
               className="bg-white text-blue-600 hover:bg-gray-100"
+              asChild
             >
-              <Phone className="h-4 w-4 mr-2" />
-              {t("media.callNow")}
+              <a href={MEDIA_PHONE_HREF}>
+                <Phone className="h-4 w-4 mr-2" />
+                {t("media.callNow")}
+              </a>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-blue-600"
+              className="border-white text-blue-600 sm:text-white bg-white sm:bg-transparent hover:bg-white hover:text-blue-600"
+              asChild
             >
-              <Mail className="h-4 w-4 mr-2" />
-              {t("media.freeConsultation")}
+              <Link href="/aloqa">
+                <Mail className="h-4 w-4 mr-2" />
+                {t("media.freeConsultation")}
+              </Link>
             </Button>
           </div>
         </div>

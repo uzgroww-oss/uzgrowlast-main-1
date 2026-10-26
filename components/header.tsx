@@ -153,7 +153,8 @@ export function Header() {
                 loading="eager"
                 className="h-12 sm:h-14 lg:h-16 w-auto object-contain animate-logo"
               />
-              <span className="hidden sm:block font-bold text-lg lg:text-xl tracking-tight text-foreground whitespace-nowrap">
+              {/* 1024–1279px da menyu bilan sig'maydi — u yerda yashiriladi (logoda nom bor) */}
+              <span className="hidden sm:block lg:hidden xl:block font-bold text-lg xl:text-xl tracking-tight text-foreground whitespace-nowrap">
                 {t("footer.brandName")}
               </span>
             </Link>
@@ -164,7 +165,7 @@ export function Header() {
               <Link
                 href={navItems[0].href}
                 className={cn(
-                  "px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors",
+                  "px-2.5 xl:px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors",
                   pathname === navItems[0].href
                     ? "text-primary bg-primary/10"
                     : "text-foreground/80 hover:text-primary hover:bg-primary/5",
@@ -182,7 +183,7 @@ export function Header() {
                 <button
                   type="button"
                   className={cn(
-                    "px-4 py-2 text-sm font-medium rounded-lg flex items-center gap-1 transition-all whitespace-nowrap",
+                    "px-2.5 xl:px-4 py-2 text-sm font-medium rounded-lg flex items-center gap-1 transition-all whitespace-nowrap",
                     isValuesHovered
                       ? "text-primary bg-primary/10"
                       : "text-foreground/80 hover:text-primary hover:bg-primary/5",
@@ -269,7 +270,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors",
+                    "px-2.5 xl:px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors",
                     pathname === item.href
                       ? "text-primary bg-primary/10"
                       : "text-foreground/80 hover:text-primary hover:bg-primary/5",

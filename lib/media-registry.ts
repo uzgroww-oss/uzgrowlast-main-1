@@ -121,12 +121,21 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "bosh.hero.video",
-    label: "Bosh ekran fon videosi",
+    label: "Bosh ekran fon videosi (kompyuter, yotiq 16:9)",
     page: "bosh",
     block: "Bosh ekran",
     type: "video",
     // 1280x720, 30 kadr, ovozsiz, ~4 MB (asl 60 MB lik fayldan siqilgan)
     def: "/videos/hero.mp4",
+  },
+  {
+    id: "bosh.hero.videoMobile",
+    label: "Bosh ekran fon videosi (telefon, tik 9:16)",
+    page: "bosh",
+    block: "Bosh ekran",
+    type: "video",
+    // Asl videoning markazidan kesilgan tik variant, 608x1080, ~2.6 MB
+    def: "/videos/hero-vertical.mp4",
   },
   {
     id: "bosh.about.background",

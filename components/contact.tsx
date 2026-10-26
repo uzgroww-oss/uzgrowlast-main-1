@@ -176,7 +176,8 @@ export function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-10">
           {/* Left: Form + Working Hours + Socials */}
-          <div className="flex flex-col gap-6">
+          {/* min-w-0: grid ustuni ichidagi keng element ekranni kengaytirmasin */}
+          <div className="flex flex-col gap-6 min-w-0">
           <div className="bg-background rounded-2xl p-6 shadow-lg">
             <h3 className="text-xl font-bold text-foreground mb-4">
               {t("contact.formTitle")}
@@ -383,7 +384,7 @@ export function Contact() {
           </div>
 
           {/* Right: Contact Info + Map */}
-          <div className="space-y-6">
+          <div className="space-y-6 min-w-0">
             <div>
               <div className="space-y-4">
                 {contactInfo.map((info, index) => (
@@ -439,8 +440,8 @@ export function Contact() {
                     </div>
                   </div>
 
-                  {/* Map Actions */}
-                  <div className="flex gap-2 pt-2">
+                  {/* Map Actions — tor telefonda ustma-ust */}
+                  <div className="flex flex-col min-[400px]:flex-row gap-2 pt-2">
                     <Button
                       variant="outline"
                       size="sm"
