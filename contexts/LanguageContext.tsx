@@ -763,6 +763,7 @@ export const translations = {
       links: {
         services: [
           { label: "Barcha xizmatlar", href: "/xizmatlar" },
+          { label: "Ekinlar bo'yicha", href: "/ekinlar" },
           { label: "Issiqxona turlari", href: "/issiqxona-turlari" },
           { label: "Loyihalar", href: "/loyihalar" },
           { label: "Jihozlar", href: "/jixozlar" },
@@ -1249,6 +1250,330 @@ export const translations = {
             "Rentabellik tahlili va biznes model",
           ],
           result: "Yuqori daromadli qishloq xo'jaligi biznesi.",
+        },
+      ],
+    },
+    cropsPage: {
+      badge: "Ekinlar",
+      title: "Ekiningizga mos issiqxona",
+      subtitle: "Har bir ekinning o'z iqlimi, yetishtirish usuli va issiqxona talabi bor. Qaysi ekin bilan shug'ullanmoqchi ekaningizni tanlang — qolganini biz hisoblaymiz.",
+      more: "Batafsil",
+      back: "Barcha ekinlar",
+      conditionsTitle: "Qulay sharoit",
+      greenhouseTitle: "Qanday issiqxona mos",
+      methodsTitle: "Yetishtirish usullari",
+      faqTitle: "Ko'p beriladigan savollar",
+      ctaTitle: "Shu ekin uchun loyiha va narx hisobi kerakmi?",
+      ctaText: "Hudud, maydon va usulni yozing — muhandisimiz siz uchun issiqxona turi, jihozlar va taxminiy xarajatni hisoblab beradi.",
+      ctaButton: "Narx so'rash",
+      greenhouseLink: "Issiqxona turlarini ko'rish",
+      homeTitle: "Qaysi ekin yetishtirasiz?",
+      homeSubtitle: "Ekinni tanlang — unga mos issiqxona, iqlim va usul haqida bilib oling",
+      items: [
+        {
+          code: "pomidor",
+          name: "Pomidor",
+          tagline: "Issiqxonada eng ko'p yetishtiriladigan va talabi doim yuqori ekin",
+          intro: "Pomidor issiqxonada uzoq mavsum davomida hosil beradi va bozorda talabi barqaror. Yuqori hosil uchun unga yorug'lik ko'p, harorat bir tekis va namlik me'yorida bo'lishi kerak. Zamonaviy issiqxonada iqlim nazorati, tomchilatib sug'orish va o'g'itlash avtomatlashtirilsa, hosildorlik ochiq daladagidan bir necha barobar yuqori bo'ladi.",
+          conditions: [
+            {
+              label: "Kunduzgi harorat",
+              value: "22–26 °C",
+            },
+            {
+              label: "Tungi harorat",
+              value: "16–18 °C",
+            },
+            {
+              label: "Havo namligi",
+              value: "60–70 %",
+            },
+            {
+              label: "Yorug'lik",
+              value: "Kuniga 12–16 soat, ko'p yorug'lik talab qiladi",
+            },
+            {
+              label: "Birinchi hosilgacha",
+              value: "Ko'chat o'tqazilgandan 60–75 kun",
+            },
+          ],
+          greenhouse: "Baland (4–6 m) va keng oraliqli issiqxona: o'simlik shpalerda 3–4 metrgacha o'sadi. Polikarbonat yoki ko'p qatlamli plyonka, tom va yon shamollatish, qish uchun isitish tizimi va issiqlik ekrani tavsiya etiladi.",
+          methods: [
+            "Substratda (kokos tolasi yoki mineral paxta) — tomchilatib sug'orish va o'g'itlash bilan",
+            "Tuproqda — kichik va o'rta fermer xo'jaliklari uchun arzonroq boshlanish",
+            "Shpalerda vertikal o'stirish — har kvadrat metrdan ko'proq hosil",
+            "Changlatish uchun bumblebee (tukli ari) yoki vibratsiya",
+          ],
+          faq: [
+            {
+              q: "Pomidor uchun qaysi issiqxona turi eng mos?",
+              a: "Tijorat maqsadida baland, keng oraliqli va yaxshi shamollatiladigan issiqxona kerak. Kichik maydonda oddiy tunnel issiqxona ham bo'ladi, lekin hosil va mavsum uzunligi pastroq. Aniq turini hudud iqlimi va maydonga qarab tanlaymiz.",
+            },
+            {
+              q: "Tuproqdami yoki substratdami yetishtirgan yaxshi?",
+              a: "Substrat (kokos, mineral paxta) hosilni va sifatni oshiradi, kasalliklar xavfini kamaytiradi, lekin boshlang'ich xarajati yuqoriroq. Tuproqda boshlash arzonroq. Ko'pincha mijozlar tuproqdan boshlab, keyin substratga o'tadi.",
+            },
+            {
+              q: "Qishda isitish shartmi?",
+              a: "O'zbekiston sharoitida qishda pomidor yetishtirish uchun isitish kerak — tunda harorat 14–16 °C dan tushmasligi lozim. Isitish turi (gaz, ko'mir, issiqlik nasosi) loyihada hisoblanadi.",
+            },
+            {
+              q: "Hosildorlik qancha bo'ladi?",
+              a: "Hosil nav, texnologiya va issiqxona turiga bog'liq. Zamonaviy issiqxonada u ochiq daladagidan bir necha barobar ko'p. Aniq raqamni hudud va tanlangan usul bo'yicha loyihada hisoblab beramiz.",
+            },
+            {
+              q: "Pomidor qanday changlatiladi?",
+              a: "Yopiq issiqxonada tabiiy changlatish kam, shuning uchun bumblebee uyalari yoki maxsus vibrator ishlatiladi. Bu meva tugishini va sifatini sezilarli oshiradi.",
+            },
+            {
+              q: "Qurilish qancha vaqt oladi?",
+              a: "Muddat maydon, issiqxona turi va jihozlarga bog'liq. Aniq jadvalni loyiha tasdiqlangach beramiz — shundan keyin qurilish va ishga tushirish bosqichma-bosqich boshqariladi.",
+            },
+          ],
+        },
+        {
+          code: "bodring",
+          name: "Bodring",
+          tagline: "Tez pishadi, mavsumda bir necha marta hosil beradi",
+          intro: "Bodring issiqxonada tez o'sadi va ko'chat o'tqazilgandan bir yarim oy ichida hosilga kiradi. Yil davomida 2–3 marta aylantirish mumkin, bu esa daromadni barqaror qiladi. Bodring issiqlik va namlikni yaxshi ko'radi, shuning uchun issiqxonada iqlimni bir tekis ushlab turish muhim.",
+          conditions: [
+            {
+              label: "Kunduzgi harorat",
+              value: "24–28 °C",
+            },
+            {
+              label: "Tungi harorat",
+              value: "18–20 °C",
+            },
+            {
+              label: "Havo namligi",
+              value: "70–90 %",
+            },
+            {
+              label: "Yorug'lik",
+              value: "Kuniga 12–14 soat",
+            },
+            {
+              label: "Birinchi hosilgacha",
+              value: "Ko'chat o'tqazilgandan 35–45 kun",
+            },
+          ],
+          greenhouse: "Namlikni ushlaydigan, lekin yaxshi shamollatiladigan issiqxona. Shpaler uchun balandlik 3.5–5 m, tumanlatish (namlatish) tizimi va bir tekis isitish tavsiya etiladi. Polikarbonat qishda issiqlikni yaxshiroq saqlaydi.",
+          methods: [
+            "Substratda — tomchilatib sug'orish va o'g'itlash avtomatik",
+            "Tuproqda — mulchalash va tomchilatib sug'orish bilan",
+            "Shpalerda vertikal o'stirish",
+            "Partenokarpik (changlatish shart bo'lmagan) navlar",
+          ],
+          faq: [
+            {
+              q: "Bodring uchun qaysi issiqxona mos?",
+              a: "Iliq va nam muhitni ushlab turadigan, lekin shamollatish yaxshi bo'lgan issiqxona. Kichik maydonda tunnel, tijorat uchun esa baland bloklangan issiqxona tavsiya etiladi.",
+            },
+            {
+              q: "Yiliga necha marta hosil olish mumkin?",
+              a: "Isitiladigan issiqxonada yiliga 2–3 aylanish odatiy. Isitilmaydigan issiqxonada mavsum qisqaroq — bahor va kuz.",
+            },
+            {
+              q: "Changlatish kerakmi?",
+              a: "Issiqxona uchun asosan partenokarpik navlar tanlanadi — ular changlatishsiz meva tugadi. Shuning uchun ari yoki vibratsiya shart emas.",
+            },
+            {
+              q: "Namlik juda yuqori bo'lsa nima bo'ladi?",
+              a: "Ortiqcha namlik zamburug' kasalliklarini keltirib chiqaradi. Shuning uchun shamollatish va namlikni avtomatik nazorat qilish muhim.",
+            },
+            {
+              q: "Bodring va pomidorni bitta issiqxonada yetishtirsa bo'ladimi?",
+              a: "Tavsiya etilmaydi: bodringga issiqroq va namroq, pomidorga quruqroq havo kerak. Alohida bo'limlar yoki issiqxonalar yaxshiroq natija beradi.",
+            },
+            {
+              q: "Boshlash uchun qancha maydon kerak?",
+              a: "Kichik fermer xo'jaligi 10–20 sotixdan boshlashi mumkin. Tijorat uchun odatda 0.5 gektardan katta maydon rentabelroq. Aniq hisobni loyiha asosida beramiz.",
+            },
+          ],
+        },
+        {
+          code: "qulupnay",
+          name: "Qulupnay",
+          tagline: "Yuqori narxli mahsulot, stellajda ko'p qavatli yetishtiriladi",
+          intro: "Issiqxona qulupnayi qish va erta bahorda bozorda eng qimmat mahsulotlardan biri. Stellaj yoki osma lotoklarda yetishtirilganda bir kvadrat metrga ko'proq o'simlik sig'adi, terish oson va mevalar toza bo'ladi. Gul tugishi uchun salqin tunlar muhim, shuning uchun iqlimni boshqarish asosiy omil.",
+          conditions: [
+            {
+              label: "Kunduzgi harorat",
+              value: "18–24 °C",
+            },
+            {
+              label: "Tungi harorat",
+              value: "8–12 °C (gul tugishi uchun)",
+            },
+            {
+              label: "Havo namligi",
+              value: "60–75 %",
+            },
+            {
+              label: "Yorug'lik",
+              value: "Kuniga 12–16 soat",
+            },
+            {
+              label: "Birinchi hosilgacha",
+              value: "Ko'chat o'tqazilgandan 60–90 kun",
+            },
+          ],
+          greenhouse: "Stellaj yoki osma lotok tizimli issiqxona: o'simliklar yerdan 1–1.5 m balandda, terish va parvarish oson. Yaxshi shamollatish, tungi haroratni boshqarish va zarur bo'lsa qo'shimcha yoritish tavsiya etiladi.",
+          methods: [
+            "Stellajda yoki osma lotoklarda substratda (eng keng tarqalgan)",
+            "Vertikal ko'p qavatli tizim — kichik maydonda ko'p o'simlik",
+            "Tomchilatib sug'orish va o'g'itlash",
+            "Changlatish uchun asalari yoki bumblebee",
+          ],
+          faq: [
+            {
+              q: "Qulupnayni tuproqda emas, stellajda yetishtirish nima beradi?",
+              a: "Stellajda mevalar yerga tegmaydi — toza va kasallik kam bo'ladi, terish tez. Bir kvadrat metrga ko'proq o'simlik joylashadi va issiqxona maydonidan unumli foydalaniladi.",
+            },
+            {
+              q: "Qulupnay qachon hosilga kiradi?",
+              a: "Ko'chat turiga qarab o'tqazilgandan 2–3 oy ichida. Neytral kunli navlar issiqxonada uzoq muddat davomida hosil beradi.",
+            },
+            {
+              q: "Qishda yetishtirish mumkinmi?",
+              a: "Ha, isitiladigan va yoritiladigan issiqxonada qishda ham hosil olish mumkin — aynan shu davrda narx eng yuqori bo'ladi.",
+            },
+            {
+              q: "Qulupnay qanday changlatiladi?",
+              a: "Issiqxonaga asalari yoki bumblebee uyalari qo'yiladi. Changlatish yaxshi bo'lsa mevalar to'g'ri shaklli va yirik bo'ladi.",
+            },
+            {
+              q: "Qaysi navni tanlash kerak?",
+              a: "Nav hudud, mavsum va sotish maqsadiga qarab tanlanadi. Loyiha bosqichida mutaxassislarimiz mos navlar bo'yicha maslahat beradi.",
+            },
+            {
+              q: "Kichik maydonda boshlasa bo'ladimi?",
+              a: "Ha. Vertikal stellaj tizimi kichik maydonda ham ko'p o'simlik joylashtirishga imkon beradi. Boshlang'ich hajmni byudjetingizga qarab hisoblaymiz.",
+            },
+          ],
+        },
+        {
+          code: "kokatlar",
+          name: "Ko'katlar va salat",
+          tagline: "Qisqa sikl, yiliga 8–10 marta hosil — gidroponika uchun ideal",
+          intro: "Salat, rayhon, ukrop, petrushka va boshqa ko'katlar 4–6 haftada tayyor bo'ladi. Gidroponikada ular tuproqsiz, toza va bir xil sifatda o'sadi, issiqxonada esa yil bo'yi uzluksiz yetishtirish mumkin. Restoranlar, supermarketlar va eksport uchun barqaror mahsulot.",
+          conditions: [
+            {
+              label: "Kunduzgi harorat",
+              value: "16–22 °C",
+            },
+            {
+              label: "Tungi harorat",
+              value: "12–16 °C",
+            },
+            {
+              label: "Havo namligi",
+              value: "60–70 %",
+            },
+            {
+              label: "Yorug'lik",
+              value: "Kuniga 12–14 soat",
+            },
+            {
+              label: "Bir sikl",
+              value: "30–45 kun",
+            },
+          ],
+          greenhouse: "Gidroponika lotoklari (NFT) yoki suzuvchi platformali (DWC) tizim o'rnatilgan issiqxona. Haddan tashqari issiqqa qarshi soya ekrani va sovutish, qishda esa yengil isitish tavsiya etiladi.",
+          methods: [
+            "NFT — yupqa suv oqimi bilan lotoklarda gidroponika",
+            "DWC — suzuvchi platformalarda",
+            "Vertikal ko'p qavatli tizim",
+            "Avtomatik ozuqa eritmasi nazorati (EC, pH)",
+          ],
+          faq: [
+            {
+              q: "Gidroponika nima va nega ko'katlar uchun qulay?",
+              a: "Gidroponikada o'simlik tuproqsiz, ozuqa eritmasida o'sadi. Ko'katlarning ildizi kichik va sikli qisqa, shuning uchun bu usul ular uchun eng samarali: suv kam sarflanadi, mahsulot toza bo'ladi.",
+            },
+            {
+              q: "Yiliga necha marta hosil olinadi?",
+              a: "Bir sikl 30–45 kun bo'lgani uchun issiqxonada yiliga 8–10 marta hosil olish mumkin.",
+            },
+            {
+              q: "Suv qancha sarflanadi?",
+              a: "Gidroponikada suv aylanma tizimda qayta ishlatiladi, shuning uchun ochiq daladagiga nisbatan ancha kam suv ketadi.",
+            },
+            {
+              q: "Qaysi ko'katlarni yetishtirish mumkin?",
+              a: "Salatning turli navlari, rayhon, ukrop, petrushka, kashnich, shpinat, rukkola va boshqalar.",
+            },
+            {
+              q: "Gidroponika murakkab emasmi?",
+              a: "Ozuqa eritmasi avtomatik nazorat qilinadi. Tizimni o'rnatgach, xodimlaringizni ishlatishga o'rgatamiz.",
+            },
+            {
+              q: "Mahsulotni kim sotib oladi?",
+              a: "Restoranlar, kafe, supermarketlar va ulgurji bozor — toza va bir xil sifatli ko'katlarga talab yil bo'yi bor.",
+            },
+          ],
+        },
+        {
+          code: "kochat",
+          name: "Ko'chat yetishtirish",
+          tagline: "Sog'lom ko'chat — yaxshi hosilning yarmi",
+          intro: "Pomidor, bodring, qalampir, karam va boshqa ekinlar ko'chati maxsus ko'chatxona-issiqxonada kassetalarda yetishtiriladi. Bir xil harorat, namlik va yorug'lik ko'chatni sog'lom va bir tekis qiladi. Ko'chatxona o'z xo'jaligingiz uchun ham, sotish uchun ham alohida daromad manbai.",
+          conditions: [
+            {
+              label: "Harorat",
+              value: "20–25 °C (unib chiqishda 24–28 °C)",
+            },
+            {
+              label: "Havo namligi",
+              value: "75–85 %",
+            },
+            {
+              label: "Yorug'lik",
+              value: "Kuniga 12–16 soat, kerak bo'lsa qo'shimcha yoritish",
+            },
+            {
+              label: "Bir sikl",
+              value: "Ekinga qarab 25–45 kun",
+            },
+            {
+              label: "Joylashuv",
+              value: "Kassetalarda, stellajlarda",
+            },
+          ],
+          greenhouse: "Stellajli, tumanlatish (namlatish) va aniq harorat nazorati bo'lgan issiqxona. Bir tekis yorug'lik uchun soya ekrani va qo'shimcha yoritish, qishda esa isitish kerak.",
+          methods: [
+            "Kassetalarda torf yoki substrat aralashmasida",
+            "Harakatlanuvchi yoki statsionar stellajlar",
+            "Tumanlatish va pastdan sug'orish (ebb-flow)",
+            "Payvand ko'chat (pomidor, bodring) — kasallikka chidamli",
+          ],
+          faq: [
+            {
+              q: "Nega ko'chatni alohida issiqxonada yetishtirish kerak?",
+              a: "Ko'chatga asosiy ekindan farqli iqlim kerak — issiqroq va namroq. Alohida ko'chatxonada ko'chat sog'lom va bir tekis bo'ladi, kasallik xavfi kamayadi.",
+            },
+            {
+              q: "Ko'chatxona qancha maydon talab qiladi?",
+              a: "Kassetalarda yetishtirilgani uchun ko'chatxona asosiy issiqxonadan ancha kichik bo'ladi. Aniq hajm siz yetishtirmoqchi bo'lgan ko'chat soniga qarab hisoblanadi.",
+            },
+            {
+              q: "Ko'chatni sotish uchun yetishtirsa bo'ladimi?",
+              a: "Ha, bahor mavsumida sog'lom ko'chatga talab yuqori — bu alohida daromad manbai.",
+            },
+            {
+              q: "Payvand ko'chat nima?",
+              a: "Kuchli ildizli chidamli o'simlikka hosildor nav payvand qilinadi. Bunday ko'chat tuproq kasalliklariga chidamliroq va hosili yuqoriroq bo'ladi.",
+            },
+            {
+              q: "Qanday jihozlar kerak?",
+              a: "Stellajlar, kassetalar, tumanlatish yoki pastdan sug'orish tizimi, harorat va namlik nazorati, kerak bo'lsa qo'shimcha yoritish.",
+            },
+            {
+              q: "Qishda ko'chat yetishtirish mumkinmi?",
+              a: "Ha, isitish va yoritish bilan qish oxirida bahorgi ekish uchun ko'chat tayyorlanadi.",
+            },
+          ],
         },
       ],
     },
@@ -2032,6 +2357,7 @@ export const translations = {
       links: {
         services: [
           { label: "Все услуги", href: "/xizmatlar" },
+          { label: "По культурам", href: "/ekinlar" },
           { label: "Типы теплиц", href: "/issiqxona-turlari" },
           { label: "Проекты", href: "/loyihalar" },
           { label: "Оборудование", href: "/jixozlar" },
@@ -2538,6 +2864,330 @@ export const translations = {
             "Анализ рентабельности и бизнес-модель",
           ],
           result: "Высокодоходный сельскохозяйственный бизнес.",
+        },
+      ],
+    },
+    cropsPage: {
+      badge: "Культуры",
+      title: "Теплица под вашу культуру",
+      subtitle: "У каждой культуры свой климат, способ выращивания и требования к теплице. Выберите, что хотите выращивать, — остальное мы рассчитаем.",
+      more: "Подробнее",
+      back: "Все культуры",
+      conditionsTitle: "Оптимальные условия",
+      greenhouseTitle: "Какая теплица подойдёт",
+      methodsTitle: "Способы выращивания",
+      faqTitle: "Частые вопросы",
+      ctaTitle: "Нужен проект и расчёт стоимости для этой культуры?",
+      ctaText: "Укажите регион, площадь и способ — наш инженер подберёт тип теплицы, оборудование и рассчитает примерные затраты.",
+      ctaButton: "Узнать цену",
+      greenhouseLink: "Смотреть типы теплиц",
+      homeTitle: "Что вы будете выращивать?",
+      homeSubtitle: "Выберите культуру — узнайте, какая теплица, климат и способ ей подходят",
+      items: [
+        {
+          code: "pomidor",
+          name: "Томаты",
+          tagline: "Самая популярная тепличная культура со стабильным спросом",
+          intro: "Томаты в теплице плодоносят длительный сезон, а спрос на них на рынке стабилен. Для высокого урожая им нужно много света, ровная температура и умеренная влажность. При автоматизации климата, капельного полива и подкормки урожайность в современной теплице в разы выше, чем в открытом грунте.",
+          conditions: [
+            {
+              label: "Дневная температура",
+              value: "22–26 °C",
+            },
+            {
+              label: "Ночная температура",
+              value: "16–18 °C",
+            },
+            {
+              label: "Влажность воздуха",
+              value: "60–70 %",
+            },
+            {
+              label: "Свет",
+              value: "12–16 часов в сутки, светолюбивы",
+            },
+            {
+              label: "До первого урожая",
+              value: "60–75 дней после высадки рассады",
+            },
+          ],
+          greenhouse: "Высокая (4–6 м) теплица с широкими пролётами: растения на шпалере вырастают до 3–4 м. Рекомендуются поликарбонат или многослойная плёнка, кровельная и боковая вентиляция, отопление и энергоэкран на зиму.",
+          methods: [
+            "На субстрате (кокос или минвата) с капельным поливом и подкормкой",
+            "В грунте — более доступный старт для малых и средних хозяйств",
+            "Вертикальная шпалерная культура — больше урожая с квадратного метра",
+            "Опыление шмелями или вибрацией",
+          ],
+          faq: [
+            {
+              q: "Какой тип теплицы лучше всего подходит для томатов?",
+              a: "Для коммерции нужна высокая, широкопролётная и хорошо проветриваемая теплица. На малой площади подойдёт и туннельная, но урожай и сезон будут меньше. Точный тип подбираем по климату региона и площади.",
+            },
+            {
+              q: "Что лучше — грунт или субстрат?",
+              a: "Субстрат (кокос, минвата) повышает урожай и качество и снижает риск болезней, но стартовые затраты выше. Начать в грунте дешевле. Часто клиенты начинают с грунта и затем переходят на субстрат.",
+            },
+            {
+              q: "Нужно ли отопление зимой?",
+              a: "В условиях Узбекистана для зимнего выращивания томатов отопление необходимо — ночью температура не должна опускаться ниже 14–16 °C. Тип отопления (газ, уголь, тепловой насос) рассчитывается в проекте.",
+            },
+            {
+              q: "Какая будет урожайность?",
+              a: "Урожай зависит от сорта, технологии и типа теплицы. В современной теплице он в разы выше, чем в открытом грунте. Точные цифры рассчитаем в проекте для вашего региона и способа.",
+            },
+            {
+              q: "Как опыляются томаты?",
+              a: "В закрытой теплице естественного опыления мало, поэтому используют ульи шмелей или специальные вибраторы. Это заметно улучшает завязываемость и качество плодов.",
+            },
+            {
+              q: "Сколько длится строительство?",
+              a: "Срок зависит от площади, типа теплицы и оборудования. Точный график даём после утверждения проекта.",
+            },
+          ],
+        },
+        {
+          code: "bodring",
+          name: "Огурцы",
+          tagline: "Быстро созревают, несколько урожаев за сезон",
+          intro: "Огурцы в теплице растут быстро и вступают в плодоношение через полтора месяца после высадки. За год возможно 2–3 оборота, что делает доход стабильным. Огурцы любят тепло и влагу, поэтому важно поддерживать ровный климат.",
+          conditions: [
+            {
+              label: "Дневная температура",
+              value: "24–28 °C",
+            },
+            {
+              label: "Ночная температура",
+              value: "18–20 °C",
+            },
+            {
+              label: "Влажность воздуха",
+              value: "70–90 %",
+            },
+            {
+              label: "Свет",
+              value: "12–14 часов в сутки",
+            },
+            {
+              label: "До первого урожая",
+              value: "35–45 дней после высадки",
+            },
+          ],
+          greenhouse: "Теплица, удерживающая влагу, но хорошо проветриваемая. Высота под шпалеру 3.5–5 м, система туманообразования и равномерное отопление. Поликарбонат лучше сохраняет тепло зимой.",
+          methods: [
+            "На субстрате с автоматическим капельным поливом и подкормкой",
+            "В грунте с мульчированием и капельным поливом",
+            "Вертикальная шпалерная культура",
+            "Партенокарпические сорта (не требуют опыления)",
+          ],
+          faq: [
+            {
+              q: "Какая теплица подходит для огурцов?",
+              a: "Тёплая и влажная, но с хорошей вентиляцией. Для малой площади — туннель, для коммерции — высокая блочная теплица.",
+            },
+            {
+              q: "Сколько урожаев можно получить за год?",
+              a: "В отапливаемой теплице обычно 2–3 оборота в год. В неотапливаемой сезон короче — весна и осень.",
+            },
+            {
+              q: "Нужно ли опыление?",
+              a: "Для теплиц выбирают в основном партенокарпические сорта — они завязывают плоды без опыления.",
+            },
+            {
+              q: "Что будет при слишком высокой влажности?",
+              a: "Избыточная влажность вызывает грибковые болезни. Поэтому важны вентиляция и автоматический контроль влажности.",
+            },
+            {
+              q: "Можно ли выращивать огурцы и томаты в одной теплице?",
+              a: "Не рекомендуется: огурцам нужен более тёплый и влажный воздух, томатам — более сухой. Отдельные секции или теплицы дают лучший результат.",
+            },
+            {
+              q: "С какой площади начать?",
+              a: "Небольшое хозяйство может начать с 10–20 соток. Для коммерции обычно рентабельнее площадь от 0.5 га. Точный расчёт — в проекте.",
+            },
+          ],
+        },
+        {
+          code: "qulupnay",
+          name: "Клубника",
+          tagline: "Дорогой продукт, выращивается на стеллажах в несколько ярусов",
+          intro: "Тепличная клубника зимой и ранней весной — один из самых дорогих продуктов на рынке. На стеллажах или подвесных лотках на квадратный метр помещается больше растений, сбор проще, а ягоды чище. Для закладки цветков важны прохладные ночи, поэтому управление климатом — ключевой фактор.",
+          conditions: [
+            {
+              label: "Дневная температура",
+              value: "18–24 °C",
+            },
+            {
+              label: "Ночная температура",
+              value: "8–12 °C (для цветения)",
+            },
+            {
+              label: "Влажность воздуха",
+              value: "60–75 %",
+            },
+            {
+              label: "Свет",
+              value: "12–16 часов в сутки",
+            },
+            {
+              label: "До первого урожая",
+              value: "60–90 дней после высадки",
+            },
+          ],
+          greenhouse: "Теплица со стеллажами или подвесными лотками: растения на высоте 1–1.5 м, уход и сбор удобны. Рекомендуются хорошая вентиляция, контроль ночной температуры и при необходимости досветка.",
+          methods: [
+            "На стеллажах или подвесных лотках на субстрате (самый распространённый)",
+            "Вертикальная многоярусная система — много растений на малой площади",
+            "Капельный полив и подкормка",
+            "Опыление пчёлами или шмелями",
+          ],
+          faq: [
+            {
+              q: "Что даёт выращивание клубники на стеллажах, а не в грунте?",
+              a: "Ягоды не касаются земли — они чище и меньше болеют, сбор быстрее. На квадратный метр помещается больше растений.",
+            },
+            {
+              q: "Когда клубника начинает плодоносить?",
+              a: "В зависимости от рассады — через 2–3 месяца после высадки. Нейтральнодневные сорта плодоносят в теплице длительное время.",
+            },
+            {
+              q: "Можно ли выращивать зимой?",
+              a: "Да, в отапливаемой теплице с досветкой урожай можно получать и зимой — именно тогда цена самая высокая.",
+            },
+            {
+              q: "Как опыляется клубника?",
+              a: "В теплицу ставят ульи пчёл или шмелей. При хорошем опылении ягоды правильной формы и крупные.",
+            },
+            {
+              q: "Какой сорт выбрать?",
+              a: "Сорт подбирается по региону, сезону и цели продажи. На этапе проекта наши специалисты посоветуют подходящие сорта.",
+            },
+            {
+              q: "Можно ли начать на небольшой площади?",
+              a: "Да. Вертикальная стеллажная система позволяет разместить много растений даже на малой площади.",
+            },
+          ],
+        },
+        {
+          code: "kokatlar",
+          name: "Зелень и салат",
+          tagline: "Короткий цикл, 8–10 урожаев в год — идеально для гидропоники",
+          intro: "Салат, базилик, укроп, петрушка и другая зелень готовы за 4–6 недель. На гидропонике они растут без почвы, чистыми и одинакового качества, а в теплице их можно выращивать круглый год. Стабильный продукт для ресторанов, супермаркетов и экспорта.",
+          conditions: [
+            {
+              label: "Дневная температура",
+              value: "16–22 °C",
+            },
+            {
+              label: "Ночная температура",
+              value: "12–16 °C",
+            },
+            {
+              label: "Влажность воздуха",
+              value: "60–70 %",
+            },
+            {
+              label: "Свет",
+              value: "12–14 часов в сутки",
+            },
+            {
+              label: "Один цикл",
+              value: "30–45 дней",
+            },
+          ],
+          greenhouse: "Теплица с гидропонными лотками (NFT) или плавающими платформами (DWC). Рекомендуются затеняющий экран и охлаждение против перегрева, зимой — лёгкое отопление.",
+          methods: [
+            "NFT — гидропоника в лотках с тонким слоем раствора",
+            "DWC — на плавающих платформах",
+            "Вертикальная многоярусная система",
+            "Автоматический контроль питательного раствора (EC, pH)",
+          ],
+          faq: [
+            {
+              q: "Что такое гидропоника и почему она удобна для зелени?",
+              a: "На гидропонике растение растёт без почвы, в питательном растворе. У зелени небольшие корни и короткий цикл, поэтому метод для неё самый эффективный: меньше воды, чище продукт.",
+            },
+            {
+              q: "Сколько урожаев в год?",
+              a: "Цикл 30–45 дней, поэтому в теплице можно получать 8–10 урожаев в год.",
+            },
+            {
+              q: "Сколько расходуется воды?",
+              a: "На гидропонике вода циркулирует и используется повторно, поэтому расход намного меньше, чем в открытом грунте.",
+            },
+            {
+              q: "Какую зелень можно выращивать?",
+              a: "Разные сорта салата, базилик, укроп, петрушку, кинзу, шпинат, руколу и другие.",
+            },
+            {
+              q: "Не сложна ли гидропоника?",
+              a: "Питательный раствор контролируется автоматически. После установки мы обучаем ваш персонал работе с системой.",
+            },
+            {
+              q: "Кто покупает продукцию?",
+              a: "Рестораны, кафе, супермаркеты и оптовые рынки — спрос на чистую зелень стабильного качества есть круглый год.",
+            },
+          ],
+        },
+        {
+          code: "kochat",
+          name: "Выращивание рассады",
+          tagline: "Здоровая рассада — половина хорошего урожая",
+          intro: "Рассаду томатов, огурцов, перца, капусты и других культур выращивают в кассетах в специальной теплице-рассаднике. Ровная температура, влажность и свет делают рассаду здоровой и выровненной. Рассадник — источник дохода и для своего хозяйства, и для продажи.",
+          conditions: [
+            {
+              label: "Температура",
+              value: "20–25 °C (при прорастании 24–28 °C)",
+            },
+            {
+              label: "Влажность воздуха",
+              value: "75–85 %",
+            },
+            {
+              label: "Свет",
+              value: "12–16 часов, при необходимости досветка",
+            },
+            {
+              label: "Один цикл",
+              value: "25–45 дней в зависимости от культуры",
+            },
+            {
+              label: "Размещение",
+              value: "В кассетах на стеллажах",
+            },
+          ],
+          greenhouse: "Теплица со стеллажами, туманообразованием и точным контролем температуры. Для равномерного света — затеняющий экран и досветка, зимой — отопление.",
+          methods: [
+            "В кассетах на торфяной или субстратной смеси",
+            "Передвижные или стационарные стеллажи",
+            "Туманообразование и подтопляющий полив (ebb-flow)",
+            "Привитая рассада (томат, огурец) — устойчива к болезням",
+          ],
+          faq: [
+            {
+              q: "Зачем выращивать рассаду в отдельной теплице?",
+              a: "Рассаде нужен другой климат, чем основной культуре, — теплее и влажнее. В отдельном рассаднике она здоровее и ровнее, риск болезней ниже.",
+            },
+            {
+              q: "Какая площадь нужна для рассадника?",
+              a: "Благодаря кассетам рассадник намного меньше основной теплицы. Размер рассчитывается по нужному количеству рассады.",
+            },
+            {
+              q: "Можно ли выращивать рассаду на продажу?",
+              a: "Да, весной спрос на здоровую рассаду высокий — это отдельный источник дохода.",
+            },
+            {
+              q: "Что такое привитая рассада?",
+              a: "Продуктивный сорт прививают на устойчивый подвой с сильными корнями. Такая рассада устойчивее к почвенным болезням и урожайнее.",
+            },
+            {
+              q: "Какое оборудование нужно?",
+              a: "Стеллажи, кассеты, система туманообразования или подтопления, контроль температуры и влажности, при необходимости досветка.",
+            },
+            {
+              q: "Можно ли выращивать рассаду зимой?",
+              a: "Да, с отоплением и досветкой в конце зимы готовят рассаду к весенней посадке.",
+            },
+          ],
         },
       ],
     },
@@ -3295,6 +3945,7 @@ export const translations = {
       links: {
         services: [
           { label: "All services", href: "/xizmatlar" },
+          { label: "By crop", href: "/ekinlar" },
           { label: "Greenhouse types", href: "/issiqxona-turlari" },
           { label: "Projects", href: "/loyihalar" },
           { label: "Equipment", href: "/jixozlar" },
@@ -3783,6 +4434,330 @@ export const translations = {
             "Profitability analysis and business model",
           ],
           result: "A high-income agricultural business.",
+        },
+      ],
+    },
+    cropsPage: {
+      badge: "Crops",
+      title: "A greenhouse built for your crop",
+      subtitle: "Every crop has its own climate, growing method and greenhouse requirements. Choose what you want to grow — we will calculate the rest.",
+      more: "Learn more",
+      back: "All crops",
+      conditionsTitle: "Optimal conditions",
+      greenhouseTitle: "Which greenhouse fits",
+      methodsTitle: "Growing methods",
+      faqTitle: "Frequently asked questions",
+      ctaTitle: "Need a project and cost estimate for this crop?",
+      ctaText: "Tell us the region, area and method — our engineer will choose the greenhouse type and equipment and estimate the costs.",
+      ctaButton: "Request a price",
+      greenhouseLink: "View greenhouse types",
+      homeTitle: "What will you grow?",
+      homeSubtitle: "Choose a crop to see which greenhouse, climate and method suit it",
+      items: [
+        {
+          code: "pomidor",
+          name: "Tomatoes",
+          tagline: "The most widely grown greenhouse crop with steady demand",
+          intro: "Greenhouse tomatoes crop over a long season and market demand for them is stable. High yields need plenty of light, even temperatures and moderate humidity. With automated climate control, drip irrigation and fertigation, a modern greenhouse yields several times more than open fields.",
+          conditions: [
+            {
+              label: "Day temperature",
+              value: "22–26 °C",
+            },
+            {
+              label: "Night temperature",
+              value: "16–18 °C",
+            },
+            {
+              label: "Air humidity",
+              value: "60–70 %",
+            },
+            {
+              label: "Light",
+              value: "12–16 hours a day, light-loving",
+            },
+            {
+              label: "To first harvest",
+              value: "60–75 days after transplanting",
+            },
+          ],
+          greenhouse: "A tall (4–6 m), wide-span greenhouse: plants on a trellis grow to 3–4 m. Polycarbonate or multi-layer film, roof and side ventilation, winter heating and a thermal screen are recommended.",
+          methods: [
+            "On substrate (coco or rockwool) with drip irrigation and fertigation",
+            "In soil — a lower-cost start for small and medium farms",
+            "Vertical trellis growing — more yield per square metre",
+            "Pollination with bumblebees or vibration",
+          ],
+          faq: [
+            {
+              q: "Which greenhouse type is best for tomatoes?",
+              a: "Commercial growing needs a tall, wide-span, well-ventilated greenhouse. A tunnel works on a small plot, but yield and season are shorter. We choose the exact type based on the local climate and area.",
+            },
+            {
+              q: "Soil or substrate — which is better?",
+              a: "Substrate (coco, rockwool) raises yield and quality and lowers disease risk, but costs more to start. Soil is cheaper to begin with. Many clients start in soil and move to substrate later.",
+            },
+            {
+              q: "Is winter heating necessary?",
+              a: "In Uzbekistan's climate, winter tomatoes need heating — night temperatures should not drop below 14–16 °C. The heating type (gas, coal, heat pump) is calculated in the project.",
+            },
+            {
+              q: "What yield can I expect?",
+              a: "Yield depends on the variety, technology and greenhouse type; in a modern greenhouse it is several times higher than in open fields. We calculate exact figures for your region and method in the project.",
+            },
+            {
+              q: "How are tomatoes pollinated?",
+              a: "Natural pollination is limited indoors, so bumblebee hives or special vibrators are used. This noticeably improves fruit set and quality.",
+            },
+            {
+              q: "How long does construction take?",
+              a: "It depends on the area, greenhouse type and equipment. We provide an exact schedule once the project is approved.",
+            },
+          ],
+        },
+        {
+          code: "bodring",
+          name: "Cucumbers",
+          tagline: "Fast to mature, several harvests per season",
+          intro: "Greenhouse cucumbers grow fast and start fruiting about six weeks after transplanting. Two or three cycles a year are possible, which keeps income steady. Cucumbers love warmth and moisture, so an even climate is essential.",
+          conditions: [
+            {
+              label: "Day temperature",
+              value: "24–28 °C",
+            },
+            {
+              label: "Night temperature",
+              value: "18–20 °C",
+            },
+            {
+              label: "Air humidity",
+              value: "70–90 %",
+            },
+            {
+              label: "Light",
+              value: "12–14 hours a day",
+            },
+            {
+              label: "To first harvest",
+              value: "35–45 days after transplanting",
+            },
+          ],
+          greenhouse: "A greenhouse that holds humidity yet ventilates well. 3.5–5 m height for trellising, a fogging system and even heating are recommended. Polycarbonate retains heat better in winter.",
+          methods: [
+            "On substrate with automatic drip irrigation and fertigation",
+            "In soil with mulching and drip irrigation",
+            "Vertical trellis growing",
+            "Parthenocarpic varieties (no pollination needed)",
+          ],
+          faq: [
+            {
+              q: "Which greenhouse suits cucumbers?",
+              a: "One that keeps a warm, humid climate but ventilates well. A tunnel for small plots, a tall multi-span greenhouse for commercial growing.",
+            },
+            {
+              q: "How many harvests per year?",
+              a: "A heated greenhouse typically allows 2–3 cycles a year. Unheated greenhouses have a shorter season — spring and autumn.",
+            },
+            {
+              q: "Is pollination required?",
+              a: "Greenhouses mostly use parthenocarpic varieties, which set fruit without pollination.",
+            },
+            {
+              q: "What if humidity is too high?",
+              a: "Excess humidity causes fungal diseases, so ventilation and automatic humidity control matter.",
+            },
+            {
+              q: "Can cucumbers and tomatoes share a greenhouse?",
+              a: "Not recommended: cucumbers need warmer, more humid air, tomatoes drier air. Separate sections or greenhouses give better results.",
+            },
+            {
+              q: "What area should I start with?",
+              a: "A small farm can start with 0.1–0.2 ha. Commercially, 0.5 ha and above is usually more profitable. We calculate the details in the project.",
+            },
+          ],
+        },
+        {
+          code: "qulupnay",
+          name: "Strawberries",
+          tagline: "A premium product grown on multi-tier shelving",
+          intro: "Greenhouse strawberries in winter and early spring are among the most expensive products on the market. Shelving or hanging gutters fit more plants per square metre, make picking easier and keep berries clean. Cool nights are important for flowering, so climate control is the key factor.",
+          conditions: [
+            {
+              label: "Day temperature",
+              value: "18–24 °C",
+            },
+            {
+              label: "Night temperature",
+              value: "8–12 °C (for flowering)",
+            },
+            {
+              label: "Air humidity",
+              value: "60–75 %",
+            },
+            {
+              label: "Light",
+              value: "12–16 hours a day",
+            },
+            {
+              label: "To first harvest",
+              value: "60–90 days after planting",
+            },
+          ],
+          greenhouse: "A greenhouse with shelving or hanging gutters: plants at 1–1.5 m height for easy care and picking. Good ventilation, night temperature control and supplementary lighting where needed are recommended.",
+          methods: [
+            "On shelving or hanging gutters on substrate (most common)",
+            "Vertical multi-tier system — many plants on a small area",
+            "Drip irrigation and fertigation",
+            "Pollination with bees or bumblebees",
+          ],
+          faq: [
+            {
+              q: "Why grow strawberries on shelving instead of soil?",
+              a: "Berries don't touch the ground, so they are cleaner and less prone to disease, and picking is faster. More plants fit per square metre.",
+            },
+            {
+              q: "When do strawberries start fruiting?",
+              a: "Depending on the plants, 2–3 months after planting. Day-neutral varieties fruit over a long period in a greenhouse.",
+            },
+            {
+              q: "Can they be grown in winter?",
+              a: "Yes, a heated greenhouse with supplementary lighting can produce in winter — exactly when prices are highest.",
+            },
+            {
+              q: "How are strawberries pollinated?",
+              a: "Bee or bumblebee hives are placed in the greenhouse. Good pollination gives large, well-shaped berries.",
+            },
+            {
+              q: "Which variety should I choose?",
+              a: "It depends on the region, season and sales goal. Our specialists advise on suitable varieties during the project stage.",
+            },
+            {
+              q: "Can I start on a small area?",
+              a: "Yes. Vertical shelving lets you fit many plants even on a small area.",
+            },
+          ],
+        },
+        {
+          code: "kokatlar",
+          name: "Greens and lettuce",
+          tagline: "Short cycle, 8–10 harvests a year — ideal for hydroponics",
+          intro: "Lettuce, basil, dill, parsley and other greens are ready in 4–6 weeks. Hydroponically they grow without soil, clean and uniform, and a greenhouse lets you grow them all year. A steady product for restaurants, supermarkets and export.",
+          conditions: [
+            {
+              label: "Day temperature",
+              value: "16–22 °C",
+            },
+            {
+              label: "Night temperature",
+              value: "12–16 °C",
+            },
+            {
+              label: "Air humidity",
+              value: "60–70 %",
+            },
+            {
+              label: "Light",
+              value: "12–14 hours a day",
+            },
+            {
+              label: "One cycle",
+              value: "30–45 days",
+            },
+          ],
+          greenhouse: "A greenhouse fitted with hydroponic gutters (NFT) or floating rafts (DWC). A shade screen and cooling against overheating, and light heating in winter, are recommended.",
+          methods: [
+            "NFT — gutters with a thin film of nutrient solution",
+            "DWC — floating rafts",
+            "Vertical multi-tier system",
+            "Automatic nutrient solution control (EC, pH)",
+          ],
+          faq: [
+            {
+              q: "What is hydroponics and why does it suit greens?",
+              a: "In hydroponics plants grow without soil, in a nutrient solution. Greens have small roots and short cycles, so the method is the most efficient for them: less water, cleaner produce.",
+            },
+            {
+              q: "How many harvests per year?",
+              a: "With a 30–45 day cycle, a greenhouse can produce 8–10 harvests a year.",
+            },
+            {
+              q: "How much water does it use?",
+              a: "Water recirculates and is reused, so consumption is far lower than in open fields.",
+            },
+            {
+              q: "Which greens can be grown?",
+              a: "Various lettuces, basil, dill, parsley, coriander, spinach, rocket and more.",
+            },
+            {
+              q: "Isn't hydroponics complicated?",
+              a: "The nutrient solution is controlled automatically. After installation we train your staff to run the system.",
+            },
+            {
+              q: "Who buys the produce?",
+              a: "Restaurants, cafés, supermarkets and wholesale markets — demand for clean, consistent greens exists all year.",
+            },
+          ],
+        },
+        {
+          code: "kochat",
+          name: "Seedling production",
+          tagline: "Healthy seedlings are half of a good harvest",
+          intro: "Seedlings of tomatoes, cucumbers, peppers, cabbage and other crops are grown in trays in a dedicated nursery greenhouse. Even temperature, humidity and light make them healthy and uniform. A nursery is a source of income both for your own farm and for sale.",
+          conditions: [
+            {
+              label: "Temperature",
+              value: "20–25 °C (24–28 °C for germination)",
+            },
+            {
+              label: "Air humidity",
+              value: "75–85 %",
+            },
+            {
+              label: "Light",
+              value: "12–16 hours, supplementary lighting if needed",
+            },
+            {
+              label: "One cycle",
+              value: "25–45 days depending on the crop",
+            },
+            {
+              label: "Layout",
+              value: "In trays on benches",
+            },
+          ],
+          greenhouse: "A greenhouse with benches, fogging and precise temperature control. A shade screen and supplementary lighting for even light, and heating in winter.",
+          methods: [
+            "In trays with peat or substrate mix",
+            "Rolling or fixed benches",
+            "Fogging and ebb-and-flow irrigation",
+            "Grafted seedlings (tomato, cucumber) — disease resistant",
+          ],
+          faq: [
+            {
+              q: "Why grow seedlings in a separate greenhouse?",
+              a: "Seedlings need a different climate from the main crop — warmer and more humid. In a separate nursery they are healthier and more uniform, with lower disease risk.",
+            },
+            {
+              q: "How much area does a nursery need?",
+              a: "Because seedlings grow in trays, a nursery is much smaller than the main greenhouse. Its size is calculated from the number of seedlings you need.",
+            },
+            {
+              q: "Can I grow seedlings for sale?",
+              a: "Yes, demand for healthy seedlings is high in spring — a separate income stream.",
+            },
+            {
+              q: "What are grafted seedlings?",
+              a: "A productive variety is grafted onto a hardy rootstock with strong roots. Such seedlings resist soil diseases better and yield more.",
+            },
+            {
+              q: "What equipment is needed?",
+              a: "Benches, trays, a fogging or ebb-and-flow system, temperature and humidity control, and supplementary lighting if needed.",
+            },
+            {
+              q: "Can seedlings be grown in winter?",
+              a: "Yes, with heating and lighting, seedlings are prepared in late winter for spring planting.",
+            },
+          ],
         },
       ],
     },

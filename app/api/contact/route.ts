@@ -5,6 +5,19 @@ import { notifyTelegram } from "@/lib/server/telegram";
 import { requireAdmin } from "@/lib/server/auth";
 import { dbError } from "@/lib/server/api";
 import { clientIp, rateLimit } from "@/lib/server/rate-limit";
+import { BRIEF_CODES, formatBrief } from "@/lib/project-brief";
+
+// "Loyihangiz haqida" bo'limi — faqat ro'yxatdagi qiymatlar qabul qilinadi
+const code = (allowed: string[]) =>
+  z.string().refine((v) => v === "" || allowed.includes(v)).optional().default("");
+const briefSchema = z
+  .object({
+    crops: z.array(z.enum(BRIEF_CODES.crops as [string, ...string[]])).max(10).optional().default([]),
+    method: code(BRIEF_CODES.method),
+    region: code(BRIEF_CODES.region),
+    area: code(BRIEF_CODES.area),
+  })
+  .optional();
 
 export const runtime = "nodejs";
 
@@ -18,6 +31,7 @@ const leadSchema = z.object({
   service: z.string().trim().max(150).optional().default(""),
   message: z.string().trim().min(5).max(3000),
   lang: z.enum(["uz", "ru", "en"]).optional().default("uz"),
+  project: briefSchema,
   // honeypot — bot to'ldirsa rad etiladi
   website: z.string().max(0).optional().default(""),
 });
@@ -62,7 +76,12 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { website: _honeypot, ...data } = parsed.data;
+  const { website: _honeypot, project, ...rest } = parsed.data;
+  // Loyiha ma'lumotlari xabar oxiriga blok bo'lib yoziladi (alohida ustun yo'q)
+  const brief = formatBrief(project);
+  const data = { ...rest, message: brief ? `${rest.message}
+
+${brief}` : rest.message };
 
   try {
     const lead = await saveLead({ ...data, ip });

@@ -398,6 +398,13 @@ export const PAGES: PageDef[] = [
   },
 
   {
+    key: "ekinlar",
+    title: "Ekinlar",
+    path: "/ekinlar",
+    blocks: [{ title: "Sarlavhalar va tugmalar", prefixes: ["cropsPage"] }],
+  },
+
+  {
     key: "yangiliklar",
     title: "Yangiliklar",
     path: "/yangiliklar",

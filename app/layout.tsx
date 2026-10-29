@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { MediaProvider } from "@/contexts/MediaContext";
+import { FloatingContact } from "@/components/floating-contact";
 import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
@@ -71,6 +72,7 @@ export default function RootLayout({
       >
         <LanguageProvider>
           <MediaProvider>{children}</MediaProvider>
+          <FloatingContact />
         </LanguageProvider>
         {/* Analitika skripti faqat Vercel'da mavjud. Render yoki lokal
             muhitda u /_vercel/insights/script.js ni topolmay, har bir

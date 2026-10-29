@@ -31,6 +31,8 @@ import {
 } from "@/components/ui/select";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { formatPhone, telHref, whatsappHref } from "@/lib/contact-links";
+import { ProjectBriefFields } from "@/components/project-brief-fields";
+import { EMPTY_BRIEF, type ProjectBrief } from "@/lib/project-brief";
 
 export function Contact() {
   const { t, currentLang } = useLanguage();
@@ -121,6 +123,7 @@ export function Contact() {
     service: "",
     message: "",
   });
+  const [brief, setBrief] = useState<ProjectBrief>(EMPTY_BRIEF);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [submitError, setSubmitError] = useState(false);
@@ -134,12 +137,13 @@ export function Contact() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, lang: currentLang }),
+        body: JSON.stringify({ ...formData, lang: currentLang, project: brief }),
       });
 
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
 
       setIsSubmitted(true);
+      setBrief(EMPTY_BRIEF);
       setFormData({
         name: "",
         phone: "",
@@ -251,6 +255,8 @@ export function Contact() {
                     </SelectContent>
                   </Select>
                 </div>
+
+                <ProjectBriefFields value={brief} onChange={setBrief} />
 
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">

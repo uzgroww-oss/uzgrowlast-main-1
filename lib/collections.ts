@@ -1,6 +1,7 @@
 import { MEDIA } from "@/lib/media-registry";
 import { NEW_KEY } from "@/lib/added-items";
 import { GALLERY } from "@/lib/gallery-items";
+import { CROPS } from "@/lib/crops";
 
 /**
  * Saytdagi TAKRORLANUVCHI KARTALAR ro'yxati.
@@ -40,6 +41,16 @@ const withPrefix = (prefix: string) =>
   MEDIA.filter((m) => m.id.startsWith(prefix)).map((m) => m.id);
 
 export const COLLECTIONS: Collection[] = [
+  {
+    // Yangi ekin qo'shilmaydi: har birining sahifa manzili kodda (lib/crops.ts)
+    key: "crops",
+    page: "ekinlar",
+    title: "Ekinlar",
+    basePath: "cropsPage.items",
+    kind: "array",
+    labelField: "name",
+    mediaFor: (_k, i) => (CROPS[i] ? exact(`ekinlar.${CROPS[i].code}`) : []),
+  },
   {
     key: "servicesPageItems",
     page: "xizmatlar-sahifa",

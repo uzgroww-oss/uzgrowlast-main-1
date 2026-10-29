@@ -24,6 +24,46 @@ export interface MediaItem {
 
 export const MEDIA: MediaItem[] = [
   {
+    id: "ekinlar.pomidor",
+    label: "Pomidor — rasmi",
+    page: "ekinlar",
+    block: "Ekinlar rasmlari",
+    type: "image",
+    def: "/images/site/ekin-tomat.jpg",
+  },
+  {
+    id: "ekinlar.bodring",
+    label: "Bodring — rasmi",
+    page: "ekinlar",
+    block: "Ekinlar rasmlari",
+    type: "image",
+    def: "/images/site/ekin-bodring.jpg",
+  },
+  {
+    id: "ekinlar.qulupnay",
+    label: "Qulupnay — rasmi",
+    page: "ekinlar",
+    block: "Ekinlar rasmlari",
+    type: "image",
+    def: "/images/site/ekin-qulupnay.jpg",
+  },
+  {
+    id: "ekinlar.kokatlar",
+    label: "Ko'katlar va salat — rasmi",
+    page: "ekinlar",
+    block: "Ekinlar rasmlari",
+    type: "image",
+    def: "/images/site/ekin-sabzavot.jpg",
+  },
+  {
+    id: "ekinlar.kochat",
+    label: "Ko'chat — rasmi",
+    page: "ekinlar",
+    block: "Ekinlar rasmlari",
+    type: "image",
+    def: "/images/site/gallery-25.jpg",
+  },
+  {
     id: "bosh.hero.poster.0",
     label: "Bosh ekran foni 1 — Ko’k tunnellar majmuasi",
     page: "bosh",

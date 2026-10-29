@@ -25,6 +25,8 @@ import { MapEmbed } from "@/components/ui/map-embed";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { formatPhone, telHref, whatsappHref } from "@/lib/contact-links";
+import { ProjectBriefFields } from "@/components/project-brief-fields";
+import { BRIEF_CODES, EMPTY_BRIEF, type ProjectBrief } from "@/lib/project-brief";
 import { mediaIds, useMedia } from "@/contexts/MediaContext";
 
 const getContactInfo = (t: (key: string) => string) => [
@@ -65,6 +67,7 @@ export default function AloqaPage() {
     subject: "",
     message: "",
   });
+  const [brief, setBrief] = useState<ProjectBrief>(EMPTY_BRIEF);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [submitError, setSubmitError] = useState(false);
@@ -82,6 +85,13 @@ export default function AloqaPage() {
     return () => clearInterval(interval);
   }, [backgroundImages.length]);
 
+  useEffect(() => {
+    const crop = new URLSearchParams(window.location.search).get("ekin");
+    if (crop && BRIEF_CODES.crops.includes(crop)) {
+      setBrief((b) => (b.crops.includes(crop) ? b : { ...b, crops: [...b.crops, crop] }));
+    }
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -98,6 +108,7 @@ export default function AloqaPage() {
           service: formData.subject,
           message: formData.message,
           lang: currentLang,
+          project: brief,
         }),
       });
 
@@ -109,6 +120,7 @@ export default function AloqaPage() {
       setTimeout(() => {
         setIsSubmitted(false);
         setFormData({ name: "", phone: "", email: "", subject: "", message: "" });
+        setBrief(EMPTY_BRIEF);
       }, 3000);
     } catch (error) {
       console.error("Contact form submit failed:", error);
@@ -344,6 +356,8 @@ export default function AloqaPage() {
                           </select>
                         </div>
                       </div>
+
+                      <ProjectBriefFields value={brief} onChange={setBrief} />
 
                       <div>
                         <label className="block text-sm font-medium text-foreground mb-2">
