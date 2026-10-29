@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { MediaProvider } from "@/contexts/MediaContext";
 import { FloatingContact } from "@/components/floating-contact";
+import { NavigationProgress } from "@/components/navigation-progress";
 import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
@@ -81,6 +82,7 @@ export default function RootLayout({
         className={`${inter.variable} ${slab.variable} ${script.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
+        <NavigationProgress />
         <LanguageProvider>
           <MediaProvider>{children}</MediaProvider>
           <FloatingContact />

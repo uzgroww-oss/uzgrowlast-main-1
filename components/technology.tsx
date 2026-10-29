@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import { SmartImage as Image } from "@/components/ui/smart-image";
 import {
   Thermometer,
   Wind,

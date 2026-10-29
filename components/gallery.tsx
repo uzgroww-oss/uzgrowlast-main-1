@@ -14,6 +14,7 @@ import {
   Share2,
   Heart,
   Eye,
+  Loader2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -56,6 +57,8 @@ export function Gallery() {
     ReturnType<typeof getAllImages>[0] | null
   >(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  // Oynadagi rasm qaysi manzil bilan yuklanib bo'lgani (aylanuvchi belgi uchun)
+  const [loadedSrc, setLoadedSrc] = useState("");
 
   const filteredImages =
     selectedCategory === "Barchasi"
@@ -222,11 +225,20 @@ export function Gallery() {
 
               {/* Image Container */}
               <div className="bg-black rounded-2xl overflow-hidden">
-                <div className="aspect-video md:aspect-auto md:h-[80vh]">
+                <div className="relative aspect-video md:aspect-auto md:h-[80vh]">
+                  {/* Keyingi rasm yuklanguncha — aylanuvchi belgi */}
+                  {loadedSrc !== selectedImage.src && (
+                    <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
+                      <Loader2 className="w-10 h-10 text-white/80 animate-spin" />
+                    </div>
+                  )}
                   <MediaImg
                     src={selectedImage.src}
                     alt={selectedImage.title}
-                    className="w-full h-full object-contain"
+                    placeholder={false}
+                    onLoad={() => setLoadedSrc(selectedImage.src)}
+                    onError={() => setLoadedSrc(selectedImage.src)}
+                    className="relative w-full h-full object-contain"
                   />
                 </div>
 

@@ -189,7 +189,7 @@ export function Hero() {
     <>
     <section
       id="bosh-sahifa"
-      className="relative min-h-[calc(100svh-4rem)] lg:min-h-[calc(100svh-5rem)] flex items-center overflow-hidden"
+      className="relative min-h-[calc(100svh-4rem)] lg:min-h-[calc(100svh-5rem)] flex items-center overflow-hidden bg-brand-dark"
     >
       {/* Fon: slaydlar bilan birga almashadigan rasmlar.
           Ular ustma-ust turadi va faqat bittasi ko'rinadi — shu sababli

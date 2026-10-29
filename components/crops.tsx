@@ -216,7 +216,7 @@ export function CropDetail({ code }: { code: string }) {
   return (
     <>
       {/* Sarlavha */}
-      <section className="relative min-h-[420px] md:min-h-[480px] flex items-end overflow-hidden">
+      <section className="relative min-h-[420px] md:min-h-[480px] flex items-end overflow-hidden bg-brand-dark">
         <MediaImg
           src={crop.image}
           alt={crop.name}

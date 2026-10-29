@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { SmartImage as Image } from "@/components/ui/smart-image";
 import {
   MapPin,
   Calendar,
@@ -16,6 +16,7 @@ import {
   Globe,
   Sprout,
   Award,
+  Loader2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -94,6 +95,8 @@ export function Projects({ asPageTitle = false }: { asPageTitle?: boolean }) {
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedProject, setSelectedProject] = useState<any | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // Oynadagi rasm qaysi manzil bilan yuklanib bo'lgani (aylanuvchi belgi uchun)
+  const [loadedSrc, setLoadedSrc] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
@@ -343,9 +346,23 @@ export function Projects({ asPageTitle = false }: { asPageTitle?: boolean }) {
             </button>
 
             {/* Image gallery */}
-            <div className="aspect-video relative">
+            <div className="aspect-video relative bg-black">
               {selectedProject.images[currentImageIndex] && (
-                <Image src={selectedProject.images[currentImageIndex]} alt={selectedProject.title || ""} fill className="object-cover" sizes="100vw" />
+                <Image
+                  src={selectedProject.images[currentImageIndex]}
+                  alt={selectedProject.title || ""}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                  onLoad={() => setLoadedSrc(selectedProject.images[currentImageIndex])}
+                  onError={() => setLoadedSrc(selectedProject.images[currentImageIndex])}
+                />
+              )}
+              {/* Keyingi rasm yuklanguncha — aylanuvchi belgi */}
+              {loadedSrc !== selectedProject.images[currentImageIndex] && (
+                <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
+                  <Loader2 className="w-10 h-10 text-white/80 animate-spin" />
+                </div>
               )}
               {selectedProject.images.length > 1 && (
                 <>
