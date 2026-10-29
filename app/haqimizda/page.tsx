@@ -1,6 +1,7 @@
 import { pageMeta } from "@/lib/seo";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { ProjectsMap } from "@/components/projects-map";
 import { AboutDetailed } from "@/components/about-detailed";
 
 export const metadata = pageMeta({
@@ -19,6 +20,7 @@ export default function HaqimizdaPage() {
       <div className="pt-20">
         <AboutDetailed />
       </div>
+      <ProjectsMap />
       <Footer />
     </main>
   );

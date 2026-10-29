@@ -1,6 +1,7 @@
 import { pageMeta } from "@/lib/seo";
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { ProjectsMap } from "@/components/projects-map"
 import { International } from "@/components/international"
 
 export const metadata = pageMeta({
@@ -17,6 +18,7 @@ export default function InternationalPage() {
     <main className="min-h-screen">
       <Header />
       <International />
+      <ProjectsMap />
       <Footer />
     </main>
   )

@@ -160,30 +160,30 @@ export function ProjectsMap() {
   ];
 
   return (
-    <section className="py-14 lg:py-20 bg-surface overflow-hidden">
+    <section className="py-14 lg:py-20 bg-brand-dark text-white overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center mb-8">
-          <span className="section-eyebrow">{t("map.badge")}</span>
-          <h2 className="section-title text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground mb-5">
+        <div className="text-center mb-8 lg:mb-10">
+          <span className="section-eyebrow" style={{ color: "var(--brand-yellow)" }}>{t("map.badge")}</span>
+          <h2 className="section-title text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white mb-5">
             {t("map.title")}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">
             {t("map.subtitle")}
           </p>
         </div>
 
-        <div className="relative rounded-2xl bg-background border border-border p-3 sm:p-6 shadow-sm">
+        <div className="relative bg-white/[0.03] border border-white/10 p-3 sm:p-6">
           {focus ? (
             <button
               type="button"
               onClick={() => setFocus(null)}
-              className="absolute right-4 top-4 z-10 flex items-center gap-2 h-9 px-3 rounded-lg border border-border bg-background/90 backdrop-blur text-xs font-medium text-foreground hover:bg-muted transition-colors"
+              className="absolute right-4 top-4 z-10 flex items-center gap-2 h-9 px-3 border border-white/20 bg-brand-dark/90 backdrop-blur text-xs font-medium text-white hover:bg-white hover:text-brand-dark transition-colors"
             >
               <Minimize2 className="w-3.5 h-3.5" />
               {t("map.reset")}
             </button>
           ) : (
-            <span className="absolute right-4 top-4 z-10 hidden text-xs text-muted-foreground sm:block">
+            <span className="absolute right-4 top-4 z-10 hidden text-xs text-white/50 sm:block">
               {t("map.zoomHint")}
             </span>
           )}
@@ -196,32 +196,32 @@ export function ProjectsMap() {
           >
             <defs>
               <linearGradient id="uzgrow-link" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#24B14B" stopOpacity="0.15" />
-                <stop offset="55%" stopColor="#24B14B" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#24B14B" stopOpacity="0.35" />
+                <stop offset="0%" stopColor="#FFC107" stopOpacity="0.2" />
+                <stop offset="55%" stopColor="#FFC107" stopOpacity="0.95" />
+                <stop offset="100%" stopColor="#FFC107" stopOpacity="0.45" />
               </linearGradient>
             </defs>
 
             {/* Qo'shni davlatlar — kontekst uchun, xira */}
-            <g className="fill-muted-foreground/10 stroke-muted-foreground/20">
+            <g className="fill-white/[0.06] stroke-white/15">
               {MAP_CONTEXT.map((d, i) => (
                 <path key={i} d={d} vectorEffect="non-scaling-stroke" />
               ))}
             </g>
 
             {/* Loyiha bor davlatlar */}
-            <g className="stroke-primary/40">
+            <g className="stroke-brand-green/70">
               {countries.map((c) => (
                 <path
                   key={`shape-${c.key}`}
                   d={c.geo.path}
-                  className={focus === c.code ? "fill-primary/25" : "fill-primary/12"}
+                  className={focus === c.code ? "fill-brand-green/60" : "fill-brand-green/35"}
                   vectorEffect="non-scaling-stroke"
                 />
               ))}
               <path
                 d={hub.path}
-                className="fill-primary/25"
+                className="fill-brand-green/70"
                 vectorEffect="non-scaling-stroke"
               />
             </g>
@@ -235,7 +235,7 @@ export function ProjectsMap() {
                   <g key={`link-${c.key}`} opacity={dim ? 0.25 : 1}>
                     <path d={d} stroke="url(#uzgrow-link)" strokeWidth={s(2.2)} />
                     {/* Chiziq bo'ylab yuguruvchi nuqta — "tarmoq" hissi */}
-                    <circle r={s(4)} fill="#24B14B" className="uzgrow-pulse-dot">
+                    <circle r={s(4)} fill="#FFC107" className="uzgrow-pulse-dot">
                       <animateMotion
                         dur="3.2s"
                         begin={`${i * 0.55}s`}
@@ -277,28 +277,28 @@ export function ProjectsMap() {
                       cx={c.geo.x}
                       cy={c.geo.y}
                       r={s(c.isHub ? 18 : 11)}
-                      className={active ? "fill-primary/35" : "fill-primary/20"}
+                      className={active ? "fill-brand-yellow/45" : "fill-brand-yellow/25"}
                     />
                     {c.isHub && (
                       <circle
                         cx={c.geo.x}
                         cy={c.geo.y}
                         r={s(18)}
-                        className="fill-primary/25 uzgrow-pulse-ring"
+                        className="fill-brand-yellow/30 uzgrow-pulse-ring"
                       />
                     )}
                     <circle
                       cx={c.geo.x}
                       cy={c.geo.y}
                       r={s(c.isHub ? 9 : 6)}
-                      className="fill-primary"
+                      className="fill-brand-yellow"
                     />
                     <text
                       x={c.geo.x + s(off.dx)}
                       y={c.geo.y + s(off.dy)}
                       textAnchor="middle"
-                      className="fill-foreground"
-                      stroke="var(--background)"
+                      className="fill-white"
+                      stroke="var(--brand-dark)"
                       strokeWidth={s(3.5)}
                       paintOrder="stroke"
                       style={{
@@ -322,16 +322,19 @@ export function ProjectsMap() {
               key={`card-${c.key}`}
               type="button"
               onClick={() => toggle(c.code)}
-              className={`rounded-xl border p-3 text-left transition-colors ${
+              className={`border p-3.5 text-left transition-colors ${
                 focus === c.code
-                  ? "border-primary bg-primary/10"
+                  ? "border-brand-yellow bg-brand-yellow/10"
                   : c.isHub
-                    ? "border-primary/30 bg-primary/5 hover:border-primary/60"
-                    : "border-border bg-background hover:border-primary/40"
+                    ? "border-brand-green/60 bg-brand-green/15 hover:border-brand-yellow/60"
+                    : "border-white/10 bg-white/[0.04] hover:border-brand-yellow/60"
               }`}
             >
-              <p className="text-sm font-semibold text-foreground">{c.name}</p>
-              <p className="mt-0.5 text-xs text-muted-foreground">{c.note}</p>
+              <p className="font-heading text-[15px] font-bold text-white flex items-center gap-2">
+                <span className={`w-2 h-2 shrink-0 ${c.isHub ? "bg-brand-yellow" : "bg-brand-green"}`} aria-hidden="true" />
+                {c.name}
+              </p>
+              <p className="mt-1 text-xs text-white/60">{c.note}</p>
             </button>
           ))}
         </div>

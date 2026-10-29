@@ -26,13 +26,13 @@ export default function Home() {
       <Header />
       <Hero />
       <About />
+      <ProjectsMap />
       <CropsStrip />
       <ProcessSteps />
       <CtaBand />
       <Services />
       <Technology />
       <Projects />
-      <ProjectsMap />
       <Contact />
       <Footer />
     </main>
