@@ -160,13 +160,11 @@ export function ProjectsMap() {
   ];
 
   return (
-    <section className="py-12 lg:py-16 bg-muted/30 overflow-hidden">
+    <section className="py-14 lg:py-20 bg-surface overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-8">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            {t("map.badge")}
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
+          <span className="section-eyebrow">{t("map.badge")}</span>
+          <h2 className="section-title text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground mb-5">
             {t("map.title")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

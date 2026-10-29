@@ -152,16 +152,13 @@ export function Projects({ asPageTitle = false }: { asPageTitle?: boolean }) {
   };
 
   return (
-    <section className="py-10 lg:py-14 bg-linear-to-b from-background via-muted/20 to-background">
+    <section className="py-14 lg:py-20 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
 
         {/* Hero */}
         <div className="text-center mb-10">
-          <Badge className="mb-4 bg-primary/10 text-primary px-4 py-1.5 gap-2">
-            <Building2 className="w-4 h-4" />
-            {t("common.portfolio")}
-          </Badge>
-          <Heading className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
+          <span className="section-eyebrow">{t("common.portfolio")}</span>
+          <Heading className="section-title text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground mb-5">
             {t("projects.title").split(" ")[0]}{" "}
             <span className="text-primary">{t("projects.title").split(" ").slice(1).join(" ")}</span>
           </Heading>

@@ -14,6 +14,7 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import { mediaIds, useMedia } from "@/contexts/MediaContext";
 import { MediaImg, MediaVideo } from "@/components/ui/media-img";
+import { CATALOG_URL } from "@/lib/catalog";
 
 const SLIDE_KEYS = ["slide1", "slide2", "slide3", "slide4"];
 
@@ -84,11 +85,11 @@ function AnimatedNumber({ end, duration = 2000 }: { end: number; duration?: numb
       if (!startTime) startTime = timestamp;
       const progress = timestamp - startTime;
       const percentage = Math.min(progress / duration, 1);
-      
+
       const easeOut = 1 - Math.pow(1 - percentage, 3); // cubic ease out
-      
+
       setCount(Math.floor(end * easeOut));
-      
+
       if (progress < duration) {
         animationFrame = requestAnimationFrame(animate);
       } else {
@@ -185,9 +186,10 @@ export function Hero() {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
+    <>
     <section
       id="bosh-sahifa"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-[calc(100svh-4rem)] lg:min-h-[calc(100svh-5rem)] flex items-center overflow-hidden"
     >
       {/* Fon: slaydlar bilan birga almashadigan rasmlar.
           Ular ustma-ust turadi va faqat bittasi ko'rinadi — shu sababli
@@ -235,25 +237,21 @@ export function Hero() {
           />
         )}
 </div>
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-linear-to-r from-black/40 via-black/30 to-black/40" />
+      {/* Overlay: chap tomon to'qroq — matn har qanday kadrda o'qiladi */}
+      <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/40 to-black/15" />
 
-      {/* Content. Pastki joy — raqamlar paneli (absolute) tugmalarni yopib
-          qo'ymasligi uchun: telefonda panel 2 qator (~180px), kattada 1 qator */}
-      <div className="relative container mx-auto px-4 lg:px-8 pt-24 pb-52 md:pb-36">
+      <div className="relative container mx-auto px-4 lg:px-8 py-16 md:py-20">
         <div className="max-w-4xl">
-          {/* Tagline */}
-          <div className="inline-flex items-center gap-2 bg-black/20 backdrop-blur-md rounded-full px-4 py-2 mb-8 border border-white/10">
-            <span className="w-2 h-2 bg-[#24B14B] rounded-full animate-pulse" />
-            <span className="text-white text-sm font-medium">
-              {t("hero.tagline")}
-            </span>
-          </div>
+          {/* Qo'lyozma uslubidagi ustki yozuv */}
+          <p className="font-hand text-2xl md:text-3xl font-bold text-brand-yellow mb-3">
+            {t("hero.tagline")}
+          </p>
 
           {/* Main Title */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8 text-balance">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-6 text-balance">
             {t("hero.title")}
           </h1>
+          <span className="block w-16 h-1 bg-brand-yellow mb-8" aria-hidden="true" />
 
           {/* Slider Content */}
           <div className="relative min-h-[180px] mb-10">
@@ -266,7 +264,7 @@ export function Hero() {
                     : "opacity-0 translate-y-8 pointer-events-none"
                 }`}
               >
-                <blockquote className="text-lg sm:text-xl md:text-2xl text-white/90 font-light italic mb-4 sm:mb-6 text-pretty">
+                <blockquote className="text-lg sm:text-xl md:text-2xl text-white/90 font-light mb-4 sm:mb-6 text-pretty">
                   &ldquo;{slide.quote}&rdquo;
                 </blockquote>
                 <div className="flex items-center gap-2 sm:gap-4">
@@ -292,7 +290,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12">
             <Button
               size="lg"
-              className="bg-[#24B14B] hover:bg-[#24B14B]/90 text-primary-foreground rounded-full px-6 sm:px-8 h-12 sm:h-14 text-sm sm:text-base w-full sm:w-auto"
+              className="px-7 h-12 sm:h-13 text-sm sm:text-base w-full sm:w-auto"
               asChild
             >
               <Link href="/aloqa" className="gap-2">
@@ -303,11 +301,11 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-amber-500 hover:bg-white hover:text-amber-600 rounded-full px-6 sm:px-8 h-12 sm:h-14 text-sm sm:text-base w-full sm:w-auto"
+              className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-brand-dark px-7 h-12 sm:h-13 text-sm sm:text-base font-semibold w-full sm:w-auto shadow-none"
               asChild
             >
               <Link
-                href="https://drive.usercontent.google.com/download?id=1HErqszuF53VmZMGFVHg9mOFhM0y_G50L&export=download&authuser=0"
+                href={CATALOG_URL}
                 className="gap-2"
               >
                 <Download className="w-5 h-5" />
@@ -325,10 +323,10 @@ export function Hero() {
                   onClick={() => setCurrentSlide(index)}
                   aria-label={`${t("common.slide")} ${index + 1}`}
                   aria-current={index === currentSlide ? "true" : undefined}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                  className={`h-1 transition-all duration-300 ${
                     index === currentSlide
-                      ? "w-10 bg-[#24B14B]"
-                      : "w-4 bg-white/30 hover:bg-white/50"
+                      ? "w-10 bg-brand-yellow"
+                      : "w-5 bg-white/40 hover:bg-white/70"
                   }`}
                 />
               ))}
@@ -337,14 +335,14 @@ export function Hero() {
               <button
                 onClick={prevSlide}
                 aria-label={t("common.previous")}
-                className="w-10 h-10 rounded-full border border-white/30 text-white hover:bg-white/10 flex items-center justify-center transition-colors"
+                className="w-10 h-10 border border-white/40 text-white hover:bg-white hover:text-brand-dark flex items-center justify-center transition-colors"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={nextSlide}
                 aria-label={t("common.next")}
-                className="w-10 h-10 rounded-full border border-white/30 text-white hover:bg-white/10 flex items-center justify-center transition-colors"
+                className="w-10 h-10 border border-white/40 text-white hover:bg-white hover:text-brand-dark flex items-center justify-center transition-colors"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -352,14 +350,13 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Discover Button */}
-        
       </div>
+    </section>
 
-      {/* Stats Bar */}
-      <div className="absolute bottom-0 left-0 right-0 bg-black/30 backdrop-blur-sm border-t border-white/10">
+    {/* Raqamlar — bosh ekran ostidagi oq polosa */}
+    <section className="bg-white border-b border-border" aria-label={t("hero.stats.projects")}>
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+          <div className="grid grid-cols-2 md:grid-cols-4">
             {[
               { value: 9, suffix: "+", label: t("hero.stats.experience"), duration: 3000 },
               { value: 1500, suffix: "+", label: t("hero.stats.projects"), duration: 2000 },
@@ -368,17 +365,17 @@ export function Hero() {
             ].map((stat, index) => (
               <div
                 key={index}
-                className="py-4 sm:py-5 px-2 sm:px-4 text-center"
+                className="py-7 md:py-10 px-2 sm:px-4 text-center"
               >
-                <div className="text-2xl md:text-3xl font-bold text-white">
+                <div className="font-heading text-4xl md:text-5xl font-semibold text-brand-green tracking-tight">
                   <AnimatedNumber end={stat.value} duration={stat.duration} />{stat.suffix}
                 </div>
-                <div className="text-white/60 text-sm mt-1">{stat.label}</div>
+                <div className="text-brand-dark text-sm md:text-[15px] font-semibold mt-2">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
-      </div>
     </section>
+    </>
   );
 }

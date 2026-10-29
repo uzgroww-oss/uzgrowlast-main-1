@@ -2,21 +2,10 @@
 
 import { MediaImg } from "@/components/ui/media-img";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Menu,
-  X,
-  Phone,
-  Mail,
-  Globe,
-  ChevronDown,
-  Check,
-  Target,
-  Eye,
-  Heart,
-} from "lucide-react";
+import { Menu, X, Globe, ChevronDown, Check, Download } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,29 +15,76 @@ import {
 import { cn } from "@/lib/utils";
 import { Flag } from "@/components/ui/flag";
 import { useLanguage, type Language } from "@/contexts/LanguageContext";
-import { formatPhone, telHref } from "@/lib/contact-links";
 import { useMedia } from "@/contexts/MediaContext";
+import { CATALOG_URL } from "@/lib/catalog";
 
+interface NavLink {
+  href: string;
+  label: string;
+}
+interface NavGroup {
+  label: string;
+  /** Guruh sarlavhasi bosilganda ochiladigan asosiy sahifa */
+  href: string;
+  children: NavLink[];
+}
+type NavEntry = NavLink | NavGroup;
+
+const isGroup = (e: NavEntry): e is NavGroup => "children" in e;
+
+/**
+ * Sayt menyusi: to'q yashil polosa, katta harfli bandlar, ochiluvchi
+ * guruhlar va sariq "Katalog" tugmasi. Telefonda — yig'iladigan ro'yxat.
+ */
 export function Header() {
   const { m } = useMedia();
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isValuesHovered, setIsValuesHovered] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === "/";
-  const { currentLang, setLanguage, t, tObj } = useLanguage();
+  const { currentLang, setLanguage, t } = useLanguage();
+  const [isOpen, setIsOpen] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const aboutValues = (() => {
-    const raw = tObj("about.values");
-    return Array.isArray(raw) ? raw : [];
-  })();
-
-  const navItems = [
+  const nav: NavEntry[] = [
     { href: "/", label: t("nav.home") },
-    { href: "/issiqxona-turlari", label: t("nav.greenhouse") },
-    { href: "/loyihalar", label: t("nav.projects") },
-    { href: "/yangiliklar", label: t("nav.news") },
-    { href: "/rahbariyat", label: t("nav.team") },
+    {
+      label: t("nav.groupGreenhouses"),
+      href: "/issiqxona-turlari",
+      children: [
+        { href: "/issiqxona-turlari", label: t("nav.greenhouse") },
+        { href: "/ekinlar", label: t("nav.crops") },
+        { href: "/jixozlar", label: t("nav.equipment") },
+        { href: "/texnologiya", label: t("nav.technology") },
+      ],
+    },
+    {
+      label: t("nav.groupServices"),
+      href: "/xizmatlar",
+      children: [
+        { href: "/xizmatlar", label: t("nav.allServices") },
+        { href: "/agro-injiniring", label: t("nav.agro") },
+        { href: "/investorlar", label: t("nav.investors") },
+      ],
+    },
+    {
+      label: t("nav.groupProjects"),
+      href: "/loyihalar",
+      children: [
+        { href: "/loyihalar", label: t("nav.projects") },
+        { href: "/xalqaro-hamkorlik", label: t("nav.international") },
+        { href: "/gallery", label: t("nav.gallery") },
+      ],
+    },
+    {
+      label: t("nav.groupCompany"),
+      href: "/haqimizda",
+      children: [
+        { href: "/haqimizda", label: t("nav.about") },
+        { href: "/rahbariyat", label: t("nav.team") },
+        { href: "/yangiliklar", label: t("nav.news") },
+        { href: "/media-hamkorlik", label: t("nav.media") },
+      ],
+    },
     { href: "/aloqa", label: t("nav.contact") },
   ];
 
@@ -59,430 +95,256 @@ export function Header() {
   ];
   const activeLang = languages.find((l) => l.code === currentLang);
 
+  const isActive = (e: NavEntry) =>
+    isGroup(e)
+      ? e.children.some((c) => pathname === c.href || pathname?.startsWith(c.href + "/"))
+      : pathname === e.href;
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const showTransparent = isHome && !isScrolled;
+  // Sahifa almashganda menyular yopiladi
+  useEffect(() => {
+    setIsOpen(false);
+    setOpenGroup(null);
+  }, [pathname]);
+
+  // Sichqoncha bandidan ochiluvchi qismga o'tayotganda menyu yopilib qolmasin
+  const openNow = (label: string) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenGroup(label);
+  };
+  const closeSoon = () => {
+    closeTimer.current = setTimeout(() => setOpenGroup(null), 120);
+  };
+
+  const languageMenu = (trigger: React.ReactNode) => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="min-w-44">
+        {languages.map((lang) => (
+          <DropdownMenuItem
+            key={lang.code}
+            onClick={() => setLanguage(lang.code)}
+            className={cn(
+              "flex items-center justify-between gap-4 cursor-pointer py-2.5",
+              currentLang === lang.code && "bg-primary/10 text-primary",
+            )}
+          >
+            <span className="flex items-center gap-2.5">
+              <Flag code={lang.code} />
+              {lang.label}
+            </span>
+            {currentLang === lang.code && <Check className="w-4 h-4 text-primary" />}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
+  const linkClass = (active: boolean) =>
+    cn(
+      "relative flex items-center gap-1 h-full px-2.5 xl:px-3.5 text-[12.5px] font-medium uppercase tracking-[0.06em] whitespace-nowrap transition-colors",
+      "after:absolute after:left-2.5 after:right-2.5 xl:after:left-3.5 xl:after:right-3.5 after:bottom-5 after:h-0.5 after:bg-brand-green after:transition-transform after:origin-left",
+      active
+        ? "text-white after:scale-x-100"
+        : "text-white/80 hover:text-white after:scale-x-0 hover:after:scale-x-100",
+    );
 
   return (
-    <>
-      {/* Top Bar */}
-      <div className="hidden lg:block bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-10">
-            <div className="flex items-center gap-6">
-              <a
-                href={telHref(t("contact.companyPhone"))}
-                className="flex items-center gap-2 text-sm opacity-90 hover:opacity-100 transition-opacity"
-              >
-                <Phone className="w-4 h-4" />
-                <span className="text-xs font-medium tracking-wide">
-                  {formatPhone(t("contact.companyPhone"))}
-                </span>
-              </a>
-              <a
-                href={`mailto:${t("contact.companyEmail")}`}
-                className="flex items-center gap-2 text-sm opacity-90 hover:opacity-100 transition-opacity"
-              >
-                <Mail className="w-4 h-4" />
-                <span className="text-xs font-medium tracking-wide">
-                  {t("contact.companyEmail")}
-                </span>
-              </a>
-            </div>
+    <header
+      className={cn(
+        "sticky top-0 z-50 bg-brand-dark text-white transition-shadow",
+        isScrolled && "shadow-[0_6px_24px_rgba(0,0,0,0.25)]",
+      )}
+    >
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="flex items-center justify-between h-16 lg:h-20 gap-4">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3 shrink-0">
+            <MediaImg
+              src={m("umumiy.logo")}
+              alt={t("common.logoAlt")}
+              // Logotip har sahifada eng tepada turadi — kechiktirilmaydi
+              loading="eager"
+              className="h-10 sm:h-11 lg:h-12 w-auto object-contain"
+            />
+            <span className="hidden sm:block lg:hidden 2xl:block font-heading font-bold text-lg text-white whitespace-nowrap">
+              {t("footer.brandName")}
+            </span>
+          </Link>
 
-            {/* Language Switcher */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  aria-label={t("nav.language")}
-                  className="flex items-center gap-1.5 h-8 px-3 rounded-full text-xs font-semibold tracking-wide bg-white/10 hover:bg-white/20 transition-colors outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+          {/* Kompyuter menyusi */}
+          <nav className="hidden lg:flex items-stretch h-full" aria-label="Asosiy menyu">
+            {nav.map((entry) =>
+              isGroup(entry) ? (
+                <div
+                  key={entry.label}
+                  className="relative flex"
+                  onMouseEnter={() => openNow(entry.label)}
+                  onMouseLeave={closeSoon}
                 >
-                  <Globe className="w-3.5 h-3.5" />
-                  {activeLang?.short}
-                  <ChevronDown className="w-3.5 h-3.5 opacity-70" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="min-w-44">
-                {languages.map((lang) => (
-                  <DropdownMenuItem
-                    key={lang.code}
-                    onClick={() => setLanguage(lang.code)}
+                  <button
+                    type="button"
+                    aria-expanded={openGroup === entry.label}
+                    aria-haspopup="true"
+                    onClick={() => setOpenGroup((g) => (g === entry.label ? null : entry.label))}
+                    className={linkClass(isActive(entry))}
+                  >
+                    {entry.label}
+                    <ChevronDown
+                      className={cn(
+                        "w-3.5 h-3.5 transition-transform",
+                        openGroup === entry.label && "rotate-180",
+                      )}
+                    />
+                  </button>
+                  <div
                     className={cn(
-                      "flex items-center justify-between gap-4 cursor-pointer py-2.5",
-                      currentLang === lang.code && "bg-primary/10 text-primary",
+                      "absolute left-0 top-full min-w-56 bg-white text-brand-dark shadow-xl border-t-2 border-brand-green py-2 transition-all duration-200",
+                      openGroup === entry.label
+                        ? "opacity-100 translate-y-0 pointer-events-auto"
+                        : "opacity-0 -translate-y-1 pointer-events-none",
                     )}
                   >
-                    <span className="flex items-center gap-2.5">
-                      <Flag code={lang.code} />
-                      {lang.label}
-                    </span>
-                    {currentLang === lang.code && (
-                      <Check className="w-4 h-4 text-primary" />
-                    )}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+                    {entry.children.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        className={cn(
+                          "block px-5 py-2.5 text-sm transition-colors",
+                          pathname === c.href
+                            ? "text-brand-green font-semibold bg-surface"
+                            : "hover:bg-surface hover:text-brand-green",
+                        )}
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link key={entry.href} href={entry.href} className={linkClass(isActive(entry))}>
+                  {entry.label}
+                </Link>
+              ),
+            )}
+          </nav>
+
+          {/* O'ng tomon: til va katalog */}
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
+            {languageMenu(
+              <button
+                aria-label={t("nav.language")}
+                className="flex items-center gap-1.5 h-9 px-2.5 text-xs font-semibold tracking-wide text-white/90 hover:text-white border border-white/20 hover:border-white/50 transition-colors outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+              >
+                <Globe className="w-3.5 h-3.5" />
+                {activeLang?.short}
+                <ChevronDown className="w-3.5 h-3.5 opacity-70" />
+              </button>,
+            )}
+            <a
+              href={CATALOG_URL}
+              className="hidden xl:inline-flex items-center gap-2 h-10 px-5 bg-brand-yellow text-brand-dark text-sm font-semibold hover:bg-[#ffcd38] transition-colors"
+            >
+              <Download className="w-4 h-4" />
+              {t("nav.catalog")}
+            </a>
+          </div>
+
+          {/* Telefon: til va menyu tugmasi */}
+          <div className="lg:hidden flex items-center gap-1">
+            {languageMenu(
+              <button
+                aria-label={t("nav.language")}
+                className="flex items-center gap-1 h-11 px-3 text-xs font-semibold text-white/90"
+              >
+                <Globe className="w-4 h-4" />
+                {activeLang?.short}
+              </button>,
+            )}
+            <button
+              onClick={() => setIsOpen((v) => !v)}
+              aria-label={isOpen ? "Menyuni yopish" : "Menyuni ochish"}
+              aria-expanded={isOpen}
+              className="w-11 h-11 flex items-center justify-center text-white"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Main Header */}
-      <header
+      {/* Telefon menyusi */}
+      <div
         className={cn(
-          "sticky top-0 z-50 transition-all duration-300",
-          showTransparent
-            ? "bg-transparent py-3"
-            : "bg-background/85 backdrop-blur-xl border-b border-border/60 shadow-sm py-2",
+          "lg:hidden overflow-y-auto bg-white text-brand-dark transition-[max-height] duration-300",
+          isOpen ? "max-h-[calc(100vh-4rem)] border-t-2 border-brand-green" : "max-h-0",
         )}
       >
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 shrink-0">
-              <MediaImg
-                src={m("umumiy.logo")}
-                alt={t("common.logoAlt")}
-                // Logotip har sahifada eng tepada turadi — kechiktirilmaydi
-                loading="eager"
-                className="h-12 sm:h-14 lg:h-16 w-auto object-contain animate-logo"
-              />
-              {/* 1024–1279px da menyu bilan sig'maydi — u yerda yashiriladi (logoda nom bor) */}
-              <span className="hidden sm:block lg:hidden xl:block font-bold text-lg xl:text-xl tracking-tight text-foreground whitespace-nowrap">
-                {t("footer.brandName")}
-              </span>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1">
-              {/* Home Link */}
-              <Link
-                href={navItems[0].href}
-                className={cn(
-                  "px-2.5 xl:px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors",
-                  pathname === navItems[0].href
-                    ? "text-primary bg-primary/10"
-                    : "text-foreground/80 hover:text-primary hover:bg-primary/5",
-                )}
-              >
-                {navItems[0].label}
-              </Link>
-
-              {/* Qadriyatlar Dropdown */}
-              <div
-                className="flex items-center"
-                onMouseEnter={() => setIsValuesHovered(true)}
-                onMouseLeave={() => setIsValuesHovered(false)}
-              >
+        <nav className="container mx-auto px-4 py-3" aria-label="Telefon menyusi">
+          {nav.map((entry) =>
+            isGroup(entry) ? (
+              <div key={entry.label} className="border-b border-border">
                 <button
                   type="button"
+                  onClick={() => setOpenGroup((g) => (g === entry.label ? null : entry.label))}
+                  aria-expanded={openGroup === entry.label}
                   className={cn(
-                    "px-2.5 xl:px-4 py-2 text-sm font-medium rounded-lg flex items-center gap-1 transition-all whitespace-nowrap",
-                    isValuesHovered
-                      ? "text-primary bg-primary/10"
-                      : "text-foreground/80 hover:text-primary hover:bg-primary/5",
+                    "w-full flex items-center justify-between py-3.5 text-sm font-semibold uppercase tracking-wide",
+                    isActive(entry) && "text-brand-green",
                   )}
                 >
-                  {t("about.valuesTitle")}
+                  {entry.label}
                   <ChevronDown
-                    className={cn(
-                      "w-4 h-4 transition-transform duration-300",
-                      isValuesHovered && "rotate-180",
-                    )}
+                    className={cn("w-4 h-4 transition-transform", openGroup === entry.label && "rotate-180")}
                   />
                 </button>
-
-                {/* Dropdown Menu - Full Width */}
-                <div
-                  className={cn(
-                    "absolute top-full left-0 w-full pt-4 transition-all duration-300 transform origin-top z-50",
-                    isValuesHovered
-                      ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
-                      : "opacity-0 -translate-y-4 scale-95 pointer-events-none",
-                  )}
-                >
-                  <div className="bg-white/95 backdrop-blur-xl shadow-[0_40px_100px_rgba(0,0,0,0.2)] border-y border-gray-100 py-12">
-                    <div className="container mx-auto px-4 lg:px-8">
-                      <div className="grid grid-cols-3 gap-8">
-                        {/* Mission Card */}
-                        <div className="bg-gray-50/50 rounded-[2rem] p-8 border border-gray-100/50 hover:bg-white hover:shadow-2xl hover:border-primary/20 transition-all duration-500 group/card">
-                          <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover/card:scale-110 group-hover/card:bg-primary transition-all duration-500">
-                            <Target className="w-7 h-7 text-primary group-hover/card:text-white transition-colors" />
-                          </div>
-                          <h3 className="text-xl font-bold text-foreground mb-4 uppercase tracking-wider">
-                            {t("about.mission")}
-                          </h3>
-                          <p className="text-base text-gray-600 leading-relaxed">
-                            {t("about.missionDesc")}
-                          </p>
-                        </div>
-
-                        {/* Vision Card */}
-                        <div className="bg-gray-50/50 rounded-[2rem] p-8 border border-gray-100/50 hover:bg-white hover:shadow-2xl hover:border-primary/20 transition-all duration-500 group/card">
-                          <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover/card:scale-110 group-hover/card:bg-primary transition-all duration-500">
-                            <Eye className="w-7 h-7 text-primary group-hover/card:text-white transition-colors" />
-                          </div>
-                          <h3 className="text-xl font-bold text-foreground mb-4 uppercase tracking-wider">
-                            {t("about.vision")}
-                          </h3>
-                          <p className="text-base text-gray-600 leading-relaxed">
-                            {t("about.visionDesc")}
-                          </p>
-                        </div>
-
-                        {/* Values Card */}
-                        <div className="bg-gray-50/50 rounded-[2rem] p-8 border border-gray-100/50 hover:bg-white hover:shadow-2xl hover:border-primary/20 transition-all duration-500 group/card">
-                          <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover/card:scale-110 group-hover/card:bg-primary transition-all duration-500">
-                            <Heart className="w-7 h-7 text-primary group-hover/card:text-white transition-colors" />
-                          </div>
-                          <h3 className="text-xl font-bold text-foreground mb-4 uppercase tracking-wider">
-                            {t("about.valuesTitle")}
-                          </h3>
-                          <p className="text-base text-gray-600 leading-relaxed mb-6">
-                            {t("about.valuesAndRules.desc")}
-                          </p>
-                          <div className="flex flex-wrap gap-3">
-                            {aboutValues.map((tag: string, idx: number) => (
-                              <span
-                                key={idx}
-                                className="px-4 py-2 bg-primary/10 text-primary rounded-full text-xs font-bold uppercase tracking-widest"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Remaining Nav Items */}
-              {navItems.slice(1).map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "px-2.5 xl:px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors",
-                    pathname === item.href
-                      ? "text-primary bg-primary/10"
-                      : "text-foreground/80 hover:text-primary hover:bg-primary/5",
-                  )}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-
-            {/* Mobile: language + menu */}
-            <div className="lg:hidden flex items-center gap-1">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button
-                    aria-label={t("nav.language")}
-                    className="flex items-center gap-1 h-11 px-3 rounded-lg text-xs font-semibold text-foreground/80 hover:bg-primary/5 transition-colors"
-                  >
-                    <Globe className="w-4 h-4" />
-                    {activeLang?.short}
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="min-w-44">
-                  {languages.map((lang) => (
-                    <DropdownMenuItem
-                      key={lang.code}
-                      onClick={() => setLanguage(lang.code)}
-                      className={cn(
-                        "flex items-center justify-between gap-4 cursor-pointer py-2.5",
-                        currentLang === lang.code &&
-                          "bg-primary/10 text-primary",
-                      )}
-                    >
-                      <span className="flex items-center gap-2.5">
-                        <Flag code={lang.code} />
-                        {lang.label}
-                      </span>
-                      {currentLang === lang.code && (
-                        <Check className="w-4 h-4 text-primary" />
-                      )}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                aria-label={isOpen ? "Menyuni yopish" : "Menyuni ochish"}
-                aria-expanded={isOpen}
-                className="w-11 h-11 flex items-center justify-center rounded-lg text-foreground hover:bg-primary/5 transition-colors"
-              >
-                {isOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          <div
-            className={cn(
-              "lg:hidden overflow-y-auto transition-all duration-300",
-              isOpen ? "max-h-[calc(100vh-120px)] mt-4 pb-8" : "max-h-0",
-            )}
-          >
-            <div className="bg-background rounded-2xl p-4 shadow-xl">
-              {/* Mobile Contact Info */}
-              <div className="flex flex-col gap-2 pb-4 mb-4 border-b border-border">
-                <a
-                  href={telHref(t("contact.companyPhone"))}
-                  className="flex items-center gap-2 text-sm text-muted-foreground"
-                >
-                  <Phone className="w-4 h-4 text-primary" />
-                  {formatPhone(t("contact.companyPhone"))}
-                </a>
-                <a
-                  href={`mailto:${t("contact.companyEmail")}`}
-                  className="flex items-center gap-2 text-sm text-muted-foreground"
-                >
-                  <Mail className="w-4 h-4 text-primary" />
-                  {t("contact.companyEmail")}
-                </a>
-              </div>
-
-              <nav className="flex flex-col gap-1">
-                {/* Mobile Home Link */}
-                <Link
-                  href={navItems[0].href}
-                  onClick={() => setIsOpen(false)}
-                  className={cn(
-                    "px-4 py-3 rounded-xl transition-colors font-medium",
-                    pathname === navItems[0].href
-                      ? "text-primary bg-primary/10"
-                      : "text-foreground hover:text-primary hover:bg-primary/5",
-                  )}
-                >
-                  {navItems[0].label}
-                </Link>
-
-                {/* Mobile Qadriyatlar link */}
-                <button
-                  onClick={() => {
-                    setIsOpen(false);
-                    const el = document.getElementById("mobile-values");
-                    el?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="px-4 py-3 rounded-xl transition-colors font-medium text-left text-foreground hover:text-primary hover:bg-primary/5"
-                >
-                  {t("about.valuesTitle")}
-                </button>
-
-                {/* Remaining Mobile Nav Items */}
-                {navItems.slice(1).map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className={cn(
-                      "px-4 py-3 rounded-xl transition-colors font-medium",
-                      pathname === item.href
-                        ? "text-primary bg-primary/10"
-                        : "text-foreground hover:text-primary hover:bg-primary/5",
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </nav>
-
-              {/* Extra Info Cards for Mobile */}
-              <div id="mobile-values" className="flex flex-col gap-4 mt-6">
-                {/* Mission Card */}
-                <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <Target className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-bold text-foreground mb-2 uppercase tracking-wide">
-                    {t("about.mission")}
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    {t("about.missionDesc")}
-                  </p>
-                </div>
-
-                {/* Vision Card */}
-                <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <Eye className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-bold text-foreground mb-2 uppercase tracking-wide">
-                    {t("about.vision")}
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    {t("about.visionDesc")}
-                  </p>
-                </div>
-
-                {/* Values Card */}
-                <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <Heart className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-bold text-foreground mb-2 uppercase tracking-wide">
-                    {t("about.valuesTitle")}
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                    {t("about.valuesAndRules.desc")}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {aboutValues.map((tag: string, idx: number) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
+                {openGroup === entry.label && (
+                  <div className="pb-3 pl-3 flex flex-col">
+                    {entry.children.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        className={cn(
+                          "py-2.5 text-[15px] border-l-2 pl-3",
+                          pathname === c.href
+                            ? "border-brand-green text-brand-green font-semibold"
+                            : "border-border text-foreground/80",
+                        )}
                       >
-                        {tag}
-                      </span>
+                        {c.label}
+                      </Link>
                     ))}
                   </div>
-                </div>
+                )}
               </div>
-
-              {/* Language Switcher Mobile */}
-              <div className="mt-4 pt-4 border-t border-border">
-                <p className="text-xs font-medium text-muted-foreground mb-2 px-4 uppercase tracking-wider">
-                  {t("nav.language")}
-                </p>
-                <div className="grid grid-cols-3 gap-2 px-4">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => setLanguage(lang.code)}
-                      className={cn(
-                        "flex items-center justify-center gap-1.5 h-11 text-sm font-medium rounded-xl border transition-colors",
-                        currentLang === lang.code
-                          ? "bg-primary text-primary-foreground border-primary"
-                          : "bg-background text-foreground/80 border-border hover:border-primary/40 hover:text-primary",
-                      )}
-                    >
-                      {currentLang === lang.code && (
-                        <Check className="w-3.5 h-3.5" />
-                      )}
-                      <Flag code={lang.code} size={18} />
-                      {lang.short}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-    </>
+            ) : (
+              <Link
+                key={entry.href}
+                href={entry.href}
+                className={cn(
+                  "block py-3.5 text-sm font-semibold uppercase tracking-wide border-b border-border",
+                  isActive(entry) && "text-brand-green",
+                )}
+              >
+                {entry.label}
+              </Link>
+            ),
+          )}
+          <a
+            href={CATALOG_URL}
+            className="mt-4 mb-2 flex items-center justify-center gap-2 h-12 bg-brand-yellow text-brand-dark font-semibold"
+          >
+            <Download className="w-4 h-4" />
+            {t("nav.catalog")}
+          </a>
+        </nav>
+      </div>
+    </header>
   );
 }

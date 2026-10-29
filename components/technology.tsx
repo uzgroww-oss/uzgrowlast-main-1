@@ -102,13 +102,11 @@ export function Technology({ asPageTitle = false }: { asPageTitle?: boolean }) {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}
         >
-          <span className="inline-block text-primary font-semibold text-sm tracking-wider uppercase mb-4">
-            {t("technology.title")}
-          </span>
-          <Heading className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-balance">
+          <span className="section-eyebrow">{t("technology.title")}</span>
+          <Heading className="section-title text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground text-balance">
             {t("technology.subtitle")}
           </Heading>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
+          <p className="mt-5 text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
             {t("technology.description")}
           </p>
         </div>

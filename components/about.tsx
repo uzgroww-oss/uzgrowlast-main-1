@@ -112,26 +112,13 @@ export function About({ asPageTitle = false }: { asPageTitle?: boolean }) {
         (v) => typeof v === "string" && v.length > 0,
       ) as string[]);
   return (
-    <section
-      id="haqimizda"
-      className="py-10 lg:py-14 overflow-hidden relative"
-      style={{
-        backgroundImage: `url("${m("bosh.about.background")}")`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      {/* Dark Overlay for better text visibility */}
-      <div className="absolute inset-0 bg-black/60 z-0" />
-
+    <section id="haqimizda" className="py-14 lg:py-20 overflow-hidden relative bg-white">
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Top Section with Video */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 lg:mb-20">
           {/* Image Slideshow */}
-          <div className="relative group order-2 lg:order-1">
-            <div className="aspect-video rounded-3xl overflow-hidden relative">
+          <div className="relative group order-2 lg:order-2 mr-3 mb-3 sm:mr-5 sm:mb-5">
+            <div className="aspect-video overflow-hidden relative z-10">
               <MediaImg
                 src={aboutBackgroundImages[currentAboutImage]}
                 alt="About UZ GROW"
@@ -140,24 +127,22 @@ export function About({ asPageTitle = false }: { asPageTitle?: boolean }) {
             </div>
 
             {/* Decorative elements */}
-            <div className="absolute -z-10 -bottom-3 -right-3 sm:-bottom-6 sm:-right-6 w-full h-full rounded-3xl bg-[#24B14B]/10" />
+            <div className="absolute top-3 left-3 sm:top-5 sm:left-5 -bottom-3 -right-3 sm:-bottom-5 sm:-right-5 bg-brand-yellow" aria-hidden="true" />
           </div>
 
           {/* Content */}
-          <div className="order-1 lg:order-2">
-            <span className="inline-block text-[#24B14B] font-bold text-sm tracking-widest uppercase mb-4 px-3 py-1 bg-white/10 backdrop-blur-sm rounded-lg">
-              {t("about.tagline")}
-            </span>
-            <Heading className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-balance drop-shadow-sm">
+          <div className="order-1 lg:order-1">
+            <span className="section-eyebrow">{t("about.tagline")}</span>
+            <Heading className="section-title section-title-left text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground mb-6 text-balance">
               {t("about.headline")}
             </Heading>
-            <p className="text-lg leading-relaxed mb-8 text-white/90 font-medium">
+            <p className="text-base md:text-lg leading-relaxed mb-8 text-muted-foreground">
               {t("about.descriptionText")}
             </p>
             <Link href="/haqimizda">
               <Button
                 size="lg"
-                className="rounded-full px-8 bg-[#24B14B] hover:bg-[#1e913d] text-white border-0"
+                className="px-8"
               >
                 {t("about.aboutUsButton")}
               </Button>
@@ -166,32 +151,35 @@ export function About({ asPageTitle = false }: { asPageTitle?: boolean }) {
         </div>
 
         {/* Mission, Vision, Values */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
-          <div className="bg-card rounded-2xl p-8 border border-border hover:shadow-lg transition-shadow">
-            <div className="w-14 h-14 bg-[#24B14B]/10 rounded-xl flex items-center justify-center mb-6">
-              <Target className="w-7 h-7 text-primary" />
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-surface p-7 border border-dashed border-[#c5cfc5] hover:border-brand-green transition-colors">
+            <div className="w-12 h-12 bg-brand-green text-white flex items-center justify-center mb-5">
+              <Target className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-foreground mb-4">
+            <h3 className="text-xl font-bold text-foreground mb-3">
+              <span className="text-brand-green mr-1.5">01.</span>
               {t("about.mission")}
             </h3>
             <p className="text-muted-foreground">{t("about.missionDesc")}</p>
           </div>
 
-          <div className="bg-card rounded-2xl p-8 border border-border hover:shadow-lg transition-shadow">
-            <div className="w-14 h-14 bg-[#24B14B]/10 rounded-xl flex items-center justify-center mb-6">
-              <Eye className="w-7 h-7 text-primary" />
+          <div className="bg-surface p-7 border border-dashed border-[#c5cfc5] hover:border-brand-green transition-colors">
+            <div className="w-12 h-12 bg-brand-green text-white flex items-center justify-center mb-5">
+              <Eye className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-foreground mb-4">
+            <h3 className="text-xl font-bold text-foreground mb-3">
+              <span className="text-brand-green mr-1.5">02.</span>
               {t("about.vision")}
             </h3>
             <p className="text-muted-foreground">{t("about.visionDesc")}</p>
           </div>
 
-          <div className="bg-card rounded-2xl p-8 border border-border hover:shadow-lg transition-shadow">
-            <div className="w-14 h-14 bg-[#24B14B]/10 rounded-xl flex items-center justify-center mb-6">
-              <Heart className="w-7 h-7 text-primary" />
+          <div className="bg-surface p-7 border border-dashed border-[#c5cfc5] hover:border-brand-green transition-colors">
+            <div className="w-12 h-12 bg-brand-green text-white flex items-center justify-center mb-5">
+              <Heart className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-foreground mb-4">
+            <h3 className="text-xl font-bold text-foreground mb-3">
+              <span className="text-brand-green mr-1.5">03.</span>
               {t("about.valuesTitle")}
             </h3>
             <p className="text-muted-foreground">
@@ -201,7 +189,7 @@ export function About({ asPageTitle = false }: { asPageTitle?: boolean }) {
               {values.map((value: any, index: number) => (
                 <span
                   key={index}
-                  className="px-3 py-1.5 bg-[#24B14B]/10 text-primary rounded-full text-sm font-medium"
+                  className="px-3 py-1.5 bg-white border border-border text-brand-dark text-sm font-medium"
                 >
                   {value}
                 </span>
@@ -210,28 +198,6 @@ export function About({ asPageTitle = false }: { asPageTitle?: boolean }) {
           </div>
         </div>
 
-        {/* Stats */}
-        <div
-          ref={statsRef}
-          className={`bg-[#24B14B] rounded-3xl p-8 md:p-12 transition-all duration-1000 transform ${
-            isStatsVisible
-              ? "translate-y-0 opacity-100"
-              : "translate-y-12 opacity-0"
-          }`}
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-white">
-                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                </div>
-                <div className="text-primary-foreground/70 mt-2 text-sm md:text-base">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

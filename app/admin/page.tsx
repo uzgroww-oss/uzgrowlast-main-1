@@ -121,7 +121,7 @@ export default function AdminPage() {
 
   if (!authed) {
     return (
-      <main className="min-h-screen bg-muted/30 flex items-center justify-center p-4">
+      <main className="admin-ui min-h-screen bg-muted/30 flex items-center justify-center p-4">
         <form
           onSubmit={(e) => verify(password, e)}
           className="bg-background rounded-2xl p-8 shadow-lg w-full max-w-sm space-y-4"
@@ -201,7 +201,7 @@ function Dashboard({
   };
 
   return (
-    <div className="min-h-screen bg-muted/30">
+    <div className="admin-ui min-h-screen bg-muted/30">
       {/* Mobil menyu ochiq bo'lganda orqa fon */}
       {mobileOpen && (
         <div

@@ -3,6 +3,7 @@ import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { Services } from "@/components/services";
 import { CropsStrip } from "@/components/crops";
+import { CtaBand, ProcessSteps } from "@/components/home-blocks";
 import { About } from "@/components/about";
 import { ProjectsMap } from "@/components/projects-map";
 import { Projects } from "@/components/projects";
@@ -24,12 +25,14 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <Hero />
-      <Services />
-      <CropsStrip />
       <About />
-      <ProjectsMap />
-      <Projects />
+      <CropsStrip />
+      <ProcessSteps />
+      <CtaBand />
+      <Services />
       <Technology />
+      <Projects />
+      <ProjectsMap />
       <Contact />
       <Footer />
     </main>

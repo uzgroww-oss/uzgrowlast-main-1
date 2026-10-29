@@ -98,6 +98,8 @@ const LABELS: Record<string, string> = {
   slide: "Slayd (ekran o'quvchi uchun)",
   gridView: "Jadval ko'rinishi tugmasi",
   listView: "Ro'yxat ko'rinishi tugmasi",
+  catalog: "Katalog tugmasi",
+  crops: "Ekinlar",
   showMore: "Ko'proq o'qish tugmasi",
   showLess: "Yig'ish tugmasi",
   emptyTitle: "Bo'sh holat sarlavhasi",

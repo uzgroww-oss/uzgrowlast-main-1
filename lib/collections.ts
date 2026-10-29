@@ -42,6 +42,15 @@ const withPrefix = (prefix: string) =>
 
 export const COLLECTIONS: Collection[] = [
   {
+    key: "homeSteps",
+    page: "bosh",
+    title: "Qanday ishlaymiz — bosqichlar",
+    basePath: "homeBlocks.steps",
+    kind: "array",
+    labelField: "title",
+    addable: { noun: "bosqich" },
+  },
+  {
     // Yangi ekin qo'shilmaydi: har birining sahifa manzili kodda (lib/crops.ts)
     key: "crops",
     page: "ekinlar",

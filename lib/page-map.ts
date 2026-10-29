@@ -60,6 +60,10 @@ export const PAGES: PageDef[] = [
     title: "Bosh sahifa",
     path: "/",
     blocks: [
+      {
+        title: "Qanday ishlaymiz va chaqiruv polosasi",
+        prefixes: ["homeBlocks"],
+      },
       { title: "Bosh ekran (video va slaydlar)", prefixes: ["hero"] },
       {
         title: "Loyihalar xaritasi",

@@ -48,6 +48,29 @@ function useCrops() {
 
 function CropCard({ crop, compact = false }: { crop: ReturnType<typeof useCrops>[number]; compact?: boolean }) {
   const { t } = useLanguage();
+  if (compact) {
+    return (
+      <Link
+        href={`/ekinlar/${crop.code}`}
+        className="group relative block aspect-[3/4] overflow-hidden bg-brand-dark"
+      >
+        <MediaImg
+          src={crop.image}
+          alt={crop.name}
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/45 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+          <h3 className="text-white font-bold text-lg sm:text-xl mb-1.5">{crop.name}</h3>
+          <p className="text-white/75 text-xs sm:text-sm leading-snug line-clamp-3">{crop.tagline}</p>
+          <span className="mt-3 inline-flex items-center gap-1 text-brand-yellow text-sm font-semibold">
+            {t("cropsPage.more")}
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </span>
+        </div>
+      </Link>
+    );
+  }
   return (
     <Link
       href={`/ekinlar/${crop.code}`}
@@ -125,22 +148,24 @@ export function CropsStrip() {
   if (crops.length === 0) return null;
 
   return (
-    <section className="py-12 lg:py-16 bg-muted/30">
+    <section className="py-14 lg:py-20 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3 text-balance">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-end mb-10">
+          <div>
+            <span className="section-eyebrow">{t("cropsPage.badge")}</span>
+            <h2 className="section-title section-title-left text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground text-balance">
               {t("cropsPage.homeTitle")}
             </h2>
-            <p className="text-muted-foreground text-lg">{t("cropsPage.homeSubtitle")}</p>
           </div>
-          <Link
-            href="/ekinlar"
-            className="inline-flex items-center gap-1.5 text-primary font-semibold hover:underline shrink-0"
-          >
-            {t("cropsPage.back")}
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <div>
+            <p className="text-muted-foreground text-lg mb-5">{t("cropsPage.homeSubtitle")}</p>
+            <Button asChild className="px-7 h-11">
+              <Link href="/ekinlar">
+                {t("cropsPage.back")}
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {crops.map((crop) => (

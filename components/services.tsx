@@ -70,17 +70,15 @@ export function Services({ asPageTitle = false }: { asPageTitle?: boolean }) {
   }, [activeService]);
 
   return (
-    <section id="xizmatlar" className="py-10 lg:py-14 bg-muted/30">
+    <section id="xizmatlar" className="py-14 lg:py-20 bg-surface">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-8">
-          <span className="inline-block text-primary font-semibold text-sm tracking-wider uppercase mb-3">
-            {t("services.title")}
-          </span>
-          <Heading className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-balance">
+          <span className="section-eyebrow">{t("services.title")}</span>
+          <Heading className="section-title text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground text-balance">
             {t("services.subtitle")}
           </Heading>
-          <p className="text-muted-foreground text-lg mt-3 max-w-3xl mx-auto">
+          <p className="text-muted-foreground text-lg mt-5 max-w-3xl mx-auto">
             {t("services.description")}
           </p>
         </div>
@@ -92,10 +90,10 @@ export function Services({ asPageTitle = false }: { asPageTitle?: boolean }) {
               key={index}
               onClick={() => setActiveService(index)}
               className={cn(
-                "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300",
+                "px-6 py-3 text-sm font-semibold uppercase tracking-wide transition-colors duration-300 border",
                 activeService === index
-                  ? "bg-[#24B14B] text-primary-foreground shadow-lg shadow-primary/20"
-                  : "bg-background text-foreground hover:bg-muted border border-border",
+                  ? "bg-brand-dark text-white border-brand-dark"
+                  : "bg-white text-foreground border-border hover:border-brand-green hover:text-brand-green",
               )}
             >
               {service.title}

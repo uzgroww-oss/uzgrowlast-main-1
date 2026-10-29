@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Caveat, Inter, Roboto_Slab } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { MediaProvider } from "@/contexts/MediaContext";
@@ -7,7 +7,18 @@ import { FloatingContact } from "@/components/floating-contact";
 import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+// Rus tili uchun kirill harflari ham yuklanadi
+const inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter" });
+const slab = Roboto_Slab({
+  subsets: ["latin", "cyrillic"],
+  weight: ["500", "600", "700"],
+  variable: "--font-slab",
+});
+const script = Caveat({
+  subsets: ["latin", "cyrillic"],
+  weight: ["600", "700"],
+  variable: "--font-script",
+});
 
 export const metadata: Metadata = {
   // OG/Twitter rasmlarining to'liq manzili shu asosda quriladi
@@ -67,7 +78,7 @@ export default function RootLayout({
   return (
     <html lang="uz" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${inter.variable} font-sans antialiased`}
+        className={`${inter.variable} ${slab.variable} ${script.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         <LanguageProvider>

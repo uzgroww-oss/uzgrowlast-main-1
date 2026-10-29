@@ -166,14 +166,15 @@ export function Contact() {
   };
 
   return (
-    <section id="aloqa" className="py-10 lg:py-14 bg-muted/30">
+    <section id="aloqa" className="py-14 lg:py-20 bg-surface">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <span className="section-eyebrow">{t("nav.contact")}</span>
+          <h2 className="section-title text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground mb-5">
             {t("contact.title")}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             {t("contact.subtitle")}
           </p>
         </div>

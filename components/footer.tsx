@@ -52,15 +52,31 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#1a1a1a] text-white">
+    <footer className="bg-brand-dark text-white">
+      {/* Chaqiruv polosasi */}
+      <div className="bg-[#16331a] border-b border-white/10">
+        <div className="container mx-auto px-4 lg:px-8 py-8 lg:py-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">{t("footer.ctaTitle")}</h2>
+            <p className="text-white/75 max-w-2xl">{t("footer.ctaText")}</p>
+          </div>
+          <Link
+            href="/aloqa"
+            className="shrink-0 inline-flex items-center justify-center h-12 px-7 border-2 border-white text-white font-semibold hover:bg-white hover:text-brand-dark transition-colors"
+          >
+            {t("footer.ctaButton")}
+          </Link>
+        </div>
+      </div>
+
       {/* Main Footer */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-8 lg:gap-10">
           {/* Brand */}
-          <div className="sm:col-span-1 lg:col-span-2">
+          <div className="sm:col-span-2 lg:col-span-4 xl:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-4">
               <MediaImg src={m("umumiy.logo")} alt={t("common.logoAlt")} className="h-12 sm:h-16 w-auto object-contain" />
-              <span className="text-2xl font-bold">{t("footer.brandName")}</span>
+              <span className="font-heading text-2xl font-bold">{t("footer.brandName")}</span>
             </Link>
             <p className="text-white/70 max-w-sm leading-relaxed">
               {t("footer.brandDescription")}
@@ -69,12 +85,12 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold mb-6 text-lg">{t("footer.contact")}</h4>
+            <h4 className="font-heading font-bold mb-6 text-lg after:block after:w-8 after:h-0.5 after:bg-brand-yellow after:mt-3">{t("footer.contact")}</h4>
             <ul className="space-y-3">
               <li>
                 <a
                   href={telHref(t("contact.companyPhone"))}
-                  className="flex items-start gap-3 text-white/70 hover:text-primary transition-colors"
+                  className="flex items-start gap-3 text-white/70 hover:text-brand-yellow transition-colors"
                 >
                   <Phone className="w-4 h-4 mt-1 shrink-0" />
                   <span>{formatPhone(t("contact.companyPhone"))}</span>
@@ -83,7 +99,7 @@ export function Footer() {
               <li>
                 <a
                   href={whatsappHref(t("contact.companyPhone2"))}
-                  className="flex items-start gap-3 text-white/70 hover:text-primary transition-colors"
+                  className="flex items-start gap-3 text-white/70 hover:text-brand-yellow transition-colors"
                 >
                   <Send className="w-4 h-4 mt-1 shrink-0" />
                   <span>{formatPhone(t("contact.companyPhone2"))} (WhatsApp)</span>
@@ -92,7 +108,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${t("contact.companyEmail")}`}
-                  className="flex items-start gap-3 text-white/70 hover:text-primary transition-colors"
+                  className="flex items-start gap-3 text-white/70 hover:text-brand-yellow transition-colors"
                 >
                   <Mail className="w-4 h-4 mt-1 shrink-0" />
                   <span>{t("contact.companyEmail")}</span>
@@ -103,7 +119,7 @@ export function Footer() {
                   href={t("contact.locationUrl")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3 text-white/70 hover:text-primary transition-colors"
+                  className="flex items-start gap-3 text-white/70 hover:text-brand-yellow transition-colors"
                 >
                   <MapPin className="w-4 h-4 mt-1 shrink-0" />
                   <span>{t("contact.address")}</span>
@@ -114,13 +130,13 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold mb-6 text-lg">{t("footer.services")}</h4>
+            <h4 className="font-heading font-bold mb-6 text-lg after:block after:w-8 after:h-0.5 after:bg-brand-yellow after:mt-3">{t("footer.services")}</h4>
             <ul className="space-y-3">
               {footerLinks.xizmatlar.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-white/70 hover:text-primary transition-colors"
+                    className="text-white/70 hover:text-brand-yellow transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -131,13 +147,13 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold mb-6 text-lg">{t("footer.company")}</h4>
+            <h4 className="font-heading font-bold mb-6 text-lg after:block after:w-8 after:h-0.5 after:bg-brand-yellow after:mt-3">{t("footer.company")}</h4>
             <ul className="space-y-3">
               {footerLinks.kompaniya.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-white/70 hover:text-primary transition-colors"
+                    className="text-white/70 hover:text-brand-yellow transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -148,13 +164,13 @@ export function Footer() {
 
           {/* Help & Social */}
           <div>
-            <h4 className="font-semibold mb-6 text-lg">{t("footer.help")}</h4>
+            <h4 className="font-heading font-bold mb-6 text-lg after:block after:w-8 after:h-0.5 after:bg-brand-yellow after:mt-3">{t("footer.help")}</h4>
             <ul className="space-y-3 mb-8">
               {footerLinks.yordam.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-white/70 hover:text-primary transition-colors"
+                    className="text-white/70 hover:text-brand-yellow transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -172,10 +188,10 @@ export function Footer() {
                   <a
                     key={index}
                     href={social.href}
-                    className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#24B14B] transition-colors group"
+                    className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-brand-yellow transition-colors group"
                     aria-label={social.label}
                   >
-                    <social.icon className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
+                    <social.icon className="w-5 h-5 text-white/70 group-hover:text-brand-dark transition-colors" />
                   </a>
                 ))}
               </div>

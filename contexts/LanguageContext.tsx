@@ -50,6 +50,21 @@ export const translations = {
       team: "Jamoa",
       contact: "Aloqa",
       language: "Til tanlang",
+      catalog: "Katalog",
+      crops: "Ekinlar",
+      groupGreenhouses: "Issiqxonalar",
+      groupServices: "Xizmatlar",
+      groupProjects: "Loyihalar",
+      groupCompany: "Kompaniya",
+      equipment: "Jihozlar",
+      technology: "Texnologiyalar",
+      allServices: "Barcha xizmatlar",
+      agro: "Agro-injiniring",
+      investors: "Investorlar uchun",
+      international: "Xalqaro hamkorlik",
+      gallery: "Galereya",
+      about: "Biz haqimizda",
+      media: "Media hamkorlik",
     },
     common: {
       logoAlt: "UZ GROW Logo",
@@ -133,7 +148,7 @@ export const translations = {
       aboutTitle: "About UZ GROW",
 
       tagline: "Biz haqimizda",
-      headline: "9 yildan ortiq tajribaga ega kompanya 5 ta mamlakatda sizning yoningizda",
+      headline: "9 yildan ortiq tajribaga ega kompaniya 5 ta mamlakatda sizning yoningizda",
       descriptionText:
         "UZ GROW - zamonaviy issiqxona qurilishi va agro-injiniring sohasida faoliyat yurituvchi kompaniya. Bizning maqsadimiz - O'zbekistonda yuqori samaradorlikka ega, innovatsion va eksportbop issiqxona infratuzilmasini rivojlantirish.",
       aboutUsButton: "Biz haqimizda batafsil",
@@ -750,6 +765,9 @@ export const translations = {
       },
     },
     footer: {
+      ctaTitle: "Keling, birga o'stiramiz",
+      ctaText: "9 yillik tajriba bilan issiqxona loyihangizni g'oyadan hosilgacha olib boramiz.",
+      ctaButton: "Loyihani boshlash",
       brandName: "GROW AGRO TEAM",
       brandTagline: "QURILISH KOMPANIYASI",
       brandDescription:
@@ -1577,6 +1595,34 @@ export const translations = {
         },
       ],
     },
+    homeBlocks: {
+      processEyebrow: "Qanday ishlaymiz",
+      processTitle: "G'oyadan birinchi hosilgacha",
+      processText: "Loyihaning har bir bosqichini bitta jamoa olib boradi — siz bir nechta pudratchi bilan ovora bo'lmaysiz.",
+      processButton: "Bog'lanish",
+      steps: [
+        {
+          title: "Loyihalash",
+          text: "Hudud iqlimi, ekin turi va maydonga qarab issiqxona turi, konstruksiya va jihozlarni tanlaymiz.",
+        },
+        {
+          title: "Qurilish",
+          text: "Metall konstruksiya, qoplama va muhandislik tarmoqlarini to'liq sikl asosida quramiz.",
+        },
+        {
+          title: "Jihozlash",
+          text: "Isitish, shamollatish, sug'orish va avtomatika tizimlarini o'rnatib, ishga tushiramiz.",
+        },
+        {
+          title: "Agro-qo'llab-quvvatlash",
+          text: "Birinchi hosilgacha agronomik maslahat beramiz va xodimlaringizni o'qitamiz.",
+        },
+      ],
+      ctaEyebrow: "Bizga ishonishingiz mumkin",
+      ctaTitle: "Loyihangizga qanday yordam bera olamiz?",
+      ctaText: "9+ yillik tajriba, 1500+ loyiha va 5+ davlatdagi ish — issiqxonangiz uchun aniq hisob-kitob va ishonchli natija.",
+      ctaButton: "Bepul maslahat olish",
+    },
     newsPage: {
       badge: "Yangiliklar",
       title: "So'nggi yangiliklar",
@@ -1647,6 +1693,21 @@ export const translations = {
       team: "Команда",
       contact: "Контакты",
       language: "Выберите язык",
+      catalog: "Каталог",
+      crops: "Культуры",
+      groupGreenhouses: "Теплицы",
+      groupServices: "Услуги",
+      groupProjects: "Проекты",
+      groupCompany: "Компания",
+      equipment: "Оборудование",
+      technology: "Технологии",
+      allServices: "Все услуги",
+      agro: "Агроинжиниринг",
+      investors: "Инвесторам",
+      international: "Международное сотрудничество",
+      gallery: "Галерея",
+      about: "О нас",
+      media: "Медиа-партнёрство",
     },
     common: {
       logoAlt: "Логотип UZ GROW",
@@ -2344,6 +2405,9 @@ export const translations = {
       },
     },
     footer: {
+      ctaTitle: "Давайте расти вместе",
+      ctaText: "С 9-летним опытом проведём ваш тепличный проект от идеи до урожая.",
+      ctaButton: "Начать проект",
       brandName: "GROW AGRO TEAM",
       brandTagline: "СТРОИТЕЛЬНАЯ КОМПАНИЯ",
       brandDescription:
@@ -3191,6 +3255,34 @@ export const translations = {
         },
       ],
     },
+    homeBlocks: {
+      processEyebrow: "Как мы работаем",
+      processTitle: "От идеи до первого урожая",
+      processText: "Каждый этап проекта ведёт одна команда — вам не нужно работать с несколькими подрядчиками.",
+      processButton: "Связаться",
+      steps: [
+        {
+          title: "Проектирование",
+          text: "Подбираем тип теплицы, конструкцию и оборудование по климату региона, культуре и площади.",
+        },
+        {
+          title: "Строительство",
+          text: "Возводим металлоконструкцию, покрытие и инженерные сети по полному циклу.",
+        },
+        {
+          title: "Оснащение",
+          text: "Устанавливаем и запускаем системы отопления, вентиляции, полива и автоматики.",
+        },
+        {
+          title: "Агросопровождение",
+          text: "До первого урожая консультируем по агрономии и обучаем ваш персонал.",
+        },
+      ],
+      ctaEyebrow: "Нам можно доверять",
+      ctaTitle: "Чем мы можем помочь вашему проекту?",
+      ctaText: "9+ лет опыта, 1500+ проектов и работа в 5+ странах — точный расчёт и надёжный результат для вашей теплицы.",
+      ctaButton: "Бесплатная консультация",
+    },
     newsPage: {
       badge: "Новости",
       title: "Последние новости",
@@ -3261,6 +3353,21 @@ export const translations = {
       team: "Team",
       contact: "Contact",
       language: "Choose Language",
+      catalog: "Catalog",
+      crops: "Crops",
+      groupGreenhouses: "Greenhouses",
+      groupServices: "Services",
+      groupProjects: "Projects",
+      groupCompany: "Company",
+      equipment: "Equipment",
+      technology: "Technology",
+      allServices: "All services",
+      agro: "Agro-engineering",
+      investors: "For investors",
+      international: "International cooperation",
+      gallery: "Gallery",
+      about: "About us",
+      media: "Media partnership",
     },
     common: {
       logoAlt: "UZ GROW Logo",
@@ -3932,6 +4039,9 @@ export const translations = {
       },
     },
     footer: {
+      ctaTitle: "Let's grow together",
+      ctaText: "With 9 years of experience, we take your greenhouse project from idea to harvest.",
+      ctaButton: "Start a project",
       brandName: "GROW AGRO TEAM",
       brandTagline: "CONSTRUCTION COMPANY",
       brandDescription:
@@ -4760,6 +4870,34 @@ export const translations = {
           ],
         },
       ],
+    },
+    homeBlocks: {
+      processEyebrow: "How we work",
+      processTitle: "From idea to first harvest",
+      processText: "One team runs every stage of the project — no juggling several contractors.",
+      processButton: "Contact us",
+      steps: [
+        {
+          title: "Design",
+          text: "We choose the greenhouse type, structure and equipment for your climate, crop and area.",
+        },
+        {
+          title: "Construction",
+          text: "We build the steel structure, cladding and utilities as a full-cycle contractor.",
+        },
+        {
+          title: "Equipment",
+          text: "We install and commission heating, ventilation, irrigation and automation systems.",
+        },
+        {
+          title: "Agro support",
+          text: "Until the first harvest we provide agronomic advice and train your staff.",
+        },
+      ],
+      ctaEyebrow: "You can rely on us",
+      ctaTitle: "How can we help your project?",
+      ctaText: "9+ years of experience, 1500+ projects and work in 5+ countries — accurate calculations and reliable results for your greenhouse.",
+      ctaButton: "Get free advice",
     },
     newsPage: {
       badge: "News",
