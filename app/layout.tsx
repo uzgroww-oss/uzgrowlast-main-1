@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     "issiqxona narxlari",
     "qurilish materiallari",
   ],
-  authors: [{ name: "Rustamjon Rahmonov" }],
+  authors: [{ name: "Rustamjon Raxmonov" }],
   creator: "UZ GROW Agro-Injiniring",
   publisher: "UZ GROW",
   robots: "index, follow",

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { SmartImage as Image } from "@/components/ui/smart-image";
 import {
   Award,
-  Briefcase,
   ChevronDown,
   Download,
   GraduationCap,
@@ -236,12 +235,6 @@ export function TeamMemberModal({
               </Section>
             )}
 
-            {member.experience && (
-              <Section icon={Briefcase} title={t("team.experience")}>
-                <p className="text-muted-foreground">{member.experience}</p>
-              </Section>
-            )}
-
             {achievements.length > 0 && (
               <Section icon={Trophy} title={t("team.achievements")}>
                 <ul className="space-y-2">
@@ -307,6 +300,7 @@ export function TeamMemberModal({
         </div>
 
         {/* Pastki harakatlar: eng o'ngdagisi asosiy */}
+        {(member.resume || member.email || member.phone) && (
         <div className="sticky bottom-0 bg-background border-t border-border p-4 sm:px-8 flex flex-col sm:flex-row gap-3">
           {member.resume && (
             <Button
@@ -343,6 +337,7 @@ export function TeamMemberModal({
             </Button>
           )}
         </div>
+        )}
       </div>
     </div>
   );

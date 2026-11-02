@@ -243,7 +243,6 @@ export const PAGES: PageDef[] = [
       {
         title: "Jamoa a'zolari",
         prefixes: ["team.members"],
-        hint: "Admin paneldagi «Jamoa» bo'limiga a'zo qo'shilsa, shu ro'yxat o'rniga o'sha ko'rsatiladi",
       },
     ],
   },

@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 import { SmartImage as Image } from "@/components/ui/smart-image";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   Users,
-  Award,
   Lightbulb,
   Mail,
   Phone,
@@ -30,10 +28,10 @@ export function Team() {
 
   // A'zolar admin paneldagi "Jamoa" sahifasidan boshqariladi: o'chirilganlari
   // chiqmaydi, yangi qo'shilganlari (new1, new2...) ham shu ro'yxatga tushadi.
-  // Surati har doim "rahbariyat.avatar.<kalit>" da.
+  // Surati har doim "jamoa.avatar.<kalit>" da.
   const teamMembers = tList("team.members").map(({ key, value }) => ({
     ...value,
-    avatar: m(`rahbariyat.avatar.${key}`) || null,
+    avatar: m(`jamoa.avatar.${key}`) || null,
     id: key,
   }));
 
@@ -55,77 +53,40 @@ export function Team() {
         </div>
 
         {/* Team Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {teamMembers.map((member: any, index: number) => (
-            <Card
-              key={index}
-              className="group cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-105"
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 mb-16">
+          {teamMembers.map((member: any) => (
+            <button
+              key={member.id}
+              type="button"
               onClick={() => setSelectedMember(member)}
+              className="group bg-white border border-border p-3 sm:p-6 text-center min-w-0 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-brand-green"
             >
-              <CardContent className="p-6">
-                {/* Avatar */}
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 p-1 relative overflow-hidden">
-                    {member.avatar ? (
-                      <Image
-                        src={member.avatar}
-                        alt={member.name}
-                        fill
-                        className="object-cover object-top"
-                        sizes="64px"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-[#24B14B]/10 flex items-center justify-center">
-                        <User className="w-8 h-8 text-primary/60" />
-                      </div>
-                    )}
+              {/* Surat */}
+              <div className="relative mx-auto mb-3 sm:mb-4 w-24 h-24 sm:w-36 sm:h-36 rounded-full overflow-hidden bg-primary/10 ring-4 ring-primary/10 group-hover:ring-brand-green/40 transition-all">
+                {member.avatar ? (
+                  <Image
+                    src={member.avatar}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-top"
+                    sizes="144px"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <User className="w-12 h-12 text-primary/60" />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground">
-                      {member.name}
-                    </h3>
-                    <p className="text-primary font-medium">
-                      {member.position}
-                    </p>
-                  </div>
-                </div>
+                )}
+              </div>
 
-                {/* Bio */}
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                  {member.bio}
+              <h3 className="text-[15px] sm:text-lg font-bold text-foreground break-words">{member.name}</h3>
+              <p className="text-brand-green font-medium text-xs sm:text-sm mt-1">{member.position}</p>
+              {member.experience && (
+                <p className="mt-2.5 inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <Briefcase className="h-4 w-4" />
+                  {member.experience}
                 </p>
-
-                {/* Stats */}
-                <div className="flex items-center gap-4 mb-4 text-sm">
-                  <div className="flex items-center gap-1">
-                    <Briefcase className="h-4 w-4 text-muted-foreground" />
-                    <span>{member.experience}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Award className="h-4 w-4 text-muted-foreground" />
-                    <span>
-                      {member.achievements?.length || 0}{" "}
-                      {t("team.achievementsLabel")}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Skills */}
-                <div className="flex flex-wrap gap-1 mb-4">
-                  {member.skills
-                    ?.slice(0, 3)
-                    .map((skill: string, skillIndex: number) => (
-                      <Badge
-                        key={skillIndex}
-                        variant="secondary"
-                        className="text-xs"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                </div>
-              </CardContent>
-            </Card>
+              )}
+            </button>
           ))}
         </div>
 
