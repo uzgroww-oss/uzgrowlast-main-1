@@ -173,9 +173,6 @@ export function Header() {
               loading="eager"
               className="h-10 sm:h-11 lg:h-12 w-auto object-contain"
             />
-            <span className="hidden sm:block lg:hidden 2xl:block font-heading font-bold text-lg text-white whitespace-nowrap">
-              {t("footer.brandName")}
-            </span>
           </Link>
 
           {/* Kompyuter menyusi */}
