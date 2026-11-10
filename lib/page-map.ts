@@ -238,6 +238,8 @@ export const PAGES: PageDef[] = [
           "team.education",
           "team.skills",
           "team.contact",
+          "team.experienceSuffix",
+          "team.founderExperience",
         ],
       },
       {

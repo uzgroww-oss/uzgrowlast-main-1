@@ -105,7 +105,7 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "jamoa.avatar.rustamjon",
-    label: "Rustamjon — surati",
+    label: "Dumaloq surat",
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
@@ -113,7 +113,7 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "jamoa.avatar.ilyos",
-    label: "Ilyos — surati",
+    label: "Dumaloq surat",
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
@@ -121,7 +121,7 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "jamoa.avatar.alisher",
-    label: "Alisher — surati",
+    label: "Dumaloq surat",
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
@@ -129,7 +129,7 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "jamoa.avatar.dilnoza",
-    label: "Dilnoza — surati",
+    label: "Dumaloq surat",
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
@@ -137,7 +137,7 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "jamoa.avatar.abdulloh",
-    label: "Abdulloh — surati",
+    label: "Dumaloq surat",
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
@@ -145,7 +145,7 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "jamoa.avatar.vasila",
-    label: "Vasila — surati",
+    label: "Dumaloq surat",
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
@@ -153,7 +153,7 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "jamoa.avatar.elmurod",
-    label: "Elmurod — surati",
+    label: "Dumaloq surat",
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
@@ -161,7 +161,7 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "jamoa.avatar.sardor",
-    label: "Sardor — surati",
+    label: "Dumaloq surat",
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
@@ -169,7 +169,7 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "jamoa.avatar.abdurashid",
-    label: "Abdurashid — surati",
+    label: "Dumaloq surat",
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
@@ -177,7 +177,7 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "umumiy.logo",
-    label: "Sayt logotipi",
+    label: "To'liq logotip (sayt pastida)",
     page: "umumiy",
     block: "Logotip",
     type: "image",
@@ -185,7 +185,7 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "umumiy.logoIcon",
-    label: "Logotip belgisi (sayt tepasida)",
+    label: "Dumaloq belgi (sayt tepasida, UZ-GROW yozuvi yonida)",
     page: "umumiy",
     block: "Logotip",
     type: "image",
@@ -193,7 +193,7 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "jamoa.founder",
-    label: "Asoschi — katta surat",
+    label: "Katta surat (sahifa tepasidagi blokda)",
     page: "rahbariyat",
     block: "Asoschi",
     type: "image",
@@ -201,7 +201,7 @@ export const MEDIA: MediaItem[] = [
   },
   {
     id: "jamoa.founderBg",
-    label: "Asoschi bloki foni",
+    label: "Tepadagi blok foni (issiqxonalar)",
     page: "rahbariyat",
     block: "Asoschi",
     type: "image",

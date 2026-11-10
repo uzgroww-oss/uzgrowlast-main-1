@@ -105,7 +105,11 @@ export const COLLECTIONS: Collection[] = [
       "elmurod",
     ],
     labelField: "name",
-    mediaFor: (key) => exact(`jamoa.avatar.${key}`),
+    mediaFor: (key) => [
+      ...exact(`jamoa.avatar.${key}`),
+      // Sahifa tepasidagi katta blok faqat asoschida bor
+      ...(key === "rustamjon" ? ["jamoa.founder", "jamoa.founderBg"] : []),
+    ],
     addable: {
       noun: "jamoa a'zosi",
       media: (key) => [`jamoa.avatar.${key}`],

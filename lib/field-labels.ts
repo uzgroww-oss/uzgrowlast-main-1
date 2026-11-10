@@ -25,7 +25,7 @@ const LABELS: Record<string, string> = {
 
   // Odam
   position: "Lavozim",
-  role: "Roli",
+  role: "Ikkinchi lavozim (faqat asoschida ko'rinadi)",
   bio: "Qisqacha ma'lumot",
   experience: "Tajriba",
   achievements: "Yutuqlar",
@@ -169,6 +169,8 @@ const LABELS: Record<string, string> = {
   // Jamoa
   ourTeam: "Bizning jamoa",
   achievementsLabel: "Yutuqlar yorlig'i",
+  experienceSuffix: "Yil yonidagi so'z («9 yil tajriba»)",
+  founderExperience: "Asoschi tajribasi yonidagi so'z («15+ yil agro-biznes tajribasi»)",
   contactDirector: "Rahbar bilan bog'lanish",
   management: "Rahbariyat",
 

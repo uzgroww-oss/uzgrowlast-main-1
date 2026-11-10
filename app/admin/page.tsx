@@ -22,6 +22,9 @@ import {
   Check,
   HardDrive,
   AlertCircle,
+  Eye,
+  EyeOff,
+  CircleHelp,
 } from "lucide-react";
 import { translations } from "@/contexts/LanguageContext";
 import { apiError } from "@/lib/admin-errors";
@@ -77,6 +80,7 @@ export default function AdminPage() {
   const [authed, setAuthed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showPw, setShowPw] = useState(false);
 
   // Sessiya davomida parolni eslab qolish
   useEffect(() => {
@@ -131,18 +135,31 @@ export default function AdminPage() {
               <Lock className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <h1 className="font-bold text-foreground">UZ GROW Admin</h1>
-              <p className="text-xs text-muted-foreground">Parolni kiriting</p>
+              <h1 className="font-bold text-foreground">UZ-GROW Admin</h1>
+              <p className="text-xs text-muted-foreground">
+                Saytni boshqarish paneli — parolni kiriting
+              </p>
             </div>
           </div>
-          <Input
-            type="password"
-            placeholder="Parol"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            autoFocus
-          />
+          <div className="relative">
+            <Input
+              type={showPw ? "text" : "password"}
+              placeholder="Parol"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              autoFocus
+              className="pr-10 h-11"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPw((v) => !v)}
+              aria-label={showPw ? "Parolni yashirish" : "Parolni ko'rsatish"}
+              className="absolute right-0 top-0 h-11 w-10 flex items-center justify-center text-muted-foreground hover:text-foreground"
+            >
+              {showPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+            </button>
+          </div>
           {error && <p className="text-sm text-red-600">{error}</p>}
           <Button type="submit" className="w-full h-11" disabled={loading}>
             {loading ? (
@@ -169,7 +186,7 @@ export default function AdminPage() {
 type Section = "content" | "leads" | "news" | "files";
 
 const SECTIONS: { key: Section; label: string; icon: typeof Inbox }[] = [
-  { key: "content", label: "Sahifa matnlari", icon: FileText },
+  { key: "content", label: "Matn va rasmlar", icon: FileText },
   { key: "leads", label: "Murojaatlar", icon: Inbox },
   { key: "news", label: "Yangiliklar", icon: Newspaper },
   { key: "files", label: "Fayllar ombori", icon: HardDrive },
@@ -184,6 +201,21 @@ function Dashboard({
 }) {
   const [section, setSection] = useState<Section>("content");
   const [mobileOpen, setMobileOpen] = useState(false);
+  // Qo'llanma birinchi kirishda ochiq; yopilsa brauzer eslab qoladi
+  const [help, setHelp] = useState(false);
+  useEffect(() => {
+    try {
+      setHelp(localStorage.getItem("uzgrow_admin_help") !== "0");
+    } catch {
+      setHelp(true);
+    }
+  }, []);
+  const toggleHelp = (open: boolean) => {
+    setHelp(open);
+    try {
+      localStorage.setItem("uzgrow_admin_help", open ? "1" : "0");
+    } catch {}
+  };
   const { changeCount } = useContentStore();
 
   const active = SECTIONS.find((s) => s.key === section)!;
@@ -262,7 +294,20 @@ function Dashboard({
         )}
         {section !== "content" && <div className="flex-1" />}
 
-        <div className="p-3 border-t border-border shrink-0">
+        <div className="p-3 border-t border-border shrink-0 space-y-1">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => {
+              toggleHelp(true);
+              setMobileOpen(false);
+              window.scrollTo({ top: 0 });
+            }}
+            className="w-full justify-start text-muted-foreground"
+          >
+            <CircleHelp className="w-4 h-4 mr-2" />
+            Qanday ishlatiladi?
+          </Button>
           <Button
             variant="ghost"
             size="sm"
@@ -294,12 +339,60 @@ function Dashboard({
         </header>
 
         <main className="p-4 lg:p-6 max-w-6xl">
+          {help && <HelpBox onClose={() => toggleHelp(false)} />}
           {section === "content" && <ContentTab />}
           {section === "leads" && <LeadsTab password={password} />}
           {section === "news" && <NewsTab password={password} />}
           {section === "files" && <FilesTab password={password} />}
         </main>
       </div>
+    </div>
+  );
+}
+
+/* ---------- Qo'llanma ---------- */
+
+const HELP_STEPS = [
+  ["Sahifani tanlang", "Chapdagi ro'yxatdan kerakli sahifani bosing: Bosh sahifa, Jamoa, Loyihalar..."],
+  ["Kartani oching", "Odam, loyiha yoki rasm nomini bosing — ichida uning rasmi va matnlari chiqadi."],
+  ["O'zgartiring", "Rasm uchun «Rasm tanlash»ni bosib, telefon yoki kompyuterdan faylni tanlang. Matnni shunchaki ustidan yozing."],
+  ["Saqlang", "Tepadagi yashil «Saqlash» tugmasini bosing. Saytda 15 soniyada ko'rinadi."],
+];
+
+function HelpBox({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="mb-5 rounded-xl border border-primary/30 bg-primary/5 p-4 sm:p-5">
+      <div className="flex items-start justify-between gap-3 mb-3">
+        <h2 className="font-semibold text-foreground flex items-center gap-2">
+          <CircleHelp className="w-4 h-4 text-primary" />
+          Saytni qanday o'zgartirish mumkin
+        </h2>
+        <button
+          type="button"
+          onClick={onClose}
+          className="text-xs text-muted-foreground hover:text-foreground inline-flex items-center gap-1 shrink-0"
+        >
+          <X className="w-3.5 h-3.5" /> Yopish
+        </button>
+      </div>
+      <ol className="grid sm:grid-cols-2 xl:grid-cols-4 gap-3">
+        {HELP_STEPS.map(([title, text], i) => (
+          <li key={title} className="bg-background rounded-lg border border-border p-3">
+            <p className="text-sm font-medium text-foreground flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center shrink-0">
+                {i + 1}
+              </span>
+              {title}
+            </p>
+            <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">{text}</p>
+          </li>
+        ))}
+      </ol>
+      <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
+        Xato qilib qo'ysangiz qo'rqmang: har bir rasm ostida «Avvalgisiga qaytarish», o'chirilgan
+        kartalar uchun esa bo'lim pastida «O'chirilganlar» ro'yxati bor. Saytdan kelgan arizalar —
+        «Murojaatlar» bo'limida.
+      </p>
     </div>
   );
 }

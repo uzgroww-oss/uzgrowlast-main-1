@@ -58,7 +58,7 @@ async function compressImage(file: File): Promise<File> {
 const mb = (n: number) => (n / (1024 * 1024)).toFixed(1);
 
 /**
- * Manzil maydoni + «Yuklash» tugmasi.
+ * «Tanlash» tugmasi + (yopiq) havola maydoni.
  *
  * Fayl SERVER ORQALI EMAS, brauzerdan to'g'ridan-to'g'ri Supabase omboriga
  * yuboriladi. Sabab: Vercel serverless funksiyaga 4.5 MB dan katta so'rovni
@@ -72,7 +72,10 @@ export function UploadField({
   placeholder = "https://... yoki fayl yuklang",
   className = "",
   imagesOnly = false,
+  buttonLabel,
 }: {
+  /** Tugmadagi yozuv; berilmasa fayl turiga qarab tanlanadi */
+  buttonLabel?: string;
   value: string;
   onChange: (url: string) => void;
   password: string;
@@ -135,27 +138,41 @@ export function UploadField({
 
   return (
     <div className={className}>
-      <div className="flex gap-1.5">
-        <Input
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          className="text-xs h-8"
-        />
+      <div>
         <button
           type="button"
           onClick={() => inputRef.current?.click()}
           disabled={busy}
-          title="Qurilmadan fayl yuklash"
-          className="h-8 px-2.5 shrink-0 rounded-md border border-border bg-background hover:bg-muted disabled:opacity-50 flex items-center gap-1 text-xs"
+          className="h-9 px-3.5 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-60 inline-flex items-center gap-2 text-sm font-medium"
         >
           {busy ? (
-            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+            <Loader2 className="w-4 h-4 animate-spin" />
           ) : (
-            <Upload className="w-3.5 h-3.5" />
+            <Upload className="w-4 h-4" />
           )}
-          {busy ? "Yuklanmoqda" : "Yuklash"}
+          {busy
+            ? "Yuklanmoqda..."
+            : (buttonLabel ??
+              (imagesOnly
+                ? value
+                  ? "Boshqa rasm tanlash"
+                  : "Rasm tanlash"
+                : value
+                  ? "Boshqa fayl tanlash"
+                  : "Fayl tanlash"))}
         </button>
+        {/* Havola kamdan-kam kerak — ko'zga tashlanmasin */}
+        <details className="mt-1.5">
+          <summary className="text-[11px] text-muted-foreground cursor-pointer select-none hover:text-foreground">
+            yoki internetdagi havolani kiritish
+          </summary>
+          <Input
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder={placeholder}
+            className="text-xs h-8 mt-1.5"
+          />
+        </details>
         <input
           ref={inputRef}
           type="file"
@@ -179,7 +196,7 @@ export function UploadField({
       {!error && note && (
         <p className="text-xs text-emerald-600 mt-1 flex items-center gap-1">
           <CheckCircle2 className="w-3 h-3 shrink-0" /> {note}
-          <span className="text-muted-foreground">— «Saqlash» tugmasini bosing</span>
+          <span className="text-muted-foreground">— endi tepadagi «Saqlash»ni bosing</span>
         </p>
       )}
     </div>

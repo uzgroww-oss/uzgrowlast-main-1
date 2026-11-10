@@ -280,8 +280,8 @@ export function ContentTab() {
 
           {overrideCount === 0 && (
             <p className="text-sm text-muted-foreground -mt-4">
-              Matn yoki rasm manzilini o'zgartiring va yuqoridagi «Saqlash»ni
-              bosing. Tegilmagan joylar standart holatida qoladi.
+              Matnni o'zgartiring yoki «Rasm tanlash»ni bosing, keyin
+              yuqoridagi «Saqlash»ni bosing. Tegilmagan joylar o'z holicha qoladi.
             </p>
           )}
 
@@ -681,7 +681,7 @@ function MediaRow({
 
   return (
     <div className="bg-background rounded-xl border border-border p-3 flex gap-3">
-      <div className="w-20 h-20 shrink-0 rounded-lg bg-muted overflow-hidden flex items-center justify-center">
+      <div className="w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-lg bg-muted overflow-hidden flex items-center justify-center">
         {item.type === "video" ? (
           <video src={value} className="w-full h-full object-cover" muted />
         ) : !value ? (
@@ -701,45 +701,47 @@ function MediaRow({
         )}
       </div>
       <div className="flex-1 min-w-0">
-        <div className="flex items-center justify-between gap-2 mb-1.5">
-          <p className="text-xs font-medium text-foreground truncate">
-            {item.label}
-            {isDirty && <span className="ml-1.5 text-amber-600">•</span>}
-            {!isDirty && isOverridden && (
-              <span className="ml-1.5 text-primary font-normal">
-                o'zgartirilgan
-              </span>
-            )}
-          </p>
-          <div className="flex items-center gap-1.5 shrink-0">
-            {value !== "" && (
-              <button
-                type="button"
-                onClick={() => onClear(item)}
-                title="Rasmni o'chirish (saytda ko'rinmaydi)"
-                className="text-muted-foreground hover:text-red-600"
-              >
-                <Trash2 className="w-3 h-3" />
-              </button>
-            )}
-            {value !== item.def && (
-              <button
-                type="button"
-                onClick={() => onChange(item, item.def)}
-                title="Standart rasmga qaytarish"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <RotateCcw className="w-3 h-3" />
-              </button>
-            )}
-          </div>
-        </div>
+        <p className="text-sm font-medium text-foreground leading-snug mb-2">
+          {item.label}
+          {isDirty && (
+            <span className="ml-1.5 text-xs font-normal text-amber-600">
+              • saqlanmagan
+            </span>
+          )}
+          {!isDirty && isOverridden && (
+            <span className="ml-1.5 text-xs text-primary font-normal">
+              o'zgartirilgan
+            </span>
+          )}
+        </p>
         <UploadField
           value={value}
           onChange={(url) => onChange(item, url)}
           password={password}
           imagesOnly={item.type === "image"}
+          buttonLabel={item.type === "video" ? "Video tanlash" : undefined}
         />
+        <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2 text-[11px]">
+          {value !== item.def && (
+            <button
+              type="button"
+              onClick={() => onChange(item, item.def)}
+              className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground"
+            >
+              <RotateCcw className="w-3 h-3" /> Avvalgisiga qaytarish
+            </button>
+          )}
+          {value !== "" && (
+            <button
+              type="button"
+              onClick={() => onClear(item)}
+              title="Saytda bu rasm ko'rinmaydi"
+              className="inline-flex items-center gap-1 text-muted-foreground hover:text-red-600"
+            >
+              <Trash2 className="w-3 h-3" /> Olib tashlash
+            </button>
+          )}
+        </div>
         {broken && value && (
           <p className="text-xs text-red-600 mt-1 flex items-center gap-1">
             <AlertCircle className="w-3 h-3 shrink-0" /> Rasm ochilmadi
