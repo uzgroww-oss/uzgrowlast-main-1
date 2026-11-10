@@ -251,6 +251,7 @@ export function Header() {
             )}
             <a
               href={CATALOG_URL}
+              download
               className="hidden xl:inline-flex items-center gap-2 h-10 px-5 bg-brand-yellow text-brand-dark text-sm font-semibold hover:bg-[#ffcd38] transition-colors"
             >
               <Download className="w-4 h-4" />
@@ -340,6 +341,7 @@ export function Header() {
           )}
           <a
             href={CATALOG_URL}
+            download
             className="mt-4 mb-2 flex items-center justify-center gap-2 h-12 bg-brand-yellow text-brand-dark font-semibold"
           >
             <Download className="w-4 h-4" />

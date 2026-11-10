@@ -125,7 +125,7 @@ export const MEDIA: MediaItem[] = [
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
-    def: "/images/team/alisher.jpg",
+    def: "/images/team/alisher-2.jpg",
   },
   {
     id: "jamoa.avatar.dilnoza",
@@ -133,7 +133,7 @@ export const MEDIA: MediaItem[] = [
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
-    def: "/images/team/dilnoza.jpg",
+    def: "/images/team/dilnoza-2.jpg",
   },
   {
     id: "jamoa.avatar.abdulloh",
@@ -141,7 +141,7 @@ export const MEDIA: MediaItem[] = [
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
-    def: "/images/team/abdulloh.jpg",
+    def: "/images/team/abdulloh-2.jpg",
   },
   {
     id: "jamoa.avatar.vasila",
@@ -149,7 +149,7 @@ export const MEDIA: MediaItem[] = [
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
-    def: "/images/team/vasila.jpg",
+    def: "/images/team/vasila-2.jpg",
   },
   {
     id: "jamoa.avatar.elmurod",
@@ -165,7 +165,7 @@ export const MEDIA: MediaItem[] = [
     page: "rahbariyat",
     block: "Jamoa suratlari",
     type: "image",
-    def: "/images/team/sardor.jpg",
+    def: "/images/team/sardor-2.jpg",
   },
   {
     id: "jamoa.avatar.abdurashid",

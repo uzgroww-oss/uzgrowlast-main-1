@@ -304,13 +304,11 @@ export function Hero() {
               className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-brand-dark px-7 h-12 sm:h-13 text-sm sm:text-base font-semibold w-full sm:w-auto shadow-none"
               asChild
             >
-              <Link
-                href={CATALOG_URL}
-                className="gap-2"
-              >
+              {/* Sahifa emas, fayl — shuning uchun oddiy havola */}
+              <a href={CATALOG_URL} download className="gap-2">
                 <Download className="w-5 h-5" />
                 {t("hero.downloadCatalog")}
-              </Link>
+              </a>
             </Button>
           </div>
 
