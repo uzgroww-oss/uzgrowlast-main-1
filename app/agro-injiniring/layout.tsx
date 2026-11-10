@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 // ruxsat bermaydi, shuning uchun sarlavha va tavsif shu yerda beriladi.
 export const metadata = pageMeta({
   path: "/agro-injiniring",
-  title: "Agro-injiniring | UZ GROW",
+  title: "Agro-injiniring | UZ-GROW",
   description:
     "Zamonaviy texnologiyalar va avtomatlashtirish yechimlari bilan qishloq xo'jaligini kelajakka o'tkazing. UZ GROW agro-injiniring xizmatlari: loyihalash, qurilish va ishga tushirish.",
   keywords: "agro-injiniring, issiqxona loyihalash, avtomatlashtirish, UZ GROW",

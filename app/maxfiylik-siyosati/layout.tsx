@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 // ruxsat bermaydi, shuning uchun sarlavha va tavsif shu yerda beriladi.
 export const metadata = pageMeta({
   path: "/maxfiylik-siyosati",
-  title: "Maxfiylik siyosati | UZ GROW",
+  title: "Maxfiylik siyosati | UZ-GROW",
   description:
     "UZ GROW veb-saytida shaxsiy ma'lumotlar qanday yig'ilishi, ishlatilishi va himoya qilinishi haqida.",
 });

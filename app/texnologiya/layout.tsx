@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 // ruxsat bermaydi, shuning uchun sarlavha va tavsif shu yerda beriladi.
 export const metadata = pageMeta({
   path: "/texnologiya",
-  title: "Zamonaviy issiqxona texnologiyalari | UZ GROW",
+  title: "Zamonaviy issiqxona texnologiyalari | UZ-GROW",
   description:
     "Eng so'nggi innovatsiyalar va texnologiyalar yordamida yuqori samaradorlikka erishish: iqlim nazorati, gidroponika, tomchilatib sug'orish va avtomatlashtirish.",
   keywords: "issiqxona texnologiyalari, gidroponika, iqlim nazorati, tomchilatib sug'orish",

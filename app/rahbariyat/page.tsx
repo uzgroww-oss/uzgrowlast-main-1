@@ -5,7 +5,7 @@ import { Team } from "@/components/team";
 
 export const metadata = pageMeta({
   path: "/rahbariyat",
-  title: "Jamoa - UZ GROW | Mutaxassislar Jamoasi",
+  title: "Kompaniya rahbariyati | UZ-GROW",
   description:
     "UZ GROW kompaniyasi mutaxassislar jamoasi. 9+ yillik tajribaga ega professional mutaxassislar. Agro-injiniring, marketing, moliya va loyiha boshqaruvi.",
   keywords:

@@ -165,14 +165,19 @@ export function Header() {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20 gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
             <MediaImg
-              src={m("umumiy.logo")}
+              src={m("umumiy.logoIcon")}
               alt={t("common.logoAlt")}
               // Logotip har sahifada eng tepada turadi — kechiktirilmaydi
               loading="eager"
-              className="h-10 sm:h-11 lg:h-12 w-auto object-contain"
+              className="h-10 w-10 lg:h-12 lg:w-12 object-contain"
             />
+            {/* 1024–1279px da menyu bilan sig'maydi — u yerda faqat belgi */}
+            <span className="leading-none text-white lg:hidden xl:block">
+              <span className="block font-sans font-extrabold text-xl lg:text-2xl tracking-tight">UZ-GROW</span>
+              <span className="block text-[11px] lg:text-[13px] text-white/85 mt-1">Greenhouse Engineering</span>
+            </span>
           </Link>
 
           {/* Kompyuter menyusi */}

@@ -5,7 +5,7 @@ import { Technology } from "@/components/technology"
 
 export const metadata = pageMeta({
   path: "/jixozlar",
-  title: "Jixozlar - UZ GROW | Zamonaviy texnologiyalar va uskunalar",
+  title: "Jixozlar - UZ-GROW | Zamonaviy texnologiyalar va uskunalar",
   description:
     "UZ GROW texnologiyalari. Zamonaviy issiqxona texnologiyalari, avtomatlashtirish tizimlari, iqlim nazorati va agro-uskunalar.",
   keywords:

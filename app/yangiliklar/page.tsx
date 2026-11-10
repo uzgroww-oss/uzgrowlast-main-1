@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = pageMeta({
   path: "/yangiliklar",
-  title: "Yangiliklar | UZ GROW",
+  title: "Yangiliklar | UZ-GROW",
   description:
     "UZ GROW kompaniyasining so'nggi yangiliklari, loyihalari va e'lonlari.",
 });

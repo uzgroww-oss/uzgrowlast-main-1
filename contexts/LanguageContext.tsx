@@ -357,10 +357,12 @@ export const translations = {
       ],
     },
     team: {
-      title: "Bizning jamoa",
-      subtitle: "Kuchli va tajribali mutaxassislar",
+      title: "Bizning boshqaruv jamoamiz",
+      subtitle: "Kompaniya rahbariyati",
       description:
-        "Bizning jamoamiz eng yuqori malakali mutaxassislardan iborat bo'lib, ular har kuni sizning muvaffaqiyatingiz uchun ishlaydi",
+        "UZ-GROW jamoasining asosiy rahbarlari – 8 ta bo'lim boshliqlari",
+      experienceSuffix: "tajriba",
+      founderExperience: "agro-biznes tajribasi",
       ourTeam: "Bizning jamoa",
       experience: "Tajriba",
       achievements: "Yutuqlar",
@@ -369,10 +371,11 @@ export const translations = {
       contact: "Aloqa",
       members: {
         rustamjon: {
-          name: "Rustamjon Raxmonov",
-          position: "Asoschi va egasi",
+          name: "Rustamjon Rakhmonov",
+          position: "Asoschi (Founder)",
+          role: "Kompaniya bosh direktori (CEO)",
           bio: "O'zbekistonlik innovator agrofaol va tadbirkor. 2017-yildan beri Markaziy Osiyo agrosektorida minglab fermerlar va agrobiznes vakillariga ma'lumot, ishonch va natija olib kelmoqda.",
-          experience: "9 yil",
+          experience: "15+ yil",
           achievements: [
             "200,000+ obunachi",
             "1500+ muvaffaqiyatli loyiha",
@@ -397,17 +400,12 @@ export const translations = {
         },
         ilyos: {
           name: "Ilyos Sohibov",
-          position: "Xalqaro savdo bo'limi rahbari",
+          position: "Tashqi savdo bo'limi boshlig'i",
           experience: "9 yil",
-        },
-        matluba: {
-          name: "Matluba Xaliyeva",
-          position: "Marketolog",
-          experience: "4 yil",
         },
         alisher: {
           name: "Alisher Majidov",
-          position: "Professional videograf",
+          position: "Marketing bo'limi boshlig'i",
           experience: "7 yil",
           education: [
             "Marketing",
@@ -421,7 +419,7 @@ export const translations = {
         },
         dilnoza: {
           name: "Dilnoza Samatova",
-          position: "Bosh buxgalter",
+          position: "Moliya bo'limi boshlig'i",
           bio: "Soliq va buxgalteriya hisobi bo'yicha katta mutaxassis.",
           experience: "5 yil",
           achievements: [
@@ -440,55 +438,14 @@ export const translations = {
             "Bank klient",
           ],
         },
-        nafosat: {
-          name: "Nafosat Botirboyeva",
-          position: "Moliyachi",
-          bio: "Moliyaviy jarayonlar va hisobotlar bo'yicha mutaxassis.",
-          experience: "5 yil",
-          achievements: [
-            "Hisobotlarni tayyorlash",
-            "Pul oqimini yuritish",
-            "Buxgalteriyani tiklash",
-          ],
-          education: [
-            "Buxgalteriya kursi",
-            "Yurist malaka kursi",
-            "Inplus kursi",
-          ],
-          skills: [
-            "1C",
-            "Didox",
-            "MyMehnat",
-            "Hisobotlar",
-          ],
-        },
-        abdulloh: {
-          name: "Abdulloh Abdurasulov",
-          position: "Savdo bo'limi rahbari",
-          experience: "4 yil",
-          education: [
-            "Qurilish muhandisligi",
-            "Avtomatlashtirish sistemlari",
-          ],
-          email: "uzgrrow@gmail.com",
-          phone: "+998 88 507 00 70",
-          location: "Toshkent, O'zbekiston",
-          linkedin: "#",
-          twitter: "#",
-        },
         vasila: {
-          name: "Vasila Nizomidinova",
-          position: "Broker",
+          name: "Vasila Nizomiddinova",
+          position: "Onlayn sotuv bo'limi boshlig'i",
           experience: "4 yil",
-        },
-        elmurod: {
-          name: "Elmurod Urinov",
-          position: "Issiqxona quruvchisi",
-          experience: "8 yil",
         },
         sardor: {
-          name: "Sardor Abdutalipov",
-          position: "Ta'minotchi",
+          name: "Sardor Abdulatipov",
+          position: "Snabjenya bo'limi boshlig'i",
           bio: "Xaridlar va biznes muzokaralar bo'yicha mutaxassis.",
           experience: "4 yil",
           achievements: [
@@ -506,15 +463,29 @@ export const translations = {
             "Marketing",
           ],
         },
-        abdurasul: {
-          name: "Abdurasul Tagoyev",
-          position: "Bosh mutaxassis",
-          experience: "13 yil",
+        abdulloh: {
+          name: "Abdulloh Abdurasulov",
+          position: "Sotuv bo'limi boshlig'i",
+          experience: "4 yil",
+          education: [
+            "Qurilish muhandisligi",
+            "Avtomatlashtirish sistemlari",
+          ],
+          email: "uzgrrow@gmail.com",
+          phone: "+998 88 507 00 70",
+          location: "Toshkent, O'zbekiston",
+          linkedin: "#",
+          twitter: "#",
         },
         abdurashid: {
           name: "Abdurashid Mamadaliyev",
-          position: "Bosh agronom",
+          position: "Loyihalash va Prayekt menijer",
           experience: "7 yil",
+        },
+        elmurod: {
+          name: "Elmurod Urinov",
+          position: "Qurilish bo'limi boshlig'i",
+          experience: "8 yil",
         },
       },
       achievementsLabel: "yutuq",
@@ -2023,10 +1994,12 @@ export const translations = {
       ],
     },
     team: {
-      title: "Наша команда",
-      subtitle: "Сильные и опытные специалисты",
+      title: "Наша управленческая команда",
+      subtitle: "Руководство компании",
       description:
-        "Наша команда состоит из высококвалифицированных специалистов, которые каждый день работают ради вашего успеха",
+        "Ключевые руководители UZ-GROW – 8 руководителей отделов",
+      experienceSuffix: "опыта",
+      founderExperience: "опыта в агробизнесе",
       ourTeam: "Наша команда",
       experience: "Опыт",
       achievements: "Достижения",
@@ -2036,9 +2009,10 @@ export const translations = {
       members: {
         rustamjon: {
           name: "Рустамжон Рахмонов",
-          position: "Основатель и владелец",
+          position: "Основатель (Founder)",
+          role: "Генеральный директор компании (CEO)",
           bio: "Узбекский инноватор и аграрный предприниматель. С 2017 года приносит информацию, доверие и результаты тысячам фермеров и агробизнес-предпринимателей в Центральной Азии.",
-          experience: "9 лет",
+          experience: "15+ лет",
           achievements: [
             "200 000+ подписчиков",
             "1500+ успешных проектов",
@@ -2063,17 +2037,12 @@ export const translations = {
         },
         ilyos: {
           name: "Ильёс Сохибов",
-          position: "Руководитель международных продаж",
+          position: "Руководитель отдела внешней торговли",
           experience: "9 лет",
-        },
-        matluba: {
-          name: "Матлуба Халиева",
-          position: "Маркетолог",
-          experience: "4 года",
         },
         alisher: {
           name: "Алишер Мажидов",
-          position: "Профессиональный видеограф",
+          position: "Руководитель отдела маркетинга",
           experience: "7 лет",
           education: [
             "Маркетинг",
@@ -2087,7 +2056,7 @@ export const translations = {
         },
         dilnoza: {
           name: "Дилноза Саматова",
-          position: "Главный бухгалтер",
+          position: "Руководитель финансового отдела",
           bio: "Старший специалист по налоговому и бухгалтерскому учёту.",
           experience: "5 лет",
           achievements: [
@@ -2106,55 +2075,14 @@ export const translations = {
             "Банк-клиент",
           ],
         },
-        nafosat: {
-          name: "Нафосат Ботирбоева",
-          position: "Финансы",
-          bio: "Специалист по финансовым процессам и отчётности.",
-          experience: "5 лет",
-          achievements: [
-            "Подготовка отчётов",
-            "Ведение денежных потоков",
-            "Восстановление бухгалтерии",
-          ],
-          education: [
-            "Курс бухгалтерии",
-            "Курс повышения квалификации юриста",
-            "Курс Inplus",
-          ],
-          skills: [
-            "1C",
-            "Didox",
-            "MyMehnat",
-            "Отчёты",
-          ],
-        },
-        abdulloh: {
-          name: "Абдуллох Абдурасулов",
-          position: "Руководитель отдела продаж",
-          experience: "4 года",
-          education: [
-            "Строительная инженерия",
-            "Системы автоматизации",
-          ],
-          email: "uzgrrow@gmail.com",
-          phone: "+998 88 507 00 70",
-          location: "Ташкент, Узбекистан",
-          linkedin: "#",
-          twitter: "#",
-        },
         vasila: {
-          name: "Васила Низомидинова",
-          position: "Брокер",
+          name: "Васила Низомиддинова",
+          position: "Руководитель отдела онлайн-продаж",
           experience: "4 года",
-        },
-        elmurod: {
-          name: "Элмурод Уринов",
-          position: "Строитель теплиц",
-          experience: "8 лет",
         },
         sardor: {
-          name: "Сардор Абдуталипов",
-          position: "Снабжение",
+          name: "Сардор Абдулатипов",
+          position: "Руководитель отдела снабжения",
           bio: "Специалист по закупкам и бизнес-переговорам.",
           experience: "4 года",
           achievements: [
@@ -2172,15 +2100,29 @@ export const translations = {
             "Маркетинг",
           ],
         },
-        abdurasul: {
-          name: "Абдурасул Тагоев",
-          position: "Главный специалист",
-          experience: "13 лет",
+        abdulloh: {
+          name: "Абдуллох Абдурасулов",
+          position: "Руководитель отдела продаж",
+          experience: "4 года",
+          education: [
+            "Строительная инженерия",
+            "Системы автоматизации",
+          ],
+          email: "uzgrrow@gmail.com",
+          phone: "+998 88 507 00 70",
+          location: "Ташкент, Узбекистан",
+          linkedin: "#",
+          twitter: "#",
         },
         abdurashid: {
           name: "Абдурашид Мамадалиев",
-          position: "Главный агроном",
+          position: "Проектирование и проект-менеджер",
           experience: "7 лет",
+        },
+        elmurod: {
+          name: "Элмурод Уринов",
+          position: "Руководитель строительного отдела",
+          experience: "8 лет",
         },
       },
       achievementsLabel: "достижение",
@@ -3699,10 +3641,12 @@ export const translations = {
       ],
     },
     team: {
-      title: "Our Team",
-      subtitle: "Strong and experienced specialists",
+      title: "Our management team",
+      subtitle: "Company leadership",
       description:
-        "Our team consists of the highest qualified specialists who work every day for your success",
+        "UZ-GROW's key leaders – 8 department heads",
+      experienceSuffix: "of experience",
+      founderExperience: "in agribusiness",
       ourTeam: "Our Team",
       experience: "Experience",
       achievements: "Achievements",
@@ -3711,10 +3655,11 @@ export const translations = {
       contact: "Contact",
       members: {
         rustamjon: {
-          name: "Rustamjon Raxmonov",
-          position: "Founder & Owner",
+          name: "Rustamjon Rakhmonov",
+          position: "Founder",
+          role: "Chief Executive Officer (CEO)",
           bio: "Uzbek innovator and agricultural entrepreneur. Since 2017, he has been bringing information, trust and results to thousands of farmers and agricultural entrepreneurs in Central Asia.",
-          experience: "9 years",
+          experience: "15+ years",
           achievements: [
             "200,000+ subscribers",
             "1500+ successful projects",
@@ -3739,17 +3684,12 @@ export const translations = {
         },
         ilyos: {
           name: "Ilyos Sohibov",
-          position: "Head of International Sales",
+          position: "Head of Foreign Trade",
           experience: "9 years",
-        },
-        matluba: {
-          name: "Matluba Khaliyeva",
-          position: "Marketer",
-          experience: "4 years",
         },
         alisher: {
           name: "Alisher Majidov",
-          position: "Professional Videographer",
+          position: "Head of Marketing",
           experience: "7 years",
           education: [
             "Marketing",
@@ -3763,7 +3703,7 @@ export const translations = {
         },
         dilnoza: {
           name: "Dilnoza Samatova",
-          position: "Chief Accountant",
+          position: "Head of Finance",
           bio: "Senior specialist in tax and accounting.",
           experience: "5 years",
           achievements: [
@@ -3782,55 +3722,14 @@ export const translations = {
             "Bank client",
           ],
         },
-        nafosat: {
-          name: "Nafosat Botirboyeva",
-          position: "Finance",
-          bio: "Specialist in financial processes and reporting.",
-          experience: "5 years",
-          achievements: [
-            "Preparation of reports",
-            "Cash flow management",
-            "Accounting restoration",
-          ],
-          education: [
-            "Accounting course",
-            "Lawyer qualification course",
-            "Inplus course",
-          ],
-          skills: [
-            "1C",
-            "Didox",
-            "MyMehnat",
-            "Reports",
-          ],
-        },
-        abdulloh: {
-          name: "Abdulloh Abdurasulov",
-          position: "Head of Sales",
-          experience: "4 years",
-          education: [
-            "Construction Engineering",
-            "Automation Systems",
-          ],
-          email: "uzgrrow@gmail.com",
-          phone: "+998 88 507 00 70",
-          location: "Tashkent, Uzbekistan",
-          linkedin: "#",
-          twitter: "#",
-        },
         vasila: {
-          name: "Vasila Nizomidinova",
-          position: "Broker",
+          name: "Vasila Nizomiddinova",
+          position: "Head of Online Sales",
           experience: "4 years",
-        },
-        elmurod: {
-          name: "Elmurod Urinov",
-          position: "Greenhouse Builder",
-          experience: "8 years",
         },
         sardor: {
-          name: "Sardor Abdutalipov",
-          position: "Procurement",
+          name: "Sardor Abdulatipov",
+          position: "Head of Procurement",
           bio: "Specialist in procurement and business negotiations.",
           experience: "4 years",
           achievements: [
@@ -3848,15 +3747,29 @@ export const translations = {
             "Marketing",
           ],
         },
-        abdurasul: {
-          name: "Abdurasul Tagoyev",
-          position: "Chief Specialist",
-          experience: "13 years",
+        abdulloh: {
+          name: "Abdulloh Abdurasulov",
+          position: "Head of Sales",
+          experience: "4 years",
+          education: [
+            "Construction Engineering",
+            "Automation Systems",
+          ],
+          email: "uzgrrow@gmail.com",
+          phone: "+998 88 507 00 70",
+          location: "Tashkent, Uzbekistan",
+          linkedin: "#",
+          twitter: "#",
         },
         abdurashid: {
           name: "Abdurashid Mamadaliyev",
-          position: "Chief Agronomist",
+          position: "Design & Project Manager",
           experience: "7 years",
+        },
+        elmurod: {
+          name: "Elmurod Urinov",
+          position: "Head of Construction",
+          experience: "8 years",
         },
       },
       achievementsLabel: "achievement",

@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 // ruxsat bermaydi, shuning uchun sarlavha va tavsif shu yerda beriladi.
 export const metadata = pageMeta({
   path: "/foydanalish-shartlari",
-  title: "Foydalanish shartlari | UZ GROW",
+  title: "Foydalanish shartlari | UZ-GROW",
   description:
     "UZ GROW veb-saytidan foydalanish shartlari va qoidalari.",
 });

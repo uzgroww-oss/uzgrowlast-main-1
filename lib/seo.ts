@@ -46,7 +46,7 @@ export function pageMeta({
     openGraph: {
       type: "website",
       locale: "uz_UZ",
-      siteName: "UZ GROW",
+      siteName: "UZ-GROW",
       url: path,
       title,
       description,

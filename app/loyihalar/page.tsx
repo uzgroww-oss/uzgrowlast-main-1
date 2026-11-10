@@ -5,7 +5,7 @@ import { Projects } from "@/components/projects";
 
 export const metadata = pageMeta({
   path: "/loyihalar",
-  title: "Loyihalar - UZ GROW | Muvaffaqiyatli issiqxona loyihalari",
+  title: "Loyihalar - UZ-GROW | Muvaffaqiyatli issiqxona loyihalari",
   description:
     "UZ GROW kompaniyasining muvaffaqiyatli issiqxona loyihalari. Prezident tashriflari, xalqaro hamkorliklar va zamonaviy agrotexnologiyalar.",
   keywords:

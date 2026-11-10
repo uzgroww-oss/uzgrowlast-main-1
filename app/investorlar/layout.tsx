@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 // ruxsat bermaydi, shuning uchun sarlavha va tavsif shu yerda beriladi.
 export const metadata = pageMeta({
   path: "/investorlar",
-  title: "Investorlar uchun | UZ GROW",
+  title: "Investorlar uchun | UZ-GROW",
   description:
     "Agro-sanoat investitsiya imkoniyati. UZ GROW yuqori rentabelli issiqxona loyihalarini amalga oshirish bo'yicha hamkorlik taklif qiladi.",
   keywords: "issiqxona investitsiya, agrobiznes, investorlar, UZ GROW",

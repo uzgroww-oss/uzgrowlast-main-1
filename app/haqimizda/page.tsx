@@ -6,7 +6,7 @@ import { AboutDetailed } from "@/components/about-detailed";
 
 export const metadata = pageMeta({
   path: "/haqimizda",
-  title: "Biz haqimizda | UZ GROW",
+  title: "Biz haqimizda | UZ-GROW",
   description:
     "UZ GROW kompaniyasi haqida batafsil ma'lumot. 9+ yillik tajriba, 1500+ muvaffaqiyatli loyiha va professionallik.",
   keywords:

@@ -5,7 +5,7 @@ import { ServicesPage } from "@/components/services-page";
 
 export const metadata = pageMeta({
   path: "/xizmatlar",
-  title: "Xizmatlar | UZ GROW - Agro-Injiniring",
+  title: "Xizmatlar | UZ-GROW",
   description:
     "UZ GROW xizmatlari: issiqxona injiniringi, jihozlar yetkazib berish, tomchilatib sug'orish tizimlari va agro-konsalting. To'liq aylanma asosida loyihalash va qurilish.",
   keywords:

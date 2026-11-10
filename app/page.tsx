@@ -1,4 +1,4 @@
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, SITE_URL } from "@/lib/seo";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { Services } from "@/components/services";
@@ -13,9 +13,9 @@ import { Footer } from "@/components/footer";
 
 export const metadata = pageMeta({
   path: "/",
-  title: "UZ GROW - Agro-Injiniring | Issiqxona qurish va qishloq xo'jaligi yechimlari",
+  title: "UZ-GROW | Greenhouse Engineering",
   description:
-    "UZ GROW - O'zbekistonning yetakchi agro-injiniring kompaniyasi. Zamonaviy issiqxonalar, agrotexnologiyalar va qishloq xo'jaligi uchun kompleks yechimlar. 9+ yillik tajriba, 1500+ muvaffaqiyatli loyiha.",
+    "UZ-GROW — Greenhouse Engineering: O'zbekistonda zamonaviy issiqxonalarni loyihalash va qurish bo'yicha yetakchi kompaniya. Zamonaviy issiqxonalar, agrotexnologiyalar va qishloq xo'jaligi uchun kompleks yechimlar. 9+ yillik tajriba, 1500+ muvaffaqiyatli loyiha.",
   keywords:
     "issiqxona qurish, agro-injiniring, qishloq xo'jaligi, UZ GROW, issiqxona turlari, polikarbonat issiqxona, gidroponik, agrobiznes, O'zbekiston, Toshkent",
 });
@@ -23,6 +23,19 @@ export const metadata = pageMeta({
 export default function Home() {
   return (
     <main className="min-h-screen">
+      {/* Google qidiruvda sayt nomi sifatida shu chiqadi */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "UZ-GROW",
+            alternateName: ["UZ-GROW | Greenhouse Engineering", "UZ GROW", "UzGrow"],
+            url: `${SITE_URL}/`,
+          }),
+        }}
+      />
       <Header />
       <Hero />
       <About />

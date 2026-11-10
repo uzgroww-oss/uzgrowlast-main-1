@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   // OG/Twitter rasmlarining to'liq manzili shu asosda quriladi
   metadataBase: new URL(SITE_URL),
   title:
-    "UZ GROW - Agro-Injiniring | Issiqxona qurish va qishloq xo'jaligi yechimlari",
+    "UZ-GROW | Greenhouse Engineering",
   description:
-    "UZ GROW - O'zbekistonning yetakchi agro-injiniring kompaniyasi. Zamonaviy issiqxonalar, agrotexnologiyalar va qishloq xo'jaligi uchun kompleks yechimlar. 9+ yillik tajriba, 1500+ muvaffaqiyatli loyiha.",
+    "UZ-GROW — Greenhouse Engineering: O'zbekistonda zamonaviy issiqxonalarni loyihalash va qurish bo'yicha yetakchi kompaniya. Zamonaviy issiqxonalar, agrotexnologiyalar va qishloq xo'jaligi uchun kompleks yechimlar. 9+ yillik tajriba, 1500+ muvaffaqiyatli loyiha.",
   keywords: [
     "issiqxona qurish",
     "agro-injiniring",
@@ -43,26 +43,26 @@ export const metadata: Metadata = {
     "qurilish materiallari",
   ],
   authors: [{ name: "Rustamjon Raxmonov" }],
-  creator: "UZ GROW Agro-Injiniring",
-  publisher: "UZ GROW",
+  creator: "UZ-GROW",
+  publisher: "UZ-GROW",
   robots: "index, follow",
   openGraph: {
     type: "website",
     locale: "uz_UZ",
     url: "/",
     title:
-      "UZ GROW - Agro-Injiniring | Issiqxona qurish va qishloq xo'jaligi yechimlari",
+      "UZ-GROW | Greenhouse Engineering",
     description:
-      "UZ GROW - O'zbekistonning yetakchi agro-injiniring kompaniyasi. Zamonaviy issiqxonalar, agrotexnologiyalar va qishloq xo'jaligi uchun kompleks yechimlar.",
-    siteName: "UZ GROW",
+      "UZ-GROW — Greenhouse Engineering: O'zbekistonda zamonaviy issiqxonalarni loyihalash va qurish bo'yicha yetakchi kompaniya. Zamonaviy issiqxonalar, agrotexnologiyalar va qishloq xo'jaligi uchun kompleks yechimlar.",
+    siteName: "UZ-GROW",
     images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "UZ GROW - Agro-Injiniring | Issiqxona qurish va qishloq xo'jaligi yechimlari",
+      "UZ-GROW | Greenhouse Engineering",
     description:
-      "UZ GROW - O'zbekistonning yetakchi agro-injiniring kompaniyasi. Zamonaviy issiqxonalar, agrotexnologiyalar va qishloq xo'jaligi uchun kompleks yechimlar.",
+      "UZ-GROW — Greenhouse Engineering: O'zbekistonda zamonaviy issiqxonalarni loyihalash va qurish bo'yicha yetakchi kompaniya. Zamonaviy issiqxonalar, agrotexnologiyalar va qishloq xo'jaligi uchun kompleks yechimlar.",
     images: [OG_IMAGE.url],
     creator: "@UZ GROW",
     site: "@UZ GROW",
