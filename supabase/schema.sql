@@ -67,6 +67,16 @@ create table if not exists public.media_overrides (
   updated_at timestamptz not null default now()
 );
 
+-- ---------- Urinishlar hisobi (admin parol, aloqa formasi spami) ----------
+-- Kalit — IP manzilning sha256 xeshi, ochiq IP saqlanmaydi.
+-- Bir kundan eski yozuvlarni sayt o'zi o'chiradi.
+create table if not exists public.rate_hits (
+  id  bigint generated always as identity primary key,
+  key text not null,
+  at  timestamptz not null default now()
+);
+create index if not exists rate_hits_key_at on public.rate_hits (key, at);
+
 -- ---------- Xavfsizlik ----------
 -- RLS yoqiladi va anon/authenticated uchun HECH QANDAY siyosat berilmaydi.
 -- Natija: ommaviy kalit bilan bu jadvallarga umuman kirib bo'lmaydi.
@@ -77,6 +87,7 @@ alter table public.news              enable row level security;
 alter table public.team_members      enable row level security;
 alter table public.content_overrides enable row level security;
 alter table public.media_overrides   enable row level security;
+alter table public.rate_hits         enable row level security;
 
 -- ---------- Fayllar uchun ombor ----------
 -- "media" bucket'i SQL orqali emas, dashboard yoki API orqali yaratiladi

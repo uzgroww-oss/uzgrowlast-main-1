@@ -10,6 +10,21 @@ import { cn } from "@/lib/utils";
 const mayBeTransparent = (src: string) => /\.(png|svg|gif)(\?|#|$)/i.test(src);
 
 /**
+ * Fotosuratlar Next.js orqali ekran o'lchamiga moslab kichraytiriladi va
+ * WebP/AVIF ga o'giriladi (telefonga 5 MB lik asl surat yuborilmaydi).
+ * Faqat o'zimizdagi va Supabase'dagi JPG/WebP — next.config.mjs dagi
+ * remotePatterns bilan bir xil. Logotiplar (PNG/SVG) va GIF tegilmaydi.
+ */
+const OPT_WIDTHS = [640, 1200, 1920];
+const canOptimize = (src: string) =>
+  /\.(jpe?g|webp)(\?|#|$)/i.test(src) &&
+  (src.startsWith("/")
+    ? !src.startsWith("//")
+    : /^https:\/\/[a-z0-9-]+\.supabase\.co\//i.test(src));
+const optimized = (src: string, w: number) =>
+  `/_next/image?url=${encodeURIComponent(src)}&w=${w}&q=75`;
+
+/**
  * Rasm. Ikki vazifasi bor:
  *
  * 1. Manzil bo'sh bo'lsa HECH NARSA chizmaydi. Admin paneldan rasm
@@ -28,6 +43,7 @@ export function MediaImg({
   className,
   onLoad,
   onError,
+  sizes = "100vw",
   ...rest
 }: React.ImgHTMLAttributes<HTMLImageElement> & {
   /** Yuklanish fonini majburan yoqish/o'chirish (standart: PNG/SVG dan boshqasiga) */
@@ -57,6 +73,12 @@ export function MediaImg({
     <img
       ref={ref}
       src={url}
+      srcSet={
+        canOptimize(url)
+          ? OPT_WIDTHS.map((w) => `${optimized(url, w)} ${w}w`).join(", ")
+          : undefined
+      }
+      sizes={canOptimize(url) ? sizes : undefined}
       alt={alt}
       loading={loading}
       decoding={decoding}

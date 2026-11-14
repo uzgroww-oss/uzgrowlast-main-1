@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/localized-link";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,

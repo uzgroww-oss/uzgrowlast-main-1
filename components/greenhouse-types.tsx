@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import Link from "@/components/ui/localized-link";
 import {
   Home,
   Factory,

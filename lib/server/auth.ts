@@ -1,6 +1,13 @@
 import { createHash, timingSafeEqual } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
-import { clientIp, rateLimit, resetLimit } from "./rate-limit";
+import {
+  clientIp,
+  durableCount,
+  durableHit,
+  durableReset,
+  rateLimit,
+  resetLimit,
+} from "./rate-limit";
 
 // Bitta IP dan 15 daqiqada 10 ta noto'g'ri urinish — parolni brute-force
 // qilishning oldini oladi
@@ -47,15 +54,21 @@ export async function requireAdmin(req: NextRequest): Promise<AuthResult> {
   const ip = clientIp(req);
   const key = `admin:${ip}`;
   const { limited, retryAfter } = rateLimit(key, MAX_ATTEMPTS, WINDOW_MS);
-  if (limited) {
+  // Noto'g'ri urinishlar bazada ham sanaladi — barcha server nusxalari uchun umumiy
+  const failures = await durableCount(key, WINDOW_MS);
+  if (limited || (failures !== null && failures >= MAX_ATTEMPTS)) {
     return NextResponse.json(
       { ok: false, error: "Too many attempts" },
-      { status: 429, headers: { "Retry-After": String(retryAfter) } },
+      {
+        status: 429,
+        headers: { "Retry-After": String(limited ? retryAfter : WINDOW_MS / 1000) },
+      },
     );
   }
 
   const auth = req.headers.get("authorization") || "";
   if (!safeEqual(auth, `Bearer ${password}`)) {
+    await durableHit(key);
     await new Promise((r) => setTimeout(r, WRONG_PASSWORD_DELAY_MS));
     return NextResponse.json(
       { ok: false, error: "Unauthorized" },
@@ -65,5 +78,6 @@ export async function requireAdmin(req: NextRequest): Promise<AuthResult> {
 
   // To'g'ri parol — hisobni tozalaymiz, admin o'zini bloklab qo'ymasin
   resetLimit(key);
+  if (failures) await durableReset(key);
   return null;
 }

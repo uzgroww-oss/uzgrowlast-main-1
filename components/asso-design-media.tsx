@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/ui/localized-link";
 import { MediaImg } from "@/components/ui/media-img";
 
 

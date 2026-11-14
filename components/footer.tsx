@@ -2,7 +2,7 @@
 
 import { MediaImg } from "@/components/ui/media-img";
 
-import Link from "next/link";
+import Link from "@/components/ui/localized-link";
 import Image from "next/image";
 import {
   Phone,

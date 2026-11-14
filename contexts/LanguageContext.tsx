@@ -8,6 +8,8 @@ import React, {
   useMemo,
   ReactNode,
 } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { localePath, stripLocale } from "@/lib/i18n";
 import {
   NEW_KEY,
   cleanItem,
@@ -5005,8 +5007,22 @@ function applyOverrides(base: any, entries?: Record<string, string>): any {
   return merged;
 }
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [currentLang, setCurrentLang] = useState<Language>("uz");
+export function LanguageProvider({
+  children,
+  lang = "uz",
+}: {
+  children: ReactNode;
+  /** Manzildagi til (/ru/... -> "ru"). Sahifa matni shunga qarab chiziladi */
+  lang?: Language;
+}) {
+  const [currentLang, setCurrentLang] = useState<Language>(lang);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // Boshqa tildagi manzilga o'tilganda
+  useEffect(() => {
+    setCurrentLang(lang);
+  }, [lang]);
   const [overrides, setOverrides] = useState<Overrides>({});
   const [hidden, setHidden] = useState<Set<string>>(() => new Set());
 
@@ -5032,54 +5048,53 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = currentLang;
   }, [currentLang]);
 
+  // Faqat prefikssiz (o'zbekcha) manzilda: avval tanlangan yoki davlatga mos
+  // tilga o'tkazadi. /ru va /en manzillari aniq tanlov — ularga tegilmaydi.
+  // Qidiruv robotlari yo'naltirilmaydi, aks holda o'zbekcha sahifalar
+  // Google'da yo'qolib qoladi.
   useEffect(() => {
-    // Foydalanuvchi qo'lda tanlagan til har doim ustun
+    if (lang !== FALLBACK_LANG) return;
+    if (/bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(navigator.userAgent)) return;
+
+    const go = (target: Language) => {
+      if (target === FALLBACK_LANG) return;
+      const { path } = stripLocale(window.location.pathname);
+      router.replace(localePath(path, target) + window.location.search + window.location.hash);
+    };
+
     const savedLang = localStorage.getItem("language");
-    if (
-      savedLang &&
-      (savedLang === "uz" || savedLang === "ru" || savedLang === "en")
-    ) {
-      setCurrentLang(savedLang as Language);
+    if (savedLang === "uz" || savedLang === "ru" || savedLang === "en") {
+      go(savedLang);
       return;
     }
 
-    // Avto-aniqlash: IP orqali davlat (localStorage'ga yozilmaydi —
-    // qo'lda tanlash bo'lmaguncha har tashrifda qayta aniqlanadi)
+    // Davlat Vercel'ning o'zidan olinadi — IP begona xizmatga yuborilmaydi
     let cancelled = false;
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 3500);
-
-    const applyCountry = (code: string | undefined) => {
-      if (cancelled) return;
-      const c = (code || "").toUpperCase();
-      setCurrentLang(c.length === 2 ? langFromCountry(c) : langFromBrowser());
-    };
-
-    fetch("https://api.country.is", { signal: controller.signal })
+    fetch("/api/geo")
       .then((r) => r.json())
-      .then((data) => applyCountry(data?.country))
-      .catch(() =>
-        fetch("https://ipwho.is/?fields=country_code", {
-          signal: controller.signal,
-        })
-          .then((r) => r.json())
-          .then((data) => applyCountry(data?.country_code))
-          .catch(() => {
-            if (!cancelled) setCurrentLang(langFromBrowser());
-          }),
-      )
-      .finally(() => clearTimeout(timer));
-
+      .then((data) => {
+        if (cancelled) return;
+        const c = String(data?.country || "").toUpperCase();
+        go(c.length === 2 ? langFromCountry(c) : langFromBrowser());
+      })
+      .catch(() => {
+        if (!cancelled) go(langFromBrowser());
+      });
     return () => {
       cancelled = true;
-      controller.abort();
-      clearTimeout(timer);
     };
+    // Faqat birinchi ochilishda
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const setLanguage = (lang: Language) => {
-    setCurrentLang(lang);
-    localStorage.setItem("language", lang);
+  // Til almashtirish = shu sahifaning boshqa tildagi manziliga o'tish
+  const setLanguage = (next: Language) => {
+    localStorage.setItem("language", next);
+    setCurrentLang(next);
+    const { path } = stripLocale(pathname || "/");
+    router.push(localePath(path, next) + window.location.search + window.location.hash, {
+      scroll: false,
+    });
   };
 
   // Har bir til uchun birlashtirilgan matnlar. Til yoki override

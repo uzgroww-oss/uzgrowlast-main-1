@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/ui/localized-link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useMedia } from "@/contexts/MediaContext";
+import { MediaImg } from "@/components/ui/media-img";
 
 /**
  * Bosh sahifadagi ikki blok: "Qanday ishlaymiz" (01–04) va to'q fonli
@@ -60,8 +61,7 @@ export function CtaBand() {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden bg-brand-dark">
       {bg && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={bg} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+        <MediaImg src={bg} alt="" className="absolute inset-0 w-full h-full object-cover" />
       )}
       <div className="absolute inset-0 bg-brand-dark/75" />
       <div className="relative container mx-auto px-4 lg:px-8 text-center max-w-3xl">

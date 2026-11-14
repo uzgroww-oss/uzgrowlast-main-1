@@ -4,7 +4,7 @@ import { saveLead, listLeads, deleteAllLeads } from "@/lib/server/leads";
 import { notifyTelegram } from "@/lib/server/telegram";
 import { requireAdmin } from "@/lib/server/auth";
 import { dbError } from "@/lib/server/api";
-import { clientIp, rateLimit } from "@/lib/server/rate-limit";
+import { clientIp, durableCount, durableHit, rateLimit } from "@/lib/server/rate-limit";
 import { BRIEF_CODES, formatBrief } from "@/lib/project-brief";
 
 // "Loyihangiz haqida" bo'limi — faqat ro'yxatdagi qiymatlar qabul qilinadi
@@ -42,12 +42,11 @@ const WINDOW_MS = 60_000;
 
 export async function POST(req: NextRequest) {
   const ip = clientIp(req);
-  const { limited, retryAfter } = rateLimit(
-    `contact:${ip}`,
-    MAX_SUBMITS,
-    WINDOW_MS,
-  );
-  if (limited) {
+  const key = `contact:${ip}`;
+  const { limited, retryAfter } = rateLimit(key, MAX_SUBMITS, WINDOW_MS);
+  // Bazadagi hisob: barcha server nusxalari uchun umumiy (spamdan himoya)
+  const recent = await durableCount(key, WINDOW_MS);
+  if (limited || (recent !== null && recent >= MAX_SUBMITS)) {
     return NextResponse.json(
       { ok: false, error: "Too many requests" },
       { status: 429, headers: { "Retry-After": String(retryAfter) } },
@@ -76,6 +75,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  await durableHit(key);
   const { website: _honeypot, project, ...rest } = parsed.data;
   // Loyiha ma'lumotlari xabar oxiriga blok bo'lib yoziladi (alohida ustun yo'q)
   const brief = formatBrief(project);

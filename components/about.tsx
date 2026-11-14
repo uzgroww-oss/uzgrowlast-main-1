@@ -7,7 +7,7 @@ import { Target, Eye, Heart, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { mediaIds, useMedia } from "@/contexts/MediaContext";
-import Link from "next/link";
+import Link from "@/components/ui/localized-link";
 
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0);

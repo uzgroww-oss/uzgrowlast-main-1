@@ -1,3 +1,5 @@
+import { createHash } from "crypto";
+import { isSupabaseConfigured, supabase } from "./supabase";
 import { NextRequest } from "next/server";
 
 // Sodda in-memory rate limiter.
@@ -73,4 +75,59 @@ export function clientIp(req: NextRequest): string {
     if (first) return first;
   }
   return req.headers.get("x-real-ip")?.trim() || "unknown";
+}
+
+/* ---------- Bazadagi (doimiy) hisob ----------
+ *
+ * Yuqoridagi xotiradagi hisob Vercel'da ishonchsiz: har server nusxasining
+ * xotirasi alohida, nusxalar esa tez-tez almashadi. Shuning uchun parol
+ * topishga urinishlar va formadagi spam Supabase'dagi rate_hits jadvalida
+ * ham sanaladi. Jadval hali yaratilmagan bo'lsa (supabase/schema.sql),
+ * jimgina xotiradagi hisobning o'ziga qaytiladi — sayt ishlashda davom etadi.
+ */
+
+let tableMissing = false;
+const isMissingTable = (e: unknown) =>
+  ["42P01", "PGRST205"].includes((e as { code?: string })?.code ?? "");
+
+// IP manzil bazaga ochiq yozilmaydi
+const hashKey = (key: string) => createHash("sha256").update(key).digest("hex").slice(0, 40);
+
+/** `windowMs` ichida shu kalit bo'yicha yozuvlar soni; baza ishlamasa null */
+export async function durableCount(key: string, windowMs: number): Promise<number | null> {
+  if (tableMissing || !isSupabaseConfigured()) return null;
+  const since = new Date(Date.now() - windowMs).toISOString();
+  const { count, error } = await supabase()
+    .from("rate_hits")
+    .select("key", { count: "exact", head: true })
+    .eq("key", hashKey(key))
+    .gte("at", since);
+  if (error) {
+    if (isMissingTable(error)) tableMissing = true;
+    else console.error("rate_hits o'qilmadi:", error.message);
+    return null;
+  }
+  return count ?? 0;
+}
+
+/** Bitta urinishni yozib qo'yadi */
+export async function durableHit(key: string): Promise<void> {
+  if (tableMissing || !isSupabaseConfigured()) return;
+  const db = supabase();
+  const { error } = await db.from("rate_hits").insert({ key: hashKey(key) });
+  if (error) {
+    if (isMissingTable(error)) tableMissing = true;
+    else console.error("rate_hits yozilmadi:", error.message);
+    return;
+  }
+  // Bir kundan eski yozuvlar vaqti-vaqti bilan o'chiriladi
+  if (Math.random() < 0.05) {
+    await db.from("rate_hits").delete().lt("at", new Date(Date.now() - 86_400_000).toISOString());
+  }
+}
+
+/** Kalit bo'yicha barcha yozuvlarni o'chiradi (to'g'ri paroldan keyin) */
+export async function durableReset(key: string): Promise<void> {
+  if (tableMissing || !isSupabaseConfigured()) return;
+  await supabase().from("rate_hits").delete().eq("key", hashKey(key));
 }

@@ -1,0 +1,34 @@
+# Har push va pull request'da kodni tekshiradi: turlar, lint, testlar, build.
+# Xato bo'lsa GitHub qizil belgi qo'yadi va repozitoriya egasiga xat yuboradi —
+# buzilgan kod Vercel'ga chiqmasdan oldin ko'rinadi.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: TypeScript
+        run: npm run typecheck
+      - name: Lint
+        run: npm run lint
+      - name: Testlar
+        run: npm test
+      - name: Build
+        run: npx next build

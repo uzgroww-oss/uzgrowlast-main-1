@@ -3,8 +3,9 @@
 import { MediaImg } from "@/components/ui/media-img";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/localized-link";
 import { usePathname } from "next/navigation";
+import { stripLocale } from "@/lib/i18n";
 import { Menu, X, Globe, ChevronDown, Check, Download } from "lucide-react";
 import {
   DropdownMenu,
@@ -38,7 +39,8 @@ const isGroup = (e: NavEntry): e is NavGroup => "children" in e;
  */
 export function Header() {
   const { m } = useMedia();
-  const pathname = usePathname();
+  // Faol menyu bandi tilsiz manzil bo'yicha aniqlanadi (/ru/aloqa -> /aloqa)
+  const pathname = stripLocale(usePathname() || "/").path;
   const { currentLang, setLanguage, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);

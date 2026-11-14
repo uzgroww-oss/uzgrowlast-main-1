@@ -1,4 +1,13 @@
 import type { Metadata } from "next";
+import {
+  DEFAULT_LOCALE,
+  LOCALES,
+  OG_LOCALE,
+  PAGE_META_I18N,
+  isLocale,
+  localePath,
+  type Locale,
+} from "./i18n";
 
 /**
  * Sahifa metadatasi uchun yagona joy.
@@ -26,28 +35,40 @@ export const OG_IMAGE = {
   alt: "UZ GROW — zamonaviy issiqxona yechimlari",
 };
 
-export function pageMeta({
-  path,
-  title,
-  description,
-  keywords,
-}: {
-  /** Sahifa manzili, masalan "/loyihalar". metadataBase bilan to'liq URL bo'ladi */
+type MetaInput = {
+  /** Sahifa manzili (prefikssiz), masalan "/loyihalar" */
   path: string;
+  /** O'zbekcha sarlavha; ru/en — lib/i18n.ts dagi PAGE_META_I18N da */
   title: string;
   description: string;
   keywords?: string | string[];
-}): Metadata {
+};
+
+/** Bitta til uchun to'liq metadata: sarlavha, canonical va hreflang */
+export function buildMeta(input: MetaInput, lang: Locale): Metadata {
+  const tr = lang === DEFAULT_LOCALE ? undefined : PAGE_META_I18N[input.path]?.[lang];
+  const title = tr?.title ?? input.title;
+  const description = tr?.description ?? input.description;
+  const url = localePath(input.path, lang);
   return {
     title,
     description,
-    keywords,
-    alternates: { canonical: path },
+    // Kalit so'zlar faqat o'zbekcha yozilgan
+    keywords: lang === DEFAULT_LOCALE ? input.keywords : undefined,
+    alternates: {
+      canonical: url,
+      // Google har til versiyasini bir-biriga bog'laydi
+      languages: {
+        ...Object.fromEntries(LOCALES.map((l) => [l, localePath(input.path, l)])),
+        "x-default": localePath(input.path, DEFAULT_LOCALE),
+      },
+    },
     openGraph: {
       type: "website",
-      locale: "uz_UZ",
+      locale: OG_LOCALE[lang],
+      alternateLocale: LOCALES.filter((l) => l !== lang).map((l) => OG_LOCALE[l]),
       siteName: "UZ-GROW",
-      url: path,
+      url,
       title,
       description,
       images: [OG_IMAGE],
@@ -58,6 +79,17 @@ export function pageMeta({
       description,
       images: [OG_IMAGE.url],
     },
+  };
+}
+
+/**
+ * Sahifa uchun generateMetadata: `export const generateMetadata = pageMeta({...})`.
+ * Til manzildagi [lang] dan olinadi.
+ */
+export function pageMeta(input: MetaInput) {
+  return async ({ params }: { params: Promise<{ lang?: string }> }): Promise<Metadata> => {
+    const { lang } = await params;
+    return buildMeta(input, isLocale(lang) ? lang : DEFAULT_LOCALE);
   };
 }
 

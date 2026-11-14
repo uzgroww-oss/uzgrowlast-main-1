@@ -1,0 +1,38 @@
+# Sayt ishlayotganini har 30 daqiqada tekshiradi: bosh sahifa (3 tilda),
+# aloqa sahifasi va /api/health. Biror sahifa ochilmasa ish muvaffaqiyatsiz
+# tugaydi va GitHub repozitoriya egasiga xat yuboradi.
+# (keep-alive.yml — Supabase uyg'oqligi uchun, bu esa saytning o'zi uchun.)
+
+name: Uptime
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: uptime
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      BASE: ${{ vars.SITE_URL || 'https://www.uzgrow.uz' }}
+    steps:
+      - name: Sahifalarni tekshirish
+        run: |
+          fail=0
+          for path in / /ru /en /aloqa /api/health; do
+            ok=0
+            # Bir martalik tarmoq uzilishi uchun bekorga xat yubormaslik
+            for attempt in 1 2 3; do
+              code=$(curl -sS -L --max-time 30 -o /dev/null -w "%{http_code}" "$BASE$path" || echo 000)
+              if [ "$code" = "200" ]; then ok=1; break; fi
+              sleep 20
+            done
+            echo "$path -> $code"
+            [ $ok = 1 ] || { echo "::error::$BASE$path javob bermayapti ($code)"; fail=1; }
+          done
+          exit $fail
